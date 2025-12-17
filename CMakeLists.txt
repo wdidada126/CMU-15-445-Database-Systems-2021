@@ -35,7 +35,7 @@ enable_testing()
 if (NOT DEFINED CLANG_FORMAT_BIN)
     # attempt to find the binary if user did not specify
     find_program(CLANG_FORMAT_BIN
-            NAMES clang-format clang-format-8
+            NAMES clang-format clang-format-18
             HINTS ${BUSTUB_CLANG_SEARCH_PATH})
 endif()
 if ("${CLANG_FORMAT_BIN}" STREQUAL "CLANG_FORMAT_BIN-NOTFOUND")
@@ -48,7 +48,7 @@ endif()
 if (NOT DEFINED CLANG_TIDY_BIN)
     # attempt to find the binary if user did not specify
     find_program(CLANG_TIDY_BIN
-            NAMES clang-tidy clang-tidy-8
+            NAMES clang-tidy clang-tidy-18
             HINTS ${BUSTUB_CLANG_SEARCH_PATH})
 endif()
 if ("${CLANG_TIDY_BIN}" STREQUAL "CLANG_TIDY_BIN-NOTFOUND")
