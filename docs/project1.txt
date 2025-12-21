@@ -1,0 +1,247 @@
+项目1 - 缓冲池
+
+请勿将你的项目发布在公开的Github仓库中。
+
+概述
+
+在本学期中，你将为BusTub数据库管理系统构建一个新的面向磁盘的存储管理器。这样的存储管理器假定数据库的主要存储位置在磁盘上。
+
+第一个编程项目是在你的存储管理器中实现一个缓冲池。缓冲池负责在内存和磁盘之间来回移动物理页面。它使数据库系统能够支持比系统可用内存更大的数据库。缓冲池的操作对系统中的其他部分是透明的。例如，系统使用其唯一标识符（page_id_t）向缓冲池请求一个页面，它不知道该页面是否已经在内存中，或者系统是否必须从磁盘检索它。
+
+你的实现需要是线程安全的。多个线程将同时访问内部数据结构，因此你需要确保它们的临界区受到锁的保护（在操作系统中称为"locks"）。
+
+你需要在存储管理器中实现以下两个组件：
+
+1. LRU替换策略
+2. 缓冲池管理器实例
+3. 并行缓冲池管理器
+
+这是一个单人项目，将单独完成（即不分组）。
+
+发布日期：2021年9月13日
+截止日期：2021年9月26日 @ 晚上11:59
+
+项目规范
+
+对于以下每个组件，我们为你提供了包含需要实现的API的存根类。你不应修改这些类中预定义函数的签名。如果你修改了签名，我们用于评分的测试代码将无法工作，你将得不到项目的分数。你也不应该在这些组件的源代码中添加额外的类。这些组件应该是完全自包含的。
+
+如果一个类已经包含了数据成员，你不应该删除它们。例如，BufferPoolManager包含DiskManager和Replacer对象。这些是实现系统其余部分所需功能所必需的。另一方面，你可能需要向这些类添加数据成员才能正确实现所需功能。你也可以向这些类添加额外的辅助函数。这由你决定。
+
+除非另有说明，否则你可以在项目中使用任何内置的C++17容器。由你决定要使用哪些容器。请注意，这些容器不是线程安全的，你需要在实现中包含锁来保护它们。你不能引入额外的第三方依赖（如boost）。
+
+任务#1 - LRU替换策略
+
+这个组件负责跟踪缓冲池中的页面使用情况。你将在src/include/buffer/lru_replacer.h中实现一个名为LRUReplacer的新子类，并在src/buffer/lru_replacer.cpp中实现其对应的实现文件。LRUReplacer扩展了抽象类Replacer（src/include/buffer/replacer.h），其中包含了函数规范。
+
+LRUReplacer的最大页面数与缓冲池的大小相同，因为它为BufferPoolManager中的所有帧都预留了位置。然而，在任何给定时刻，并非所有帧都在LRUReplacer中。LRUReplacer初始化为不包含任何帧。然后，只有新被取消固定的帧才会被考虑在LRUReplacer中。
+
+你需要实现课堂中讨论的LRU策略。你需要实现以下方法：
+
+• Victim(frame_id_t*)：移除最近最少被访问的对象（与Replacer跟踪的所有其他元素相比），将其内容存储在输出参数中并返回True。如果Replacer为空，则返回False。
+
+• Pin(frame_id_t)：在BufferPoolManager中将页面固定到帧后，应调用此方法。它应将包含被固定页面的帧从LRUReplacer中移除。
+
+• Unpin(frame_id_t)：当页面的pin_count变为0时，应调用此方法。此方法应将包含未固定页面的帧添加到LRUReplacer中。
+
+• Size()：此方法返回当前在LRUReplacer中的帧数。
+
+实现细节由你决定。你允许使用内置的STL容器。你可以假设不会耗尽内存，但必须确保操作是线程安全的。
+
+最后，在这个项目中，你只需要实现LRU替换策略。即使有相应的文件，你也不必实现时钟替换策略。
+
+任务#2 - 缓冲池管理器实例
+
+接下来，你需要在系统中实现缓冲池管理器（BufferPoolManagerInstance）。BufferPoolManagerInstance负责从DiskManager获取数据库页面并将其存储在内存中。当明确指示这样做或需要逐出页面为新页面腾出空间时，BufferPoolManagerInstance还可以将脏页面写回磁盘。
+
+为了确保你的实现与系统的其余部分正确配合，我们将为你提供一些已实现的函数。你也不需要实现实际读写数据到磁盘的代码（这在我们实现中称为DiskManager）。我们将为你提供该功能。
+
+系统中的所有内存页面都由Page对象表示。BufferPoolManagerInstance不需要理解这些页面的内容。但作为系统开发人员，重要的是要理解Page对象只是缓冲池中内存的容器，因此并不特定于唯一的页面。也就是说，每个Page对象包含一块内存，DiskManager将使用它作为位置来复制从磁盘读取的物理页面的内容。BufferPoolManagerInstance将重用相同的Page对象来存储数据，因为它在内存和磁盘之间来回移动。这意味着相同的Page对象在系统的生命周期内可能包含不同的物理页面。Page对象的标识符（page_id）跟踪它包含哪个物理页面；如果Page对象不包含物理页面，则其page_id必须设置为INVALID_PAGE_ID。
+
+每个Page对象还维护一个计数器，用于跟踪"固定"该页面的线程数。你的BufferPoolManagerInstance不允许释放被固定的Page。每个Page对象还跟踪它是否是脏的。你的工作是在页面被取消固定之前记录它是否被修改。在对象可以被重用之前，你的BufferPoolManagerInstance必须将脏Page的内容写回磁盘。
+
+你的BufferPoolManagerInstance实现将使用你在本作业前一步创建的LRUReplacer类。它将使用LRUReplacer来跟踪Page对象的访问时间，以便在必须释放一个帧以为从磁盘复制新物理页面腾出空间时决定逐出哪个页面。
+
+你需要在头文件（src/include/buffer/buffer_pool_manager_instance.h）中定义并在源文件（src/buffer/buffer_pool_manager_instance.cpp）中实现以下函数：
+
+• FetchPgImp(page_id)
+
+• UnpinPgImp(page_id, is_dirty)
+
+• FlushPgImp(page_id)
+
+• NewPgImp(page_id)
+
+• DeletePgImp(page_id)
+
+• FlushAllPagesImpl()
+
+对于FetchPgImp，如果空闲列表中没有可用的页面，并且所有其他页面当前都被固定，则应返回NULL。FlushPgImp应刷新页面，无论其固定状态如何。
+
+对于UnpinPgImp，is_dirty参数用于跟踪页面在被固定期间是否被修改。
+
+有关如何实现这些函数的详细信息，请参阅函数文档。不要修改非impl版本，我们需要那些来给你的代码评分。
+
+注意：在LRUReplacer和BufferPoolManagerInstance的上下文中，Pin和Unpin的含义相反。在LRUReplacer的上下文中，固定页面意味着我们不应该逐出该页面，因为它正在使用中。这意味着我们应该将其从LRUReplacer中移除。另一方面，在BufferPoolManagerInstance中固定页面意味着我们想要使用一个页面，并且不应将其从缓冲池中移除。
+
+任务#3 - 并行缓冲池管理器
+
+正如你可能在之前的任务中注意到的，单个缓冲池管理器实例需要获取锁以确保线程安全。这可能导致大量争用，因为每个线程在与缓冲池交互时都会争夺单个锁。一个潜在的解决方案是在系统中有多个缓冲池，每个都有其自己的锁。
+
+ParallelBufferPoolManager是一个包含多个BufferPoolManagerInstances的类。对于每个操作，ParallelBufferPoolManager选择一个BufferPoolManagerInstance并委托给该实例。
+
+我们使用给定的页面ID来确定使用哪个特定的BufferPoolManagerInstance。如果我们有num_instances个BufferPoolManagerInstances，那么我们需要某种方式将给定的page_id映射到[0, num_instances)范围内的数字。对于这个项目，我们将使用模运算符，page_id mod num_instances会将给定的page_id映射到正确的范围。
+
+当ParallelBufferPoolManager首次实例化时，它应该有一个起始索引0。每次创建一个新页面时，你将从起始索引开始尝试每个BufferPoolManagerInstance，直到一个成功。然后将起始索引增加1。
+
+确保在创建单个BufferPoolManagerInstances时，使用接收uint32_t num_instances和uint32_t instance_index参数的构造函数，以便正确创建页面ID。
+
+你需要在头文件（src/include/buffer/parallel_buffer_pool_manager.h）中定义并在源文件（src/buffer/parallel_buffer_pool_manager.cpp）中实现以下函数：
+
+• ParallelBufferPoolManager(num_instances, pool_size, disk_manager, log_manager)
+
+• ~ParallelBufferPoolManager()
+
+• GetPoolSize()
+
+• GetBufferPoolManager(page_id)
+
+• FetchPgImp(page_id)
+
+• UnpinPgImp(page_id, is_dirty)
+
+• FlushPgImp(page_id)
+
+• NewPgImp(page_id)
+
+• DeletePgImp(page_id)
+
+• FlushAllPagesImpl()
+
+说明
+
+请参阅项目#0的说明，了解如何创建你的私人仓库和设置开发环境。
+
+测试
+
+你可以使用我们的测试框架测试此作业的各个组件。我们使用GTest进行单元测试。有三个单独的文件包含每个组件的测试：
+
+• LRUReplacer：test/buffer/lru_replacer_test.cpp
+
+• BufferPoolManagerInstance：test/buffer/buffer_pool_manager_instance_test.cpp
+
+• ParallelBufferPoolManager：test/buffer/parallel_buffer_pool_manager_test.cpp
+
+你可以从命令行单独编译和运行每个测试：
+$ mkdir build
+$ cd build
+$ make lru_replacer_test
+$ ./test/lru_replacer_test
+
+
+你也可以运行make check-tests来运行所有测试用例。请注意，一些测试被禁用，因为你还没有实现未来的项目。你可以通过在测试名称前添加DISABLED_前缀来在GTest中禁用测试。
+
+重要：这些测试只是我们将用于评估和评分你项目的所有测试的一个子集。你应该自己编写额外的测试用例来检查实现的完整功能。
+
+格式规范
+
+你的代码必须遵循Google C++风格指南。我们使用Clang自动检查源代码的质量。如果你的提交未通过任何这些检查，你的项目分数将为零。
+
+执行以下命令检查语法。format目标将自动更正你的代码。check-lint和check-clang-tidy目标将打印错误并指导你如何修复以符合我们的风格指南。
+$ make format
+$ make check-lint
+$ make check-clang-tidy
+
+
+开发提示
+
+不要使用printf语句进行调试，使用LOG_*宏来记录信息，如下所示：
+LOG_INFO("# Pages: %d", num_pages);
+LOG_DEBUG("Fetching page %d", page_id);
+
+
+要在项目中启用日志记录，你需要像这样重新配置它：
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_BUILD_TYPE=DEBUG ..
+$ make
+
+
+不同的日志级别定义在src/include/common/logger.h中。启用日志记录后，日志级别默认为LOG_LEVEL_INFO。任何级别等于或高于LOG_LEVEL_INFO的日志方法（例如LOG_INFO、LOG_WARN、LOG_ERROR）都将发出日志信息。请注意，你需要在任何想要使用日志记录基础结构的文件中添加#include "common/logger.h"。
+
+我们鼓励你使用gdb来调试项目，如果你遇到问题。
+
+将关于此项目的所有问题发布在Piazza上。不要直接通过电子邮件向助教提问。
+
+如果你遇到编译问题，运行make clean不会完全重置编译过程。在重新运行make之前，你需要删除build目录并重新运行cmake ..。
+
+评分标准
+
+每个项目提交将根据以下标准进行评分：
+
+1. 提交是否成功执行所有测试用例并产生正确答案？
+2. 提交是否执行时没有任何内存泄漏？
+3. 提交是否遵循代码格式和风格政策？
+
+请注意，我们将使用额外的测试用例来评分你的提交，这些测试用例比我们提供的示例测试用例更复杂。
+
+迟交政策
+
+请参阅课程大纲中的迟交政策。
+
+提交
+
+完成作业后，你可以将实现提交到Gradescope：
+
+https://www.gradescope.com/courses/286490/
+
+你只需要包含以下文件：
+
+• src/include/buffer/lru_replacer.h
+
+• src/buffer/lru_replacer.cpp
+
+• src/include/buffer/buffer_pool_manager_instance.h
+
+• src/buffer/buffer_pool_manager_instance.cpp
+
+• src/include/buffer/parallel_buffer_pool_manager.h
+
+• src/buffer/parallel_buffer_pool_manager.cpp
+
+或者，从你的工作目录（即bustub、bustub-private等）运行此zip命令将创建一个名为project1-submission.zip的zip存档，你可以将其提交到Gradescope。你也可以将此命令放在bash文件中并运行该bash文件，以使操作更简单。
+$ zip project1-submission.zip \
+    src/include/buffer/lru_replacer.h \
+    src/buffer/lru_replacer.cpp \
+    src/include/buffer/buffer_pool_manager_instance.h \
+    src/buffer/buffer_pool_manager_instance.cpp \
+    src/include/buffer/parallel_buffer_pool_manager.h \
+    src/buffer/parallel_buffer_pool_manager.cpp
+
+
+你可以根据需要多次提交答案并获得即时反馈。
+
+关于Gradescope和自动评分器的说明
+
+• 如果你在Gradescope上超时，很可能是因为你的代码中存在死锁，或者你的代码太慢，无法在60秒内运行完毕。
+
+• 如果你的代码太慢，可能是因为你的LRUReplacer效率不够高。
+
+• 如果在提交前不删除日志，自动评分器将无法工作。
+
+• 如果自动评分器无法正常工作，请确保你的格式化命令有效，并且你提交了正确的文件。
+
+• CMU学生应使用Piazza上公布的Gradescope课程代码。
+
+合作政策
+
+• 每个学生必须独立完成此作业。
+
+• 允许学生与他人讨论项目的高级细节。
+
+• 不允许学生在与其他学生会面后复制白板内容。
+
+• 不允许学生复制其他同学的解决方案。
+
+警告：本项目所有代码必须是你自己编写的。不得从其他学生或从网络上找到的其他来源复制源代码。抄袭将不被容忍。有关更多信息，请参阅CMU的学术诚信政策。
+
+最后更新：2022年1月7日

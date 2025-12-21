@@ -1,0 +1,406 @@
+项目3 - 查询执行
+
+请勿将你的项目发布在公开的Github仓库中。
+
+概述
+
+在第三个编程项目中，你将向数据库系统添加查询执行支持。你将实现负责获取查询计划节点并执行它们的执行器。你将创建执行以下操作的执行器：
+
+访问方法：
+• 顺序扫描
+
+修改操作：
+• 插入
+
+• 更新
+
+• 删除
+
+杂项操作：
+• 嵌套循环连接
+
+• 哈希连接
+
+• 聚合
+
+• 限制
+
+• 去重
+
+因为DBMS还不支持SQL，你的实现将直接对手写的查询计划进行操作。
+
+我们将使用迭代器查询处理模型（即Volcano模型）。回想一下，在此模型中，每个查询计划执行器实现一个Next函数。当DBMS调用执行器的Next函数时，执行器返回（1）单个元组或（2）没有更多元组的指示符。通过这种方法，每个执行器实现一个循环，不断调用其子节点的Next来检索元组并逐一处理。
+
+在BusTub的迭代器模型实现中，每个执行器的Next函数除了返回一个元组外，还返回一个记录标识符（RID）。记录标识符作为相对于其所属表的元组的唯一标识符。
+
+该项目由单个任务组成，你需要根据下面提供的规范实现每个单独的执行器。
+
+这是一个单人项目，将单独完成（即不分组）。
+
+发布日期：2021年10月20日
+截止日期：2021年11月14日 @ 晚上11:59
+
+项目规范
+
+与之前的项目一样，我们为你提供了定义必须实现的API的类。你不应修改ExecutionEngine类中预定义函数的签名，或任何单独执行器公共API中的成员函数。修改这些API将引入构建错误，导致自动评分器在评估你的提交时失败，你将得不到项目的分数。此外，如果一个类已经包含成员变量，你不应删除它们。除了这些要求外，你可以根据需要添加数据成员和成员函数。
+
+此项目的正确性取决于你之前项目实现的正确性，特别是项目1中的缓冲池管理器实现和项目2中的可扩展哈希表实现。我们不会提供解决方案或二进制文件。在开始实现之前，理解本项目的主要概念很重要。
+
+任务#1 - 执行器
+
+在此任务中，你将实现九个执行器，每个操作为一个：顺序扫描、插入、更新、删除、嵌套循环连接、哈希连接、聚合、限制和去重。对于每个查询计划操作符类型，都有一个对应的执行器对象实现Init和Next方法。Init方法初始化操作符的内部状态（例如，检索要扫描的对应表）。Next方法提供迭代器接口，每次调用返回一个元组和对应的RID（或执行器已耗尽的指示符）。
+
+你将实现的执行器在以下头文件中定义：
+
+• src/include/execution/executors/seq_scan_executor.h
+
+• src/include/execution/executors/insert_executor.h
+
+• src/include/execution/executors/update_executor.h
+
+• src/include/execution/executors/delete_executor.h
+
+• src/include/execution/executors/nested_loop_join_executor.h
+
+• src/include/execution/executors/hash_join_executor.h
+
+• src/include/execution/executors/aggregation_executor.h
+
+• src/include/execution/executors/limit_executor.h
+
+• src/include/execution/executors/distinct_executor.h
+
+仓库中存在其他执行器的头文件（.h）和实现文件（.cpp）（例如index_scan_executor和nested_index_join_executor）。你不需要实现这些执行器。
+
+每个执行器负责处理单个计划节点类型。计划节点是组成查询计划的各个元素。每个计划节点可以定义特定于其表示的操作符的信息。例如，顺序扫描的计划节点必须定义执行扫描的表的标识符，而LIMIT操作符的计划节点不需要此信息。你将实现的执行器的计划节点在以下头文件中声明：
+
+• src/include/execution/plans/seq_scan_plan.h
+
+• src/include/execution/plans/insert_plan.h
+
+• src/include/execution/plans/update_plan.h
+
+• src/include/execution/plans/delete_plan.h
+
+• src/include/execution/plans/nested_loop_join_plan.h
+
+• src/include/execution/plans/hash_join_plan.h
+
+• src/include/execution/plans/aggregation_plan.h
+
+• src/include/execution/plans/limit_plan.h
+
+• src/include/execution/plans/distinct_plan.h
+
+这些计划节点已经拥有实现所需执行器的所有数据和功能。你不应修改任何这些计划节点。
+
+执行器从其子节点（可能多个）接受元组，并向其父节点生成元组。它们可能依赖于关于子节点排序的约定，我们在下面描述。你也可以根据需要自由添加私有辅助函数和类成员。
+
+对于此项目，我们假设执行器在单线程上下文中运行。你不需要采取措施确保多个线程并发执行时执行器的行为正确。
+
+我们提供了ExecutionEngine辅助类。它将输入查询计划转换为查询执行器，并执行它直到产生所有结果。你必须修改ExecutionEngine以捕获执行器在执行查询期间由于失败而引发的任何异常。执行引擎中正确处理失败对以后项目的成功很重要。
+
+要了解执行器在运行时查询执行期间是如何创建的，请参考ExecutorFactory辅助类。此外，每个执行器都可以访问其执行的ExecutorContext。
+
+你的一些执行器将执行表修改（插入、更新和删除）。为了保持表索引与底层表的一致性，这些执行器还需要在修改的表上更新所有索引。你将使用项目2中的可扩展哈希表实现作为本项目中所有索引的底层数据结构。
+
+最后，我们在test/execution/executor_test.cpp中为你提供了一些执行器的示例测试。这些测试远非详尽，但它们应该给你一些关于为执行器编写自己的测试的起点。
+
+执行器详细说明
+
+顺序扫描
+
+SeqScanExecutor遍历表并一次返回其元组。顺序扫描由SeqScanPlanNode指定。计划节点指定执行扫描的表。计划节点还可能包含谓词；如果元组不满足谓词，则扫描不产生它。
+
+提示：使用TableIterator对象时要小心。确保你理解前自增和后自增运算符之间的区别。你可能会发现通过在++iter和iter++之间切换会得到奇怪的输出。
+
+提示：你将需要使用顺序扫描计划节点中的谓词。特别地，查看AbstractExpression::Evaluate。注意，这会返回一个Value，你可以在其上调用GetAs<bool>()以将结果评估为原生C++布尔类型。
+
+提示：顺序扫描的输出是每个匹配元组及其原始记录标识符（RID）的副本。
+
+插入
+
+InsertExecutor将元组插入表中并更新索引。你的执行器必须支持两种类型的插入操作。
+
+第一种类型的插入操作是要插入的值直接嵌入在计划节点本身中。我们称这些为原始插入。
+
+第二种类型的插入操作是从子执行器获取要插入的值。例如，你可能有一个带有SeqScanPlanNode作为子节点的InsertPlanNode来实现INSERT INTO ... SELECT ...。
+
+你可以假设InsertExecutor始终出现在其所在查询计划的根。InsertExecutor不应修改其结果集。
+
+提示：你需要在执行器初始化期间查找插入目标的表信息。有关访问目录的更多信息，请参阅下面的系统目录部分。
+
+提示：你将需要更新插入元组的表的所有索引。有关更多详细信息，请参阅下面的索引更新部分。
+
+提示：你将需要使用TableHeap类执行表修改。
+
+更新
+
+UpdateExecutor修改指定表中的现有元组并更新其索引。子执行器将提供更新执行器将要修改的元组（及其RID）。
+
+与InsertExecutor不同，UpdateExecutor总是从子执行器拉取元组来执行更新。例如，UpdatePlanNode将有一个SeqScanPlanNode作为其子节点。
+
+你可以假设UpdateExecutor始终出现在其所在查询计划的根。UpdateExecutor不应修改其结果集。
+
+提示：我们为你提供了GenerateUpdatedTuple，它根据计划节点中提供的更新属性为你构造一个更新的元组。
+
+提示：你需要在执行器初始化期间查找更新目标的表信息。有关访问目录的更多信息，请参阅下面的系统目录部分。
+
+提示：你将需要使用TableHeap类执行表修改。
+
+提示：你将需要更新执行更新的表的所有索引。有关更多详细信息，请参阅下面的索引更新部分。
+
+删除
+
+DeleteExecutor从表中删除元组，并从所有表索引中删除其条目。与更新类似，要删除的元组是从子执行器（例如SeqScanExecutor实例）拉取的。
+
+你可以假设DeleteExecutor始终出现在其所在查询计划的根。DeleteExecutor不应修改其结果集。
+
+提示：你只需要从子执行器获取RID并调用TableHeap::MarkDelete()来有效删除元组。所有删除将在事务提交时应用。
+
+提示：你将需要更新删除元组的表的所有索引。有关更多详细信息，请参阅下面的索引更新部分。
+
+嵌套循环连接
+
+NestedLoopJoinExecutor实现一个基本的嵌套循环连接，将其两个子执行器的元组合并在一起。
+
+此执行器应实现讲座中介绍的基本嵌套循环连接算法。也就是说，对于连接外部表中的每个元组，你应该考虑连接内部表中的每个元组，并在满足连接谓词时发出输出元组。
+
+本项目的学习目标之一是让你了解不同逻辑操作符物理实现的优缺点。因此，你的NestedLoopJoinExecutor必须实际实现嵌套循环连接算法，而不是重用哈希连接执行器（见下文）的实现。为此，我们将测试你的NestedLoopJoinExecutor的IO成本，以确定它是否正确实现了算法。
+
+提示：你将需要使用嵌套循环连接计划节点中的谓词。特别地，查看AbstractExpression::EvaluateJoin，它处理左元组和右元组及其各自的模式。注意，这会返回一个Value，你可以在其上调用GetAs<bool>()以将结果评估为原生C++布尔类型。
+
+哈希连接
+
+HashJoinExecutor实现哈希连接操作，将其两个子执行器的元组合并在一起。
+
+顾名思义（并且在讲座中讨论过），哈希连接操作是在哈希表的帮助下实现的。出于本项目的考虑，我们做出简化假设，即连接哈希表完全适合内存。这意味着你在实现中不需要担心将构建侧表的临时分区溢出到磁盘。
+
+与NestedLoopJoinExecutor一样，我们将测试你的HashJoinExecutor的IO成本，以确定它是否正确实现了哈希连接算法。
+
+提示：你的实现应正确处理多个元组（在连接的任一侧）共享相同连接键的情况。
+
+提示：HashJoinPlanNode定义了GetLeftJoinKey()和GetRightJoinKey()成员函数；你应该使用这些访问器返回的表达式分别为连接的左侧和右侧构造连接键。
+
+提示：你需要一种方法来哈希具有多个属性的元组，以构造唯一键。作为起点，查看AggregationExecutor中的SimpleAggregationHashTable如何实现此功能。
+
+提示：回想一下，在查询计划的上下文中，哈希连接的构建侧是流水线中断器。这可能会影响你在实现中使用HashJoinExecutor::Init()和HashJoinExecutor::Next()函数的方式。特别地，思考连接的构建阶段应该在HashJoinExecutor::Init()还是HashJoinExecutor::Next()中执行。
+
+聚合
+
+此执行器将单个子执行器的多个元组结果合并为单个元组。在此项目中，我们要求你实现COUNT、SUM、MIN和MAX聚合。你的AggregationExecutor还必须支持GROUP BY和HAVING子句。
+
+如讲座中讨论的，实现聚合的常见策略是使用哈希表。这是你在本项目中将使用的方法，但是，我们做出简化假设，即聚合哈希表完全适合内存。这意味着你不需要担心实现哈希聚合的两阶段（分区、重新哈希）策略，而可以假设所有聚合结果都可以驻留在内存哈希表中。
+
+此外，我们为你提供了SimpleAggregationHashTable数据结构，它公开了一个内存中哈希表（std::unordered_map），但接口设计用于计算聚合。该类还公开了可用于迭代哈希表的SimpleAggregationHashTable::Iterator类型。
+
+提示：你将需要聚合结果并使用HAVING子句进行约束。特别地，查看AbstractExpression::EvaluateAggregate，它处理不同类型表达式的聚合评估。注意，这会返回一个Value，你可以在其上调用GetAs<bool>()以将结果评估为原生C++布尔类型。
+
+提示：回想一下，在查询计划的上下文中，聚合是流水线中断器。这可能会影响你在实现中使用AggregationExecutor::Init()和AggregationExecutor::Next()函数的方式。特别地，思考聚合的构建阶段应该在AggregationExecutor::Init()还是AggregationExecutor::Next()中执行。
+
+限制
+
+LimitExecutor限制其子执行器的输出元组数量。如果其子执行器产生的元组数量少于LimitPlanNode中指定的限制，此执行器无效，并生成接收到的所有元组。
+
+去重
+
+DistinctExecutor消除从子执行器接收到的重复元组。你的DistinctExecutor在确定唯一性时应考虑输入元组的所有列。
+
+与聚合类似，去重操作符通常借助哈希表实现（这是一个哈希去重操作）。这是你在本项目中将使用的方法。与AggregationExecutor和HashJoinExecutor一样，你可以假设用于实现DistinctExecutor的哈希表完全适合内存。
+
+提示：你需要一种方法来哈希可能具有多个属性的元组，以构造唯一键。作为起点，查看AggregationExecutor中的SimpleAggregationHashTable如何实现此功能。
+
+附加信息
+
+本节提供了你完成本项目将需要交互的其他系统组件的一些附加信息。
+
+系统目录
+
+数据库维护一个内部目录来跟踪数据库的元数据。在此项目中，你将与系统目录交互，以查询有关表、索引及其模式的信息。
+
+目录的整个实现在src/include/catalog.h中。你应特别注意成员函数Catalog::GetTable()和Catalog::GetIndex()。你将在执行器实现中使用这些函数查询目录以获取表和索引。
+
+索引更新
+
+对于表修改执行器（InsertExecutor、UpdateExecutor和DeleteExecutor），你必须修改操作目标表的所有索引。你可能会发现Catalog::GetTableIndexes()函数在查询特定表定义的所有索引时很有用。一旦你有了表的每个索引的IndexInfo实例，就可以在底层索引结构上调用索引修改操作。
+
+在此项目中，我们使用你从项目2中实现的可扩展哈希表作为所有索引操作的底层数据结构。因此，本项目的成功完成依赖于可扩展哈希表的有效实现。
+
+说明
+
+设置开发环境
+
+请参阅项目#0的说明，了解如何创建你的私人仓库和设置开发环境。
+
+你必须从上游BusTub仓库拉取最新更改，以获取我们在此项目中提供的测试文件和其他补充文件。
+
+测试
+
+你可以使用我们的测试框架测试此作业的各个组件。我们使用GTest进行单元测试。我们为你提供了一个单元测试文件test/execution/executor_test，它实现了一些执行器基本功能的测试。
+cd build
+make executor_test
+./test/executor_test
+
+
+随着项目的进展，你可以通过从测试用例名称中删除DISABLED_前缀来在executor_test中启用单个测试。
+
+内存安全
+
+为确保你的实现不包含内存泄漏，你可以使用Valgrind运行测试。
+cd build
+make executor_test
+valgrind --trace-children=yes \
+   --leak-check=full \
+   --track-origins=yes \
+   --soname-synonyms=somalloc=*jemalloc* \
+   --error-exitcode=1 \
+   --suppressions=../build_support/valgrind.supp \
+   ./test/executor_test
+
+
+开发提示
+
+不要使用printf语句进行调试，使用LOG_*宏来记录信息，如下所示：
+LOG_DEBUG("Fetching page %d", page_id);
+
+
+要在项目中启用日志记录，你需要在调试模式下配置它：
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make
+
+
+不同的日志级别定义在src/include/common/logger.h中。启用日志记录后，日志级别默认为LOG_LEVEL_INFO。任何级别等于或高于LOG_LEVEL_INFO的日志方法（例如LOG_INFO、LOG_WARN、LOG_ERROR）都将发出日志信息。
+
+我们还建议使用断言来检查实现中的前置条件、后置条件和不变量。macros头文件定义了可能在这方面有帮助的BUSTUB_ASSERT和UNREACHABLE宏。
+
+将所有关于此项目的问题发布在Piazza上。不要直接通过电子邮件向助教提问。
+
+评分标准
+
+每个项目提交将根据以下标准进行评分：
+
+1. 提交是否成功执行所有测试用例并产生正确答案？
+2. 提交是否执行时没有任何内存泄漏？
+
+请注意，我们将使用额外的测试用例，这些测试用例更复杂，超出了我们提供的示例测试用例。我们鼓励你在提交到Gradescope评估之前编写额外的测试用例来验证实现的正确性。
+
+迟交政策
+
+请参阅课程大纲中的迟交政策。
+
+提交
+
+完成作业后，你可以将实现提交到Gradescope进行评估。你必须在提交中包含以下文件：
+
+缓冲池管理器：
+• src/include/buffer/lru_replacer.h
+
+• src/buffer/lru_replacer.cpp
+
+• src/include/buffer/buffer_pool_manager_instance.h
+
+• src/buffer/buffer_pool_manager_instance.cpp
+
+可扩展哈希表：
+• src/include/storage/page/hash_table_directory_page.h
+
+• src/storage/page/hash_table_directory_page.cpp
+
+• src/include/storage/page/hash_table_bucket_page.h
+
+• src/storage/page/hash_table_bucket_page.cpp
+
+• src/include/container/hash/extendible_hash_table.h
+
+• src/container/hash/extendible_hash_table.cpp
+
+执行引擎：
+• src/include/execution/execution_engine.h
+
+• src/include/execution/executors/seq_scan_executor.h
+
+• src/include/execution/executors/insert_executor.h
+
+• src/include/execution/executors/update_executor.h
+
+• src/include/execution/executors/delete_executor.h
+
+• src/include/execution/executors/nested_loop_join_executor.h
+
+• src/include/execution/executors/hash_join_executor.h
+
+• src/include/execution/executors/aggregation_executor.h
+
+• src/include/execution/executors/limit_executor.h
+
+• src/include/execution/executors/distinct_executor.h
+
+• src/execution/seq_scan_executor.cpp
+
+• src/execution/insert_executor.cpp
+
+• src/execution/update_executor.cpp
+
+• src/execution/delete_executor.cpp
+
+• src/execution/nested_loop_join_executor.cpp
+
+• src/execution/hash_join_executor.cpp
+
+• src/execution/aggregation_executor.cpp
+
+• src/execution/limit_executor.cpp
+
+• src/execution/distinct_executor.cpp
+
+或者，从项目根目录（即bustub/、bustub-private/等）运行以下zip命令将创建一个名为project3-submission.zip的zip存档，你可以将其提交到Gradescope。你也可以将此命令放在bash文件中并运行该bash文件，以使打包提交文件的过程更简单。
+$ zip project3-submission.zip \
+src/include/buffer/lru_replacer.h \
+src/buffer/lru_replacer.cpp \
+src/include/buffer/buffer_pool_manager_instance.h \
+src/buffer/buffer_pool_manager_instance.cpp \
+src/include/storage/page/hash_table_directory_page.h \
+src/storage/page/hash_table_directory_page.cpp \
+src/include/storage/page/hash_table_bucket_page.h \
+src/storage/page/hash_table_bucket_page.cpp \
+src/include/container/hash/extendible_hash_table.h \
+src/container/hash/extendible_hash_table.cpp \
+src/include/execution/execution_engine.h \
+src/include/execution/executors/seq_scan_executor.h \
+src/include/execution/executors/insert_executor.h \
+src/include/execution/executors/update_executor.h \
+src/include/execution/executors/delete_executor.h \
+src/include/execution/executors/nested_loop_join_executor.h \
+src/include/execution/executors/hash_join_executor.h \
+src/include/execution/executors/aggregation_executor.h \
+src/include/execution/executors/limit_executor.h \
+src/include/execution/executors/distinct_executor.h \
+src/execution/seq_scan_executor.cpp \
+src/execution/insert_executor.cpp \
+src/execution/update_executor.cpp \
+src/execution/delete_executor.cpp \
+src/execution/nested_loop_join_executor.cpp \
+src/execution/hash_join_executor.cpp \
+src/execution/aggregation_executor.cpp \
+src/execution/limit_executor.cpp \
+src/execution/distinct_executor.cpp
+
+
+你可以根据需要多次提交答案并获得即时反馈，但我们强烈建议你在提交到Gradescope之前编写自己的本地测试。
+
+合作政策
+
+此作业的合作政策如下：
+
+• 每个学生必须独立完成此作业。
+
+• 允许学生与他人讨论项目的高级细节。
+
+• 不允许学生在与其他学生会面后复制白板内容。
+
+• 不允许学生复制其他学生的解决方案。
+
+警告：本项目所有代码必须是你自己编写的。不得从其他学生或从网络上找到的其他来源复制源代码。抄袭将不被容忍。有关更多信息，请参阅CMU的学术诚信政策。
+
+最后更新：2022年1月7日

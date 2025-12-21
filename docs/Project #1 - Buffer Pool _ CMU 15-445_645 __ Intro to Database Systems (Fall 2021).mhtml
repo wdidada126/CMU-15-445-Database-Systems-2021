@@ -1,0 +1,2156 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://15445.courses.cs.cmu.edu/fall2021/project1/
+Subject: Project #1 - Buffer Pool | CMU 15-445/645 :: Intro to Database Systems (Fall 2021)
+Date: Thu, 18 Dec 2025 18:55:26 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----"
+
+
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/html
+Content-ID: <frame-F207927DE8186454E73842A112222E31@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/project1/
+
+<!DOCTYPE html><html lang=3D"en" xmlns:og=3D"https://ogp.me/ns#" xmlns:fb=
+=3D"https://www.facebook.com/2008/fbml" class=3D" global wide js flexbox ca=
+nvas canvastext webgl no-touch geolocation postmessage no-websqldatabase in=
+dexeddb hashchange history draganddrop websockets rgba hsla multiplebgs bac=
+kgroundsize borderimage borderradius boxshadow textshadow opacity cssanimat=
+ions csscolumns cssgradients cssreflections csstransforms csstransforms3d c=
+sstransitions fontface generatedcontent video audio localstorage sessionsto=
+rage webworkers no-applicationcache svg inlinesvg smil svgclippaths" style=
+=3D"" data-eusoft-scrollable-element=3D"1"><head><meta http-equiv=3D"Conten=
+t-Type" content=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" typ=
+e=3D"text/css" href=3D"cid:css-65f296d1-3283-4b79-b08e-f1f93c710c94@mhtml.b=
+link" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-affa8588=
+-e7b1-47a8-9cb5-eedb60b5e17a@mhtml.blink" /><link rel=3D"stylesheet" type=
+=3D"text/css" href=3D"cid:css-ec5cb2fc-e612-423e-af3c-b1c2d45c6d35@mhtml.bl=
+ink" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-d77ad621-=
+11bf-416f-8abd-ce126d3d64ad@mhtml.blink" /><link rel=3D"stylesheet" type=3D=
+"text/css" href=3D"cid:css-95f14e21-6ee1-4fe9-91cf-35d77ad3f698@mhtml.blink=
+" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-0711e8ea-708=
+2-4e3e-a6ce-e83501398572@mhtml.blink" /><link rel=3D"stylesheet" type=3D"te=
+xt/css" href=3D"cid:css-3d466300-be2f-44b9-b978-f397abfb00c2@mhtml.blink" /=
+><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-8f5a43de-d96f-4=
+082-b305-04273b797ff2@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-11e240fc-52c9-4408-87dc-810383733119@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-dd6a5837-74fe-4321=
+-9bee-cc61bad3527f@mhtml.blink" />
+   =20
+   =20
+        <meta name=3D"author" content=3D"Lin Ma + Andrew Crotty">
+        <meta name=3D"description" content=3D"Do not post your project on a=
+ public Github repository. Overview During the semester, you will be buildi=
+ng a new disk-oriented storage manager for the BusTub DBMS. Such a storage =
+manager assumes that the primary storage location of the database is on dis=
+k. The first programming project is to implement =E2=80=A6">
+   =20
+    <meta name=3D"keywords" content=3D"">
+    <!--[if lte IE 8]><script src=3D"../css/ie/html5shiv.js"></script><![en=
+dif]-->
+   =20
+   =20
+    <link rel=3D"stylesheet" type=3D"text/css" href=3D"https://15445.course=
+s.cs.cmu.edu/fall2021//css/style.css"><link rel=3D"stylesheet" type=3D"text=
+/css" href=3D"https://15445.courses.cs.cmu.edu/fall2021//css/style-wide.css=
+">
+   =20
+   =20
+    <link rel=3D"stylesheet" href=3D"https://15445.courses.cs.cmu.edu/fall2=
+021/css/pygment.css">
+   =20
+   =20
+    <link href=3D"https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/fo=
+nt-awesome.min.css" rel=3D"stylesheet">
+    <link href=3D"https://fonts.googleapis.com/css?family=3DAnonymous+Pro:r=
+egular,italic,bold,bolditalic" rel=3D"stylesheet" type=3D"text/css">
+    <link href=3D"https://fonts.googleapis.com/css?family=3DLato:300,400,90=
+0" rel=3D"stylesheet" type=3D"text/css">
+    <!--[if lte IE 8]><link rel=3D"stylesheet" href=3D"/css/ie/v8.css" /><!=
+[endif]-->
+    <!--[if lte IE 9]><link rel=3D"stylesheet" href=3D"/css/ie/v9.css" /><!=
+[endif]--> =20
+   =20
+    <meta property=3D"og:site_name" content=3D"CMU 15-445/645">
+    <meta property=3D"og:type" content=3D"article">
+    <meta property=3D"og:title" content=3D"Project #1 - Buffer Pool - CMU 1=
+5-445/645 :: Intro to Database Systems (Fall 2021)">
+    <meta property=3D"og:url" content=3D"../project1/index.html">
+    <meta property=3D"article:published_time" content=3D"2022-01-07">
+    <meta property=3D"og:description" content=3D"Do not post your project o=
+n a public Github repository. Overview During the semester, you will be bui=
+lding a new disk-oriented storage manager for the BusTub DBMS. Such a stora=
+ge manager assumes that the primary storage location of the database is on =
+disk. The first programming project is to implement =E2=80=A6">
+        <meta property=3D"og:image" content=3D"https://15445.courses.cs.cmu=
+.edu/fall2021/images/twitter-card.jpg">
+
+    <meta name=3D"twitter:card" content=3D"summary_large_image">
+        <meta name=3D"twitter:site" content=3D"@CMUDB">
+        <meta name=3D"twitter:creator" content=3D"@CMUDB">
+    <meta name=3D"twitter:domain" content=3D"..">
+            <meta property=3D"twitter:image" content=3D"https://15445.cours=
+es.cs.cmu.edu/fall2021/images/twitter-card.jpg">
+    <meta property=3D"twitter:label1" content=3D"Semester">
+    <meta property=3D"twitter:data1" content=3D"Fall 2021">
+       =20
+   =20
+   =20
+    <link href=3D"https://db.cs.cmu.edu/favicon.png" rel=3D"icon">
+
+    <title>Project #1 - Buffer Pool | CMU 15-445/645 :: Intro to Database S=
+ystems (Fall 2021) </title>
+       =20
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width">
+</head>
+
+<body class=3D""><div id=3D"skel-layers-wrapper" style=3D"left: 0px; right:=
+ 0px; top: 0px; position: absolute;">
+
+    <!-- Header -->
+    <header id=3D"header">
+        <h1 class=3D"logo">
+            <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/">CMU 15-4=
+45/645</a>
+        </h1>
+        <nav id=3D"nav">
+            <ul>
+                <li style=3D"white-space: nowrap;"><a href=3D"https://15445=
+.courses.cs.cmu.edu/fall2021/">Home</a></li>
+                            <li style=3D"white-space: nowrap;"><a href=3D"h=
+ttps://15445.courses.cs.cmu.edu/fall2021/assignments.html">Assignments</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/faq.html">FAQ</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/schedule.html">Schedule</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/syllabus.html">Syllabus</a>
+                <!--
+                <li class=3D"submenu">
+                    <a href=3D"../">Blog</a>
+                    <ul>
+                    </ul>
+                </li>
+                -->
+                </li><li style=3D"white-space: nowrap;"> <a title=3D"Youtub=
+e" href=3D"https://www.youtube.com/playlist?list=3DPLSE8ODhjZXjZaHA6QcxDfJ0=
+SIWBzQFKEG" target=3D"_new"><i class=3D"fa fa-youtube"></i> Youtube</a>
+                </li><li style=3D"white-space: nowrap;"> <a title=3D"Piazza=
+" href=3D"https://piazza.com/cmu/fall2021/15445645/" target=3D"_new"><i cla=
+ss=3D"fa fa-comments-o"></i> Piazza</a>
+               =20
+                </li><li class=3D"opener" style=3D"user-select: none; curso=
+r: pointer; white-space: nowrap;"><a href=3D"https://15445.courses.cs.cmu.e=
+du/fall2021/project1/#" class=3D"dropdown-toggle" data-toggle=3D"dropdown" =
+data-hover=3D"dropdown" data-delay=3D"1000" data-close-others=3D"true"> <i =
+class=3D"fa fa-book"></i> Archives <span class=3D"caret"></span></a>
+                <ul class=3D"" role=3D"menu" style=3D"user-select: none; di=
+splay: none; position: absolute;">
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2020/" target=3D"_archive1" style=3D"display: b=
+lock;">Fall 2020</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2019/" target=3D"_archive2" style=3D"display: b=
+lock;">Fall 2019</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2018/" target=3D"_archive3" style=3D"display: b=
+lock;">Fall 2018</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2017/" target=3D"_archive4" style=3D"display: b=
+lock;">Fall 2017</a></li>
+                </ul></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Main -->
+<article id=3D"main">
+
+    <header class=3D"special container">
+        <span class=3D"icon fa-database"></span>
+        <h2>Project #1 - Buffer Pool</h2>
+    </header>
+
+    <section class=3D"wrapper style4 container">
+ =20
+        <!-- Content -->
+        <div class=3D"content">
+            <section>
+                <p></p><p class=3D"warning bg-fatal">
+    <i class=3D"trigger fa fa-exclamation-triangle fa-lg"></i>
+    Do <u>not</u> post your project on a public Github repository.
+</p>
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- OVERVIEW                                                              =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Overview</h1>
+<p>During the semester, you will be building a new disk-oriented storage ma=
+nager for the <a href=3D"https://github.com/cmu-db/bustub">BusTub</a> DBMS.=
+ Such a storage manager assumes that the primary storage location of the da=
+tabase is on disk.</p>
+<p>The first programming project is to implement a <strong>buffer pool</str=
+ong> in your storage manager. The buffer pool is responsible for moving phy=
+sical pages back and forth from main memory to disk. It allows a DBMS to su=
+pport databases that are larger than the amount of memory that is available=
+ to the system. The buffer pool's operations are transparent to other parts=
+ in the system. For example, the system asks the buffer pool for a page usi=
+ng its unique identifier (<code>page_id_t</code>) and it does not know whet=
+her that page is already in memory or whether the system has to go retrieve=
+ it from disk.</p>
+<p><strong>Your implementation will need to be thread-safe</strong>. Multip=
+le threads will be accessing the internal data structures at the same and t=
+hus you need to make sure that their critical sections are protected with <=
+a href=3D"https://stackoverflow.com/a/42464336">latches</a> (these are call=
+ed "locks" in operating systems).</p>
+<p>You will need to implement the following two components in your storage =
+manager:</p>
+<ul class=3D"default">
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project1/#rep=
+lacer"><b>LRU Replacement Policy</b></a> </li>
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project1/#buf=
+fer-pool-instance"><b>Buffer Pool Manager Instance</b></a> </li>
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project1/#par=
+allel-buffer-pool"><b>Parallel Buffer Pool Manager</b></a> </li>
+</ul>
+
+<p>This is a single-person project that will be completed individually (i.e=
+. no groups).</p>
+<!-- START project1 -->
+<!-- AUTO-GENERATED BY GENERATE-SCHEDULE SCRIPT -->
+<!-- ANY MODIFICATIONS WILL BE OVERWRITTEN -->
+<ul>
+<li><b>Release Date:</b> Sep 13, 2021</li>
+<li><b>Due Date:</b> Sep 26, 2021 @ 11:59pm</li>
+</ul>
+<!-- END project1 -->
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- PROJECT SPECIFICATION                                                 =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Project Specification</h1>
+<p>For each of the following components, we are providing you with stub cla=
+sses that contain the API that you need to implement. You <strong>should no=
+t</strong> modify the signatures for the pre-defined functions in these cla=
+sses. If you modify the signatures, the test code that we use for grading w=
+ill break and you will get no credit for the project. You also <strong>shou=
+ld not</strong> add additional classes in the source code for these compone=
+nts. These components should be entirely self-contained.</p>
+<p>If a class already contains data members, you should <strong>not</strong=
+> remove them. For example, the <code>BufferPoolManager</code> contains <co=
+de>DiskManager</code> and <code>Replacer</code> objects. These are required=
+ to implement the functionality that is needed by the rest of the system. O=
+n the other hand, you may need to add data members to these classes in orde=
+r to correctly implement the required functionality.  You can also add addi=
+tional helper functions to these classes. The choice is yours.</p>
+<p>You are allowed to use any built-in <a href=3D"http://en.cppreference.co=
+m/w/cpp/container">C++17 containers</a> in your project unless specified ot=
+herwise. It is up to you to decide which ones you want to use. Note that th=
+ese containers are not thread-safe and that you will need to include latche=
+s in your implementation to protect them. You may not bring in additional t=
+hird-party dependencies (e.g. boost).</p>
+<!-- **************************************************** -->
+<!-- LRU Replacement Policy                             -->
+<!-- **************************************************** -->
+<h2 id=3D"replacer">Task #1 - LRU Replacement Policy</h2>
+<p>This component is responsible for tracking page usage in the buffer pool=
+. You will implement a new sub-class called  <code>LRUReplacer</code> in <t=
+t class=3D"filepath">src/include/buffer/lru_replacer.h</tt> and its corresp=
+onding implementation file in <tt class=3D"filepath">src/buffer/lru_replace=
+r.cpp</tt>. <code>LRUReplacer</code> extends the abstract <code>Replacer</c=
+ode> class (<tt class=3D"fliepath">src/include/buffer/replacer.h</tt>), whi=
+ch contains the function specifications.</p>
+<p>The maximum number of pages for the <code>LRUReplacer</code> is the same=
+ as the size of the buffer pool since it contains placeholders for all of t=
+he frames in the <code>BufferPoolManager</code>. However, at any given mome=
+nt not all the frames are considered to be in the <code>LRUReplacer</code>.=
+ The <code>LRUReplacer</code> is initialized to have no frames in it. Then,=
+ only the newly unpinned ones will be considered to be in the <code>LRURepl=
+acer</code>. </p>
+<p>You will need to implement the <em>LRU</em> policy discussed in the clas=
+s. You will need to implement the following methods:</p>
+<ul class=3D"default">
+    <li> <code>Victim(frame_id_t*)</code> : Remove the object that was acce=
+ssed least recently compared to all the other elements being tracked by the=
+ <code>Replacer</code>, store its contents in the output parameter and retu=
+rn <code>True</code>. If the <code>Replacer</code> is empty return <code>Fa=
+lse</code>.  </li>
+    <li> <code>Pin(frame_id_t)</code> : This method should be called after =
+a page is pinned to a frame in the <code>BufferPoolManager</code>. It shoul=
+d remove the frame containing the pinned page from the <code>LRUReplacer</c=
+ode>. </li>
+    <li> <code>Unpin(frame_id_t)</code> : This method should be called when=
+ the <code>pin_count</code> of a page becomes 0. This method should add the=
+ frame containing the unpinned page to the <code>LRUReplacer</code>. </li>
+    <li> <code>Size()</code> : This method returns the number of frames tha=
+t are currently in the <code>LRUReplacer</code>. </li>
+</ul>
+
+<p>The implementation details are up to you. You are allowed to use built-i=
+n STL containers. You can assume that you will not run out of memory, but y=
+ou must make sure that the operations are thread-safe.</p>
+<p>Lastly, in this project you are expected to implement only the LRU repla=
+cement policy. You don't have to implement the clock replacement policy, ev=
+en if there is a corresponding file for it.</p>
+<!-- **************************************************** -->
+<!-- Buffer Pool Manager Instance                         -->
+<!-- **************************************************** -->
+<h2 id=3D"buffer-pool-instance">Task #2 - Buffer Pool Manager Instance</h2>
+<p>Next, you need to implement the buffer pool manager in your system (<cod=
+e>BufferPoolManagerInstance</code>). The <code>BufferPoolManagerInstance</c=
+ode> is responsible for fetching database pages from the <code>DiskManager<=
+/code> and storing them in memory. The <code>BufferPoolManagerInstance</cod=
+e> can also write dirty pages out to disk when it is either explicitly inst=
+ructed to do so or when it needs to evict a page to make space for a new pa=
+ge.</p>
+<p>To make sure that your implementation works correctly with the rest of t=
+he system, we will provide you with some of the functions already filled in=
+. You will also not need to implement the code that actually reads and writ=
+es data to disk (this is called the <code>DiskManager</code> in our impleme=
+ntation). We will provide that functionality for you.</p>
+<p>All in-memory pages in the system are represented by <code>Page</code> o=
+bjects. The <code>BufferPoolManagerInstance</code> does not need to underst=
+and the contents of these pages. But it is important for you as the system =
+developer to understand that <code>Page</code> objects are just containers =
+for memory in the buffer pool and thus are not specific to a unique page. T=
+hat is, each <code>Page</code> object contains a block of memory that the <=
+code>DiskManager</code> will use as a location to copy the contents of a <s=
+trong>physical page</strong> that it reads from disk. The <code>BufferPoolM=
+anagerInstance</code> will reuse the same <code>Page</code> object to store=
+ data as it moves back and forth to disk. This means that the same <code>Pa=
+ge</code> object may contain a different physical page throughout the life =
+of the system. The <code>Page</code> object's identifer (<code>page_id</cod=
+e>) keeps track of what physical page it contains; if a <code>Page</code> o=
+bject does not contain a physical page, then its <code>page_id</code> must =
+be set to <code>INVALID_PAGE_ID</code>.</p>
+<p>Each <code>Page</code> object also maintains a counter for the number of=
+ threads that have "pinned" that page. Your <code>BufferPoolManagerInstance=
+</code> is not allowed to free a <code>Page</code> that is pinned. Each <co=
+de>Page</code> object also keeps track of whether it is dirty or not. It is=
+ your job to record whether a page was modified before it is unpinned. Your=
+ <code>BufferPoolManagerInstance</code> must write the contents  of a dirty=
+ <code>Page</code> back to disk before that object can be reused.</p>
+<p>Your <code>BufferPoolManagerInstance</code> implementation will use the =
+<code>LRUReplacer</code> class that you created in the previous steps of th=
+is assignment. It will use the <code>LRUReplacer</code> to keep track of wh=
+en <code>Page</code> objects are accessed so that it can decide which one t=
+o evict when it must free a frame to make room for copying a new physical p=
+age from disk.</p>
+<p>You will need to implement the following functions defined in the header=
+ file (<tt class=3D"filepath">src/include/buffer/buffer_pool_manager_instan=
+ce.h</tt>) in the source file (<tt class=3D"filepath">src/buffer/buffer_poo=
+l_manager_instance.cpp</tt>):</p>
+<ul class=3D"default">
+    <li> <code>FetchPgImp(page_id)</code> </li>
+    <li> <code>UnpinPgImp(page_id, is_dirty)</code> </li>
+    <li> <code>FlushPgImp(page_id)</code> </li>
+    <li> <code>NewPgImp(page_id)</code> </li>
+    <li> <code>DeletePgImp(page_id)</code> </li>
+    <li> <code>FlushAllPagesImpl()</code> </li>
+</ul>
+
+<p>For <code>FetchPgImp</code>, you should return NULL if no page is availa=
+ble in the free list and all other pages are currently pinned. FlushPgImp s=
+hould flush a page regardless of its pin status.</p>
+<p>For <code>UnpinPgImp</code>, the is_dirty parameter keeps track of wheth=
+er a page was modified while it was pinned.</p>
+<p>Refer to the function documentation for details on how to implement thes=
+e functions. Don't touch the non-impl versions, we need those to grade your=
+ code.</p>
+<p>Note: <code>Pin</code> and <code>Unpin</code> within the contexts of the=
+ <code>LRUReplacer</code> and the <code>BufferPoolManagerInstance</code> ha=
+ve inverse meanings. Within the context of the <code>LRUReplacer</code>, pi=
+nning a page implies that we shouldn't evict the page because it is in use.=
+ This means we should remove it from the <code>LRUReplacer</code>. On the o=
+ther hand, pinning a page in the <code>BufferPoolManagerInstance</code> imp=
+lies that we want to use a page, and that it should not be removed from the=
+ buffer pool. </p>
+<!-- **************************************************** -->
+<!-- Parallel Buffer Pool Manager                         -->
+<!-- **************************************************** -->
+<h2 id=3D"parallel-buffer-pool">Task #3 - Parallel Buffer Pool Manager</h2>
+<p>As you probably noticed in the previous task, the single Buffer Pool Man=
+ager Instance needs to take latches in order to be thread safe. This can ca=
+use a lot of contention as every thread fights over a single latch when int=
+eracting with the buffer pool. One potential solution is to have multiple b=
+uffer pools in your system, each with it's own latch.</p>
+<p><code>ParallelBufferPoolManager</code> is a class that holds multiple <c=
+ode>BufferPoolManagerInstance</code>s. For every operation the <code>Parall=
+elBufferPoolManager</code> picks a single <code>BufferPoolManagerInstance</=
+code> and delegates to that instance.</p>
+<p>We use the given page id to determine which specific <code>BufferPoolMan=
+agerInstance</code> to use. If we have <code>num_instances</code> many <cod=
+e>BufferPoolManagerInstance</code>s, then we need some way to map the given=
+ page id to a number in the range [0, num_instances). For this project we w=
+ill be using the modulo operator, <code>page_id mod num_instances</code> wi=
+ll map the given page_id to the correct range.</p>
+<p>When the <code>ParallelBufferPoolManager</code> is first instantiated it=
+ should have a starting index of 0. Every time you create a new page you wi=
+ll try every <code>BufferPoolManagerInstance</code>, starting at the starti=
+ng index, until one is successful. Then increase the starting index by one.=
+</p>
+<p>Make sure that when you create the individual <code>BufferPoolManagerIns=
+tance</code>s you use the constructor that takes <code>uint32_t num_instanc=
+es</code> and <code>uint32_t instance_index</code> so that page ids are cre=
+ated correctly.</p>
+<p>You will need to implement the following functions defined in the header=
+ file (<tt class=3D"filepath">src/include/buffer/parallel_buffer_pool_manag=
+er.h</tt>) in the source file (<tt class=3D"filepath">src/buffer/parallel_b=
+uffer_pool_manager.cpp</tt>):</p>
+<ul class=3D"default">
+    <li> <code>ParallelBufferPoolManager(num_instances, pool_size, disk_man=
+ager, log_manager)</code> </li>
+    <li> <code>~ParallelBufferPoolManager()</code> </li>
+    <li> <code>GetPoolSize()</code> </li>
+    <li> <code>GetBufferPoolManager(page_id)</code> </li>
+    <li> <code>FetchPgImp(page_id)</code> </li>
+    <li> <code>UnpinPgImp(page_id, is_dirty)</code> </li>
+    <li> <code>FlushPgImp(page_id)</code> </li>
+    <li> <code>NewPgImp(page_id)</code> </li>
+    <li> <code>DeletePgImp(page_id)</code> </li>
+    <li> <code>FlushAllPagesImpl()</code> </li>
+</ul>
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- INSTRUCTIONS                                                          =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"instructions" data-eusoft-scrollable-element=3D"1">Instructions</=
+h1>
+
+<p>See the <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project0/#i=
+nstructions">Project #0 instructions</a> on how to create your private repo=
+sitory and setup your development environment.</p>
+<h2>Testing</h2>
+<p>You can test the individual components of this assigment using our testi=
+ng framework. We use <a href=3D"https://github.com/google/googletest">GTest=
+</a> for unit test cases. There are three separate files that contain tests=
+ for each component:</p>
+<ul class=3D"default">
+    <li><code>LRUReplacer</code>: <tt class=3D"filepath">test/buffer/lru_re=
+placer_test.cpp</tt>
+    </li><li><code>BufferPoolManagerInstance</code>: <tt class=3D"filepath"=
+>test/buffer/buffer_pool_manager_instance_test.cpp</tt>
+    </li><li><code>ParallelBufferPoolManager</code>: <tt class=3D"filepath"=
+>test/buffer/parallel_buffer_pool_manager_test.cpp</tt>
+</li></ul>
+
+<p>You can compile and run each test individually from the command-line:</p=
+>
+<pre>$ mkdir build
+$ cd build
+$ make lru_replacer_test
+$ ./test/lru_replacer_test
+</pre>
+
+<p>You can also run <code>make check-tests</code> to run ALL of the test ca=
+ses. Note that some tests are disabled as you have not implemented future p=
+rojects. You can disable tests in GTest by adding a <code>DISABLED_</code> =
+prefix to the test name.</p>
+<p><b>Important:</b> These tests are only a subset of the all the tests tha=
+t we will use to evaluate and grade your project. You should write addition=
+al test cases on your own to check the complete functionality of your imple=
+mentation.</p>
+<h2>Formatting</h2>
+<p>Your code must follow the <a href=3D"https://google.github.io/styleguide=
+/cppguide.html">Google C++ Style Guide</a>. We use <a href=3D"https://clang=
+.llvm.org/">Clang</a> to automatically check the quality of your source cod=
+e. Your project grade will be <u><b>zero</b></u> if your submission fails a=
+ny of these checks.</p>
+<p>Execute the following commands to check your syntax. The <code>format</c=
+ode> target will automatically correct your code. The <code>check-lint</cod=
+e> and <code>check-clang-tidy</code> targets will print errors and instruct=
+ you how to fix it to conform to our style guide.</p>
+<pre>$ make format
+$ make check-lint
+$ make check-clang-tidy
+</pre>
+
+<h2>Development Hints</h2>
+<p>Instead of using <code>printf</code> statements for debugging, use the <=
+code>LOG_*</code> macros for logging information like this:</p>
+<pre>LOG_INFO("# Pages: %d", num_pages);
+LOG_DEBUG("Fetching page %d", page_id);</pre>
+
+<p>To enable logging in your project, you will need to reconfigure it like =
+this:</p>
+<pre>$ mkdir build
+$ cd build
+$ cmake -DCMAKE_BUILD_TYPE=3DDEBUG ..
+$ make</pre>
+
+<p>The different logging levels are defined in <tt class=3D"filepath">src/i=
+nclude/common/logger.h</tt>. After enabling logging, the logging level defa=
+ults to <code>LOG_LEVEL_INFO</code>. Any logging method with a level that i=
+s equal to or higher than <code>LOG_LEVEL_INFO</code> (e.g., <code>LOG_INFO=
+</code>, <code>LOG_WARN</code>, <code>LOG_ERROR</code>) will emit logging i=
+nformation. Note that you will need to add <code>#include "common/logger.h"=
+</code> to any file that you want to use the logging infrastructure.</p>
+<p>We encourage you to use <code>gdb</code> to debug your project if you ar=
+e having problems. </p>
+<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-question-circle fa-lg"></i>
+    Post all of your questions about this project on Piazza.
+    Do <u><b>not</b></u> email the TAs directly with questions.
+</p>
+
+<!--<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-question-circle fa-lg"></i>
+    The instructor and TAs will <b><u>not</u></b> teach you how to debug yo=
+ur code.
+</p>-->
+
+<p>If you are having compilation problems, running <code>make clean</code> =
+does not completely reset the compilation process. You will need to delete =
+your build directory and run <code>cmake ..</code> again before you rerun <=
+code>make</code>.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- GRADING RUBRIC                                                        =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"grading" data-eusoft-scrollable-element=3D"1">Grading Rubric</h1>
+<p>Each project submission will be graded based on the following criteria:<=
+/p>
+<ol class=3D"default">
+    <li> Does the submission successfully execute all of the test cases and=
+ produce the correct answer?
+    </li><li> Does the submission execute without any memory leaks?
+    </li><li> Does the submission follow the code formatting and style poli=
+cies?
+</li></ol>
+
+<p>Note that we will use additional test cases to grade your submission tha=
+t are more complex than the sample test cases that we provide you.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- LATE POLICY                                                           =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"submission" data-eusoft-scrollable-element=3D"1">Late Policy</h1>
+
+<p>See the <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/syllabus.ht=
+ml#late-policy">late policy</a> in the syllabus.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- SUBMISSION                                                            =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"submission" data-eusoft-scrollable-element=3D"1">Submission</h1>
+
+<p>After completing the assignment, you can submit your implementation to G=
+radescope:</p>
+<ul>
+<li><b><a href=3D"https://www.gradescope.com/courses/286490/">https://www.g=
+radescope.com/courses/286490/</a></b></li>
+</ul>
+<p>You only need to include the following files:</p>
+<ul class=3D"default">
+    <li> <tt class=3D"filepath">src/include/buffer/lru_replacer.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/lru_replacer.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/buffer/buffer_pool_manager=
+_instance.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/buffer_pool_manager_instanc=
+e.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/buffer/parallel_buffer_poo=
+l_manager.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/parallel_buffer_pool_manage=
+r.cpp</tt>
+</li></ul>
+
+<p>Alternatively, running this <code>zip</code> command from your working d=
+irectory (aka <code>bustub</code>, <code>bustub-private</code>, etc.) will =
+create a <code>zip</code> archive called <code>project1-submission.zip</cod=
+e> that you can submit to Gradescope. You can also put this command in a ba=
+sh file and run the bash file to make things easier for you.</p>
+<pre>$ zip project1-submission.zip \
+    src/include/buffer/lru_replacer.h \
+    src/buffer/lru_replacer.cpp \
+    src/include/buffer/buffer_pool_manager_instance.h \
+    src/buffer/buffer_pool_manager_instance.cpp \
+    src/include/buffer/parallel_buffer_pool_manager.h \
+    src/buffer/parallel_buffer_pool_manager.cpp</pre>
+
+<p>You can submit your answers as many times as you like and get immediate =
+feedback.</p>
+<h2>Notes on Gradescope and Autograder</h2>
+<ol>
+<li>If you are timing out on Gradescope, it's likely because you have a dea=
+dlock in your code or your code is too slow and does not run in 60 seconds.=
+ If your code is too slow it may be because your <code>LRUReplacer</code> i=
+s not efficient enough. </li>
+<li>The autograder will not work if you do not remove logs before submissio=
+ns.</li>
+<li>If the autograder did not work properly, make sure that your formatting=
+ commands work and that you are submitting the right files.</li>
+</ol>
+<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-question-circle fa-lg"></i>
+    CMU students should use the Gradescope course code announced on Piazza.
+</p>
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- COLLABORATION POLICY
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Collaboration Policy</h1>
+<ul>
+<li>Every student has to work individually on this assignment.</li>
+<li>Students are allowed to discuss high-level details about the project wi=
+th others.</li>
+<li>Students are <strong>not</strong> allowed to copy the contents of a whi=
+te-board after a group meeting with other students.</li>
+<li>Students are <strong>not</strong> allowed to copy the solutions from an=
+other colleague.</li>
+</ul>
+<p class=3D"warning bg-danger">
+    <i class=3D"trigger fa fa-exclamation-triangle fa-lg"></i>
+    <b>WARNING:</b> All of the code for this project must be your own. You =
+may not copy source code from other students or other sources that you find=
+ on the web. Plagiarism <b>will not</b> be tolerated. See CMU's <a href=3D"=
+https://www.cmu.edu/policies/student-and-student-life/academic-integrity.ht=
+ml">Policy on Academic Integrity</a> for additional information.
+</p><p></p>
+                <div class=3D"published">
+                    <time datetime=3D"2022-01-07 10:54:02.148239-05:00"> <b=
+>Last Updated:</b> Jan 07, 2022</time>
+                </div>
+            </section>
+        </div>
+    </section>
+</article>
+
+<!-- Footer -->
+<footer id=3D"footer">
+
+    <ul class=3D"icons">
+    </ul>
+   =20
+    <span class=3D"copyright">
+    <a href=3D"https://db.cs.cmu.edu/" title=3D"Carnegie Mellon Database Gr=
+oup" class=3D"image-link"><img src=3D"https://15445.courses.cs.cmu.edu/fall=
+2021/images/cmu-db-group.svg" class=3D"cmudb-logo"></a>
+    </span>
+
+</footer>    <!-- Google Analytics -->
+   =20
+   =20
+    <!-- End Google Analytics Code -->
+
+    <!-- Fix scrolling issues to internal HREFs that get positioned behind =
+navbar -->
+    <!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anc=
+hor-to-adjust-for-fixed-header -->
+   =20
+   =20
+
+<ul class=3D"dropdown-menu dropotron level-0" role=3D"menu" style=3D"user-s=
+elect: none; display: none; position: absolute; z-index: 1000;">
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2020/" target=3D"_archive1" style=3D"display: b=
+lock;">Fall 2020</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2019/" target=3D"_archive2" style=3D"display: b=
+lock;">Fall 2019</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2018/" target=3D"_archive3" style=3D"display: b=
+lock;">Fall 2018</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2017/" target=3D"_archive4" style=3D"display: b=
+lock;">Fall 2017</a></li>
+                </ul></div><div id=3D"skel-layers-inactiveWrapper" style=3D=
+"height: 100%;"></div><div id=3D"skel-layers-activeWrapper" style=3D"positi=
+on: relative;"></div></body><eusoft-chrome-extension-root-en id=3D"eusoft-c=
+hrome-extension-id-en" _nghost-ng-c614250349=3D"" ng-version=3D"18.2.13"><t=
+emplate _ngcontent-ng-c614250349=3D""></template><!----><!----><!----><app-=
+word-hint-render _ngcontent-ng-c614250349=3D"" _nghost-ng-c3386348173=3D"">=
+<template _ngcontent-ng-c3386348173=3D""></template><!----><!----></app-wor=
+d-hint-render><app-translate-render _ngcontent-ng-c614250349=3D"" _nghost-n=
+g-c749930229=3D""><template _ngcontent-ng-c749930229=3D""></template><!----=
+></app-translate-render><app-capture-word _ngcontent-ng-c614250349=3D"" cla=
+ss=3D"eusoft-chrome-extension-capture-word-container ng-tns-c2615027859-0 n=
+g-star-inserted"><template shadowmode=3D"open"><!----><!----><div class=3D"=
+eusoft-eudic-chrome-extension-explain-popover-container-class ng-tns-c26150=
+27859-0" data-content-script-theme=3D"light"><!----></div></template></app-=
+capture-word><app-translate-failed-retry _ngcontent-ng-c614250349=3D"" _ngh=
+ost-ng-c3081775404=3D""><!----></app-translate-failed-retry><!----><!----><=
+/eusoft-chrome-extension-root-en></html>
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/images/cmu-db-group.svg
+
+<?xml version=3D"1.0" encoding=3D"UTF-8" standalone=3D"no"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version:=
+ 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc=3D"http://purl.org/dc/elements/1.1/"
+   xmlns:cc=3D"http://creativecommons.org/ns#"
+   xmlns:rdf=3D"http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg=3D"http://www.w3.org/2000/svg"
+   xmlns=3D"http://www.w3.org/2000/svg"
+   xmlns:sodipodi=3D"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape=3D"http://www.inkscape.org/namespaces/inkscape"
+   version=3D"1.1"
+   id=3D"Layer_1"
+   x=3D"0px"
+   y=3D"0px"
+   width=3D"7.5264678in"
+   height=3D"1.5241963in"
+   viewBox=3D"0 0 677.38215 137.17766"
+   enable-background=3D"new 0 0 1024 1024"
+   xml:space=3D"preserve"
+   inkscape:version=3D"0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname=3D"cmu-db-group.svg"
+   inkscape:export-filename=3D"/home/pavlo/Dropbox/The Habitat/NewSQL/cmu-d=
+b-group.png"
+   inkscape:export-xdpi=3D"58.270309"
+   inkscape:export-ydpi=3D"58.270309"><metadata
+     id=3D"metadata3066"><rdf:RDF><cc:Work
+         rdf:about=3D""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource=3D"http://purl.org/dc/dcmitype/StillImage" /><dc:ti=
+tle></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id=3D"defs3064" /><sodipodi:namedview
+     pagecolor=3D"#ffffff"
+     bordercolor=3D"#666666"
+     borderopacity=3D"1"
+     objecttolerance=3D"10"
+     gridtolerance=3D"10"
+     guidetolerance=3D"10"
+     inkscape:pageopacity=3D"0"
+     inkscape:pageshadow=3D"2"
+     inkscape:window-width=3D"1976"
+     inkscape:window-height=3D"1123"
+     id=3D"namedview3062"
+     showgrid=3D"false"
+     inkscape:zoom=3D"2.8284273"
+     inkscape:cx=3D"79.215375"
+     inkscape:cy=3D"104.86479"
+     inkscape:window-x=3D"0"
+     inkscape:window-y=3D"0"
+     inkscape:window-maximized=3D"1"
+     inkscape:current-layer=3D"Layer_1"
+     fit-margin-top=3D"0"
+     fit-margin-left=3D"0"
+     fit-margin-right=3D"0"
+     fit-margin-bottom=3D"0"
+     units=3D"in"
+     showguides=3D"true"
+     inkscape:guide-bbox=3D"true"><sodipodi:guide
+       position=3D"155.26345,84.324114"
+       orientation=3D"1,0"
+       id=3D"guide1199"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"247.28041,111.69578"
+       orientation=3D"1,0"
+       id=3D"guide1201"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"612.71007,6.6834401"
+       orientation=3D"0,1"
+       id=3D"guide979"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"608.84256,35.448348"
+       orientation=3D"0,1"
+       id=3D"guide1001"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"697.92338,59.750106"
+       orientation=3D"1,0"
+       id=3D"guide1003"
+       inkscape:locked=3D"false" /></sodipodi:namedview><path
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.68487513"
+     d=3D"m 609.01447,6.2672529 c -5.44847,0 -9.87123,4.6303371 -9.87121,10=
+.3216561 v 52.760011 8.188482 0.32043 3.14941 0.32044 6.90125 3.47167 c 0,5=
+.51418 4.27212,10.026858 9.49219,10.026858 h 1.35681 c 4.91424,0 8.89708,-4=
+.209738 8.8971,-9.398808 v -3.47167 -7.84974 -3.46984 h -0.004 V 76.087206 =
+72.617349 69.34892 55.189374 24.771893 h 7.09167 14.46351 c 12.08344,0 16.8=
+5303,6.760576 16.85303,17.435303 0,10.848716 -5.61732,17.42981 -16.85303,17=
+.42981 h -6.28601 c -4.36585,-0.0017 -7.92599,3.583071 -8.15003,8.095093 -0=
+.0119,0.135834 -0.0161,0.271533 -0.022,0.408325 -0.006,0.144734 -0.017,0.29=
+0218 -0.0165,0.435791 0.0194,4.70435 3.67383,8.505153 8.172,8.503419 h 6.28=
+601 c 11.23572,0 16.85302,6.581098 16.85302,17.429818 0,10.674718 -4.76957,=
+17.435288 -16.85302,17.435288 h -18.57239 v -0.002 l -9.02893,0.033 v -0.00=
+2 l -5.90149,0.0202 h -0.0549 c -4.27644,0.0143 -7.73804,3.64214 -7.73804,8=
+.11157 0,5.7033 4.43438,10.33813 9.89136,10.33813 h 3.76465 0.0385 7.13012 =
+1.89698 18.57788 c 24.5095,0 36.93785,-14.23307 36.93787,-35.934438 0,-11.8=
+9211 -3.65071,-20.639106 -12.7295,-26.14564 9.0919,-5.505894 12.74597,-14.2=
+56725 12.74597,-26.156616 0,-21.701375 -12.42836,-35.9344491 -36.93786,-35.=
+9344491 h -14.46717 v -0.0055 z"
+     id=3D"path3040-6-7"
+     inkscape:connector-curvature=3D"0" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3048"
+     d=3D"m 65.253647,49.238517 c 0,-6.086601 -4.769368,-11.086709 -10.8485=
+01,-11.385401 C 23.606991,36.338747 0.13874254,28.485381 0.13874254,19.0235=
+58 v 24.671978 c 0,9.263939 22.49675146,16.98588 52.34282546,18.726509 3.31=
+4737,0.193403 6.561521,-0.989418 8.977195,-3.266946 2.41642,-2.276782 3.795=
+631,-5.451133 3.795631,-8.771844 v -1.144738 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3050"
+     d=3D"m 87.660791,47.346302 c 0.06273,3.58132 1.714494,6.949074 4.50726=
+6,9.191506 2.792772,2.242432 6.437564,3.125814 9.948693,2.417167 17.06503,-=
+3.442428 28.25255,-9.208681 28.25255,-15.742574 V 18.540424 c 0,7.079752 -1=
+3.14022,13.260441 -32.660502,16.557256 -5.876023,0.992405 -10.155536,6.1291=
+65 -10.050994,12.088075 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3052"
+     d=3D"m 50.602794,86.777409 c 7.47e-4,-3.217662 1.28811,-6.300912 3.573=
+852,-8.564253 2.286489,-2.264087 5.382434,-3.520088 8.599349,-3.490218 0.69=
+222,0.0067 1.386679,0.0097 2.084872,0.0097 35.964033,0 65.116403,-8.547078 =
+65.116403,-19.0939 v 24.671231 c 0,10.546822 -29.15311,19.094647 -65.116403=
+,19.094647 -0.777346,0 -1.551706,-0.0045 -2.322332,-0.01195 C 55.926983,99.=
+323976 50.6013,93.944529 50.603541,87.33223 Z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3054"
+     d=3D"m 65.253647,124.61051 c 0,-6.41367 -5.019522,-11.71023 -11.42423,=
+-12.04252 C 23.315766,110.98492 0.13948927,103.17039 0.13948927,93.767554 v=
+ 24.671226 c 0,9.24826 22.41909173,16.9605 52.18899873,18.71755 3.353567,0.=
+19863 6.638435,-0.99688 9.083977,-3.2998 2.445543,-2.30292 3.841182,-5.5146=
+ 3.841182,-8.8734 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3056"
+     d=3D"m 87.658551,122.41438 c -0.105289,-5.97011 4.16377,-11.09567 10.0=
+50993,-12.08957 19.520286,-3.29756 32.660506,-9.4775 32.660506,-16.558003 v=
+ 24.671973 c 0,6.51523 -11.12554,12.26729 -28.10918,15.71196 -3.542493,0.71=
+91 -7.220141,-0.17548 -10.039795,-2.43733 -2.819655,-2.26184 -4.499052,-5.6=
+6171 -4.562524,-9.27588 z" /><path
+     style=3D"fill:none;stroke:#cccccc;stroke-width:4.35911465;stroke-miter=
+limit:10;stroke-opacity:1"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3058"
+     d=3D"M 35.47702,38.248883 C 15.658044,35.018527 2.1795572,28.660863 2.=
+1795572,21.345144 c 0,-10.586399 28.2234278,-19.1655868 63.0389938,-19.1655=
+868 34.817059,0 63.041239,8.5791878 63.041239,19.1655868 0,5.744598 -7.6248=
+7,10.90824 -20.38426,14.205055"
+     stroke-miterlimit=3D"10" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3060"
+     d=3D"m 32.572238,82.718928 c 0.0037,3.760536 -1.789167,7.296305 -4.824=
+626,9.516335 -3.036207,2.219283 -6.950569,2.855497 -10.532635,1.710759 C 6.=
+5845207,90.546905 0.0961789,86.016491 0.0961789,81.041772 V 56.36606 c 0,5.=
+877516 9.054108,11.1345 23.2942601,14.637413 5.38094,1.323206 9.175825,6.14=
+7086 9.181799,11.687826 z" /><path
+     d=3D"m 159.61375,68.671757 c 0,-39.177898 18.04601,-58.022236 47.71896=
+,-58.022236 14.52955,0 27.22412,6.771979 34.41381,17.521036 0.76402,1.16098=
+5 1.0709,2.31849 1.0709,3.468895 0,2.978395 -2.14186,5.286305 -4.89756,5.28=
+6305 -1.3746,0 -2.75246,-0.494035 -3.97687,-2.142043 -5.20124,-7.770663 -15=
+.14339,-13.886271 -26.61354,-13.886271 -23.55425,0 -37.01284,15.368411 -37.=
+01284,47.774314 0,34.382093 13.4619,47.608453 37.01284,47.608453 10.09556,0=
+ 20.64827,-4.29466 26.61354,-13.55804 1.07096,-1.65505 2.75246,-2.14208 3.9=
+7687,-2.14208 2.75243,0 4.89756,2.30793 4.89756,5.2863 0,1.3163 -0.30688,2.=
+14914 -0.91745,3.14428 -6.73257,10.57612 -20.49483,17.51747 -34.56726,17.51=
+747 -29.67295,0 -47.71896,-17.18929 -47.71896,-57.856383 z"
+     id=3D"path2990"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8.940=
+00053;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+     d=3D"M 300.51722,103.85713 271.97374,38.289928 v 82.932352 c 0,3.03332=
+ -2.04652,5.55209 -4.50701,5.55209 -2.45468,0 -4.50412,-2.51877 -4.50412,-5=
+.55209 V 16.207459 c 0,-3.0369 2.04944,-5.562856 4.50412,-5.562856 2.05235,=
+0 3.41671,1.514831 4.09886,3.198807 l 33.0505,76.358392 33.1788,-76.358392 =
+c 0.55097,-1.173029 1.63839,-3.198807 4.09889,-3.198807 2.46048,0 4.50991,2=
+.525956 4.50991,5.562856 V 121.22228 c 0,3.03332 -2.04943,5.55209 -4.50991,=
+5.55209 -2.4605,0 -4.50412,-2.51877 -4.50412,-5.55209 V 38.289928 l -28.677=
+59,65.567202 c -0.95914,2.19495 -2.46049,3.20964 -4.09598,3.20964 -1.36434,=
+0 -3.14265,-0.84917 -4.09887,-3.20964 z"
+     id=3D"path3006"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8.530=
+406;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+     d=3D"m 532.35144,112.51708 c 21.79008,0 34.89746,-10.82514 34.89746,-4=
+3.292071 0,-32.466922 -13.10738,-43.47877 -34.89746,-43.47877 H 519.24407 V=
+ 60.72531 91.976492 c 0,5.38496 -3.9833,9.753618 -8.89757,9.753618 h -1.356=
+82 c -5.22007,0 -9.4918,-4.682678 -9.4918,-10.404998 V 60.479161 17.161669 =
+c 0,-5.970597 4.42657,-10.8230261 9.87504,-10.8230261 h 22.98047 c 33.87548=
+,0 55.32494,16.7957361 55.32494,62.8884961 0,46.092741 -21.44946,62.699631 =
+-55.32494,62.699631 h -22.98047 c -5.44847,0 -9.87504,-4.85242 -9.87504,-10=
+.82512 0,-4.68056 3.45492,-8.4806 7.72468,-8.49547 l 25.12888,-0.089 z"
+     id=3D"path3018"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.69404125" /><path
+     d=3D"M 362.07874,89.029172 V 16.746236 c 0,-5.738904 4.42274,-10.40305=
+51 9.87496,-10.4030551 5.44665,0 9.87513,4.6621061 9.87513,10.4030551 v 72.=
+282936 c 0,10.93941 3.9117,23.673538 23.14692,23.673538 19.23712,0 23.15089=
+,-12.734128 23.15089,-23.673538 V 16.746236 c 0,-5.738904 4.42635,-10.40305=
+51 9.87477,-10.4030551 5.44859,0 9.87526,4.6621061 9.87526,10.4030551 v 72.=
+282936 c 0,20.447158 -8.51259,41.969098 -42.89914,41.969098 -34.38635,0 -42=
+.89879,-21.52194 -42.89879,-41.969098 z"
+     id=3D"path3032"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.66084909" /><g
+     id=3D"g1114"
+     transform=3D"matrix(0.86741605,0,0,0.88792995,-32.287889,-14.804995)"
+     style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-opacity:1">=
+<path
+       id=3D"path3008-3"
+       transform=3D"scale(0.9375)"
+       d=3D"m 616.89648,94.025391 c -3.2,0 -5.83398,2.781436 -5.83398,6.160=
+159 0,3.37443 2.63398,6.15039 5.83398,6.15039 h 4.97071 V 94.025391 Z"
+       style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-width:13.=
+03938866;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature=3D"0" /><path
+       id=3D"path3008-3-7"
+       d=3D"m 588.28585,99.689939 c 2.99999,0 5.46935,-2.607592 5.46935,-5.=
+775144 0,-3.163528 -2.46936,-5.765991 -5.46935,-5.765991 h -4.66005 v 11.54=
+1135 z"
+       style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-width:12.=
+22442722;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature=3D"0" /></g></svg>
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Lato:300,400,900
+
+@charset "utf-8";
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 300; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh7USSwaPGR_p.woff2") =
+format("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7,=
+ U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2=
+020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 300; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh7USSwiPGQ.woff2") fo=
+rmat("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U=
++2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+21=
+93, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 400; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjxAwXjeu.woff2") form=
+at("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2=
+DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,=
+ U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 400; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2") format=
+("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA=
+, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, =
+U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 900; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwaPGR_p.woff2") =
+format("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7,=
+ U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2=
+020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 900; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2") fo=
+rmat("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U=
++2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+21=
+93, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Anonymous+Pro:regular,italic,bold,bolditalic
+
+@charset "utf-8";
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G8wn50Ko.woff2") format("woff2"); unicode-range: U+301, U+400-=
+45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G9An50Ko.woff2") format("woff2"); unicode-range: U+370-377, U+=
+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G-Qn50Ko.woff2") format("woff2"); unicode-range: U+100-2BA, U+=
+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF,=
+ U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60=
+-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G9wn5.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U=
++152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F,=
+ U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs64u24Ko.woff2") format("woff2"); unicode-range: U+301, U+=
+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs7Iu24Ko.woff2") format("woff2"); unicode-range: U+370-377=
+, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs4Yu24Ko.woff2") format("woff2"); unicode-range: U+100-2BA=
+, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1=
+DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+=
+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs74u2.woff2") format("woff2"); unicode-range: U+0-FF, U+13=
+1, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-2=
+06F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHl829RH9.woff2") format("woff2"); unicode-range: U+301, U+400-45F=
+, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHlg29RH9.woff2") format("woff2"); unicode-range: U+370-377, U+37A=
+-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHlU29RH9.woff2") format("woff2"); unicode-range: U+100-2BA, U+2BD=
+-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+=
+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C=
+7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHls29Q.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+1=
+52-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U=
++20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4Crc7ZOy.woff2") format("woff2"); unicode-range: U+301, U+400=
+-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4C3c7ZOy.woff2") format("woff2"); unicode-range: U+370-377, U=
++37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4CDc7ZOy.woff2") format("woff2"); unicode-range: U+100-2BA, U=
++2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF=
+, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C6=
+0-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4C7c7Q.woff2") format("woff2"); unicode-range: U+0-FF, U+131,=
+ U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206=
+F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+
+@charset "utf-8";
+=0A
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/css/pygment.css
+
+@charset "utf-8";
+
+.highlight .hll { background-color: rgb(73, 72, 62); }
+
+.highlight { background: rgb(39, 40, 34); color: rgb(248, 248, 242); }
+
+.highlight .c { color: rgb(117, 113, 94); }
+
+.highlight .err { color: rgb(150, 0, 80); background-color: rgb(30, 0, 16);=
+ }
+
+.highlight .k { color: rgb(102, 217, 239); }
+
+.highlight .l { color: rgb(174, 129, 255); }
+
+.highlight .n { color: rgb(248, 248, 242); }
+
+.highlight .o { color: rgb(249, 38, 114); }
+
+.highlight .p { color: rgb(248, 248, 242); }
+
+.highlight .cm { color: rgb(117, 113, 94); }
+
+.highlight .cp { color: rgb(117, 113, 94); }
+
+.highlight .c1 { color: rgb(117, 113, 94); }
+
+.highlight .cs { color: rgb(117, 113, 94); }
+
+.highlight .ge { font-style: italic; }
+
+.highlight .gs { font-weight: bold; }
+
+.highlight .kc { color: rgb(102, 217, 239); }
+
+.highlight .kd { color: rgb(102, 217, 239); }
+
+.highlight .kn { color: rgb(249, 38, 114); }
+
+.highlight .kp { color: rgb(102, 217, 239); }
+
+.highlight .kr { color: rgb(102, 217, 239); }
+
+.highlight .kt { color: rgb(102, 217, 239); }
+
+.highlight .ld { color: rgb(230, 219, 116); }
+
+.highlight .m { color: rgb(174, 129, 255); }
+
+.highlight .s { color: rgb(230, 219, 116); }
+
+.highlight .na { color: rgb(166, 226, 46); }
+
+.highlight .nb { color: rgb(248, 248, 242); }
+
+.highlight .nc { color: rgb(166, 226, 46); }
+
+.highlight .no { color: rgb(102, 217, 239); }
+
+.highlight .nd { color: rgb(166, 226, 46); }
+
+.highlight .ni { color: rgb(248, 248, 242); }
+
+.highlight .ne { color: rgb(166, 226, 46); }
+
+.highlight .nf { color: rgb(166, 226, 46); }
+
+.highlight .nl { color: rgb(248, 248, 242); }
+
+.highlight .nn { color: rgb(248, 248, 242); }
+
+.highlight .nx { color: rgb(166, 226, 46); }
+
+.highlight .py { color: rgb(248, 248, 242); }
+
+.highlight .nt { color: rgb(249, 38, 114); }
+
+.highlight .nv { color: rgb(248, 248, 242); }
+
+.highlight .ow { color: rgb(249, 38, 114); }
+
+.highlight .w { color: rgb(248, 248, 242); }
+
+.highlight .mf { color: rgb(174, 129, 255); }
+
+.highlight .mh { color: rgb(174, 129, 255); }
+
+.highlight .mi { color: rgb(174, 129, 255); }
+
+.highlight .mo { color: rgb(174, 129, 255); }
+
+.highlight .sb { color: rgb(230, 219, 116); }
+
+.highlight .sc { color: rgb(230, 219, 116); }
+
+.highlight .sd { color: rgb(230, 219, 116); }
+
+.highlight .s2 { color: rgb(230, 219, 116); }
+
+.highlight .se { color: rgb(174, 129, 255); }
+
+.highlight .sh { color: rgb(230, 219, 116); }
+
+.highlight .si { color: rgb(230, 219, 116); }
+
+.highlight .sx { color: rgb(230, 219, 116); }
+
+.highlight .sr { color: rgb(230, 219, 116); }
+
+.highlight .s1 { color: rgb(230, 219, 116); }
+
+.highlight .ss { color: rgb(230, 219, 116); }
+
+.highlight .bp { color: rgb(248, 248, 242); }
+
+.highlight .vc { color: rgb(248, 248, 242); }
+
+.highlight .vg { color: rgb(248, 248, 242); }
+
+.highlight .vi { color: rgb(248, 248, 242); }
+
+.highlight .il { color: rgb(174, 129, 255); }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021//css/style-wide.css
+
+@charset "utf-8";
+
+body, input, select, textarea { font-size: 14pt; }
+
+header.special { padding-top: 5.5em; margin-bottom: 4em; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021//css/style.css
+
+@charset "utf-8";
+
+body, #skel-layers-wrapper { background: rgb(187, 187, 187); }
+
+body, input, select, textarea { color: rgb(86, 88, 89); font-family: Lato, =
+sans-serif; font-size: 15pt; font-weight: 300; letter-spacing: 0.025em; lin=
+e-height: 1.75em; }
+
+a { color: rgb(18, 5, 17); text-decoration: none; border-bottom: 1px dotted=
+; }
+
+a:hover { border-bottom-color: transparent; }
+
+strong, b { font-weight: 400; }
+
+p, ul, ol, dl, table, blockquote { margin: 0px 0px 1em; }
+
+h1, h2, h3, h4, h5, h6 { color: inherit; font-weight: 300; line-height: 1.7=
+5em; margin-bottom: 1em; text-transform: uppercase; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; text-decoration: none;=
+ border: 0px; }
+
+h2 { font-size: 1.5em; letter-spacing: 0.1em; }
+
+h3 { font-size: 1.15em; letter-spacing: 0.025em; }
+
+sub { font-size: 0.8em; position: relative; top: 0.5em; }
+
+sup { font-size: 0.8em; position: relative; top: -0.5em; }
+
+hr { border: 0px; margin-bottom: 1.5em; }
+
+blockquote { border-left: 0.5em solid rgba(124, 128, 129, 0.2); font-style:=
+ italic; padding: 1em 0px 1em 2em; }
+
+section.special, article.special { text-align: center; }
+
+header.major { padding-bottom: 2em; }
+
+header.special { margin-bottom: 5em; padding-top: 7em; position: relative; =
+text-align: center; }
+
+header.special::before, header.special::after { border-bottom: 1.5px solid;=
+ border-top: 1.5px solid; content: ""; height: 7px; opacity: 0.1; position:=
+ absolute; top: 1.75em; width: 43%; }
+
+header.special::before { left: 0px; }
+
+header.special::after { right: 0px; }
+
+header.special h2 { margin-bottom: 0px; color: rgb(36, 36, 36); }
+
+header.special h2 + p { margin-bottom: 0px; padding-top: 1.5em; }
+
+header.special .icon { cursor: default; height: 7em; left: 0px; position: a=
+bsolute; text-align: center; top: 1em; width: 100%; color: rgb(36, 36, 36);=
+ }
+
+header.special .icon::before { font-size: 4em; }
+
+footer > :last-child { margin-bottom: 0px; }
+
+footer.major { padding-top: 3em; }
+
+.cmudb-logo { max-width: 300px; }
+
+input[type=3D"text"], input[type=3D"password"], input[type=3D"email"], text=
+area { transition: background-color 0.2s ease-in-out, border-color 0.2s eas=
+e-in-out; appearance: none; background: none; border: 1px solid rgba(124, 1=
+28, 129, 0.2); color: inherit; display: block; padding: 0.75em; text-decora=
+tion: none; width: 100%; outline: 0px; }
+
+input[type=3D"text"]:focus, input[type=3D"password"]:focus, input[type=3D"e=
+mail"]:focus, textarea:focus { border-color: rgb(131, 211, 201); }
+
+input[type=3D"text"], input[type=3D"password"], input[type=3D"email"] { lin=
+e-height: 1em; }
+
+::-webkit-input-placeholder { color: inherit; opacity: 0.5; position: relat=
+ive; top: 3px; }
+
+.formerize-placeholder { color: rgba(124, 128, 129, 0.5) !important; }
+
+.image { border: 0px; position: relative; }
+
+.image::before { background: url("images/overlay.png"); content: ""; height=
+: 100%; left: 0px; position: absolute; top: 0px; width: 100%; }
+
+.image.fit { display: block; }
+
+.image.fit img { display: block; width: 100%; }
+
+.image.feature { display: block; margin: 0px 0px 2em; }
+
+.image.feature img { display: block; width: 100%; }
+
+.icon { position: relative; }
+
+.icon::before { -webkit-font-smoothing: antialiased; font-family: FontAweso=
+me; font-style: normal; font-weight: normal; }
+
+.icon.circle { border: 0px; border-radius: 100%; display: inline-block; fon=
+t-size: 1.25em; height: 2.25em; left: 0px; line-height: 2.25em; text-align:=
+ center; text-decoration: none; top: 0px; width: 2.25em; }
+
+.icon.circle:hover { top: -0.2em; }
+
+.icon.circle.fa-twitter { background: rgb(112, 174, 205); color: white; }
+
+.icon.circle.fa-twitter:hover { background: rgb(127, 183, 210); }
+
+.icon.circle.fa-linkedin { background: rgb(116, 144, 195); color: white; }
+
+.icon.circle.fa-linkedin:hover { background: rgb(130, 155, 201); }
+
+.icon.circle.fa-google-plus { background: rgb(219, 107, 103); color: white;=
+ }
+
+.icon.circle.fa-google-plus:hover { background: rgb(223, 123, 119); }
+
+.icon.circle.fa-github { background: rgb(220, 173, 139); color: white; }
+
+.icon.circle.fa-github:hover { background: rgb(225, 184, 155); }
+
+.icon.circle.fa-bitbucket { background: rgb(218, 131, 174); color: white; }
+
+.icon.circle.fa-bitbucket:hover { background: rgb(223, 147, 184); }
+
+.icon.feature { cursor: default; display: block; margin: 0px 0px 1.5em; opa=
+city: 0.35; text-align: center; }
+
+.icon.feature::before { font-size: 5em; line-height: 1em; }
+
+.icon > .label { display: none; }
+
+ol.default { list-style: decimal; padding-left: 1.25em; }
+
+ol.default li { padding-left: 0.25em; }
+
+ul.default { list-style: disc; padding-left: 1em; }
+
+ul.default li { padding-left: 0.5em; }
+
+ul.icons { cursor: default; }
+
+ul.icons li { display: inline-block; line-height: 1em; padding-left: 0.5em;=
+ }
+
+ul.icons li:first-child { padding-left: 0px; }
+
+ul.feature-icons { cursor: default; margin: -0.75em 0px 0px; opacity: 0.35;=
+ overflow: hidden; position: relative; }
+
+ul.feature-icons li { display: block; float: left; text-align: center; widt=
+h: 50%; }
+
+ul.feature-icons li .icon { display: inline-block; font-size: 6.25em; heigh=
+t: 1.25em; line-height: 1.25em; width: 1em; }
+
+ul.buttons { cursor: default; }
+
+ul.buttons:last-child { margin-bottom: 0px; }
+
+ul.buttons li { display: inline-block; padding: 0px 0px 0px 1.5em; }
+
+ul.buttons li:first-child { padding: 0px; }
+
+ul.buttons.vertical li { display: block; padding: 1.5em 0px 0px; }
+
+ul.buttons.vertical li:first-child { padding: 0px; }
+
+table { width: 100%; }
+
+table.default { width: 100%; }
+
+table.default tbody tr { border-bottom: 1px solid rgba(124, 128, 129, 0.2);=
+ }
+
+table.default td { padding: 0.5em 1em; }
+
+table.default th { font-weight: 400; padding: 0.5em 1em; text-align: left; =
+}
+
+table.default thead { background: rgb(124, 128, 129); color: rgb(255, 255, =
+255); }
+
+.button { background: none; border: 1px solid; color: inherit; display: inl=
+ine-block; font-size: 0.8em; font-weight: 900; letter-spacing: 2px; min-wid=
+th: 18em; padding: 0.75em 0px; text-align: center; text-decoration: none; t=
+ext-transform: uppercase; }
+
+.button:hover { background: rgba(188, 202, 206, 0.15); border-color: inheri=
+t; }
+
+.button.special { background: rgb(131, 211, 201); border-color: rgb(131, 21=
+1, 201); color: white !important; }
+
+.button.special:hover { background: rgb(150, 218, 209) !important; border-c=
+olor: rgb(150, 218, 209) !important; }
+
+.button.fit { width: 100%; }
+
+.button.small { font-size: 0.7em; min-width: 14em; padding: 0.5em 0px; }
+
+.wrapper { margin-bottom: 5em; padding: 5em; }
+
+.wrapper.style1 { padding: 0px; }
+
+.wrapper.style2 { background-color: rgb(131, 211, 201); color: white; }
+
+.wrapper.style2 .button:hover { background: rgba(255, 255, 255, 0.15) !impo=
+rtant; }
+
+.wrapper.style2 .button.special { background: white; border-color: white; c=
+olor: rgb(131, 211, 201) !important; }
+
+.wrapper.style2 .button.special:hover { border-color: inherit !important; c=
+olor: white !important; }
+
+.wrapper.style3 { border-radius: 10px; background: rgb(251, 251, 251); colo=
+r: inherit; }
+
+.wrapper.style4 { background: white; color: inherit; padding: 4em; }
+
+#header { background: white; box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 2px 0=
+px; color: inherit; cursor: default; font-size: 0.8em; left: 0px; padding: =
+1em 1.5em; position: fixed; top: 0px; width: 100%; z-index: 10000; }
+
+#header h1 { font-weight: 900; margin: 0px; }
+
+#header h1 span { font-weight: 300; }
+
+#header nav { letter-spacing: 0.075em; position: absolute; right: 1.5em; te=
+xt-transform: uppercase; top: 0.75em; }
+
+#header nav ul li { display: inline-block; margin-left: 1.5em; }
+
+#header nav ul li > ul { display: none; }
+
+#header nav ul li a { border: 1px solid transparent; color: inherit; displa=
+y: inline-block; padding: 0em 0.75em; text-decoration: none; }
+
+#header nav ul li .button { font-size: 1em; min-width: 0px; width: auto; }
+
+#header nav ul li.submenu > a::before { -webkit-font-smoothing: antialiased=
+; font-family: FontAwesome; font-style: normal; font-weight: normal; }
+
+#header nav ul li.submenu > a::before { content: "=EF=84=87"; margin-right:=
+ 0.65em; }
+
+#header nav ul li.active > a, #header nav ul li:hover > a { transition: 0.2=
+s ease-in-out; background: rgba(188, 202, 206, 0.15); }
+
+#header nav ul li.current > a { font-weight: 900; }
+
+#header.alt { animation: auto ease 0s 1 normal none running none; box-shado=
+w: none; color: white; background-color: rgba(0, 0, 0, 0.5); padding: 2em 2=
+.5em; position: absolute; }
+
+#header.alt nav { right: 2.5em; top: 1.75em; }
+
+#header.alt nav ul li.active > a, #header.alt nav ul li:hover > a { border:=
+ 1px solid; }
+
+.dropotron { background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.07=
+5) 0px 1px 2px 0px; line-height: 2.25em; min-width: 13em; padding: 1em 0px;=
+ text-transform: uppercase; }
+
+.dropotron.level-0 { font-size: 0.7em; font-weight: 400; margin-top: 1.5em;=
+ }
+
+.dropotron.level-0::before { border-bottom: 0.5em solid rgb(255, 255, 255);=
+ border-left: 0.5em solid transparent; border-right: 0.5em solid transparen=
+t; content: ""; left: 0.75em; position: absolute; top: -0.45em; }
+
+.dropotron > li { border-top: 1px solid rgba(124, 128, 129, 0.2); }
+
+.dropotron > li > a { transition: none; color: inherit; text-decoration: no=
+ne; padding: 0px 1em; border: 0px; }
+
+.dropotron > li:hover > a { background: rgb(131, 211, 201); color: white; }
+
+.dropotron > li:first-child { border-top: 0px; }
+
+#banner { background-image: url("../images/banner.jpg"); background-attachm=
+ent: fixed; background-position: center top; background-repeat: no-repeat; =
+background-size: cover; background-color: black; color: white; cursor: defa=
+ult; padding: 6em 0px; text-align: center; }
+
+#banner .inner { background: rgba(0, 0, 0, 0.5); border-radius: 10px; color=
+: white; display: inline-block; padding: 3em; text-align: center; }
+
+#banner .inner header { display: inline-block; border-bottom: 2px solid; bo=
+rder-top: 2px solid; margin: 0px 0px 2em; padding: 3px 0px; }
+
+#banner .inner header h2 { border-bottom: 2px solid; border-top: 2px solid;=
+ font-size: 3em; font-weight: 900; letter-spacing: 0.2em; margin: 0px; padd=
+ing-left: 0.05em; position: relative; text-transform: uppercase; }
+
+#banner .inner p { letter-spacing: 0.1em; margin: 0px; text-transform: uppe=
+rcase; }
+
+#banner .inner p a { color: inherit; font-weight: 400; text-decoration: non=
+e; }
+
+#banner .inner footer { margin: 2em 0px 0px; }
+
+#main { padding: 5em 0px; }
+
+#main > :last-child { margin-bottom: 0px; }
+
+#main .sidebar section { border-top: 1px solid rgba(124, 128, 129, 0.2); ma=
+rgin: 3em 0px 0px; padding: 3em 0px 0px; }
+
+#main .sidebar section:first-child { border-top: 0px; padding-top: 0px; mar=
+gin-top: 0px; }
+
+body.index #main { padding-top: 1em; padding-bottom: 1em; }
+
+#cta { background-attachment: scroll, scroll, scroll, fixed; background-col=
+or: black; background-image: url("images/light-tl.svg"), url("images/light-=
+tr.svg"), url("images/overlay.png"), url("../images/banner.jpg"); backgroun=
+d-position: left top, right top, left top, center bottom; background-repeat=
+: no-repeat, no-repeat, repeat, no-repeat; background-size: 25em, 25em, aut=
+o, cover; color: white; padding: 5em; text-align: center; }
+
+#cta header { margin-bottom: 2em; }
+
+#footer { background: rgb(86, 86, 88); color: rgb(124, 128, 129); padding: =
+5em 5em 10em; text-align: center; }
+
+#footer .copyright { font-size: 0.8em; }
+
+#footer .copyright a { color: inherit; }
+
+#topButton .toggle { height: 100%; left: 0px; position: absolute; text-alig=
+n: center; top: 0px; width: 100%; }
+
+#topButton .toggle::before { -webkit-font-smoothing: antialiased; font-fami=
+ly: FontAwesome; font-style: normal; font-weight: normal; }
+
+#topButton .toggle::before { color: white; content: "=EF=80=B9"; font-size:=
+ 0.75em; height: 30px; left: 0px; line-height: 30px; opacity: 0.5; position=
+: absolute; top: 0px; width: 100%; z-index: 1; }
+
+#topButton .toggle::after { background: rgba(163, 169, 170, 0.75); border-r=
+adius: 0px 0px 4px 4px; content: ""; height: 30px; left: 50%; margin-left: =
+-40px; position: absolute; top: 0px; width: 80px; }
+
+#sideButton .toggle { height: 100%; left: 0px; position: absolute; text-ali=
+gn: center; top: 0px; width: 100%; }
+
+#sideButton .toggle::before { -webkit-font-smoothing: antialiased; font-fam=
+ily: FontAwesome; font-style: normal; font-weight: normal; }
+
+#sideButton .toggle::before { color: white; content: "=EF=80=B9"; font-size=
+: 1em; height: 40px; left: 10px; line-height: 40px; opacity: 0.5; position:=
+ absolute; top: 11px; width: 60px; z-index: 1; }
+
+#sideButton .toggle::after { background: rgba(163, 169, 170, 0.75); border-=
+radius: 2px; content: ""; height: 40px; left: 10px; position: absolute; top=
+: 10px; width: 60px; }
+
+#topPanel, #sidePanel { background: rgb(28, 32, 33); color: white; font-siz=
+e: 0.8em; letter-spacing: 0.075em; text-transform: uppercase; }
+
+#topPanel nav, #sidePanel nav { padding: 0.25em 0.5em 1em; }
+
+#topPanel .link, #sidePanel .link { border-width: 1px 0px 0px; border-right=
+-style: initial; border-bottom-style: initial; border-left-style: initial; =
+border-right-color: initial; border-bottom-color: initial; border-left-colo=
+r: initial; border-image: initial; border-top-style: solid; border-top-colo=
+r: rgba(255, 255, 255, 0.05); color: inherit; display: block; height: 3em; =
+line-height: 3em; opacity: 0.75; text-decoration: none; }
+
+#topPanel .link.depth-0, #sidePanel .link.depth-0 { font-weight: 900; }
+
+#topPanel .link:first-child, #sidePanel .link:first-child { border-top: 0px=
+; }
+
+#topPanel .indent-1, #sidePanel .indent-1 { display: inline-block; width: 1=
+em; }
+
+#topPanel .indent-2, #sidePanel .indent-2 { display: inline-block; width: 2=
+em; }
+
+#topPanel .indent-3, #sidePanel .indent-3 { display: inline-block; width: 3=
+em; }
+
+#topPanel .indent-4, #sidePanel .indent-4 { display: inline-block; width: 4=
+em; }
+
+#topPanel .indent-5, #sidePanel .indent-5 { display: inline-block; width: 5=
+em; }
+
+div.pagination { margin-top: 35px; }
+
+div.pagination-left { float: left; }
+
+div.pagination-middle { text-align: center; }
+
+div.pagination-right { float: right; }
+
+.highlight { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; background: rgb(39, 40, 34); color: rgb(248, 248, 242); padding: 20px=
+; }
+
+.pill-box-left, .pill-box-right { border: 1px solid rgb(230, 230, 230); bor=
+der-radius: 4px; color: rgb(102, 102, 102); padding: 6px; }
+
+.pill-box-left { background-color: rgb(230, 230, 230); border-bottom-right-=
+radius: 0px; border-top-right-radius: 0px; padding-left: 6px; text-align: c=
+enter; }
+
+.pill-box-right { background-color: rgb(255, 255, 255); border-bottom-left-=
+radius: 0px; border-top-left-radius: 0px; border-left: 0px; padding-left: 4=
+px; padding-right: 6px; }
+
+.pill-blue .pill-box-left, .pill-blue .pill-box-right { border-color: rgb(7=
+7, 166, 255); }
+
+.pill-blue .pill-box-left { background-color: rgb(77, 166, 255); color: rgb=
+(229, 242, 255); }
+
+.pill-red .pill-box-left, .pill-red .pill-box-right { border-color: rgb(255=
+, 112, 77); }
+
+.pill-red .pill-box-left { background-color: rgb(255, 112, 77); color: rgb(=
+153, 31, 0); }
+
+.pill-green .pill-box-left, .pill-green .pill-box-right { border-color: rgb=
+(112, 219, 112); }
+
+.pill-green .pill-box-left { background-color: rgb(112, 219, 112); color: r=
+gb(235, 250, 235); }
+
+.pill-black .pill-box-left, .pill-black .pill-box-right { border-color: rgb=
+(0, 0, 0); }
+
+.pill-black .pill-box-left { background-color: rgb(0, 0, 0); color: rgb(255=
+, 255, 255); }
+
+.pill-purple .pill-box-left, .pill-purple .pill-box-right { border-color: r=
+gb(219, 77, 255); }
+
+.pill-purple .pill-box-left { background-color: rgb(219, 77, 255); color: r=
+gb(255, 255, 255); }
+
+.inner > header h2 { line-height: 120%; padding-top: 20px; padding-bottom: =
+20px; font-size: 3.5em; }
+
+.inner > h3 { font-size: 4.5em; line-height: 1em; margin-bottom: 0px; }
+
+h1.logo { font-size: 18px !important; }
+
+#footer { padding-bottom: 4px; padding-top: 20px; }
+
+.table th { font-weight: bold; }
+
+.table tr { border-bottom: 1px solid rgb(238, 244, 244); }
+
+.table td { padding-top: 10px; }
+
+#main > header > h2 { font-size: 3em; font-weight: bold; }
+
+header.special { margin-bottom: 2em !important; }
+
+tr.warning { background-color: rgb(255, 239, 229) !important; }
+
+tr.info { background-color: rgb(252, 248, 227) !important; }
+
+.course-personnel img { border-radius: 50%; }
+
+.course-personnel th { font-weight: bold; text-align: left; }
+
+.course-personnel td { padding: 2px; vertical-align: middle !important; }
+
+.table-striped tr:nth-child(2n) { background-color: rgb(239, 239, 243); }
+
+.table-striped th { border-bottom: 1px solid rgb(129, 126, 128); margin-bot=
+tom: 8px; }
+
+.personnel-photo { width: 14%; text-align: center; }
+
+.personnel-name { width: 31%; }
+
+.personnel-hours { width: 25%; }
+
+.personnel-location { width: 30%; }
+
+table.instructors img { max-width: 100px; }
+
+table.tas img { max-width: 80px; }
+
+.image-link { border-bottom: none; }
+
+.published { text-align: right; }
+
+.calendar-date { width: 15%; font-size: 95%; }
+
+.calendar-activity .lecture-title { font-weight: bold; font-size: 110%; }
+
+.calendar-activity { padding-bottom: 4px; }
+
+div.pill-box { margin-bottom: 6px; }
+
+a.schedule-badge { border: none !important; }
+
+a.schedule-badge:hover { background: rgb(255, 255, 204); }
+
+.calendar-activity span.special { font-style: italic; color: rgb(18, 5, 17)=
+; }
+
+.calendar-video, .calendar-slides, .calendar-notes { text-align: center; }
+
+tr:target, div:target { background-color: rgb(255, 255, 204); border: 3px s=
+olid rgb(231, 76, 60); }
+
+.table > thead > tr { background-color: rgb(239, 239, 243); }
+
+.table > thead > td { padding-top: 6px; padding-bottom: 6px; }
+
+.anchor { text-decoration: none; line-height: 1; border: none !important; }
+
+.anchor-icon { vertical-align: middle; visibility: hidden; }
+
+.calendar-date:hover .anchor-icon { visibility: visible; }
+
+.course-info-list { font-size: 1.2em; }
+
+.course-info h2, .course-personnel h2 { font-weight: bold; font-size: 115%;=
+ }
+
+.content h1 { margin-bottom: 2px; padding-top: 0.5em; padding-bottom: 0px; =
+line-height: 100%; font-size: 160%; letter-spacing: 0.1em; border-bottom: 3=
+px solid rgb(232, 238, 244); }
+
+.content h2 { font-size: 135%; font-weight: bold; margin-bottom: 0em; margi=
+n-top: 0.5em; }
+
+.content h3 { font-size: 115%; margin-bottom: 0px; font-weight: bold; }
+
+#course-description { padding-right: 40px; }
+
+.course-info h1 { font-size: 125%; }
+
+.wrapper.style2 { padding: 3em; background-color: rgb(158, 158, 51) !import=
+ant; }
+
+.wrapper.style2 a { color: white; }
+
+.wrapper.style2 { padding: 3em; border-radius: 10px; }
+
+.wrapper { padding-top: 1em !important; padding-bottom: 10px !important; }
+
+code { padding: 2px 4px; font-size: 90%; color: rgb(199, 37, 78); backgroun=
+d-color: rgb(249, 242, 244); white-space: nowrap; border-radius: 4px; }
+
+code, tt, pre { font-family: Menlo, Monaco, Consolas, "Courier New", monosp=
+ace; }
+
+tt.filepath { color: rgb(96, 99, 100); background-color: rgb(238, 244, 244)=
+; }
+
+pre { display: block; padding: 10px; margin: 0px 0px 10.5px; font-size: 14p=
+x; line-height: 1.42857; word-break: break-all; overflow-wrap: break-word; =
+background-color: rgb(236, 240, 241); border: 1px solid rgb(204, 204, 204);=
+ border-radius: 4px; color: rgb(62, 63, 58); font-weight: bold; }
+
+p.warning { padding: 15px; font-size: 120%; margin-bottom: 4px; border-radi=
+us: 4px; }
+
+.bg-fatal { color: white; font-weight: bold; background-color: rgb(18, 5, 1=
+7); }
+
+.bg-danger { background-color: rgb(255, 239, 229); margin-bottom: 1px; bord=
+er: 1px solid rgb(204, 204, 204); border-radius: 4px; }
+
+.bg-danger a { color: rgb(196, 18, 48); font-weight: bold; }
+
+.bg-info { background-color: rgb(223, 240, 216); border: 1px solid rgb(204,=
+ 204, 204); border-radius: 4px; }
+
+.bg-info a { color: rgb(196, 18, 48); font-weight: bold; }
+
+div.assignments { padding: 2px 2px 2px 4px; }
+
+div.assignments span { font-size: 120%; }
+
+table.assignments a { font-weight: bold; }
+
+td.assignment-name { padding-left: 2px; }
+
+div.question { border-bottom: 2px solid rgb(221, 221, 221); margin-top: 2px=
+; margin-bottom: 20px; }
+
+ul.sponsors { min-height: 50px; margin-top: 10px; margin-bottom: 0px; paddi=
+ng-bottom: 0px; text-align: center; }
+
+.sponsors li { list-style: none; padding: 0px; margin-left: 0px; margin-bot=
+tom: 10px; }
+
+.sponsors img { width: 100%; height: auto; }
+
+.faq h2 { line-height: 1.1em; }
+
+div.faq { margin-top: 1em; margin-bottom: 1em; }
+
+ul.faq { border-bottom: 1px solid rgb(86, 88, 89); line-height: 1em; }
+
+.faq li { margin-bottom: 0.75em; }
+
+@media (max-width: 1024px) {
+  .course-info h2, .course-personnel h2 { font-size: 1.05em; }
+  table.instructors img { max-width: 90px; }
+  table.tas img { max-width: 70px; }
+  .calendar-activity .lecture-title { font-size: 100%; }
+  .table { font-size: 90%; }
+  .wrapper { padding-bottom: 10px !important; }
+  .course-personnel th { text-align: center; }
+  .sponsors li { padding-bottom: 10px; }
+  #footer img { max-width: 30% !important; }
+  #footer { padding: 2px !important; }
+  code, tt, pre { font-size: 90%; }
+}
+
+@media (max-width: 600px) {
+  table { font-size: 50%; }
+  .calendar-date { font-size: 60%; }
+  table.instructors img { max-width: 60px; }
+  table.tas img { max-width: 40px; }
+  div.pill-box { margin-top: 16px; font-size: 80%; }
+  #course-description { padding-right: 0px; }
+  .course-info-list { font-size: 100%; text-align: left; }
+  .table-striped { font-size: 80%; line-height: 105%; }
+  .course-info h2, .course-personnel h2 { font-size: 110%; }
+  #footer img { max-width: 50% !important; }
+  code, tt, pre { font-size: 80%; }
+  .calendar-activity span.special { display: block; }
+  .faq li { padding-left: 0px; }
+}
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-dd6a5837-74fe-4321-9bee-cc61bad3527f@mhtml.blink
+
+@charset "utf-8";
+
+.eusoft-eudic-translate-failed-container[_ngcontent-ng-c3081775404] { posit=
+ion: fixed !important; bottom: 50px !important; right: 50px !important; bor=
+der-radius: 5px !important; box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 24px !i=
+mportant; z-index: 2147483647 !important; }
+
+.eusoft-eudic-translate-failed-content-script[_ngcontent-ng-c3081775404] { =
+border: 1px solid rgb(232, 232, 232) !important; background-color: rgb(248,=
+ 250, 254) !important; }
+
+html.light-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.dark-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.sepia-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-11e240fc-52c9-4408-87dc-810383733119@mhtml.blink
+
+@charset "utf-8";
+
+.eudic-tippy-content-container[_ngcontent-ng-c614250349] { max-width: 250px=
+ !important; }
+
+.eusoft-chrome-extension-popup-menu[_ngcontent-ng-c614250349] { position: f=
+ixed; z-index: 2147483647; top: 50%; }
+
+.eusoft-chrome-extension-popup-menu.eusoft-chrome-extension-popup-menu-left=
+[_ngcontent-ng-c614250349] { left: 4px; }
+
+.eusoft-chrome-extension-popup-menu.eusoft-chrome-extension-popup-menu-righ=
+t[_ngcontent-ng-c614250349] { right: 4px; }
+
+.eusoft-chrome-extension-mask-container[_ngcontent-ng-c614250349] { backgro=
+und-color: transparent; position: fixed; inset: 0px; z-index: 2147483646; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-8f5a43de-d96f-4082-b305-04273b797ff2@mhtml.blink
+
+@charset "utf-8";
+
+.not-global, .not-wide { display: none !important; }
+
+.only-normal, .only-narrow, .only-narrower, .only-mobile { display: none !i=
+mportant; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-3d466300-be2f-44b9-b978-f397abfb00c2@mhtml.blink
+
+@charset "utf-8";
+
+.row > * { padding-left: 40px; }
+
+.row + .row > * { padding: 40px 0px 0px 40px; }
+
+.row { margin-left: -40px; }
+
+.row.flush > * { padding-left: 0px; }
+
+.row + .row.flush > * { padding: 0px; }
+
+.row.flush { margin-left: 0px; }
+
+.row.half > * { padding-left: 20px; }
+
+.row + .row.half > * { padding: 20px 0px 0px 20px; }
+
+.row.half { margin-left: -20px; }
+
+.row.quarter > * { padding-left: 10px; }
+
+.row + .row.quarter > * { padding: 10px 0px 0px 10px; }
+
+.row.quarter { margin-left: -10px; }
+
+.row.oneandhalf > * { padding-left: 60px; }
+
+.row + .row.oneandhalf > * { padding: 60px 0px 0px 60px; }
+
+.row.oneandhalf { margin-left: -60px; }
+
+.row.double > * { padding-left: 80px; }
+
+.row + .row.double > * { padding: 80px 0px 0px 80px; }
+
+.row.double { margin-left: -80px; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-0711e8ea-7082-4e3e-a6ce-e83501398572@mhtml.blink
+
+@charset "utf-8";
+
+.row > * { float: left; }
+
+.row::after { content: ""; display: block; clear: both; height: 0px; }
+
+.row:first-child > * { padding-top: 0px !important; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-95f14e21-6ee1-4fe9-91cf-35d77ad3f698@mhtml.blink
+
+@charset "utf-8";
+
+.\31 2u { width: 100%; }
+
+.\31 1u { width: 91.6667%; }
+
+.\31 0u { width: 83.3333%; }
+
+.\39 u { width: 75%; }
+
+.\38 u { width: 66.6667%; }
+
+.\37 u { width: 58.3333%; }
+
+.\36 u { width: 50%; }
+
+.\35 u { width: 41.6667%; }
+
+.\34 u { width: 33.3333%; }
+
+.\33 u { width: 25%; }
+
+.\32 u { width: 16.6667%; }
+
+.\31 u { width: 8.33333%; }
+
+.-\31 1u { margin-left: 91.6667%; }
+
+.-\31 0u { margin-left: 83.3333%; }
+
+.-\39 u { margin-left: 75%; }
+
+.-\38 u { margin-left: 66.6667%; }
+
+.-\37 u { margin-left: 58.3333%; }
+
+.-\36 u { margin-left: 50%; }
+
+.-\35 u { margin-left: 41.6667%; }
+
+.-\34 u { margin-left: 33.3333%; }
+
+.-\33 u { margin-left: 25%; }
+
+.-\32 u { margin-left: 16.6667%; }
+
+.-\31 u { margin-left: 8.33333%; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-d77ad621-11bf-416f-8abd-ce126d3d64ad@mhtml.blink
+
+@charset "utf-8";
+
+body { min-width: 1200px; }
+
+.container { margin-left: auto; margin-right: auto; width: 1200px; }
+
+.container.small { width: 900px; }
+
+.container.big { width: 100%; max-width: 1500px; min-width: 1200px; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-ec5cb2fc-e612-423e-af3c-b1c2d45c6d35@mhtml.blink
+
+@charset "utf-8";
+
+*, ::before, ::after { box-sizing: border-box; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-affa8588-e7b1-47a8-9cb5-eedb60b5e17a@mhtml.blink
+
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, b=
+lockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, i=
+mg, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i=
+, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, cap=
+tion, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, emb=
+ed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, se=
+ction, summary, time, mark, audio, video { margin: 0px; padding: 0px; borde=
+r: 0px; font: inherit; vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, =
+nav, section { display: block; }
+
+body { line-height: 1; }
+
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+
+blockquote::before, blockquote::after, q::before, q::after { content: none;=
+ }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+body { text-size-adjust: none; }
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-65f296d1-3283-4b79-b08e-f1f93c710c94@mhtml.blink
+
+@charset "utf-8";
+=0A
+------MultipartBoundary--qltb7YWnjxTngKvV76SDs72xkiIgFSveb1K2msUWnl------

@@ -1,0 +1,364 @@
+项目2 - 可扩展哈希索引
+
+请勿将你的项目发布在公开的Github仓库中。
+
+概述
+
+第二个编程项目是为BusTub数据库管理系统实现一个磁盘支持的哈希表。你的哈希表负责快速检索数据，而无需搜索数据库表中的每条记录。
+
+你需要使用可扩展哈希方案来实现哈希表。
+
+这个索引包含一个目录页面，其中包含指向桶页面的指针。该表将通过项目#1中的缓冲池访问页面。该表包含一个存储表的所有元数据和桶的目录页面。你的哈希表需要支持完整/空桶的桶分裂/合并，以及在全局深度必须更改时的目录扩展/收缩。
+
+你需要在哈希表实现中完成以下任务：
+
+1. 页面布局
+2. 可扩展哈希实现
+3. 并发控制
+
+这是一个单人项目，将单独完成（即不分组）。
+
+发布日期：2021年9月27日
+截止日期：2021年10月21日 @ 晚上11:59
+
+项目规范
+
+与第一个项目一样，我们为你提供了包含需要实现的API的存根类。你不应修改这些类中预定义函数的签名。如果这样做，将破坏我们将用于评分的测试代码，你将得不到项目的分数。如果一个类已经包含某些成员变量，你不应删除它们。但你可以向这些类添加私有辅助函数/成员变量，以正确实现功能。
+
+可扩展哈希表索引的正确性取决于你的缓冲池实现的正确性。我们不会为之前的编程项目提供解决方案。
+
+任务#1 - 页面布局
+
+你的哈希表应该通过DBMS的BufferPoolManager访问。这意味着你不能分配内存来存储信息。所有内容都必须存储在磁盘页面中，以便可以从DiskManager读写。如果你创建了一个哈希表，将其页面写入磁盘，然后重新启动DBMS，你应该能够在重新启动后从磁盘加载回哈希表。
+
+为了支持在页面顶部读写哈希表桶，你将实现两个Page类来存储哈希表的数据。这是为了教你如何从BufferPoolManager分配内存作为页面。
+
+1. 哈希表目录页面
+2. 哈希表桶页面
+
+哈希表目录页面
+
+这个类保存哈希表的所有元数据。它分为如下表所示的字段：
+
+变量名 大小 描述
+
+page_id_ 4字节 自身页面ID
+
+lsn_ 4字节 日志序列号（用于项目4）
+
+global_depth_ 4字节 目录的全局深度
+
+local_depths_ 512字节 每个桶的本地深度数组（uint8）
+
+bucket_page_ids_ 2048字节 桶page_id_t数组
+
+bucket_page_ids_数组将桶ID映射到page_id_t ID。bucket_page_ids_中的第i个元素是第i个桶的page_id。
+
+你必须在指定的文件中实现哈希表目录页面。你只允许修改目录文件（src/include/storage/page/hash_table_directory_page.h）及其对应的源文件（src/storage/page/hash_table_directory_page.cpp）。目录和桶页面与LinearProbeHashTable的Header和Block页面完全分开，所以请确保你编辑的是正确的文件。
+
+哈希表桶页面
+
+哈希表桶页面包含三个数组：
+
+• occupied_：如果array_的第i个索引曾经被占用过，则occupied_的第i位为1。
+
+• readable_：如果array_的第i个索引保存了可读的值，则readable_的第i位为1。
+
+• array_：保存键值对的数组。
+
+哈希表桶页面中可用的槽数取决于存储的键和值的类型。你只需要支持固定长度的键和值。键/值的大小在单个哈希表实例中是相同的，但你不能假设所有实例都相同（例如，哈希表#1可以有32位键，哈希表#2可以有64位键）。
+
+你必须在指定的文件中实现哈希表桶页面。你只允许修改头文件（src/include/storage/page/hash_table_bucket_page.h）及其对应的源文件（src/storage/page/hash_table_bucket_page.cpp）。目录和桶页面与LinearProbeHashTable的Header和Block页面完全分开，所以请确保你编辑的是正确的文件。
+
+每个哈希表目录/桶页面对应于缓冲池获取的内存页面的内容（即字节数组data_）。每次尝试读取或写入页面时，你需要首先使用其唯一的page_id从缓冲池获取页面，然后重新解释为目录或桶页面，并在任何写入或读取操作后取消固定页面。
+
+我们提供了各种辅助函数，或建议辅助函数的文档。你必须实现的唯一函数如下：
+
+桶页面：
+• Insert
+
+• Remove
+
+• IsOccupied
+
+• IsReadable
+
+• KeyAt
+
+• ValueAt
+
+目录页面：
+• GetGlobalDepth
+
+• IncrGlobalDepth
+
+• SetLocalDepth
+
+• SetBucketPageId
+
+• GetBucketPageId
+
+你可以自由设计和实现你认为合适的其他新函数。但是，你需要注意名称冲突。这种情况应该很少见，但在Gradescope中会作为编译器错误出现。
+
+任务#2 - 哈希表实现
+
+你将实现一个使用可扩展哈希方案的哈希表。它需要支持插入（Insert）、点搜索（GetValue）和删除（Remove）。可扩展哈希表的头文件和cpp文件中实现或记录了许多辅助函数。你唯一的严格API要求是遵守Insert、GetValue和Remove。你还必须将VerifyIntegrity函数保持原样。请随意设计和实现你认为合适的其他函数。
+
+你的哈希表必须同时支持唯一和非唯一键。不允许同一键的重复值。这意味着（key_0, value_0）和（key_0, value_1）可以存在于同一个哈希表中，但（key_0, value_0）和（key_0, value_0）不能。只有当Insert尝试插入现有的键值对时，它才返回false。
+
+你的哈希表实现必须隐藏键/值类型和相关比较器的细节，如下所示：
+template <typename KeyType, typename ValueType, typename KeyComparator>
+class ExtendibleHashTable {
+   // ---
+};
+
+
+这些类已经为你实现：
+
+• KeyType：哈希表中每个键的类型。这只能是GenericKey，GenericKey的实际大小用模板参数指定和实例化，并取决于索引属性的数据类型。
+
+• ValueType：哈希表中每个值的类型。这只能是64位RID。
+
+• KeyComparator：用于比较两个KeyType实例是否小于/大于彼此的类。这些将包含在KeyType实现文件中。具有KeyComparator类型的变量本质上是函数；例如，给定两个键KeyType key1和KeyType key2，以及一个键比较器KeyComparator cmp，你可以通过cmp(key1, key2)比较键。
+
+注意，你可以简单地使用==运算符相等测试ValueType实例。
+
+可扩展哈希实现细节
+
+此实现要求你实现桶分裂/合并和目录增长/收缩。可扩展哈希的某些实现在某些情况下可能会跳过桶的合并，因为它可能导致抖动。我们在此实现它，以提供对数据结构的完整理解，并提供更多学习如何管理锁、页面操作（获取/固定/删除等）的机会。
+
+目录索引
+
+当插入到哈希索引中时，你将希望使用最低有效位来索引到目录中。当然，使用最高有效位也是可能的，但使用最低有效位使得目录扩展操作简单得多。
+
+桶分裂
+
+如果没有插入空间，你必须分裂桶。如果你发现更容易，可以在桶变满时立即分裂。然而，参考解决方案只有在插入会导致页面溢出时才分裂。因此，你可能会发现提供的API更适用于这种方法。一如既往，你可以设计自己的内部API。
+
+桶合并
+
+当桶变空时，必须尝试合并。有更积极地合并的方法，通过检查桶及其分裂映像的占用情况，但这些昂贵的检查和额外的合并会增加抖动。
+
+为了保持相对简单，我们为合并提供以下规则：
+
+1. 只有空桶才能合并。
+2. 只有在其分裂映像具有相同本地深度时，桶才能与其分裂映像合并。
+3. 只有在其本地深度大于0时，桶才能合并。
+
+如果你对"分裂映像"感到困惑，请查看算法和代码文档。这个概念自然而然地出现。
+
+目录增长
+
+对此没有花哨的规则。你要么必须增长目录，要么不需要。
+
+目录收缩
+
+只有当每个桶的本地深度严格小于目录的全局深度时，才收缩目录。你可能会看到目录收缩的其他测试，但这个很简单，因为我们将本地深度保存在目录页面中。
+
+性能
+
+一个重要的性能细节是仅在需要时获取写锁和锁。始终获取写锁将不可避免地导致Gradescope超时。
+
+此外，一个潜在的优化是为自己的扫描类型在桶页面上进行分解，这可以在某些情况下避免重复扫描。你会发现检查桶页面的许多事项通常涉及完整扫描，因此你可以一次性收集所有这些信息。
+
+任务#3 - 并发控制
+
+到目前为止，你可以假设你的哈希表只支持单线程执行。在这最后一个任务中，你将修改实现，使其支持多个线程同时读取/写入表。
+
+你需要在每个桶上放置锁，以便当一个线程正在写入一个桶时，其他线程不会同时读取或修改该索引。你还应允许多个读者同时读取同一个桶。
+
+当你需要分裂或合并桶，以及全局深度更改时，你需要锁定整个哈希表。
+
+要求与提示
+
+锁
+
+在这个项目中有两个锁需要注意。第一个是extendible_hash_table.h中的table_latch_，它锁定可扩展哈希表。这来自src/include/common/rwlatch.h中的RWLatch类。正如你在代码中看到的，它由std::mutex支持。第二个是src/include/storage/page.h中内置的页面锁定功能。你必须使用它来保护桶页面。注意，要对table_latch_获取读锁，你需要从RWLatch.h调用RLock，但对桶页面获取读锁，你必须将reinterpret_cast<Page *>转换为页面指针，并从page.h调用RLatch方法。
+
+我们建议你查看可扩展哈希表类，查看其成员，并分析哪些锁将允许哪些行为。我们也建议你对桶页面做同样的事情。
+
+项目4将通过LockManager.h中的LockManager探索并发控制。你完全不需要这个项目中的LockManager。
+
+事务指针
+
+当需要时，你可以简单地传递nullptr作为事务指针参数。此事务对象来自src/include/concurrency/transaction.h。它提供了存储你遍历哈希表时获取锁的页面的方法。你不需要这样做来通过测试。
+
+说明和常见问题
+
+开发环境设置
+
+请参阅项目#0的说明，了解如何创建你的私人仓库和设置开发环境。
+
+你必须拉取我们BusTub仓库的最新更改，以获取我们为你提供的测试文件和其他补充文件。运行git pull public master。
+
+编译问题
+
+如果你在编译时遇到问题，请尝试删除build目录并创建一个新的。运行make clean不会完全重置编译过程，因此从头开始使用cmake ..可能会有帮助。
+
+测试 - GTest和GDB
+
+你可以使用我们的测试框架测试此作业的各个组件。我们使用GTest进行单元测试。
+cd build
+make -j hash_table_test
+./test/hash_table_test
+
+
+我们鼓励你使用gdb调试项目，如果你遇到问题。这里是gdb中有用命令的参考。确保你已使用调试标志运行cmake，以便gdb具有要使用的调试符号。
+
+内存安全 - Valgrind
+
+为确保你的实现没有内存泄漏，你可以使用Valgrind运行测试。确保在没有cmake调试标志的情况下运行Valgrind，因为这有时会导致ASan运行时错误。如果你启用了调试模式，可以重新制作build目录，或者有两个单独的build目录。
+cd build
+make -j hash_table_test
+valgrind --trace-children=yes \
+   --leak-check=full \
+   --track-origins=yes \
+   --soname-synonyms=somalloc=*jemalloc* \
+   --error-exitcode=1 \
+   --suppressions=../build_support/valgrind.supp \
+   ./test/hash_table_test
+
+
+重要：这些测试只是我们将用于评估和评分你项目的所有测试的一个子集。你应该自己编写额外的测试用例来检查实现的完整功能。此外，如果Valgrind超时，那么你的实现可能不够高效。如果你的缓冲池管理器实现速度慢，那么你可能还需要调试BPM。
+
+格式规范
+
+你的代码必须遵循Google C++风格指南。我们使用Clang自动检查源代码的质量。如果你的提交未通过任何这些检查，你的项目分数将为零。
+
+执行以下命令检查语法。format目标将自动更正你的代码。check-lint和check-clang-tidy目标将打印错误并指导你如何修复以符合我们的风格指南。
+$ make -j format
+$ make -j check-lint
+$ make -j check-clang-tidy
+
+
+如果这些命令中的任何一个有问题，可能与你安装的Python相关，或者远程文件上的文件权限有关。请尝试阅读错误，理解问题，并通过检查/编辑$PATH、使用chmod管理权限、使用brew或apt管理已安装的包来解决它。
+
+开发提示
+
+不要使用printf或cout语句进行调试，使用LOG_*宏记录信息，如下所示：
+LOG_INFO("# Pages: %d", num_pages);
+LOG_DEBUG("Fetching page %d", page_id);
+
+
+要在项目中启用日志记录，你需要像这样重新配置它：
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_BUILD_TYPE=DEBUG ..
+$ make -j
+
+
+不同的日志级别定义在src/include/common/logger.h中。启用日志记录后，日志级别默认为LOG_LEVEL_INFO。任何级别等于或高于LOG_LEVEL_INFO的日志方法（例如LOG_INFO、LOG_WARN、LOG_ERROR）都将发出日志信息。请注意，你需要在任何想要使用日志记录基础结构的文件中添加#include "common/logger.h"。
+
+方法签名
+
+请不要更改任何提供的方法的任何方法签名。你可以自由添加自己的辅助方法。
+
+添加辅助函数 - 模板化
+
+如果你在添加新函数时遇到函数签名的麻烦，以下示例可能会有所帮助。
+
+这是项目2中使用的其中一个重要模板：
+template <typename KeyType, typename ValueType, typename KeyComparator>
+
+
+你可以看到它没有直接出现在extendible_hash_table.h中的Remove函数上方：
+bool Remove(Transaction *transaction, const KeyType &key, const ValueType &value);
+
+
+但是，在extendible_hash_table.cpp中的Remove函数上方需要：
+template <typename KeyType, typename ValueType, typename KeyComparator>
+bool HASH_TABLE_TYPE::Remove(Transaction *transaction, const KeyType &key, const ValueType &value) {
+  return false;
+}
+
+
+还要注意Remove函数上的HASH_TABLE_TYPE模板。这在extendible_hash_table.h中定义为：
+#define HASH_TABLE_TYPE ExtendibleHashTable<KeyType, ValueType, KeyComparator>
+
+
+添加新函数时，以下步骤应该有效：
+
+1. 将函数签名添加到头文件。尽可能使用私有函数。如果需要添加公共函数，请注意与评分框架的名称冲突。你可以通过某种方式使函数名称唯一来预先避免这种情况，但通常不应有冲突。
+2. 将函数添加到带有模板的.cpp文件。你可能需要在函数名称前使用模板，如TEMPLATE::FunctionName。如果你正在使用KeyType、ValueType和/或KeyComparator，你需要在函数签名上方添加上述模板。
+
+将所有关于此项目的问题发布在Piazza上。不要直接通过电子邮件向助教提问。
+
+Gradescope执行失败
+
+如果Gradescope给出执行失败错误，那么最可能的原因是代码无法编译，或者你记录了无效的UTF-8字符。删除所有日志记录，删除本地build文件夹，并重新构建项目。
+
+评分标准
+
+每个项目提交将根据以下标准进行评分：
+
+1. 提交是否成功执行所有测试用例并产生正确答案？
+2. 提交是否执行时没有任何内存泄漏？
+
+请注意，我们将使用额外的测试用例，这些测试用例更复杂，超出了我们提供的示例测试用例。
+
+迟交政策
+
+请参阅课程大纲中的迟交政策。
+
+提交
+
+完成作业后，你可以将实现提交到Gradescope。由于我们为此项目有两个检查点，你需要分别通过以下链接提交。
+
+https://www.gradescope.com/courses/286490/
+
+你只需要包含以下文件：
+
+• src/include/buffer/lru_replacer.h
+
+• src/buffer/lru_replacer.cpp
+
+• src/include/buffer/buffer_pool_manager_instance.h
+
+• src/buffer/buffer_pool_manager_instance.cpp
+
+• src/include/buffer/parallel_buffer_pool_manager.h
+
+• src/buffer/parallel_buffer_pool_manager.cpp
+
+• src/include/storage/page/hash_table_directory_page.h
+
+• src/storage/page/hash_table_directory_page.cpp
+
+• src/include/storage/page/hash_table_bucket_page.h
+
+• src/storage/page/hash_table_bucket_page.cpp
+
+• src/include/container/hash/extendible_probe_hash_table.h
+
+• src/container/hash/extendible_probe_hash_table.cpp
+
+或者，从你的工作目录（即bustub、bustub-private等）运行此zip命令将创建一个名为project2-submission.zip的zip存档，你可以将其提交到Gradescope。你也可以将此命令放在bash文件中并运行该bash文件，以使操作更简单。
+$ zip project2-submission.zip src/include/buffer/lru_replacer.h \
+src/buffer/lru_replacer.cpp \
+src/include/buffer/buffer_pool_manager_instance.h \
+src/buffer/buffer_pool_manager_instance.cpp \
+src/include/buffer/parallel_buffer_pool_manager.h \
+src/buffer/parallel_buffer_pool_manager.cpp \
+src/include/storage/page/hash_table_directory_page.h \
+src/storage/page/hash_table_directory_page.cpp \
+src/include/storage/page/hash_table_bucket_page.h \
+src/storage/page/hash_table_bucket_page.cpp \
+src/include/container/hash/extendible_hash_table.h \
+src/container/hash/extendible_hash_table.cpp
+
+
+你可以根据需要多次提交答案并获得即时反馈。
+
+合作政策
+
+• 每个学生必须独立完成此作业。
+
+• 允许学生与他人讨论项目的高级细节。
+
+• 不允许学生在与其他学生会面后复制白板内容。
+
+• 不允许学生复制其他同学的解决方案。
+
+警告：本项目所有代码必须是你自己编写的。不得从其他学生或从网络上找到的其他来源复制源代码。抄袭将不被容忍。有关更多信息，请参阅CMU的学术诚信政策。
+
+最后更新：2022年1月7日

@@ -1,0 +1,3801 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://15445.courses.cs.cmu.edu/fall2021/project2/
+Subject: Project #2 - Extendible Hash Index | CMU 15-445/645 :: Intro to Database Systems (Fall 2021)
+Date: Fri, 19 Dec 2025 08:54:28 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----"
+
+
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/html
+Content-ID: <frame-F207927DE8186454E73842A112222E31@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/project2/
+
+<!DOCTYPE html><html lang=3D"en" xmlns:og=3D"https://ogp.me/ns#" xmlns:fb=
+=3D"https://www.facebook.com/2008/fbml" class=3D" global wide js flexbox ca=
+nvas canvastext webgl no-touch geolocation postmessage no-websqldatabase in=
+dexeddb hashchange history draganddrop websockets rgba hsla multiplebgs bac=
+kgroundsize borderimage borderradius boxshadow textshadow opacity cssanimat=
+ions csscolumns cssgradients cssreflections csstransforms csstransforms3d c=
+sstransitions fontface generatedcontent video audio localstorage sessionsto=
+rage webworkers no-applicationcache svg inlinesvg smil svgclippaths" style=
+=3D"" data-eusoft-scrollable-element=3D"1"><head><meta http-equiv=3D"Conten=
+t-Type" content=3D"text/html; charset=3DUTF-8"><link rel=3D"stylesheet" typ=
+e=3D"text/css" href=3D"cid:css-c7d48cb3-2c41-4266-945d-e6457e03699e@mhtml.b=
+link" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-df438f12=
+-223c-422e-ac83-1c0e462d10c1@mhtml.blink" /><link rel=3D"stylesheet" type=
+=3D"text/css" href=3D"cid:css-774f9380-4e00-46ab-99f2-fde461993b6d@mhtml.bl=
+ink" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-19ce6d42-=
+9685-46bd-9930-f64478d66ead@mhtml.blink" /><link rel=3D"stylesheet" type=3D=
+"text/css" href=3D"cid:css-6a610cd7-452d-4ab0-8191-747628b87341@mhtml.blink=
+" /><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-6468ef46-c15=
+d-4adc-9bf7-79e666b2edf7@mhtml.blink" /><link rel=3D"stylesheet" type=3D"te=
+xt/css" href=3D"cid:css-b0153255-0f20-4c93-9887-e05ec91e2629@mhtml.blink" /=
+><link rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-875ced87-ed1e-4=
+979-ac13-89d4c86c6e18@mhtml.blink" /><link rel=3D"stylesheet" type=3D"text/=
+css" href=3D"cid:css-82b0fdf8-2cfb-4c2e-aaef-c633bd8ff7f4@mhtml.blink" /><l=
+ink rel=3D"stylesheet" type=3D"text/css" href=3D"cid:css-85c05ad7-ed7c-4f13=
+-af46-3ef649d3b888@mhtml.blink" />
+   =20
+   =20
+        <meta name=3D"author" content=3D"Lin Ma + Andrew Crotty">
+        <meta name=3D"description" content=3D"Do not post your project on a=
+ public Github repository. Overview The second programming project is to im=
+plement a disk-backed hash table for the BusTub DBMS. Your hash table is re=
+sponsible for fast data retrieval without having to search through every re=
+cord in a database table. You will need to =E2=80=A6">
+   =20
+    <meta name=3D"keywords" content=3D"">
+    <!--[if lte IE 8]><script src=3D"../css/ie/html5shiv.js"></script><![en=
+dif]-->
+   =20
+   =20
+    <link rel=3D"stylesheet" type=3D"text/css" href=3D"https://15445.course=
+s.cs.cmu.edu/fall2021//css/style.css"><link rel=3D"stylesheet" type=3D"text=
+/css" href=3D"https://15445.courses.cs.cmu.edu/fall2021//css/style-wide.css=
+">
+   =20
+   =20
+    <link rel=3D"stylesheet" href=3D"https://15445.courses.cs.cmu.edu/fall2=
+021/css/pygment.css">
+   =20
+   =20
+    <link href=3D"https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/fo=
+nt-awesome.min.css" rel=3D"stylesheet">
+    <link href=3D"https://fonts.googleapis.com/css?family=3DAnonymous+Pro:r=
+egular,italic,bold,bolditalic" rel=3D"stylesheet" type=3D"text/css">
+    <link href=3D"https://fonts.googleapis.com/css?family=3DLato:300,400,90=
+0" rel=3D"stylesheet" type=3D"text/css">
+    <!--[if lte IE 8]><link rel=3D"stylesheet" href=3D"/css/ie/v8.css" /><!=
+[endif]-->
+    <!--[if lte IE 9]><link rel=3D"stylesheet" href=3D"/css/ie/v9.css" /><!=
+[endif]--> =20
+   =20
+    <meta property=3D"og:site_name" content=3D"CMU 15-445/645">
+    <meta property=3D"og:type" content=3D"article">
+    <meta property=3D"og:title" content=3D"Project #2 - Extendible Hash Ind=
+ex - CMU 15-445/645 :: Intro to Database Systems (Fall 2021)">
+    <meta property=3D"og:url" content=3D"../project2/index.html">
+    <meta property=3D"article:published_time" content=3D"2022-01-07">
+    <meta property=3D"og:description" content=3D"Do not post your project o=
+n a public Github repository. Overview The second programming project is to=
+ implement a disk-backed hash table for the BusTub DBMS. Your hash table is=
+ responsible for fast data retrieval without having to search through every=
+ record in a database table. You will need to =E2=80=A6">
+        <meta property=3D"og:image" content=3D"https://15445.courses.cs.cmu=
+.edu/fall2021/images/twitter-card.jpg">
+
+    <meta name=3D"twitter:card" content=3D"summary_large_image">
+        <meta name=3D"twitter:site" content=3D"@CMUDB">
+        <meta name=3D"twitter:creator" content=3D"@CMUDB">
+    <meta name=3D"twitter:domain" content=3D"..">
+            <meta property=3D"twitter:image" content=3D"https://15445.cours=
+es.cs.cmu.edu/fall2021/images/twitter-card.jpg">
+    <meta property=3D"twitter:label1" content=3D"Semester">
+    <meta property=3D"twitter:data1" content=3D"Fall 2021">
+       =20
+   =20
+   =20
+    <link href=3D"https://db.cs.cmu.edu/favicon.png" rel=3D"icon">
+
+    <title>Project #2 - Extendible Hash Index | CMU 15-445/645 :: Intro to =
+Database Systems (Fall 2021) </title>
+       =20
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width">
+</head>
+
+<body class=3D""><div id=3D"skel-layers-wrapper" style=3D"left: 0px; right:=
+ 0px; top: 0px; position: absolute;">
+
+    <!-- Header -->
+    <header id=3D"header">
+        <h1 class=3D"logo">
+            <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/">CMU 15-4=
+45/645</a>
+        </h1>
+        <nav id=3D"nav">
+            <ul>
+                <li style=3D"white-space: nowrap;"><a href=3D"https://15445=
+.courses.cs.cmu.edu/fall2021/">Home</a></li>
+                            <li style=3D"white-space: nowrap;"><a href=3D"h=
+ttps://15445.courses.cs.cmu.edu/fall2021/assignments.html">Assignments</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/faq.html">FAQ</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/schedule.html">Schedule</a>
+                            </li><li style=3D"white-space: nowrap;"><a href=
+=3D"https://15445.courses.cs.cmu.edu/fall2021/syllabus.html">Syllabus</a>
+                <!--
+                <li class=3D"submenu">
+                    <a href=3D"../">Blog</a>
+                    <ul>
+                    </ul>
+                </li>
+                -->
+                </li><li style=3D"white-space: nowrap;"> <a title=3D"Youtub=
+e" href=3D"https://www.youtube.com/playlist?list=3DPLSE8ODhjZXjZaHA6QcxDfJ0=
+SIWBzQFKEG" target=3D"_new"><i class=3D"fa fa-youtube"></i> Youtube</a>
+                </li><li style=3D"white-space: nowrap;"> <a title=3D"Piazza=
+" href=3D"https://piazza.com/cmu/fall2021/15445645/" target=3D"_new"><i cla=
+ss=3D"fa fa-comments-o"></i> Piazza</a>
+               =20
+                </li><li class=3D"opener" style=3D"user-select: none; curso=
+r: pointer; white-space: nowrap;"><a href=3D"https://15445.courses.cs.cmu.e=
+du/fall2021/project2/#" class=3D"dropdown-toggle" data-toggle=3D"dropdown" =
+data-hover=3D"dropdown" data-delay=3D"1000" data-close-others=3D"true"> <i =
+class=3D"fa fa-book"></i> Archives <span class=3D"caret"></span></a>
+                <ul class=3D"" role=3D"menu" style=3D"user-select: none; di=
+splay: none; position: absolute;">
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2020/" target=3D"_archive1" style=3D"display: b=
+lock;">Fall 2020</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2019/" target=3D"_archive2" style=3D"display: b=
+lock;">Fall 2019</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2018/" target=3D"_archive3" style=3D"display: b=
+lock;">Fall 2018</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2017/" target=3D"_archive4" style=3D"display: b=
+lock;">Fall 2017</a></li>
+                </ul></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Main -->
+<article id=3D"main">
+
+    <header class=3D"special container">
+        <span class=3D"icon fa-database"></span>
+        <h2>Project #2 - Extendible Hash Index</h2>
+    </header>
+
+    <section class=3D"wrapper style4 container">
+ =20
+        <!-- Content -->
+        <div class=3D"content">
+            <section>
+                <p></p><p class=3D"warning bg-fatal">
+    <i class=3D"trigger fa fa-exclamation-triangle fa-lg" data-eusoft-scrol=
+lable-element=3D"1"></i>
+    Do <u>not</u> post your project on a public Github repository.
+</p>
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- OVERVIEW                                                              =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"overview" data-eusoft-scrollable-element=3D"1">Overview</h1>
+<p>The second programming project is to implement a disk-backed hash table =
+for the BusTub DBMS. Your hash table is responsible for fast data retrieval=
+ without having to search through every record in a database table.</p>
+<p>You will need to implement a hash table using the extendible hashing has=
+hing scheme. </p>
+<p>This index comprises a directory page that contains pointers to bucket p=
+ages. The table will access pages through your buffer pool from Project #1.=
+ The table contains a directory page that stores all the metadata for the t=
+able and buckets.  Your hash table needs to support bucket splitting/mergin=
+g for full/empty buckets, and directory expansion/contraction for when the =
+global depth must change.</p>
+<p>You will need to complete the following tasks in your hash table impleme=
+ntation:</p>
+<ul class=3D"default">
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project2/#tas=
+k1"><b>Page Layouts</b></a> </li>
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project2/#tas=
+k2"><b>Extendible Hashing Implementation</b></a> </li>
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project2/#tas=
+k3"><b>Concurrency Control</b></a> </li>
+</ul>
+
+<p>This is a single-person project that will be completed individually (i.e=
+., no groups).</p>
+<!-- START project2 -->
+<!-- AUTO-GENERATED BY GENERATE-SCHEDULE SCRIPT -->
+<!-- ANY MODIFICATIONS WILL BE OVERWRITTEN -->
+<ul>
+<li><b>Release Date:</b> Sep 27, 2021</li>
+<li><b>Due Date:</b> Oct 21, 2021 @ 11:59pm</li>
+</ul>
+<!-- END project2 -->
+
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- PROJECT SPECIFICATION                                                 =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 id=3D"specification" data-eusoft-scrollable-element=3D"1">Project Speci=
+fication</h1>
+
+<p>Like the first project, we are providing you with stub classes that cont=
+ain the API that you need to implement. You should <strong>not</strong> mod=
+ify the signatures for the pre-defined functions in these classes. If you d=
+o this, then it will break the test code that we will use to grade your ass=
+ignment you end up getting no credit for the project. If a class already co=
+ntains certain member variables, you should <strong>not</strong> remove the=
+m. But you may add private helper functions/member variables to these class=
+es in order to correctly realize the functionality.</p>
+<p>The correctness of the extendible hash table index depends on the correc=
+tness of your buffer pool implementation. We will <strong>not</strong> prov=
+ide solutions for the previous programming projects.</p>
+<!-- **************************************************** -->
+<!-- Task #1 - Hash Table Pages                           -->
+<!-- **************************************************** -->
+<h2 id=3D"task1">Task #1 - Page Layouts</h2>
+
+<p>Your hash table is meant to be accessed through the DBMS's <code>BufferP=
+oolManager</code>. This means that you cannot allocate memory to store info=
+rmation. Everything must be stored in disk pages so that they can read/writ=
+ten from the <code>DiskManager</code>. If you create a hash table, write it=
+s pages to disk, and then restart the DBMS, you should be able to load back=
+ the hash table from disk after restarting.</p>
+<p>To support reading/writing hash table buckets on top of pages, you will =
+implement two <code>Page</code> classes to store the data of your hash tabl=
+e. This is meant to teach you how to allocate memory from the <code>BufferP=
+oolManager</code> as pages.</p>
+<ul class=3D"default">
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project2/#has=
+h-table-directory-page"><b>Hash Table Directory Page</b></a> </li>
+    <li> <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project2/#has=
+h-table-bucket-page"><b>Hash Table Bucket Page</b></a> </li>
+</ul>
+
+<h3 id=3D"hash-table-directory-page">Hash Table Directory Page</h3>
+<p>This class holds all of the meta-data for the hash table. It is divided =
+into the fields as shown by the table below:</p>
+<table>
+<thead>
+<tr>
+<th align=3D"left"><b>Variable Name</b></th>
+<th align=3D"left"><b>Size</b></th>
+<th align=3D"left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align=3D"left"><code>page_id_</code></td>
+<td align=3D"left">4 bytes</td>
+<td align=3D"left">Self Page Id</td>
+</tr>
+<tr>
+<td align=3D"left"><code>lsn_</code></td>
+<td align=3D"left">4 bytes</td>
+<td align=3D"left">Log sequence number (Used in Project 4)</td>
+</tr>
+<tr>
+<td align=3D"left"><code>global_depth_</code></td>
+<td align=3D"left">4 bytes</td>
+<td align=3D"left">Global depth of the directory</td>
+</tr>
+<tr>
+<td align=3D"left"><code>local_depths_</code></td>
+<td align=3D"left">512 bytes</td>
+<td align=3D"left">Array of local depths for each bucket (uint8)</td>
+</tr>
+<tr>
+<td align=3D"left"><code>bucket_page_ids_</code></td>
+<td align=3D"left">2048 bytes</td>
+<td align=3D"left">Array of bucket <code>page_id_t</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>bucket_page_ids_</code> array maps bucket ids to <code>page_id=
+_t</code> ids. The i<sup>th</sup> element in <code>bucket_page_ids_</code> =
+is the <code>page_id</code> for the i<sup>th</sup> bucket.</p>
+<p>You must implement your Hash Table Directory Page in the designated file=
+s. You are only allowed to modify the directory file (<tt class=3D"filepath=
+">src/include/storage/page/hash_table_directory_page.h</tt>) and its corres=
+ponding source file (<tt class=3D"filepath">src/storage/page/hash_table_dir=
+ectory_page.cpp</tt>). The Directory and Bucket pages are fully separate fr=
+om the LinearProbeHashTable's Header and Block pages, so please make sure t=
+hat you are editing the correct files.</p>
+<h3 id=3D"hash-table-bucket-page">Hash Table Bucket Page</h3>
+<p>The Hash Table Bucket Page holds three arrays:</p>
+<ul class=3D"default">
+    <li> `occupied_` : The i<sup>th</sup> bit of `occupied_` is 1 if the i<=
+sup>th</sup> index of `array_` has ever been occupied. </li>
+    <li> `readable_` : The i<sup>th</sup> bit of `readable_` is 1 if the i<=
+sup>th</sup> index of `array_` holds a readable value. </li>
+    <li> `array_` : The array that holds the key-value pairs.  </li>
+</ul>
+
+<p>The number of slots available in a Hash Table Bucket Page depends on the=
+ types of the keys and values being stored. You only need to support fixed-=
+length keys and values. The size of keys/values will be the same within a s=
+ingle hash table instance, but you cannot assume that they will be the same=
+ for all instances (e.g., hash table #1 can have 32-bit keys and hash table=
+ #2 can have 64-bit keys).</p>
+<p>You must implement your Hash Table Bucket Page in the designated files. =
+You are only allowed to modify the header file (<tt class=3D"filepath">src/=
+include/storage/page/hash_table_bucket_page.h</tt>) and its corresponding s=
+ource file (<tt class=3D"filepath">src/storage/page/hash_table_bucket_page.=
+cpp</tt>). The Directory and Bucket pages are fully separate from the Linea=
+rProbeHashTable's Header and Block pages, so please make sure that you are =
+editing the correct files.</p>
+<p>Each Hash Table Directory/Bucket page corresponds to the content (i.e., =
+the byte array <code>data_</code>) of a memory page fetched by buffer pool.=
+ Every time you try to read or write a page, you need to first fetch the pa=
+ge from buffer pool using its unique <code>page_id</code>, then <a href=3D"=
+http://en.cppreference.com/w/cpp/language/reinterpret_cast">reinterpret cas=
+t </a> to either a directory or a bucket page, and unpin the page after any=
+ writing or reading operations.</p>
+<p>We have provided various helpers, or documentation suggesting helper fun=
+ctions.  The only functions you <strong>must</strong> implement are as foll=
+ows.</p>
+<p>Bucket Page:
+- Insert
+- Remove
+- IsOccupied
+- IsReadable
+- KeyAt
+- ValueAt</p>
+<p>Directory Page:
+- GetGlobalDepth
+- IncrGlobalDepth
+- SetLocalDepth
+- SetBucketPageId
+- GetBucketPageId</p>
+<p>You are free to design and implement additional new functions as you see=
+ fit.  However, you must be careful to watch for name collisions.  These sh=
+ould be rare, but would arise in Gradescope as a compiler error.</p>
+<!-- **************************************************** -->
+<!-- Task #2 - Hash Table Implementation                  -->
+<!-- **************************************************** -->
+<h2 id=3D"task2">Task #2 - Hash Table Implementation</h2>
+
+<p>You will implement a hash table that uses the extendible hashing scheme.=
+ It needs to support insertions (<code>Insert</code>), point search (<code>=
+GetValue</code>), and deletions (<code>Remove</code>).  There are many help=
+er functions either implemented or documented the extendible hash table's h=
+eader and cpp files.  Your only strict API requirement is adhering to <code=
+>Insert</code>, <code>GetValue</code>, and <code>Remove</code>.  You also m=
+ust leave the VerifyIntegrity function as it is.  Please feel free to desig=
+n and implement additional functions as you see fit.</p>
+<p>Your hash table must support both unique and non-unique keys. Duplicate =
+values for the same key are not allowed. This means that <code>(key_0, valu=
+e_0)</code> and <code>(key_0, value_1)</code> can exist in the same hash ta=
+ble, but not <code>(key_0, value_0)</code> and <code>(key_0, value_0)</code=
+>. The <code>Insert</code> method only returns false if it tries to insert =
+an existing key-value pair.</p>
+<p>Your hash table implementation must hide the details of the key/value ty=
+pe and associated comparator, like this:</p>
+<pre>template &lt;typename KeyType, typename ValueType, typename KeyCompara=
+tor&gt;
+class ExtendibleHashTable {
+   // ---
+};
+</pre>
+
+<p>These classes are already implemented for you:</p>
+<ul class=3D"default">
+    <li> `KeyType`: The type of each key in the hash table. This will only =
+be GenericKey, the actual size of GenericKey is specified and instantiated =
+with a template argument and depends on the data type of indexed attribute.=
+ </li>
+    <li> `ValueType`: The type of each value in the hash table. This will o=
+nly be 64-bit RID. </li>
+    <li> `KeyComparator`: The class used to compare whether two KeyType ins=
+tances are less/greater-than each other. These will be included in the KeyT=
+ype implementation files. Variables with the `KeyComparator` type are essen=
+tially functions; for instance, given two keys `KeyType key1` and `KeyType =
+key2`, and a key comparator `KeyComparator cmp`, you can compare the keys v=
+ia `cmp(key1, key2)`. </li>
+</ul>
+
+<p>Note that you can equality-test ValueType instances simply using the <co=
+de>=3D=3D</code> operator.</p>
+<h3>Extendible Hashing Implementation Details</h3>
+<p>This implementation requires that you implement bucket splitting/merging=
+ and directory growing/shrinking.  Some implementations of extendible hashi=
+ng skip the merging of buckets as it can cause thrashing in certain scenari=
+os.  We implement it here to provide a full understanding of the data struc=
+ture and provide more opportunities for learning how to manage latches, loc=
+ks, page operations (fetch/pin/delete/etc).</p>
+<h4>Directory Indexing</h4>
+<p>When inserting into your hash index, you will want to use the <strong>le=
+ast-significant bits</strong> for indexing into the directory. Of course, i=
+t is possible to use the most-significant bits correctly, but using the lea=
+st-significant bits makes the directory expansion operation much simpler.</=
+p>
+<h4>Splitting Buckets</h4>
+<p>You must split a bucket if there is no room for insertion.  You can oste=
+nsibly split as soon as the bucket becomes full, if you find that easier.  =
+However, the reference solution splits only when an insertion would overflo=
+w a page.  Hence, you may find that the provided API is more amenable to th=
+is approach.  As always, you are welcome to factor your own internal API.</=
+p>
+<h4>Merging Buckets</h4>
+<p>Merging must be attempted when a bucket becomes empty.  There are ways t=
+o merge more aggressively by checking the occupancy of buckets and their sp=
+lit images, but these expensive checks and extra merges can increase thrash=
+ing.</p>
+<p>To keep things relatively simple, we provide the following rules for mer=
+ging: </p>
+<ol>
+<li>Only empty buckets can be merged.</li>
+<li>Buckets can only be merged with their split image if their split image =
+has the same local depth.</li>
+<li>Buckets can only be merged if their local depth is greater than 0.</li>
+</ol>
+<p>If you are confused about a "split image,=E2=80=9D please review the alg=
+orithm and code documentation.  The concept falls out quite naturally.</p>
+<h4>Directory Growing</h4>
+<p>There are no fancy rules for this.  You either have to grow the director=
+y, or you don't.</p>
+<h4>Directory Shrinking</h4>
+<p>Only shrink the directory if the local depth of every bucket is strictly=
+ less than the global depth of the directory.  You may see other tests for =
+the shrinking of the directory, but this one is trivial since we keep the l=
+ocal depths in the directory page.</p>
+<h3>Performance</h3>
+<p>An important performance detail is to only take write locks and latches =
+when they are needed.  Always taking write locks will inevitably timeout on=
+ Gradescope.</p>
+<p>In addition, one potential optimization is to factor your own scans type=
+s over the bucket pages, which can avoid repeated scans in certain cases.  =
+You will find that checking many things about the bucket page often involve=
+s a full scan, so you can potentially collect all this information in one p=
+ass.</p>
+<!-- **************************************************** -->
+<!-- Task #3 - Concurrency Control                        -->
+<!-- **************************************************** -->
+<h2 id=3D"task3">Task #3 - Concurrency Control</h2>
+<p>Up to this this point you could assume that your hash table only support=
+ed single-threaded execution. In this last task, you will modify your imple=
+mentation so that it supports multiple threads reading/writing the table at=
+ the same time. </p>
+<p>You will need to have latches on each bucket so that when one thread is =
+writing to a bucket other threads are not reading or modifying that index a=
+s well. You should also allow multiple readers to be reading the same bucke=
+t at the same time.</p>
+<p>You will need to latch the whole hash table when you need to split or me=
+rge buckets, and when global depth changes.</p>
+<h2>REQUIREMENTS AND HINTS</h2>
+<h4>Latches</h4>
+<p>There are two latches to be aware of in this project.  The first is <cod=
+e>table_latch_</code> in <code>extendible_hash_table.h</code>, which takes =
+latches on the extendible hash table.  This comes from the RWLatch class in=
+ <code>src/include/common/rwlatch.h</code>.  As you can see in the code, it=
+ is backed by <code>std::mutex</code>.  The second is the built-in page lat=
+ching functionality in <code>src/include/storage/page.h</code>.  This is wh=
+at you must use to protect your bucket pages.  Note that to take a read-loc=
+k on the <code>table_latch_</code> you call <code>RLock</code> from <code>R=
+WLatch.h</code>, but to take a read-lock on a bucket page you must <code>re=
+interpret_cast&lt;Page *&gt;</code> to a page pointer, and call the <code>R=
+Latch</code> method from <code>page.h</code>.</p>
+<p>We suggest you look at the extendible hash table class, look at its memb=
+ers, and analyze exactly which latches will allow which behavior.  We also =
+suggest that you do the same for the bucket pages. </p>
+<p>Project 4 will explore concurrency control through locking with the Lock=
+Manager in <code>LockManager.h</code>.  You do <strong>not</strong> need th=
+e LockManager at all for this project.</p>
+<h4>Transaction Pointer</h4>
+<p>You can simply pass <code>nullptr</code> as the Transaction pointer argu=
+ment when it is required.  This <code>Transaction</code> object comes from =
+<code>src/include/concurrency/transaction.h</code>. It provides methods to =
+store the page on which you have acquired latch while traversing through th=
+e Hash Table. You do not need to do this to pass the tests.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- INSTRUCTIONS and FAQ                                                  =
+            -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Instructions and FAQ</h1>
+<h2>Dev Environment - Setup</h2>
+<p>See the <a href=3D"https://15445.courses.cs.cmu.edu/fall2021/project0/#i=
+nstructions">Project #0 instructions</a> on how to create your private repo=
+sitory and setup your development environment.</p>
+<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-exclamation-triangle fa-lg" data-eusoft-scrol=
+lable-element=3D"1"></i>
+    You must pull the latest changes on our BusTub repo for test files and =
+other supplementary files we have provided for you. Run `git pull public ma=
+ster`.=20
+</p>
+
+<h3>Compilation Issues</h3>
+<p>If you have trouble compiling, try deleting your build directory and mak=
+ing a fresh one.  Running <code>make clean</code> does not completely reset=
+ the compilation process, so starting from scratch with <code>cmake ..</cod=
+e> can help.</p>
+<h2>Testing - GTest and GDB</h2>
+<p>You can test the individual components of this assigment using our testi=
+ng framework. We use <a href=3D"https://github.com/google/googletest">GTest=
+</a> for unit test cases.</p>
+<pre>cd build
+make -j hash_table_test
+./test/hash_table_test
+</pre>
+
+<p>We encourage you to use <code>gdb</code> to debug your project if you ar=
+e having problems. <a href=3D"https://darkdust.net/files/GDB%20Cheat%20Shee=
+t.pdf">Here</a> is a nice reference for useful commands in <code>gdb</code>=
+.  Make sure you've ran cmake with debug flags on so <code>gdb</code> has d=
+ebugging symbols to use.</p>
+<h2>Memory Safety - Valgrind</h2>
+<p>To ensure your implementation does not have memory leak, you can run the=
+ test with <a href=3D"http://valgrind.org/">Valgrind</a>.  Make sure that y=
+ou run Valgrind <strong>without</strong> the cmake debug flags, as this som=
+etime causes ASan runtime errors.  If you have debug mode on, you can eithe=
+r remake your build directory, or have two separate build directories.</p>
+<pre>cd build
+make -j hash_table_test
+valgrind --trace-children=3Dyes \
+   --leak-check=3Dfull \
+   --track-origins=3Dyes \
+   --soname-synonyms=3Dsomalloc=3D*jemalloc* \
+   --error-exitcode=3D1 \
+   --suppressions=3D../build_support/valgrind.supp \
+   ./test/hash_table_test
+</pre>
+
+<p><b>Important:</b> These tests are only a subset of the all the tests tha=
+t we will use to evaluate and grade your project. You should write addition=
+al test cases on your own to check the complete functionality of your imple=
+mentation.  In addition, if Valgrind times out then it=E2=80=99s possible t=
+hat your implementation is not efficient enough. If your buffer pool manage=
+r implementation was slow, then you might need to debug the BPM as well. </=
+p>
+<h2>Formatting</h2>
+<p>Your code must follow the <a href=3D"https://google.github.io/styleguide=
+/cppguide.html">Google C++ Style Guide</a>. We use <a href=3D"https://clang=
+.llvm.org/">Clang</a> to automatically check the quality of your source cod=
+e. Your project grade will be <u><b>zero</b></u> if your submission fails a=
+ny of these checks.</p>
+<p>Execute the following commands to check your syntax. The <code>format</c=
+ode> target will automatically correct your code. The <code>check-lint</cod=
+e> and <code>check-clang-tidy</code> targets will print errors and instruct=
+ you how to fix it to conform to our style guide.</p>
+<pre>$ make -j format
+$ make -j check-lint
+$ make -j check-clang-tidy
+</pre>
+
+<p>If you have issues with any of these commands, it may relate to either y=
+our python installation, or file permissions on your remote files.  Please =
+try to read the error, understand the problem, and resolve it by doing thin=
+gs like inspecting and editing your <code>$PATH</code>, managing permission=
+s with <code>chmod</code>, and managing installed packages with <code>brew<=
+/code> or <code>apt</code>.</p>
+<h2>Development Hints</h2>
+<p>Instead of using <code>printf</code> or <code>cout</code> statements for=
+ debugging, use the <code>LOG_*</code> macros for logging information like =
+this:</p>
+<pre>LOG_INFO("# Pages: %d", num_pages);
+LOG_DEBUG("Fetching page %d", page_id);</pre>
+
+<p>To enable logging in your project, you will need to reconfigure it like =
+this:</p>
+<pre>$ mkdir build
+$ cd build
+$ cmake -DCMAKE_BUILD_TYPE=3DDEBUG ..
+$ make -j</pre>
+
+<p>The different logging levels are defined in <tt class=3D"filepath">src/i=
+nclude/common/logger.h</tt>. After enabling logging, the logging level defa=
+ults to <code>LOG_LEVEL_INFO</code>. Any logging method with a level that i=
+s equal to or higher than <code>LOG_LEVEL_INFO</code> (e.g., <code>LOG_INFO=
+</code>, <code>LOG_WARN</code>, <code>LOG_ERROR</code>) will emit logging i=
+nformation. Note that you will need to add <code>#include "common/logger.h"=
+</code> to any file that you want to use the logging infrastructure.</p>
+<h2>Method Signatures</h2>
+<p>Please do <strong>not</strong> change any of the method signatures for a=
+ny of the provided methods. You are free to add your own helper methods.</p=
+>
+<h2>Adding Helper Functions - Templating</h2>
+<p>If you are having trouble with function signatures when adding new funct=
+ions, the following example may help.</p>
+<p>Here is one of the important templates used in Project 2: </p>
+<pre>template &lt;typename KeyType, typename ValueType, typename KeyCompara=
+tor&gt;
+</pre>
+
+<p>You can see that it does <strong>not</strong> appear directly above the =
+<code>Remove</code> function in <code>extendible_hash_table.h</code>: </p>
+<pre>bool Remove(Transaction *transaction, const KeyType &amp;key, const Va=
+lueType &amp;value);
+</pre>
+
+<p>However, it is required directly above the <code>Remove</code> function =
+in <code>extendible_hash_table.cpp</code>: </p>
+<pre>template &lt;typename KeyType, typename ValueType, typename KeyCompara=
+tor&gt;
+bool HASH_TABLE_TYPE::Remove(Transaction *transaction, const KeyType &amp;k=
+ey, const ValueType &amp;value) {
+  return false;
+}
+</pre>
+
+<p>Also notice the <code>HASH_TABLE_TYPE</code> template on the <code>Remov=
+e</code> function.  This is defined in <code>extendible_hash_table.h</code>=
+ as: </p>
+<pre>\#define HASH_TABLE_TYPE ExtendibleHashTable&lt;KeyType, ValueType, Ke=
+yComparator&gt;
+</pre>
+
+<p>When adding a new function, the following steps should work: </p>
+<ol>
+<li>Add function signature to the header file.  Use private functions whene=
+ver possible.  If you need to add a public function, be wary of name confli=
+cts with the grading harness.  You can preempt this by making your function=
+ names unique in some way, but there should typically not be conflicts.</li=
+>
+<li>Add the function to the <code>.cpp</code> file <strong>with templates</=
+strong>.  You will probably need a template before the function name like <=
+code>TEMPLATE::FunctionName</code>.  If you are using KeyType, ValueType, a=
+nd/or KeyComparator, you will need the aforementioned template above the fu=
+nction signature.</li>
+</ol>
+<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-question-circle fa-lg" data-eusoft-scrollable=
+-element=3D"1"></i>
+    Post all of your questions about this project on Piazza.
+    Do <u><b>not</b></u> email the TAs directly with questions.
+</p>
+
+<!--<p class=3D"warning bg-info">
+    <i class=3D"trigger fa fa-question-circle fa-lg"></i>
+    The instructor and TAs will <b><u>not</u></b> teach you how to debug yo=
+ur code.
+</p>-->
+
+<h2>Gradescope Failed to Execute</h2>
+<p>If Gradescope gives you an error about failing to execute, then the most=
+ likely cause is that your code doesn=E2=80=99t compile or you=E2=80=99re l=
+ogging invalid UTF-8 characters. Remove all logging, delete your local buil=
+d folder, and rebuild your project.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- GRADING RUBRIC                                                        =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Grading Rubric</h1>
+<p>Each project submission will be graded based on the following criteria:<=
+/p>
+<ol>
+<li>Does the submission successfully execute all of the test cases and prod=
+uce the correct answer?</li>
+<li>Does the submission execute without any memory leaks?</li>
+</ol>
+<p>Note that we will use additional test cases that are more complex and go=
+ beyond the sample test cases that we provide you.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- LATE POLICY                                                           =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+
+<h1 data-eusoft-scrollable-element=3D"1">Late Policy</h1>
+<p>See the late policy in the syllabus.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- SUBMISSION                                                            =
+    -->
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+
+<h1 id=3D"submission" data-eusoft-scrollable-element=3D"1">Submission</h1>
+
+<p>After completing the assignment, you can submit your implementation of t=
+o Gradescope. Since we have two checkpoints for this project, you will need=
+ to submit them separately through the following link.</p>
+<ul>
+<li><a href=3D"https://www.gradescope.com/courses/286490/">https://www.grad=
+escope.com/courses/286490/</a></li>
+</ul>
+<p>You only need to include the following files:</p>
+<ul class=3D"default">
+    <li> <tt class=3D"filepath">src/include/buffer/lru_replacer.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/lru_replacer.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/buffer/buffer_pool_manager=
+_instance.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/buffer_pool_manager_instanc=
+e.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/buffer/parallel_buffer_poo=
+l_manager.h</tt>
+    </li><li> <tt class=3D"filepath">src/buffer/parallel_buffer_pool_manage=
+r.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/storage/page/hash_table_di=
+rectory_page.h</tt>
+    </li><li> <tt class=3D"filepath">src/storage/page/hash_table_directory_=
+page.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/storage/page/hash_table_bu=
+cket_page.h</tt>
+    </li><li> <tt class=3D"filepath">src/storage/page/hash_table_bucket_pag=
+e.cpp</tt>
+    </li><li> <tt class=3D"filepath">src/include/container/hash/extendible_=
+probe_hash_table.h</tt>
+    </li><li> <tt class=3D"filepath">src/container/hash/extendible_probe_ha=
+sh_table.cpp</tt>
+</li></ul>
+
+<p>Alternatively, running this <code>zip</code> command from your working d=
+irectory (aka <code>bustub</code>, <code>bustub-private</code>, etc.) will =
+create a <code>zip</code> archive called <code>project2-submission.zip</cod=
+e> that you can submit to Gradescope. You can also put this command in a ba=
+sh file and run the bash file to make things easier for you.</p>
+<pre>$ zip project2-submission.zip src/include/buffer/lru_replacer.h \
+src/buffer/lru_replacer.cpp \
+src/include/buffer/buffer_pool_manager_instance.h \
+src/buffer/buffer_pool_manager_instance.cpp \
+src/include/buffer/parallel_buffer_pool_manager.h \
+src/buffer/parallel_buffer_pool_manager.cpp \
+src/include/storage/page/hash_table_directory_page.h \
+src/storage/page/hash_table_directory_page.cpp \
+src/include/storage/page/hash_table_bucket_page.h \
+src/storage/page/hash_table_bucket_page.cpp \
+src/include/container/hash/extendible_hash_table.h \
+src/container/hash/extendible_hash_table.cpp
+ </pre>
+
+<p>You can submit your answers as many times as you like and get immediate =
+feedback.</p>
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<!-- COLLABORATION POLICY
+<!-- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+ -->
+<h1 data-eusoft-scrollable-element=3D"1">Collaboration Policy</h1>
+<ul>
+<li>Every student has to work individually on this assignment.</li>
+<li>Students are allowed to discuss high-level details about the project wi=
+th others.</li>
+<li>Students are <strong>not</strong> allowed to copy the contents of a whi=
+te-board after a group meeting with other students.</li>
+<li>Students are <strong>not</strong> allowed to copy the solutions from an=
+other colleague.</li>
+</ul>
+<p class=3D"warning bg-danger">
+    <i class=3D"trigger fa fa-exclamation-triangle fa-lg" data-eusoft-scrol=
+lable-element=3D"1"></i>
+    <b>WARNING:</b> All of the code for this project must be your own. You =
+may not copy source code from other students or other sources that you find=
+ on the web. Plagiarism <b>will not</b> be tolerated. See CMU's <a href=3D"=
+https://www.cmu.edu/policies/student-and-student-life/academic-integrity.ht=
+ml">Policy on Academic Integrity</a> for additional information.
+</p><p></p>
+                <div class=3D"published">
+                    <time datetime=3D"2022-01-07 10:54:02.149915-05:00"> <b=
+>Last Updated:</b> Jan 07, 2022</time>
+                </div>
+            </section>
+        </div>
+    </section>
+</article>
+
+<!-- Footer -->
+<footer id=3D"footer">
+
+    <ul class=3D"icons">
+    </ul>
+   =20
+    <span class=3D"copyright">
+    <a href=3D"https://db.cs.cmu.edu/" title=3D"Carnegie Mellon Database Gr=
+oup" class=3D"image-link"><img src=3D"https://15445.courses.cs.cmu.edu/fall=
+2021/images/cmu-db-group.svg" class=3D"cmudb-logo"></a>
+    </span>
+
+</footer>    <!-- Google Analytics -->
+   =20
+   =20
+    <!-- End Google Analytics Code -->
+
+    <!-- Fix scrolling issues to internal HREFs that get positioned behind =
+navbar -->
+    <!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anc=
+hor-to-adjust-for-fixed-header -->
+   =20
+   =20
+
+<ul class=3D"dropdown-menu dropotron level-0" role=3D"menu" style=3D"user-s=
+elect: none; display: none; position: absolute; z-index: 1000;">
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2020/" target=3D"_archive1" style=3D"display: b=
+lock;">Fall 2020</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2019/" target=3D"_archive2" style=3D"display: b=
+lock;">Fall 2019</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2018/" target=3D"_archive3" style=3D"display: b=
+lock;">Fall 2018</a></li>
+                    <li style=3D"white-space: nowrap;"><a href=3D"https://1=
+5445.courses.cs.cmu.edu/fall2017/" target=3D"_archive4" style=3D"display: b=
+lock;">Fall 2017</a></li>
+                </ul></div><div id=3D"skel-layers-inactiveWrapper" style=3D=
+"height: 100%;"></div><div id=3D"skel-layers-activeWrapper" style=3D"positi=
+on: relative;"></div></body><eusoft-chrome-extension-root-en id=3D"eusoft-c=
+hrome-extension-id-en" _nghost-ng-c614250349=3D"" ng-version=3D"18.2.13"><t=
+emplate _ngcontent-ng-c614250349=3D""></template><!----><!----><!----><app-=
+word-hint-render _ngcontent-ng-c614250349=3D"" _nghost-ng-c3386348173=3D"">=
+<template _ngcontent-ng-c3386348173=3D""></template><!----><!----></app-wor=
+d-hint-render><app-translate-render _ngcontent-ng-c614250349=3D"" _nghost-n=
+g-c749930229=3D""><template _ngcontent-ng-c749930229=3D""></template><!----=
+></app-translate-render><app-capture-word _ngcontent-ng-c614250349=3D"" cla=
+ss=3D"eusoft-chrome-extension-capture-word-container ng-tns-c2615027859-0 n=
+g-star-inserted"><template shadowmode=3D"open"><!----><!----><div class=3D"=
+eusoft-eudic-chrome-extension-explain-popover-container-class ng-tns-c26150=
+27859-0" data-content-script-theme=3D"light"><!----></div></template></app-=
+capture-word><app-translate-failed-retry _ngcontent-ng-c614250349=3D"" _ngh=
+ost-ng-c3081775404=3D""><!----></app-translate-failed-retry><!----><!----><=
+/eusoft-chrome-extension-root-en></html>
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/images/cmu-db-group.svg
+
+<?xml version=3D"1.0" encoding=3D"UTF-8" standalone=3D"no"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version:=
+ 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc=3D"http://purl.org/dc/elements/1.1/"
+   xmlns:cc=3D"http://creativecommons.org/ns#"
+   xmlns:rdf=3D"http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg=3D"http://www.w3.org/2000/svg"
+   xmlns=3D"http://www.w3.org/2000/svg"
+   xmlns:sodipodi=3D"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape=3D"http://www.inkscape.org/namespaces/inkscape"
+   version=3D"1.1"
+   id=3D"Layer_1"
+   x=3D"0px"
+   y=3D"0px"
+   width=3D"7.5264678in"
+   height=3D"1.5241963in"
+   viewBox=3D"0 0 677.38215 137.17766"
+   enable-background=3D"new 0 0 1024 1024"
+   xml:space=3D"preserve"
+   inkscape:version=3D"0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname=3D"cmu-db-group.svg"
+   inkscape:export-filename=3D"/home/pavlo/Dropbox/The Habitat/NewSQL/cmu-d=
+b-group.png"
+   inkscape:export-xdpi=3D"58.270309"
+   inkscape:export-ydpi=3D"58.270309"><metadata
+     id=3D"metadata3066"><rdf:RDF><cc:Work
+         rdf:about=3D""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource=3D"http://purl.org/dc/dcmitype/StillImage" /><dc:ti=
+tle></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id=3D"defs3064" /><sodipodi:namedview
+     pagecolor=3D"#ffffff"
+     bordercolor=3D"#666666"
+     borderopacity=3D"1"
+     objecttolerance=3D"10"
+     gridtolerance=3D"10"
+     guidetolerance=3D"10"
+     inkscape:pageopacity=3D"0"
+     inkscape:pageshadow=3D"2"
+     inkscape:window-width=3D"1976"
+     inkscape:window-height=3D"1123"
+     id=3D"namedview3062"
+     showgrid=3D"false"
+     inkscape:zoom=3D"2.8284273"
+     inkscape:cx=3D"79.215375"
+     inkscape:cy=3D"104.86479"
+     inkscape:window-x=3D"0"
+     inkscape:window-y=3D"0"
+     inkscape:window-maximized=3D"1"
+     inkscape:current-layer=3D"Layer_1"
+     fit-margin-top=3D"0"
+     fit-margin-left=3D"0"
+     fit-margin-right=3D"0"
+     fit-margin-bottom=3D"0"
+     units=3D"in"
+     showguides=3D"true"
+     inkscape:guide-bbox=3D"true"><sodipodi:guide
+       position=3D"155.26345,84.324114"
+       orientation=3D"1,0"
+       id=3D"guide1199"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"247.28041,111.69578"
+       orientation=3D"1,0"
+       id=3D"guide1201"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"612.71007,6.6834401"
+       orientation=3D"0,1"
+       id=3D"guide979"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"608.84256,35.448348"
+       orientation=3D"0,1"
+       id=3D"guide1001"
+       inkscape:locked=3D"false" /><sodipodi:guide
+       position=3D"697.92338,59.750106"
+       orientation=3D"1,0"
+       id=3D"guide1003"
+       inkscape:locked=3D"false" /></sodipodi:namedview><path
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.68487513"
+     d=3D"m 609.01447,6.2672529 c -5.44847,0 -9.87123,4.6303371 -9.87121,10=
+.3216561 v 52.760011 8.188482 0.32043 3.14941 0.32044 6.90125 3.47167 c 0,5=
+.51418 4.27212,10.026858 9.49219,10.026858 h 1.35681 c 4.91424,0 8.89708,-4=
+.209738 8.8971,-9.398808 v -3.47167 -7.84974 -3.46984 h -0.004 V 76.087206 =
+72.617349 69.34892 55.189374 24.771893 h 7.09167 14.46351 c 12.08344,0 16.8=
+5303,6.760576 16.85303,17.435303 0,10.848716 -5.61732,17.42981 -16.85303,17=
+.42981 h -6.28601 c -4.36585,-0.0017 -7.92599,3.583071 -8.15003,8.095093 -0=
+.0119,0.135834 -0.0161,0.271533 -0.022,0.408325 -0.006,0.144734 -0.017,0.29=
+0218 -0.0165,0.435791 0.0194,4.70435 3.67383,8.505153 8.172,8.503419 h 6.28=
+601 c 11.23572,0 16.85302,6.581098 16.85302,17.429818 0,10.674718 -4.76957,=
+17.435288 -16.85302,17.435288 h -18.57239 v -0.002 l -9.02893,0.033 v -0.00=
+2 l -5.90149,0.0202 h -0.0549 c -4.27644,0.0143 -7.73804,3.64214 -7.73804,8=
+.11157 0,5.7033 4.43438,10.33813 9.89136,10.33813 h 3.76465 0.0385 7.13012 =
+1.89698 18.57788 c 24.5095,0 36.93785,-14.23307 36.93787,-35.934438 0,-11.8=
+9211 -3.65071,-20.639106 -12.7295,-26.14564 9.0919,-5.505894 12.74597,-14.2=
+56725 12.74597,-26.156616 0,-21.701375 -12.42836,-35.9344491 -36.93786,-35.=
+9344491 h -14.46717 v -0.0055 z"
+     id=3D"path3040-6-7"
+     inkscape:connector-curvature=3D"0" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3048"
+     d=3D"m 65.253647,49.238517 c 0,-6.086601 -4.769368,-11.086709 -10.8485=
+01,-11.385401 C 23.606991,36.338747 0.13874254,28.485381 0.13874254,19.0235=
+58 v 24.671978 c 0,9.263939 22.49675146,16.98588 52.34282546,18.726509 3.31=
+4737,0.193403 6.561521,-0.989418 8.977195,-3.266946 2.41642,-2.276782 3.795=
+631,-5.451133 3.795631,-8.771844 v -1.144738 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3050"
+     d=3D"m 87.660791,47.346302 c 0.06273,3.58132 1.714494,6.949074 4.50726=
+6,9.191506 2.792772,2.242432 6.437564,3.125814 9.948693,2.417167 17.06503,-=
+3.442428 28.25255,-9.208681 28.25255,-15.742574 V 18.540424 c 0,7.079752 -1=
+3.14022,13.260441 -32.660502,16.557256 -5.876023,0.992405 -10.155536,6.1291=
+65 -10.050994,12.088075 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3052"
+     d=3D"m 50.602794,86.777409 c 7.47e-4,-3.217662 1.28811,-6.300912 3.573=
+852,-8.564253 2.286489,-2.264087 5.382434,-3.520088 8.599349,-3.490218 0.69=
+222,0.0067 1.386679,0.0097 2.084872,0.0097 35.964033,0 65.116403,-8.547078 =
+65.116403,-19.0939 v 24.671231 c 0,10.546822 -29.15311,19.094647 -65.116403=
+,19.094647 -0.777346,0 -1.551706,-0.0045 -2.322332,-0.01195 C 55.926983,99.=
+323976 50.6013,93.944529 50.603541,87.33223 Z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3054"
+     d=3D"m 65.253647,124.61051 c 0,-6.41367 -5.019522,-11.71023 -11.42423,=
+-12.04252 C 23.315766,110.98492 0.13948927,103.17039 0.13948927,93.767554 v=
+ 24.671226 c 0,9.24826 22.41909173,16.9605 52.18899873,18.71755 3.353567,0.=
+19863 6.638435,-0.99688 9.083977,-3.2998 2.445543,-2.30292 3.841182,-5.5146=
+ 3.841182,-8.8734 z" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3056"
+     d=3D"m 87.658551,122.41438 c -0.105289,-5.97011 4.16377,-11.09567 10.0=
+50993,-12.08957 19.520286,-3.29756 32.660506,-9.4775 32.660506,-16.558003 v=
+ 24.671973 c 0,6.51523 -11.12554,12.26729 -28.10918,15.71196 -3.542493,0.71=
+91 -7.220141,-0.17548 -10.039795,-2.43733 -2.819655,-2.26184 -4.499052,-5.6=
+6171 -4.562524,-9.27588 z" /><path
+     style=3D"fill:none;stroke:#cccccc;stroke-width:4.35911465;stroke-miter=
+limit:10;stroke-opacity:1"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3058"
+     d=3D"M 35.47702,38.248883 C 15.658044,35.018527 2.1795572,28.660863 2.=
+1795572,21.345144 c 0,-10.586399 28.2234278,-19.1655868 63.0389938,-19.1655=
+868 34.817059,0 63.041239,8.5791878 63.041239,19.1655868 0,5.744598 -7.6248=
+7,10.90824 -20.38426,14.205055"
+     stroke-miterlimit=3D"10" /><path
+     style=3D"fill:#cccccc;stroke-width:0.74673057"
+     inkscape:connector-curvature=3D"0"
+     id=3D"path3060"
+     d=3D"m 32.572238,82.718928 c 0.0037,3.760536 -1.789167,7.296305 -4.824=
+626,9.516335 -3.036207,2.219283 -6.950569,2.855497 -10.532635,1.710759 C 6.=
+5845207,90.546905 0.0961789,86.016491 0.0961789,81.041772 V 56.36606 c 0,5.=
+877516 9.054108,11.1345 23.2942601,14.637413 5.38094,1.323206 9.175825,6.14=
+7086 9.181799,11.687826 z" /><path
+     d=3D"m 159.61375,68.671757 c 0,-39.177898 18.04601,-58.022236 47.71896=
+,-58.022236 14.52955,0 27.22412,6.771979 34.41381,17.521036 0.76402,1.16098=
+5 1.0709,2.31849 1.0709,3.468895 0,2.978395 -2.14186,5.286305 -4.89756,5.28=
+6305 -1.3746,0 -2.75246,-0.494035 -3.97687,-2.142043 -5.20124,-7.770663 -15=
+.14339,-13.886271 -26.61354,-13.886271 -23.55425,0 -37.01284,15.368411 -37.=
+01284,47.774314 0,34.382093 13.4619,47.608453 37.01284,47.608453 10.09556,0=
+ 20.64827,-4.29466 26.61354,-13.55804 1.07096,-1.65505 2.75246,-2.14208 3.9=
+7687,-2.14208 2.75243,0 4.89756,2.30793 4.89756,5.2863 0,1.3163 -0.30688,2.=
+14914 -0.91745,3.14428 -6.73257,10.57612 -20.49483,17.51747 -34.56726,17.51=
+747 -29.67295,0 -47.71896,-17.18929 -47.71896,-57.856383 z"
+     id=3D"path2990"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8.940=
+00053;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+     d=3D"M 300.51722,103.85713 271.97374,38.289928 v 82.932352 c 0,3.03332=
+ -2.04652,5.55209 -4.50701,5.55209 -2.45468,0 -4.50412,-2.51877 -4.50412,-5=
+.55209 V 16.207459 c 0,-3.0369 2.04944,-5.562856 4.50412,-5.562856 2.05235,=
+0 3.41671,1.514831 4.09886,3.198807 l 33.0505,76.358392 33.1788,-76.358392 =
+c 0.55097,-1.173029 1.63839,-3.198807 4.09889,-3.198807 2.46048,0 4.50991,2=
+.525956 4.50991,5.562856 V 121.22228 c 0,3.03332 -2.04943,5.55209 -4.50991,=
+5.55209 -2.4605,0 -4.50412,-2.51877 -4.50412,-5.55209 V 38.289928 l -28.677=
+59,65.567202 c -0.95914,2.19495 -2.46049,3.20964 -4.09598,3.20964 -1.36434,=
+0 -3.14265,-0.84917 -4.09887,-3.20964 z"
+     id=3D"path3006"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:8.530=
+406;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><path
+     d=3D"m 532.35144,112.51708 c 21.79008,0 34.89746,-10.82514 34.89746,-4=
+3.292071 0,-32.466922 -13.10738,-43.47877 -34.89746,-43.47877 H 519.24407 V=
+ 60.72531 91.976492 c 0,5.38496 -3.9833,9.753618 -8.89757,9.753618 h -1.356=
+82 c -5.22007,0 -9.4918,-4.682678 -9.4918,-10.404998 V 60.479161 17.161669 =
+c 0,-5.970597 4.42657,-10.8230261 9.87504,-10.8230261 h 22.98047 c 33.87548=
+,0 55.32494,16.7957361 55.32494,62.8884961 0,46.092741 -21.44946,62.699631 =
+-55.32494,62.699631 h -22.98047 c -5.44847,0 -9.87504,-4.85242 -9.87504,-10=
+.82512 0,-4.68056 3.45492,-8.4806 7.72468,-8.49547 l 25.12888,-0.089 z"
+     id=3D"path3018"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.69404125" /><path
+     d=3D"M 362.07874,89.029172 V 16.746236 c 0,-5.738904 4.42274,-10.40305=
+51 9.87496,-10.4030551 5.44665,0 9.87513,4.6621061 9.87513,10.4030551 v 72.=
+282936 c 0,10.93941 3.9117,23.673538 23.14692,23.673538 19.23712,0 23.15089=
+,-12.734128 23.15089,-23.673538 V 16.746236 c 0,-5.738904 4.42635,-10.40305=
+51 9.87477,-10.4030551 5.44859,0 9.87526,4.6621061 9.87526,10.4030551 v 72.=
+282936 c 0,20.447158 -8.51259,41.969098 -42.89914,41.969098 -34.38635,0 -42=
+.89879,-21.52194 -42.89879,-41.969098 z"
+     id=3D"path3032"
+     inkscape:connector-curvature=3D"0"
+     style=3D"fill:#ffffff;fill-opacity:1;stroke-width:1.66084909" /><g
+     id=3D"g1114"
+     transform=3D"matrix(0.86741605,0,0,0.88792995,-32.287889,-14.804995)"
+     style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-opacity:1">=
+<path
+       id=3D"path3008-3"
+       transform=3D"scale(0.9375)"
+       d=3D"m 616.89648,94.025391 c -3.2,0 -5.83398,2.781436 -5.83398,6.160=
+159 0,3.37443 2.63398,6.15039 5.83398,6.15039 h 4.97071 V 94.025391 Z"
+       style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-width:13.=
+03938866;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature=3D"0" /><path
+       id=3D"path3008-3-7"
+       d=3D"m 588.28585,99.689939 c 2.99999,0 5.46935,-2.607592 5.46935,-5.=
+775144 0,-3.163528 -2.46936,-5.765991 -5.46935,-5.765991 h -4.66005 v 11.54=
+1135 z"
+       style=3D"fill:#3c3c3c;fill-opacity:1;stroke:#ffffff;stroke-width:12.=
+22442722;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature=3D"0" /></g></svg>
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Lato:300,400,900
+
+@charset "utf-8";
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 300; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh7USSwaPGR_p.woff2") =
+format("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7,=
+ U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2=
+020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 300; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh7USSwiPGQ.woff2") fo=
+rmat("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U=
++2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+21=
+93, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 400; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjxAwXjeu.woff2") form=
+at("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2=
+DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,=
+ U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 400; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2") format=
+("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA=
+, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, =
+U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 900; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwaPGR_p.woff2") =
+format("woff2"); unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7,=
+ U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2=
+020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Lato; font-style: normal; font-weight: 900; src: =
+url("https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh50XSwiPGQ.woff2") fo=
+rmat("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U=
++2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+21=
+93, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Anonymous+Pro:regular,italic,bold,bolditalic
+
+@charset "utf-8";
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G8wn50Ko.woff2") format("woff2"); unicode-range: U+301, U+400-=
+45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G9An50Ko.woff2") format("woff2"); unicode-range: U+370-377, U+=
+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G-Qn50Ko.woff2") format("woff2"); unicode-range: U+100-2BA, U+=
+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF,=
+ U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60=
+-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2fp2a15UIB7U=
+n-bOeISG3pHl4G9wn5.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U=
++152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F,=
+ U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs64u24Ko.woff2") format("woff2"); unicode-range: U+301, U+=
+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs7Iu24Ko.woff2") format("woff2"); unicode-range: U+370-377=
+, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs4Yu24Ko.woff2") format("woff2"); unicode-range: U+100-2BA=
+, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1=
+DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+=
+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: italic; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2ap2a15UIB7U=
+n-bOeISG3pHl4OTCzs74u2.woff2") format("woff2"); unicode-range: U+0-FF, U+13=
+1, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-2=
+06F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHl829RH9.woff2") format("woff2"); unicode-range: U+301, U+400-45F=
+, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHlg29RH9.woff2") format("woff2"); unicode-range: U+370-377, U+37A=
+-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHlU29RH9.woff2") format("woff2"); unicode-range: U+100-2BA, U+2BD=
+-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+=
+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C=
+7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2Bp2a15UIB7U=
+n-bOeISG3pHls29Q.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+1=
+52-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U=
++20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4Crc7ZOy.woff2") format("woff2"); unicode-range: U+301, U+400=
+-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4C3c7ZOy.woff2") format("woff2"); unicode-range: U+370-377, U=
++37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4CDc7ZOy.woff2") format("woff2"); unicode-range: U+100-2BA, U=
++2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF=
+, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C6=
+0-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 700; src: url("https://fonts.gstatic.com/s/anonymouspro/v22/rP2cp2a15UIB7U=
+n-bOeISG3pFuAT4C7c7Q.woff2") format("woff2"); unicode-range: U+0-FF, U+131,=
+ U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206=
+F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+
+@charset "utf-8";
+
+@font-face { font-family: FontAwesome; src: url("../fonts/fontawesome-webfo=
+nt.woff2?v=3D4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.wof=
+f?v=3D4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=3D4.7=
+.0") format("truetype"); font-weight: normal; font-style: normal; }
+
+.fa { display: inline-block; font-style: normal; font-variant: normal; font=
+-size-adjust: none; font-language-override: normal; font-kerning: auto; fon=
+t-optical-sizing: auto; font-feature-settings: normal; font-variation-setti=
+ngs: normal; font-weight: normal; font-stretch: normal; line-height: 1; fon=
+t-family: FontAwesome; font-size: inherit; text-rendering: auto; -webkit-fo=
+nt-smoothing: antialiased; }
+
+.fa-lg { font-size: 1.33333em; line-height: 0.75em; vertical-align: -15%; }
+
+.fa-2x { font-size: 2em; }
+
+.fa-3x { font-size: 3em; }
+
+.fa-4x { font-size: 4em; }
+
+.fa-5x { font-size: 5em; }
+
+.fa-fw { width: 1.28571em; text-align: center; }
+
+.fa-ul { padding-left: 0px; margin-left: 2.14286em; list-style-type: none; =
+}
+
+.fa-ul > li { position: relative; }
+
+.fa-li { position: absolute; left: -2.14286em; width: 2.14286em; top: 0.142=
+857em; text-align: center; }
+
+.fa-li.fa-lg { left: -1.85714em; }
+
+.fa-border { padding: 0.2em 0.25em 0.15em; border: 0.08em solid rgb(238, 23=
+8, 238); border-radius: 0.1em; }
+
+.fa-pull-left { float: left; }
+
+.fa-pull-right { float: right; }
+
+.fa.fa-pull-left { margin-right: 0.3em; }
+
+.fa.fa-pull-right { margin-left: 0.3em; }
+
+.pull-right { float: right; }
+
+.pull-left { float: left; }
+
+.fa.pull-left { margin-right: 0.3em; }
+
+.fa.pull-right { margin-left: 0.3em; }
+
+.fa-spin { animation: 2s linear 0s infinite normal none running fa-spin; }
+
+.fa-pulse { animation: 1s steps(8) 0s infinite normal none running fa-spin;=
+ }
+
+@-webkit-keyframes fa-spin {=20
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+@keyframes fa-spin {=20
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+.fa-rotate-90 { transform: rotate(90deg); }
+
+.fa-rotate-180 { transform: rotate(180deg); }
+
+.fa-rotate-270 { transform: rotate(270deg); }
+
+.fa-flip-horizontal { transform: scale(-1, 1); }
+
+.fa-flip-vertical { transform: scale(1, -1); }
+
+:root .fa-rotate-90, :root .fa-rotate-180, :root .fa-rotate-270, :root .fa-=
+flip-horizontal, :root .fa-flip-vertical { filter: none; }
+
+.fa-stack { position: relative; display: inline-block; width: 2em; height: =
+2em; line-height: 2em; vertical-align: middle; }
+
+.fa-stack-1x, .fa-stack-2x { position: absolute; left: 0px; width: 100%; te=
+xt-align: center; }
+
+.fa-stack-1x { line-height: inherit; }
+
+.fa-stack-2x { font-size: 2em; }
+
+.fa-inverse { color: rgb(255, 255, 255); }
+
+.fa-glass::before { content: "=EF=80=80"; }
+
+.fa-music::before { content: "=EF=80=81"; }
+
+.fa-search::before { content: "=EF=80=82"; }
+
+.fa-envelope-o::before { content: "=EF=80=83"; }
+
+.fa-heart::before { content: "=EF=80=84"; }
+
+.fa-star::before { content: "=EF=80=85"; }
+
+.fa-star-o::before { content: "=EF=80=86"; }
+
+.fa-user::before { content: "=EF=80=87"; }
+
+.fa-film::before { content: "=EF=80=88"; }
+
+.fa-th-large::before { content: "=EF=80=89"; }
+
+.fa-th::before { content: "=EF=80=8A"; }
+
+.fa-th-list::before { content: "=EF=80=8B"; }
+
+.fa-check::before { content: "=EF=80=8C"; }
+
+.fa-remove::before, .fa-close::before, .fa-times::before { content: "=EF=80=
+=8D"; }
+
+.fa-search-plus::before { content: "=EF=80=8E"; }
+
+.fa-search-minus::before { content: "=EF=80=90"; }
+
+.fa-power-off::before { content: "=EF=80=91"; }
+
+.fa-signal::before { content: "=EF=80=92"; }
+
+.fa-gear::before, .fa-cog::before { content: "=EF=80=93"; }
+
+.fa-trash-o::before { content: "=EF=80=94"; }
+
+.fa-home::before { content: "=EF=80=95"; }
+
+.fa-file-o::before { content: "=EF=80=96"; }
+
+.fa-clock-o::before { content: "=EF=80=97"; }
+
+.fa-road::before { content: "=EF=80=98"; }
+
+.fa-download::before { content: "=EF=80=99"; }
+
+.fa-arrow-circle-o-down::before { content: "=EF=80=9A"; }
+
+.fa-arrow-circle-o-up::before { content: "=EF=80=9B"; }
+
+.fa-inbox::before { content: "=EF=80=9C"; }
+
+.fa-play-circle-o::before { content: "=EF=80=9D"; }
+
+.fa-rotate-right::before, .fa-repeat::before { content: "=EF=80=9E"; }
+
+.fa-refresh::before { content: "=EF=80=A1"; }
+
+.fa-list-alt::before { content: "=EF=80=A2"; }
+
+.fa-lock::before { content: "=EF=80=A3"; }
+
+.fa-flag::before { content: "=EF=80=A4"; }
+
+.fa-headphones::before { content: "=EF=80=A5"; }
+
+.fa-volume-off::before { content: "=EF=80=A6"; }
+
+.fa-volume-down::before { content: "=EF=80=A7"; }
+
+.fa-volume-up::before { content: "=EF=80=A8"; }
+
+.fa-qrcode::before { content: "=EF=80=A9"; }
+
+.fa-barcode::before { content: "=EF=80=AA"; }
+
+.fa-tag::before { content: "=EF=80=AB"; }
+
+.fa-tags::before { content: "=EF=80=AC"; }
+
+.fa-book::before { content: "=EF=80=AD"; }
+
+.fa-bookmark::before { content: "=EF=80=AE"; }
+
+.fa-print::before { content: "=EF=80=AF"; }
+
+.fa-camera::before { content: "=EF=80=B0"; }
+
+.fa-font::before { content: "=EF=80=B1"; }
+
+.fa-bold::before { content: "=EF=80=B2"; }
+
+.fa-italic::before { content: "=EF=80=B3"; }
+
+.fa-text-height::before { content: "=EF=80=B4"; }
+
+.fa-text-width::before { content: "=EF=80=B5"; }
+
+.fa-align-left::before { content: "=EF=80=B6"; }
+
+.fa-align-center::before { content: "=EF=80=B7"; }
+
+.fa-align-right::before { content: "=EF=80=B8"; }
+
+.fa-align-justify::before { content: "=EF=80=B9"; }
+
+.fa-list::before { content: "=EF=80=BA"; }
+
+.fa-dedent::before, .fa-outdent::before { content: "=EF=80=BB"; }
+
+.fa-indent::before { content: "=EF=80=BC"; }
+
+.fa-video-camera::before { content: "=EF=80=BD"; }
+
+.fa-photo::before, .fa-image::before, .fa-picture-o::before { content: "=EF=
+=80=BE"; }
+
+.fa-pencil::before { content: "=EF=81=80"; }
+
+.fa-map-marker::before { content: "=EF=81=81"; }
+
+.fa-adjust::before { content: "=EF=81=82"; }
+
+.fa-tint::before { content: "=EF=81=83"; }
+
+.fa-edit::before, .fa-pencil-square-o::before { content: "=EF=81=84"; }
+
+.fa-share-square-o::before { content: "=EF=81=85"; }
+
+.fa-check-square-o::before { content: "=EF=81=86"; }
+
+.fa-arrows::before { content: "=EF=81=87"; }
+
+.fa-step-backward::before { content: "=EF=81=88"; }
+
+.fa-fast-backward::before { content: "=EF=81=89"; }
+
+.fa-backward::before { content: "=EF=81=8A"; }
+
+.fa-play::before { content: "=EF=81=8B"; }
+
+.fa-pause::before { content: "=EF=81=8C"; }
+
+.fa-stop::before { content: "=EF=81=8D"; }
+
+.fa-forward::before { content: "=EF=81=8E"; }
+
+.fa-fast-forward::before { content: "=EF=81=90"; }
+
+.fa-step-forward::before { content: "=EF=81=91"; }
+
+.fa-eject::before { content: "=EF=81=92"; }
+
+.fa-chevron-left::before { content: "=EF=81=93"; }
+
+.fa-chevron-right::before { content: "=EF=81=94"; }
+
+.fa-plus-circle::before { content: "=EF=81=95"; }
+
+.fa-minus-circle::before { content: "=EF=81=96"; }
+
+.fa-times-circle::before { content: "=EF=81=97"; }
+
+.fa-check-circle::before { content: "=EF=81=98"; }
+
+.fa-question-circle::before { content: "=EF=81=99"; }
+
+.fa-info-circle::before { content: "=EF=81=9A"; }
+
+.fa-crosshairs::before { content: "=EF=81=9B"; }
+
+.fa-times-circle-o::before { content: "=EF=81=9C"; }
+
+.fa-check-circle-o::before { content: "=EF=81=9D"; }
+
+.fa-ban::before { content: "=EF=81=9E"; }
+
+.fa-arrow-left::before { content: "=EF=81=A0"; }
+
+.fa-arrow-right::before { content: "=EF=81=A1"; }
+
+.fa-arrow-up::before { content: "=EF=81=A2"; }
+
+.fa-arrow-down::before { content: "=EF=81=A3"; }
+
+.fa-mail-forward::before, .fa-share::before { content: "=EF=81=A4"; }
+
+.fa-expand::before { content: "=EF=81=A5"; }
+
+.fa-compress::before { content: "=EF=81=A6"; }
+
+.fa-plus::before { content: "=EF=81=A7"; }
+
+.fa-minus::before { content: "=EF=81=A8"; }
+
+.fa-asterisk::before { content: "=EF=81=A9"; }
+
+.fa-exclamation-circle::before { content: "=EF=81=AA"; }
+
+.fa-gift::before { content: "=EF=81=AB"; }
+
+.fa-leaf::before { content: "=EF=81=AC"; }
+
+.fa-fire::before { content: "=EF=81=AD"; }
+
+.fa-eye::before { content: "=EF=81=AE"; }
+
+.fa-eye-slash::before { content: "=EF=81=B0"; }
+
+.fa-warning::before, .fa-exclamation-triangle::before { content: "=EF=81=B1=
+"; }
+
+.fa-plane::before { content: "=EF=81=B2"; }
+
+.fa-calendar::before { content: "=EF=81=B3"; }
+
+.fa-random::before { content: "=EF=81=B4"; }
+
+.fa-comment::before { content: "=EF=81=B5"; }
+
+.fa-magnet::before { content: "=EF=81=B6"; }
+
+.fa-chevron-up::before { content: "=EF=81=B7"; }
+
+.fa-chevron-down::before { content: "=EF=81=B8"; }
+
+.fa-retweet::before { content: "=EF=81=B9"; }
+
+.fa-shopping-cart::before { content: "=EF=81=BA"; }
+
+.fa-folder::before { content: "=EF=81=BB"; }
+
+.fa-folder-open::before { content: "=EF=81=BC"; }
+
+.fa-arrows-v::before { content: "=EF=81=BD"; }
+
+.fa-arrows-h::before { content: "=EF=81=BE"; }
+
+.fa-bar-chart-o::before, .fa-bar-chart::before { content: "=EF=82=80"; }
+
+.fa-twitter-square::before { content: "=EF=82=81"; }
+
+.fa-facebook-square::before { content: "=EF=82=82"; }
+
+.fa-camera-retro::before { content: "=EF=82=83"; }
+
+.fa-key::before { content: "=EF=82=84"; }
+
+.fa-gears::before, .fa-cogs::before { content: "=EF=82=85"; }
+
+.fa-comments::before { content: "=EF=82=86"; }
+
+.fa-thumbs-o-up::before { content: "=EF=82=87"; }
+
+.fa-thumbs-o-down::before { content: "=EF=82=88"; }
+
+.fa-star-half::before { content: "=EF=82=89"; }
+
+.fa-heart-o::before { content: "=EF=82=8A"; }
+
+.fa-sign-out::before { content: "=EF=82=8B"; }
+
+.fa-linkedin-square::before { content: "=EF=82=8C"; }
+
+.fa-thumb-tack::before { content: "=EF=82=8D"; }
+
+.fa-external-link::before { content: "=EF=82=8E"; }
+
+.fa-sign-in::before { content: "=EF=82=90"; }
+
+.fa-trophy::before { content: "=EF=82=91"; }
+
+.fa-github-square::before { content: "=EF=82=92"; }
+
+.fa-upload::before { content: "=EF=82=93"; }
+
+.fa-lemon-o::before { content: "=EF=82=94"; }
+
+.fa-phone::before { content: "=EF=82=95"; }
+
+.fa-square-o::before { content: "=EF=82=96"; }
+
+.fa-bookmark-o::before { content: "=EF=82=97"; }
+
+.fa-phone-square::before { content: "=EF=82=98"; }
+
+.fa-twitter::before { content: "=EF=82=99"; }
+
+.fa-facebook-f::before, .fa-facebook::before { content: "=EF=82=9A"; }
+
+.fa-github::before { content: "=EF=82=9B"; }
+
+.fa-unlock::before { content: "=EF=82=9C"; }
+
+.fa-credit-card::before { content: "=EF=82=9D"; }
+
+.fa-feed::before, .fa-rss::before { content: "=EF=82=9E"; }
+
+.fa-hdd-o::before { content: "=EF=82=A0"; }
+
+.fa-bullhorn::before { content: "=EF=82=A1"; }
+
+.fa-bell::before { content: "=EF=83=B3"; }
+
+.fa-certificate::before { content: "=EF=82=A3"; }
+
+.fa-hand-o-right::before { content: "=EF=82=A4"; }
+
+.fa-hand-o-left::before { content: "=EF=82=A5"; }
+
+.fa-hand-o-up::before { content: "=EF=82=A6"; }
+
+.fa-hand-o-down::before { content: "=EF=82=A7"; }
+
+.fa-arrow-circle-left::before { content: "=EF=82=A8"; }
+
+.fa-arrow-circle-right::before { content: "=EF=82=A9"; }
+
+.fa-arrow-circle-up::before { content: "=EF=82=AA"; }
+
+.fa-arrow-circle-down::before { content: "=EF=82=AB"; }
+
+.fa-globe::before { content: "=EF=82=AC"; }
+
+.fa-wrench::before { content: "=EF=82=AD"; }
+
+.fa-tasks::before { content: "=EF=82=AE"; }
+
+.fa-filter::before { content: "=EF=82=B0"; }
+
+.fa-briefcase::before { content: "=EF=82=B1"; }
+
+.fa-arrows-alt::before { content: "=EF=82=B2"; }
+
+.fa-group::before, .fa-users::before { content: "=EF=83=80"; }
+
+.fa-chain::before, .fa-link::before { content: "=EF=83=81"; }
+
+.fa-cloud::before { content: "=EF=83=82"; }
+
+.fa-flask::before { content: "=EF=83=83"; }
+
+.fa-cut::before, .fa-scissors::before { content: "=EF=83=84"; }
+
+.fa-copy::before, .fa-files-o::before { content: "=EF=83=85"; }
+
+.fa-paperclip::before { content: "=EF=83=86"; }
+
+.fa-save::before, .fa-floppy-o::before { content: "=EF=83=87"; }
+
+.fa-square::before { content: "=EF=83=88"; }
+
+.fa-navicon::before, .fa-reorder::before, .fa-bars::before { content: "=EF=
+=83=89"; }
+
+.fa-list-ul::before { content: "=EF=83=8A"; }
+
+.fa-list-ol::before { content: "=EF=83=8B"; }
+
+.fa-strikethrough::before { content: "=EF=83=8C"; }
+
+.fa-underline::before { content: "=EF=83=8D"; }
+
+.fa-table::before { content: "=EF=83=8E"; }
+
+.fa-magic::before { content: "=EF=83=90"; }
+
+.fa-truck::before { content: "=EF=83=91"; }
+
+.fa-pinterest::before { content: "=EF=83=92"; }
+
+.fa-pinterest-square::before { content: "=EF=83=93"; }
+
+.fa-google-plus-square::before { content: "=EF=83=94"; }
+
+.fa-google-plus::before { content: "=EF=83=95"; }
+
+.fa-money::before { content: "=EF=83=96"; }
+
+.fa-caret-down::before { content: "=EF=83=97"; }
+
+.fa-caret-up::before { content: "=EF=83=98"; }
+
+.fa-caret-left::before { content: "=EF=83=99"; }
+
+.fa-caret-right::before { content: "=EF=83=9A"; }
+
+.fa-columns::before { content: "=EF=83=9B"; }
+
+.fa-unsorted::before, .fa-sort::before { content: "=EF=83=9C"; }
+
+.fa-sort-down::before, .fa-sort-desc::before { content: "=EF=83=9D"; }
+
+.fa-sort-up::before, .fa-sort-asc::before { content: "=EF=83=9E"; }
+
+.fa-envelope::before { content: "=EF=83=A0"; }
+
+.fa-linkedin::before { content: "=EF=83=A1"; }
+
+.fa-rotate-left::before, .fa-undo::before { content: "=EF=83=A2"; }
+
+.fa-legal::before, .fa-gavel::before { content: "=EF=83=A3"; }
+
+.fa-dashboard::before, .fa-tachometer::before { content: "=EF=83=A4"; }
+
+.fa-comment-o::before { content: "=EF=83=A5"; }
+
+.fa-comments-o::before { content: "=EF=83=A6"; }
+
+.fa-flash::before, .fa-bolt::before { content: "=EF=83=A7"; }
+
+.fa-sitemap::before { content: "=EF=83=A8"; }
+
+.fa-umbrella::before { content: "=EF=83=A9"; }
+
+.fa-paste::before, .fa-clipboard::before { content: "=EF=83=AA"; }
+
+.fa-lightbulb-o::before { content: "=EF=83=AB"; }
+
+.fa-exchange::before { content: "=EF=83=AC"; }
+
+.fa-cloud-download::before { content: "=EF=83=AD"; }
+
+.fa-cloud-upload::before { content: "=EF=83=AE"; }
+
+.fa-user-md::before { content: "=EF=83=B0"; }
+
+.fa-stethoscope::before { content: "=EF=83=B1"; }
+
+.fa-suitcase::before { content: "=EF=83=B2"; }
+
+.fa-bell-o::before { content: "=EF=82=A2"; }
+
+.fa-coffee::before { content: "=EF=83=B4"; }
+
+.fa-cutlery::before { content: "=EF=83=B5"; }
+
+.fa-file-text-o::before { content: "=EF=83=B6"; }
+
+.fa-building-o::before { content: "=EF=83=B7"; }
+
+.fa-hospital-o::before { content: "=EF=83=B8"; }
+
+.fa-ambulance::before { content: "=EF=83=B9"; }
+
+.fa-medkit::before { content: "=EF=83=BA"; }
+
+.fa-fighter-jet::before { content: "=EF=83=BB"; }
+
+.fa-beer::before { content: "=EF=83=BC"; }
+
+.fa-h-square::before { content: "=EF=83=BD"; }
+
+.fa-plus-square::before { content: "=EF=83=BE"; }
+
+.fa-angle-double-left::before { content: "=EF=84=80"; }
+
+.fa-angle-double-right::before { content: "=EF=84=81"; }
+
+.fa-angle-double-up::before { content: "=EF=84=82"; }
+
+.fa-angle-double-down::before { content: "=EF=84=83"; }
+
+.fa-angle-left::before { content: "=EF=84=84"; }
+
+.fa-angle-right::before { content: "=EF=84=85"; }
+
+.fa-angle-up::before { content: "=EF=84=86"; }
+
+.fa-angle-down::before { content: "=EF=84=87"; }
+
+.fa-desktop::before { content: "=EF=84=88"; }
+
+.fa-laptop::before { content: "=EF=84=89"; }
+
+.fa-tablet::before { content: "=EF=84=8A"; }
+
+.fa-mobile-phone::before, .fa-mobile::before { content: "=EF=84=8B"; }
+
+.fa-circle-o::before { content: "=EF=84=8C"; }
+
+.fa-quote-left::before { content: "=EF=84=8D"; }
+
+.fa-quote-right::before { content: "=EF=84=8E"; }
+
+.fa-spinner::before { content: "=EF=84=90"; }
+
+.fa-circle::before { content: "=EF=84=91"; }
+
+.fa-mail-reply::before, .fa-reply::before { content: "=EF=84=92"; }
+
+.fa-github-alt::before { content: "=EF=84=93"; }
+
+.fa-folder-o::before { content: "=EF=84=94"; }
+
+.fa-folder-open-o::before { content: "=EF=84=95"; }
+
+.fa-smile-o::before { content: "=EF=84=98"; }
+
+.fa-frown-o::before { content: "=EF=84=99"; }
+
+.fa-meh-o::before { content: "=EF=84=9A"; }
+
+.fa-gamepad::before { content: "=EF=84=9B"; }
+
+.fa-keyboard-o::before { content: "=EF=84=9C"; }
+
+.fa-flag-o::before { content: "=EF=84=9D"; }
+
+.fa-flag-checkered::before { content: "=EF=84=9E"; }
+
+.fa-terminal::before { content: "=EF=84=A0"; }
+
+.fa-code::before { content: "=EF=84=A1"; }
+
+.fa-mail-reply-all::before, .fa-reply-all::before { content: "=EF=84=A2"; }
+
+.fa-star-half-empty::before, .fa-star-half-full::before, .fa-star-half-o::b=
+efore { content: "=EF=84=A3"; }
+
+.fa-location-arrow::before { content: "=EF=84=A4"; }
+
+.fa-crop::before { content: "=EF=84=A5"; }
+
+.fa-code-fork::before { content: "=EF=84=A6"; }
+
+.fa-unlink::before, .fa-chain-broken::before { content: "=EF=84=A7"; }
+
+.fa-question::before { content: "=EF=84=A8"; }
+
+.fa-info::before { content: "=EF=84=A9"; }
+
+.fa-exclamation::before { content: "=EF=84=AA"; }
+
+.fa-superscript::before { content: "=EF=84=AB"; }
+
+.fa-subscript::before { content: "=EF=84=AC"; }
+
+.fa-eraser::before { content: "=EF=84=AD"; }
+
+.fa-puzzle-piece::before { content: "=EF=84=AE"; }
+
+.fa-microphone::before { content: "=EF=84=B0"; }
+
+.fa-microphone-slash::before { content: "=EF=84=B1"; }
+
+.fa-shield::before { content: "=EF=84=B2"; }
+
+.fa-calendar-o::before { content: "=EF=84=B3"; }
+
+.fa-fire-extinguisher::before { content: "=EF=84=B4"; }
+
+.fa-rocket::before { content: "=EF=84=B5"; }
+
+.fa-maxcdn::before { content: "=EF=84=B6"; }
+
+.fa-chevron-circle-left::before { content: "=EF=84=B7"; }
+
+.fa-chevron-circle-right::before { content: "=EF=84=B8"; }
+
+.fa-chevron-circle-up::before { content: "=EF=84=B9"; }
+
+.fa-chevron-circle-down::before { content: "=EF=84=BA"; }
+
+.fa-html5::before { content: "=EF=84=BB"; }
+
+.fa-css3::before { content: "=EF=84=BC"; }
+
+.fa-anchor::before { content: "=EF=84=BD"; }
+
+.fa-unlock-alt::before { content: "=EF=84=BE"; }
+
+.fa-bullseye::before { content: "=EF=85=80"; }
+
+.fa-ellipsis-h::before { content: "=EF=85=81"; }
+
+.fa-ellipsis-v::before { content: "=EF=85=82"; }
+
+.fa-rss-square::before { content: "=EF=85=83"; }
+
+.fa-play-circle::before { content: "=EF=85=84"; }
+
+.fa-ticket::before { content: "=EF=85=85"; }
+
+.fa-minus-square::before { content: "=EF=85=86"; }
+
+.fa-minus-square-o::before { content: "=EF=85=87"; }
+
+.fa-level-up::before { content: "=EF=85=88"; }
+
+.fa-level-down::before { content: "=EF=85=89"; }
+
+.fa-check-square::before { content: "=EF=85=8A"; }
+
+.fa-pencil-square::before { content: "=EF=85=8B"; }
+
+.fa-external-link-square::before { content: "=EF=85=8C"; }
+
+.fa-share-square::before { content: "=EF=85=8D"; }
+
+.fa-compass::before { content: "=EF=85=8E"; }
+
+.fa-toggle-down::before, .fa-caret-square-o-down::before { content: "=EF=85=
+=90"; }
+
+.fa-toggle-up::before, .fa-caret-square-o-up::before { content: "=EF=85=91"=
+; }
+
+.fa-toggle-right::before, .fa-caret-square-o-right::before { content: "=EF=
+=85=92"; }
+
+.fa-euro::before, .fa-eur::before { content: "=EF=85=93"; }
+
+.fa-gbp::before { content: "=EF=85=94"; }
+
+.fa-dollar::before, .fa-usd::before { content: "=EF=85=95"; }
+
+.fa-rupee::before, .fa-inr::before { content: "=EF=85=96"; }
+
+.fa-cny::before, .fa-rmb::before, .fa-yen::before, .fa-jpy::before { conten=
+t: "=EF=85=97"; }
+
+.fa-ruble::before, .fa-rouble::before, .fa-rub::before { content: "=EF=85=
+=98"; }
+
+.fa-won::before, .fa-krw::before { content: "=EF=85=99"; }
+
+.fa-bitcoin::before, .fa-btc::before { content: "=EF=85=9A"; }
+
+.fa-file::before { content: "=EF=85=9B"; }
+
+.fa-file-text::before { content: "=EF=85=9C"; }
+
+.fa-sort-alpha-asc::before { content: "=EF=85=9D"; }
+
+.fa-sort-alpha-desc::before { content: "=EF=85=9E"; }
+
+.fa-sort-amount-asc::before { content: "=EF=85=A0"; }
+
+.fa-sort-amount-desc::before { content: "=EF=85=A1"; }
+
+.fa-sort-numeric-asc::before { content: "=EF=85=A2"; }
+
+.fa-sort-numeric-desc::before { content: "=EF=85=A3"; }
+
+.fa-thumbs-up::before { content: "=EF=85=A4"; }
+
+.fa-thumbs-down::before { content: "=EF=85=A5"; }
+
+.fa-youtube-square::before { content: "=EF=85=A6"; }
+
+.fa-youtube::before { content: "=EF=85=A7"; }
+
+.fa-xing::before { content: "=EF=85=A8"; }
+
+.fa-xing-square::before { content: "=EF=85=A9"; }
+
+.fa-youtube-play::before { content: "=EF=85=AA"; }
+
+.fa-dropbox::before { content: "=EF=85=AB"; }
+
+.fa-stack-overflow::before { content: "=EF=85=AC"; }
+
+.fa-instagram::before { content: "=EF=85=AD"; }
+
+.fa-flickr::before { content: "=EF=85=AE"; }
+
+.fa-adn::before { content: "=EF=85=B0"; }
+
+.fa-bitbucket::before { content: "=EF=85=B1"; }
+
+.fa-bitbucket-square::before { content: "=EF=85=B2"; }
+
+.fa-tumblr::before { content: "=EF=85=B3"; }
+
+.fa-tumblr-square::before { content: "=EF=85=B4"; }
+
+.fa-long-arrow-down::before { content: "=EF=85=B5"; }
+
+.fa-long-arrow-up::before { content: "=EF=85=B6"; }
+
+.fa-long-arrow-left::before { content: "=EF=85=B7"; }
+
+.fa-long-arrow-right::before { content: "=EF=85=B8"; }
+
+.fa-apple::before { content: "=EF=85=B9"; }
+
+.fa-windows::before { content: "=EF=85=BA"; }
+
+.fa-android::before { content: "=EF=85=BB"; }
+
+.fa-linux::before { content: "=EF=85=BC"; }
+
+.fa-dribbble::before { content: "=EF=85=BD"; }
+
+.fa-skype::before { content: "=EF=85=BE"; }
+
+.fa-foursquare::before { content: "=EF=86=80"; }
+
+.fa-trello::before { content: "=EF=86=81"; }
+
+.fa-female::before { content: "=EF=86=82"; }
+
+.fa-male::before { content: "=EF=86=83"; }
+
+.fa-gittip::before, .fa-gratipay::before { content: "=EF=86=84"; }
+
+.fa-sun-o::before { content: "=EF=86=85"; }
+
+.fa-moon-o::before { content: "=EF=86=86"; }
+
+.fa-archive::before { content: "=EF=86=87"; }
+
+.fa-bug::before { content: "=EF=86=88"; }
+
+.fa-vk::before { content: "=EF=86=89"; }
+
+.fa-weibo::before { content: "=EF=86=8A"; }
+
+.fa-renren::before { content: "=EF=86=8B"; }
+
+.fa-pagelines::before { content: "=EF=86=8C"; }
+
+.fa-stack-exchange::before { content: "=EF=86=8D"; }
+
+.fa-arrow-circle-o-right::before { content: "=EF=86=8E"; }
+
+.fa-arrow-circle-o-left::before { content: "=EF=86=90"; }
+
+.fa-toggle-left::before, .fa-caret-square-o-left::before { content: "=EF=86=
+=91"; }
+
+.fa-dot-circle-o::before { content: "=EF=86=92"; }
+
+.fa-wheelchair::before { content: "=EF=86=93"; }
+
+.fa-vimeo-square::before { content: "=EF=86=94"; }
+
+.fa-turkish-lira::before, .fa-try::before { content: "=EF=86=95"; }
+
+.fa-plus-square-o::before { content: "=EF=86=96"; }
+
+.fa-space-shuttle::before { content: "=EF=86=97"; }
+
+.fa-slack::before { content: "=EF=86=98"; }
+
+.fa-envelope-square::before { content: "=EF=86=99"; }
+
+.fa-wordpress::before { content: "=EF=86=9A"; }
+
+.fa-openid::before { content: "=EF=86=9B"; }
+
+.fa-institution::before, .fa-bank::before, .fa-university::before { content=
+: "=EF=86=9C"; }
+
+.fa-mortar-board::before, .fa-graduation-cap::before { content: "=EF=86=9D"=
+; }
+
+.fa-yahoo::before { content: "=EF=86=9E"; }
+
+.fa-google::before { content: "=EF=86=A0"; }
+
+.fa-reddit::before { content: "=EF=86=A1"; }
+
+.fa-reddit-square::before { content: "=EF=86=A2"; }
+
+.fa-stumbleupon-circle::before { content: "=EF=86=A3"; }
+
+.fa-stumbleupon::before { content: "=EF=86=A4"; }
+
+.fa-delicious::before { content: "=EF=86=A5"; }
+
+.fa-digg::before { content: "=EF=86=A6"; }
+
+.fa-pied-piper-pp::before { content: "=EF=86=A7"; }
+
+.fa-pied-piper-alt::before { content: "=EF=86=A8"; }
+
+.fa-drupal::before { content: "=EF=86=A9"; }
+
+.fa-joomla::before { content: "=EF=86=AA"; }
+
+.fa-language::before { content: "=EF=86=AB"; }
+
+.fa-fax::before { content: "=EF=86=AC"; }
+
+.fa-building::before { content: "=EF=86=AD"; }
+
+.fa-child::before { content: "=EF=86=AE"; }
+
+.fa-paw::before { content: "=EF=86=B0"; }
+
+.fa-spoon::before { content: "=EF=86=B1"; }
+
+.fa-cube::before { content: "=EF=86=B2"; }
+
+.fa-cubes::before { content: "=EF=86=B3"; }
+
+.fa-behance::before { content: "=EF=86=B4"; }
+
+.fa-behance-square::before { content: "=EF=86=B5"; }
+
+.fa-steam::before { content: "=EF=86=B6"; }
+
+.fa-steam-square::before { content: "=EF=86=B7"; }
+
+.fa-recycle::before { content: "=EF=86=B8"; }
+
+.fa-automobile::before, .fa-car::before { content: "=EF=86=B9"; }
+
+.fa-cab::before, .fa-taxi::before { content: "=EF=86=BA"; }
+
+.fa-tree::before { content: "=EF=86=BB"; }
+
+.fa-spotify::before { content: "=EF=86=BC"; }
+
+.fa-deviantart::before { content: "=EF=86=BD"; }
+
+.fa-soundcloud::before { content: "=EF=86=BE"; }
+
+.fa-database::before { content: "=EF=87=80"; }
+
+.fa-file-pdf-o::before { content: "=EF=87=81"; }
+
+.fa-file-word-o::before { content: "=EF=87=82"; }
+
+.fa-file-excel-o::before { content: "=EF=87=83"; }
+
+.fa-file-powerpoint-o::before { content: "=EF=87=84"; }
+
+.fa-file-photo-o::before, .fa-file-picture-o::before, .fa-file-image-o::bef=
+ore { content: "=EF=87=85"; }
+
+.fa-file-zip-o::before, .fa-file-archive-o::before { content: "=EF=87=86"; =
+}
+
+.fa-file-sound-o::before, .fa-file-audio-o::before { content: "=EF=87=87"; =
+}
+
+.fa-file-movie-o::before, .fa-file-video-o::before { content: "=EF=87=88"; =
+}
+
+.fa-file-code-o::before { content: "=EF=87=89"; }
+
+.fa-vine::before { content: "=EF=87=8A"; }
+
+.fa-codepen::before { content: "=EF=87=8B"; }
+
+.fa-jsfiddle::before { content: "=EF=87=8C"; }
+
+.fa-life-bouy::before, .fa-life-buoy::before, .fa-life-saver::before, .fa-s=
+upport::before, .fa-life-ring::before { content: "=EF=87=8D"; }
+
+.fa-circle-o-notch::before { content: "=EF=87=8E"; }
+
+.fa-ra::before, .fa-resistance::before, .fa-rebel::before { content: "=EF=
+=87=90"; }
+
+.fa-ge::before, .fa-empire::before { content: "=EF=87=91"; }
+
+.fa-git-square::before { content: "=EF=87=92"; }
+
+.fa-git::before { content: "=EF=87=93"; }
+
+.fa-y-combinator-square::before, .fa-yc-square::before, .fa-hacker-news::be=
+fore { content: "=EF=87=94"; }
+
+.fa-tencent-weibo::before { content: "=EF=87=95"; }
+
+.fa-qq::before { content: "=EF=87=96"; }
+
+.fa-wechat::before, .fa-weixin::before { content: "=EF=87=97"; }
+
+.fa-send::before, .fa-paper-plane::before { content: "=EF=87=98"; }
+
+.fa-send-o::before, .fa-paper-plane-o::before { content: "=EF=87=99"; }
+
+.fa-history::before { content: "=EF=87=9A"; }
+
+.fa-circle-thin::before { content: "=EF=87=9B"; }
+
+.fa-header::before { content: "=EF=87=9C"; }
+
+.fa-paragraph::before { content: "=EF=87=9D"; }
+
+.fa-sliders::before { content: "=EF=87=9E"; }
+
+.fa-share-alt::before { content: "=EF=87=A0"; }
+
+.fa-share-alt-square::before { content: "=EF=87=A1"; }
+
+.fa-bomb::before { content: "=EF=87=A2"; }
+
+.fa-soccer-ball-o::before, .fa-futbol-o::before { content: "=EF=87=A3"; }
+
+.fa-tty::before { content: "=EF=87=A4"; }
+
+.fa-binoculars::before { content: "=EF=87=A5"; }
+
+.fa-plug::before { content: "=EF=87=A6"; }
+
+.fa-slideshare::before { content: "=EF=87=A7"; }
+
+.fa-twitch::before { content: "=EF=87=A8"; }
+
+.fa-yelp::before { content: "=EF=87=A9"; }
+
+.fa-newspaper-o::before { content: "=EF=87=AA"; }
+
+.fa-wifi::before { content: "=EF=87=AB"; }
+
+.fa-calculator::before { content: "=EF=87=AC"; }
+
+.fa-paypal::before { content: "=EF=87=AD"; }
+
+.fa-google-wallet::before { content: "=EF=87=AE"; }
+
+.fa-cc-visa::before { content: "=EF=87=B0"; }
+
+.fa-cc-mastercard::before { content: "=EF=87=B1"; }
+
+.fa-cc-discover::before { content: "=EF=87=B2"; }
+
+.fa-cc-amex::before { content: "=EF=87=B3"; }
+
+.fa-cc-paypal::before { content: "=EF=87=B4"; }
+
+.fa-cc-stripe::before { content: "=EF=87=B5"; }
+
+.fa-bell-slash::before { content: "=EF=87=B6"; }
+
+.fa-bell-slash-o::before { content: "=EF=87=B7"; }
+
+.fa-trash::before { content: "=EF=87=B8"; }
+
+.fa-copyright::before { content: "=EF=87=B9"; }
+
+.fa-at::before { content: "=EF=87=BA"; }
+
+.fa-eyedropper::before { content: "=EF=87=BB"; }
+
+.fa-paint-brush::before { content: "=EF=87=BC"; }
+
+.fa-birthday-cake::before { content: "=EF=87=BD"; }
+
+.fa-area-chart::before { content: "=EF=87=BE"; }
+
+.fa-pie-chart::before { content: "=EF=88=80"; }
+
+.fa-line-chart::before { content: "=EF=88=81"; }
+
+.fa-lastfm::before { content: "=EF=88=82"; }
+
+.fa-lastfm-square::before { content: "=EF=88=83"; }
+
+.fa-toggle-off::before { content: "=EF=88=84"; }
+
+.fa-toggle-on::before { content: "=EF=88=85"; }
+
+.fa-bicycle::before { content: "=EF=88=86"; }
+
+.fa-bus::before { content: "=EF=88=87"; }
+
+.fa-ioxhost::before { content: "=EF=88=88"; }
+
+.fa-angellist::before { content: "=EF=88=89"; }
+
+.fa-cc::before { content: "=EF=88=8A"; }
+
+.fa-shekel::before, .fa-sheqel::before, .fa-ils::before { content: "=EF=88=
+=8B"; }
+
+.fa-meanpath::before { content: "=EF=88=8C"; }
+
+.fa-buysellads::before { content: "=EF=88=8D"; }
+
+.fa-connectdevelop::before { content: "=EF=88=8E"; }
+
+.fa-dashcube::before { content: "=EF=88=90"; }
+
+.fa-forumbee::before { content: "=EF=88=91"; }
+
+.fa-leanpub::before { content: "=EF=88=92"; }
+
+.fa-sellsy::before { content: "=EF=88=93"; }
+
+.fa-shirtsinbulk::before { content: "=EF=88=94"; }
+
+.fa-simplybuilt::before { content: "=EF=88=95"; }
+
+.fa-skyatlas::before { content: "=EF=88=96"; }
+
+.fa-cart-plus::before { content: "=EF=88=97"; }
+
+.fa-cart-arrow-down::before { content: "=EF=88=98"; }
+
+.fa-diamond::before { content: "=EF=88=99"; }
+
+.fa-ship::before { content: "=EF=88=9A"; }
+
+.fa-user-secret::before { content: "=EF=88=9B"; }
+
+.fa-motorcycle::before { content: "=EF=88=9C"; }
+
+.fa-street-view::before { content: "=EF=88=9D"; }
+
+.fa-heartbeat::before { content: "=EF=88=9E"; }
+
+.fa-venus::before { content: "=EF=88=A1"; }
+
+.fa-mars::before { content: "=EF=88=A2"; }
+
+.fa-mercury::before { content: "=EF=88=A3"; }
+
+.fa-intersex::before, .fa-transgender::before { content: "=EF=88=A4"; }
+
+.fa-transgender-alt::before { content: "=EF=88=A5"; }
+
+.fa-venus-double::before { content: "=EF=88=A6"; }
+
+.fa-mars-double::before { content: "=EF=88=A7"; }
+
+.fa-venus-mars::before { content: "=EF=88=A8"; }
+
+.fa-mars-stroke::before { content: "=EF=88=A9"; }
+
+.fa-mars-stroke-v::before { content: "=EF=88=AA"; }
+
+.fa-mars-stroke-h::before { content: "=EF=88=AB"; }
+
+.fa-neuter::before { content: "=EF=88=AC"; }
+
+.fa-genderless::before { content: "=EF=88=AD"; }
+
+.fa-facebook-official::before { content: "=EF=88=B0"; }
+
+.fa-pinterest-p::before { content: "=EF=88=B1"; }
+
+.fa-whatsapp::before { content: "=EF=88=B2"; }
+
+.fa-server::before { content: "=EF=88=B3"; }
+
+.fa-user-plus::before { content: "=EF=88=B4"; }
+
+.fa-user-times::before { content: "=EF=88=B5"; }
+
+.fa-hotel::before, .fa-bed::before { content: "=EF=88=B6"; }
+
+.fa-viacoin::before { content: "=EF=88=B7"; }
+
+.fa-train::before { content: "=EF=88=B8"; }
+
+.fa-subway::before { content: "=EF=88=B9"; }
+
+.fa-medium::before { content: "=EF=88=BA"; }
+
+.fa-yc::before, .fa-y-combinator::before { content: "=EF=88=BB"; }
+
+.fa-optin-monster::before { content: "=EF=88=BC"; }
+
+.fa-opencart::before { content: "=EF=88=BD"; }
+
+.fa-expeditedssl::before { content: "=EF=88=BE"; }
+
+.fa-battery-4::before, .fa-battery::before, .fa-battery-full::before { cont=
+ent: "=EF=89=80"; }
+
+.fa-battery-3::before, .fa-battery-three-quarters::before { content: "=EF=
+=89=81"; }
+
+.fa-battery-2::before, .fa-battery-half::before { content: "=EF=89=82"; }
+
+.fa-battery-1::before, .fa-battery-quarter::before { content: "=EF=89=83"; =
+}
+
+.fa-battery-0::before, .fa-battery-empty::before { content: "=EF=89=84"; }
+
+.fa-mouse-pointer::before { content: "=EF=89=85"; }
+
+.fa-i-cursor::before { content: "=EF=89=86"; }
+
+.fa-object-group::before { content: "=EF=89=87"; }
+
+.fa-object-ungroup::before { content: "=EF=89=88"; }
+
+.fa-sticky-note::before { content: "=EF=89=89"; }
+
+.fa-sticky-note-o::before { content: "=EF=89=8A"; }
+
+.fa-cc-jcb::before { content: "=EF=89=8B"; }
+
+.fa-cc-diners-club::before { content: "=EF=89=8C"; }
+
+.fa-clone::before { content: "=EF=89=8D"; }
+
+.fa-balance-scale::before { content: "=EF=89=8E"; }
+
+.fa-hourglass-o::before { content: "=EF=89=90"; }
+
+.fa-hourglass-1::before, .fa-hourglass-start::before { content: "=EF=89=91"=
+; }
+
+.fa-hourglass-2::before, .fa-hourglass-half::before { content: "=EF=89=92";=
+ }
+
+.fa-hourglass-3::before, .fa-hourglass-end::before { content: "=EF=89=93"; =
+}
+
+.fa-hourglass::before { content: "=EF=89=94"; }
+
+.fa-hand-grab-o::before, .fa-hand-rock-o::before { content: "=EF=89=95"; }
+
+.fa-hand-stop-o::before, .fa-hand-paper-o::before { content: "=EF=89=96"; }
+
+.fa-hand-scissors-o::before { content: "=EF=89=97"; }
+
+.fa-hand-lizard-o::before { content: "=EF=89=98"; }
+
+.fa-hand-spock-o::before { content: "=EF=89=99"; }
+
+.fa-hand-pointer-o::before { content: "=EF=89=9A"; }
+
+.fa-hand-peace-o::before { content: "=EF=89=9B"; }
+
+.fa-trademark::before { content: "=EF=89=9C"; }
+
+.fa-registered::before { content: "=EF=89=9D"; }
+
+.fa-creative-commons::before { content: "=EF=89=9E"; }
+
+.fa-gg::before { content: "=EF=89=A0"; }
+
+.fa-gg-circle::before { content: "=EF=89=A1"; }
+
+.fa-tripadvisor::before { content: "=EF=89=A2"; }
+
+.fa-odnoklassniki::before { content: "=EF=89=A3"; }
+
+.fa-odnoklassniki-square::before { content: "=EF=89=A4"; }
+
+.fa-get-pocket::before { content: "=EF=89=A5"; }
+
+.fa-wikipedia-w::before { content: "=EF=89=A6"; }
+
+.fa-safari::before { content: "=EF=89=A7"; }
+
+.fa-chrome::before { content: "=EF=89=A8"; }
+
+.fa-firefox::before { content: "=EF=89=A9"; }
+
+.fa-opera::before { content: "=EF=89=AA"; }
+
+.fa-internet-explorer::before { content: "=EF=89=AB"; }
+
+.fa-tv::before, .fa-television::before { content: "=EF=89=AC"; }
+
+.fa-contao::before { content: "=EF=89=AD"; }
+
+.fa-500px::before { content: "=EF=89=AE"; }
+
+.fa-amazon::before { content: "=EF=89=B0"; }
+
+.fa-calendar-plus-o::before { content: "=EF=89=B1"; }
+
+.fa-calendar-minus-o::before { content: "=EF=89=B2"; }
+
+.fa-calendar-times-o::before { content: "=EF=89=B3"; }
+
+.fa-calendar-check-o::before { content: "=EF=89=B4"; }
+
+.fa-industry::before { content: "=EF=89=B5"; }
+
+.fa-map-pin::before { content: "=EF=89=B6"; }
+
+.fa-map-signs::before { content: "=EF=89=B7"; }
+
+.fa-map-o::before { content: "=EF=89=B8"; }
+
+.fa-map::before { content: "=EF=89=B9"; }
+
+.fa-commenting::before { content: "=EF=89=BA"; }
+
+.fa-commenting-o::before { content: "=EF=89=BB"; }
+
+.fa-houzz::before { content: "=EF=89=BC"; }
+
+.fa-vimeo::before { content: "=EF=89=BD"; }
+
+.fa-black-tie::before { content: "=EF=89=BE"; }
+
+.fa-fonticons::before { content: "=EF=8A=80"; }
+
+.fa-reddit-alien::before { content: "=EF=8A=81"; }
+
+.fa-edge::before { content: "=EF=8A=82"; }
+
+.fa-credit-card-alt::before { content: "=EF=8A=83"; }
+
+.fa-codiepie::before { content: "=EF=8A=84"; }
+
+.fa-modx::before { content: "=EF=8A=85"; }
+
+.fa-fort-awesome::before { content: "=EF=8A=86"; }
+
+.fa-usb::before { content: "=EF=8A=87"; }
+
+.fa-product-hunt::before { content: "=EF=8A=88"; }
+
+.fa-mixcloud::before { content: "=EF=8A=89"; }
+
+.fa-scribd::before { content: "=EF=8A=8A"; }
+
+.fa-pause-circle::before { content: "=EF=8A=8B"; }
+
+.fa-pause-circle-o::before { content: "=EF=8A=8C"; }
+
+.fa-stop-circle::before { content: "=EF=8A=8D"; }
+
+.fa-stop-circle-o::before { content: "=EF=8A=8E"; }
+
+.fa-shopping-bag::before { content: "=EF=8A=90"; }
+
+.fa-shopping-basket::before { content: "=EF=8A=91"; }
+
+.fa-hashtag::before { content: "=EF=8A=92"; }
+
+.fa-bluetooth::before { content: "=EF=8A=93"; }
+
+.fa-bluetooth-b::before { content: "=EF=8A=94"; }
+
+.fa-percent::before { content: "=EF=8A=95"; }
+
+.fa-gitlab::before { content: "=EF=8A=96"; }
+
+.fa-wpbeginner::before { content: "=EF=8A=97"; }
+
+.fa-wpforms::before { content: "=EF=8A=98"; }
+
+.fa-envira::before { content: "=EF=8A=99"; }
+
+.fa-universal-access::before { content: "=EF=8A=9A"; }
+
+.fa-wheelchair-alt::before { content: "=EF=8A=9B"; }
+
+.fa-question-circle-o::before { content: "=EF=8A=9C"; }
+
+.fa-blind::before { content: "=EF=8A=9D"; }
+
+.fa-audio-description::before { content: "=EF=8A=9E"; }
+
+.fa-volume-control-phone::before { content: "=EF=8A=A0"; }
+
+.fa-braille::before { content: "=EF=8A=A1"; }
+
+.fa-assistive-listening-systems::before { content: "=EF=8A=A2"; }
+
+.fa-asl-interpreting::before, .fa-american-sign-language-interpreting::befo=
+re { content: "=EF=8A=A3"; }
+
+.fa-deafness::before, .fa-hard-of-hearing::before, .fa-deaf::before { conte=
+nt: "=EF=8A=A4"; }
+
+.fa-glide::before { content: "=EF=8A=A5"; }
+
+.fa-glide-g::before { content: "=EF=8A=A6"; }
+
+.fa-signing::before, .fa-sign-language::before { content: "=EF=8A=A7"; }
+
+.fa-low-vision::before { content: "=EF=8A=A8"; }
+
+.fa-viadeo::before { content: "=EF=8A=A9"; }
+
+.fa-viadeo-square::before { content: "=EF=8A=AA"; }
+
+.fa-snapchat::before { content: "=EF=8A=AB"; }
+
+.fa-snapchat-ghost::before { content: "=EF=8A=AC"; }
+
+.fa-snapchat-square::before { content: "=EF=8A=AD"; }
+
+.fa-pied-piper::before { content: "=EF=8A=AE"; }
+
+.fa-first-order::before { content: "=EF=8A=B0"; }
+
+.fa-yoast::before { content: "=EF=8A=B1"; }
+
+.fa-themeisle::before { content: "=EF=8A=B2"; }
+
+.fa-google-plus-circle::before, .fa-google-plus-official::before { content:=
+ "=EF=8A=B3"; }
+
+.fa-fa::before, .fa-font-awesome::before { content: "=EF=8A=B4"; }
+
+.fa-handshake-o::before { content: "=EF=8A=B5"; }
+
+.fa-envelope-open::before { content: "=EF=8A=B6"; }
+
+.fa-envelope-open-o::before { content: "=EF=8A=B7"; }
+
+.fa-linode::before { content: "=EF=8A=B8"; }
+
+.fa-address-book::before { content: "=EF=8A=B9"; }
+
+.fa-address-book-o::before { content: "=EF=8A=BA"; }
+
+.fa-vcard::before, .fa-address-card::before { content: "=EF=8A=BB"; }
+
+.fa-vcard-o::before, .fa-address-card-o::before { content: "=EF=8A=BC"; }
+
+.fa-user-circle::before { content: "=EF=8A=BD"; }
+
+.fa-user-circle-o::before { content: "=EF=8A=BE"; }
+
+.fa-user-o::before { content: "=EF=8B=80"; }
+
+.fa-id-badge::before { content: "=EF=8B=81"; }
+
+.fa-drivers-license::before, .fa-id-card::before { content: "=EF=8B=82"; }
+
+.fa-drivers-license-o::before, .fa-id-card-o::before { content: "=EF=8B=83"=
+; }
+
+.fa-quora::before { content: "=EF=8B=84"; }
+
+.fa-free-code-camp::before { content: "=EF=8B=85"; }
+
+.fa-telegram::before { content: "=EF=8B=86"; }
+
+.fa-thermometer-4::before, .fa-thermometer::before, .fa-thermometer-full::b=
+efore { content: "=EF=8B=87"; }
+
+.fa-thermometer-3::before, .fa-thermometer-three-quarters::before { content=
+: "=EF=8B=88"; }
+
+.fa-thermometer-2::before, .fa-thermometer-half::before { content: "=EF=8B=
+=89"; }
+
+.fa-thermometer-1::before, .fa-thermometer-quarter::before { content: "=EF=
+=8B=8A"; }
+
+.fa-thermometer-0::before, .fa-thermometer-empty::before { content: "=EF=8B=
+=8B"; }
+
+.fa-shower::before { content: "=EF=8B=8C"; }
+
+.fa-bathtub::before, .fa-s15::before, .fa-bath::before { content: "=EF=8B=
+=8D"; }
+
+.fa-podcast::before { content: "=EF=8B=8E"; }
+
+.fa-window-maximize::before { content: "=EF=8B=90"; }
+
+.fa-window-minimize::before { content: "=EF=8B=91"; }
+
+.fa-window-restore::before { content: "=EF=8B=92"; }
+
+.fa-times-rectangle::before, .fa-window-close::before { content: "=EF=8B=93=
+"; }
+
+.fa-times-rectangle-o::before, .fa-window-close-o::before { content: "=EF=
+=8B=94"; }
+
+.fa-bandcamp::before { content: "=EF=8B=95"; }
+
+.fa-grav::before { content: "=EF=8B=96"; }
+
+.fa-etsy::before { content: "=EF=8B=97"; }
+
+.fa-imdb::before { content: "=EF=8B=98"; }
+
+.fa-ravelry::before { content: "=EF=8B=99"; }
+
+.fa-eercast::before { content: "=EF=8B=9A"; }
+
+.fa-microchip::before { content: "=EF=8B=9B"; }
+
+.fa-snowflake-o::before { content: "=EF=8B=9C"; }
+
+.fa-superpowers::before { content: "=EF=8B=9D"; }
+
+.fa-wpexplorer::before { content: "=EF=8B=9E"; }
+
+.fa-meetup::before { content: "=EF=8B=A0"; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0px; margi=
+n: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); border: 0px; }
+
+.sr-only-focusable:active, .sr-only-focusable:focus { position: static; wid=
+th: auto; height: auto; margin: 0px; overflow: visible; clip: auto; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021/css/pygment.css
+
+@charset "utf-8";
+
+.highlight .hll { background-color: rgb(73, 72, 62); }
+
+.highlight { background: rgb(39, 40, 34); color: rgb(248, 248, 242); }
+
+.highlight .c { color: rgb(117, 113, 94); }
+
+.highlight .err { color: rgb(150, 0, 80); background-color: rgb(30, 0, 16);=
+ }
+
+.highlight .k { color: rgb(102, 217, 239); }
+
+.highlight .l { color: rgb(174, 129, 255); }
+
+.highlight .n { color: rgb(248, 248, 242); }
+
+.highlight .o { color: rgb(249, 38, 114); }
+
+.highlight .p { color: rgb(248, 248, 242); }
+
+.highlight .cm { color: rgb(117, 113, 94); }
+
+.highlight .cp { color: rgb(117, 113, 94); }
+
+.highlight .c1 { color: rgb(117, 113, 94); }
+
+.highlight .cs { color: rgb(117, 113, 94); }
+
+.highlight .ge { font-style: italic; }
+
+.highlight .gs { font-weight: bold; }
+
+.highlight .kc { color: rgb(102, 217, 239); }
+
+.highlight .kd { color: rgb(102, 217, 239); }
+
+.highlight .kn { color: rgb(249, 38, 114); }
+
+.highlight .kp { color: rgb(102, 217, 239); }
+
+.highlight .kr { color: rgb(102, 217, 239); }
+
+.highlight .kt { color: rgb(102, 217, 239); }
+
+.highlight .ld { color: rgb(230, 219, 116); }
+
+.highlight .m { color: rgb(174, 129, 255); }
+
+.highlight .s { color: rgb(230, 219, 116); }
+
+.highlight .na { color: rgb(166, 226, 46); }
+
+.highlight .nb { color: rgb(248, 248, 242); }
+
+.highlight .nc { color: rgb(166, 226, 46); }
+
+.highlight .no { color: rgb(102, 217, 239); }
+
+.highlight .nd { color: rgb(166, 226, 46); }
+
+.highlight .ni { color: rgb(248, 248, 242); }
+
+.highlight .ne { color: rgb(166, 226, 46); }
+
+.highlight .nf { color: rgb(166, 226, 46); }
+
+.highlight .nl { color: rgb(248, 248, 242); }
+
+.highlight .nn { color: rgb(248, 248, 242); }
+
+.highlight .nx { color: rgb(166, 226, 46); }
+
+.highlight .py { color: rgb(248, 248, 242); }
+
+.highlight .nt { color: rgb(249, 38, 114); }
+
+.highlight .nv { color: rgb(248, 248, 242); }
+
+.highlight .ow { color: rgb(249, 38, 114); }
+
+.highlight .w { color: rgb(248, 248, 242); }
+
+.highlight .mf { color: rgb(174, 129, 255); }
+
+.highlight .mh { color: rgb(174, 129, 255); }
+
+.highlight .mi { color: rgb(174, 129, 255); }
+
+.highlight .mo { color: rgb(174, 129, 255); }
+
+.highlight .sb { color: rgb(230, 219, 116); }
+
+.highlight .sc { color: rgb(230, 219, 116); }
+
+.highlight .sd { color: rgb(230, 219, 116); }
+
+.highlight .s2 { color: rgb(230, 219, 116); }
+
+.highlight .se { color: rgb(174, 129, 255); }
+
+.highlight .sh { color: rgb(230, 219, 116); }
+
+.highlight .si { color: rgb(230, 219, 116); }
+
+.highlight .sx { color: rgb(230, 219, 116); }
+
+.highlight .sr { color: rgb(230, 219, 116); }
+
+.highlight .s1 { color: rgb(230, 219, 116); }
+
+.highlight .ss { color: rgb(230, 219, 116); }
+
+.highlight .bp { color: rgb(248, 248, 242); }
+
+.highlight .vc { color: rgb(248, 248, 242); }
+
+.highlight .vg { color: rgb(248, 248, 242); }
+
+.highlight .vi { color: rgb(248, 248, 242); }
+
+.highlight .il { color: rgb(174, 129, 255); }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021//css/style-wide.css
+
+@charset "utf-8";
+
+body, input, select, textarea { font-size: 14pt; }
+
+header.special { padding-top: 5.5em; margin-bottom: 4em; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://15445.courses.cs.cmu.edu/fall2021//css/style.css
+
+@charset "utf-8";
+
+body, #skel-layers-wrapper { background: rgb(187, 187, 187); }
+
+body, input, select, textarea { color: rgb(86, 88, 89); font-family: Lato, =
+sans-serif; font-size: 15pt; font-weight: 300; letter-spacing: 0.025em; lin=
+e-height: 1.75em; }
+
+a { color: rgb(18, 5, 17); text-decoration: none; border-bottom: 1px dotted=
+; }
+
+a:hover { border-bottom-color: transparent; }
+
+strong, b { font-weight: 400; }
+
+p, ul, ol, dl, table, blockquote { margin: 0px 0px 1em; }
+
+h1, h2, h3, h4, h5, h6 { color: inherit; font-weight: 300; line-height: 1.7=
+5em; margin-bottom: 1em; text-transform: uppercase; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; text-decoration: none;=
+ border: 0px; }
+
+h2 { font-size: 1.5em; letter-spacing: 0.1em; }
+
+h3 { font-size: 1.15em; letter-spacing: 0.025em; }
+
+sub { font-size: 0.8em; position: relative; top: 0.5em; }
+
+sup { font-size: 0.8em; position: relative; top: -0.5em; }
+
+hr { border: 0px; margin-bottom: 1.5em; }
+
+blockquote { border-left: 0.5em solid rgba(124, 128, 129, 0.2); font-style:=
+ italic; padding: 1em 0px 1em 2em; }
+
+section.special, article.special { text-align: center; }
+
+header.major { padding-bottom: 2em; }
+
+header.special { margin-bottom: 5em; padding-top: 7em; position: relative; =
+text-align: center; }
+
+header.special::before, header.special::after { border-bottom: 1.5px solid;=
+ border-top: 1.5px solid; content: ""; height: 7px; opacity: 0.1; position:=
+ absolute; top: 1.75em; width: 43%; }
+
+header.special::before { left: 0px; }
+
+header.special::after { right: 0px; }
+
+header.special h2 { margin-bottom: 0px; color: rgb(36, 36, 36); }
+
+header.special h2 + p { margin-bottom: 0px; padding-top: 1.5em; }
+
+header.special .icon { cursor: default; height: 7em; left: 0px; position: a=
+bsolute; text-align: center; top: 1em; width: 100%; color: rgb(36, 36, 36);=
+ }
+
+header.special .icon::before { font-size: 4em; }
+
+footer > :last-child { margin-bottom: 0px; }
+
+footer.major { padding-top: 3em; }
+
+.cmudb-logo { max-width: 300px; }
+
+input[type=3D"text"], input[type=3D"password"], input[type=3D"email"], text=
+area { transition: background-color 0.2s ease-in-out, border-color 0.2s eas=
+e-in-out; appearance: none; background: none; border: 1px solid rgba(124, 1=
+28, 129, 0.2); color: inherit; display: block; padding: 0.75em; text-decora=
+tion: none; width: 100%; outline: 0px; }
+
+input[type=3D"text"]:focus, input[type=3D"password"]:focus, input[type=3D"e=
+mail"]:focus, textarea:focus { border-color: rgb(131, 211, 201); }
+
+input[type=3D"text"], input[type=3D"password"], input[type=3D"email"] { lin=
+e-height: 1em; }
+
+::-webkit-input-placeholder { color: inherit; opacity: 0.5; position: relat=
+ive; top: 3px; }
+
+.formerize-placeholder { color: rgba(124, 128, 129, 0.5) !important; }
+
+.image { border: 0px; position: relative; }
+
+.image::before { background: url("images/overlay.png"); content: ""; height=
+: 100%; left: 0px; position: absolute; top: 0px; width: 100%; }
+
+.image.fit { display: block; }
+
+.image.fit img { display: block; width: 100%; }
+
+.image.feature { display: block; margin: 0px 0px 2em; }
+
+.image.feature img { display: block; width: 100%; }
+
+.icon { position: relative; }
+
+.icon::before { -webkit-font-smoothing: antialiased; font-family: FontAweso=
+me; font-style: normal; font-weight: normal; }
+
+.icon.circle { border: 0px; border-radius: 100%; display: inline-block; fon=
+t-size: 1.25em; height: 2.25em; left: 0px; line-height: 2.25em; text-align:=
+ center; text-decoration: none; top: 0px; width: 2.25em; }
+
+.icon.circle:hover { top: -0.2em; }
+
+.icon.circle.fa-twitter { background: rgb(112, 174, 205); color: white; }
+
+.icon.circle.fa-twitter:hover { background: rgb(127, 183, 210); }
+
+.icon.circle.fa-linkedin { background: rgb(116, 144, 195); color: white; }
+
+.icon.circle.fa-linkedin:hover { background: rgb(130, 155, 201); }
+
+.icon.circle.fa-google-plus { background: rgb(219, 107, 103); color: white;=
+ }
+
+.icon.circle.fa-google-plus:hover { background: rgb(223, 123, 119); }
+
+.icon.circle.fa-github { background: rgb(220, 173, 139); color: white; }
+
+.icon.circle.fa-github:hover { background: rgb(225, 184, 155); }
+
+.icon.circle.fa-bitbucket { background: rgb(218, 131, 174); color: white; }
+
+.icon.circle.fa-bitbucket:hover { background: rgb(223, 147, 184); }
+
+.icon.feature { cursor: default; display: block; margin: 0px 0px 1.5em; opa=
+city: 0.35; text-align: center; }
+
+.icon.feature::before { font-size: 5em; line-height: 1em; }
+
+.icon > .label { display: none; }
+
+ol.default { list-style: decimal; padding-left: 1.25em; }
+
+ol.default li { padding-left: 0.25em; }
+
+ul.default { list-style: disc; padding-left: 1em; }
+
+ul.default li { padding-left: 0.5em; }
+
+ul.icons { cursor: default; }
+
+ul.icons li { display: inline-block; line-height: 1em; padding-left: 0.5em;=
+ }
+
+ul.icons li:first-child { padding-left: 0px; }
+
+ul.feature-icons { cursor: default; margin: -0.75em 0px 0px; opacity: 0.35;=
+ overflow: hidden; position: relative; }
+
+ul.feature-icons li { display: block; float: left; text-align: center; widt=
+h: 50%; }
+
+ul.feature-icons li .icon { display: inline-block; font-size: 6.25em; heigh=
+t: 1.25em; line-height: 1.25em; width: 1em; }
+
+ul.buttons { cursor: default; }
+
+ul.buttons:last-child { margin-bottom: 0px; }
+
+ul.buttons li { display: inline-block; padding: 0px 0px 0px 1.5em; }
+
+ul.buttons li:first-child { padding: 0px; }
+
+ul.buttons.vertical li { display: block; padding: 1.5em 0px 0px; }
+
+ul.buttons.vertical li:first-child { padding: 0px; }
+
+table { width: 100%; }
+
+table.default { width: 100%; }
+
+table.default tbody tr { border-bottom: 1px solid rgba(124, 128, 129, 0.2);=
+ }
+
+table.default td { padding: 0.5em 1em; }
+
+table.default th { font-weight: 400; padding: 0.5em 1em; text-align: left; =
+}
+
+table.default thead { background: rgb(124, 128, 129); color: rgb(255, 255, =
+255); }
+
+.button { background: none; border: 1px solid; color: inherit; display: inl=
+ine-block; font-size: 0.8em; font-weight: 900; letter-spacing: 2px; min-wid=
+th: 18em; padding: 0.75em 0px; text-align: center; text-decoration: none; t=
+ext-transform: uppercase; }
+
+.button:hover { background: rgba(188, 202, 206, 0.15); border-color: inheri=
+t; }
+
+.button.special { background: rgb(131, 211, 201); border-color: rgb(131, 21=
+1, 201); color: white !important; }
+
+.button.special:hover { background: rgb(150, 218, 209) !important; border-c=
+olor: rgb(150, 218, 209) !important; }
+
+.button.fit { width: 100%; }
+
+.button.small { font-size: 0.7em; min-width: 14em; padding: 0.5em 0px; }
+
+.wrapper { margin-bottom: 5em; padding: 5em; }
+
+.wrapper.style1 { padding: 0px; }
+
+.wrapper.style2 { background-color: rgb(131, 211, 201); color: white; }
+
+.wrapper.style2 .button:hover { background: rgba(255, 255, 255, 0.15) !impo=
+rtant; }
+
+.wrapper.style2 .button.special { background: white; border-color: white; c=
+olor: rgb(131, 211, 201) !important; }
+
+.wrapper.style2 .button.special:hover { border-color: inherit !important; c=
+olor: white !important; }
+
+.wrapper.style3 { border-radius: 10px; background: rgb(251, 251, 251); colo=
+r: inherit; }
+
+.wrapper.style4 { background: white; color: inherit; padding: 4em; }
+
+#header { background: white; box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 2px 0=
+px; color: inherit; cursor: default; font-size: 0.8em; left: 0px; padding: =
+1em 1.5em; position: fixed; top: 0px; width: 100%; z-index: 10000; }
+
+#header h1 { font-weight: 900; margin: 0px; }
+
+#header h1 span { font-weight: 300; }
+
+#header nav { letter-spacing: 0.075em; position: absolute; right: 1.5em; te=
+xt-transform: uppercase; top: 0.75em; }
+
+#header nav ul li { display: inline-block; margin-left: 1.5em; }
+
+#header nav ul li > ul { display: none; }
+
+#header nav ul li a { border: 1px solid transparent; color: inherit; displa=
+y: inline-block; padding: 0em 0.75em; text-decoration: none; }
+
+#header nav ul li .button { font-size: 1em; min-width: 0px; width: auto; }
+
+#header nav ul li.submenu > a::before { -webkit-font-smoothing: antialiased=
+; font-family: FontAwesome; font-style: normal; font-weight: normal; }
+
+#header nav ul li.submenu > a::before { content: "=EF=84=87"; margin-right:=
+ 0.65em; }
+
+#header nav ul li.active > a, #header nav ul li:hover > a { transition: 0.2=
+s ease-in-out; background: rgba(188, 202, 206, 0.15); }
+
+#header nav ul li.current > a { font-weight: 900; }
+
+#header.alt { animation: auto ease 0s 1 normal none running none; box-shado=
+w: none; color: white; background-color: rgba(0, 0, 0, 0.5); padding: 2em 2=
+.5em; position: absolute; }
+
+#header.alt nav { right: 2.5em; top: 1.75em; }
+
+#header.alt nav ul li.active > a, #header.alt nav ul li:hover > a { border:=
+ 1px solid; }
+
+.dropotron { background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.07=
+5) 0px 1px 2px 0px; line-height: 2.25em; min-width: 13em; padding: 1em 0px;=
+ text-transform: uppercase; }
+
+.dropotron.level-0 { font-size: 0.7em; font-weight: 400; margin-top: 1.5em;=
+ }
+
+.dropotron.level-0::before { border-bottom: 0.5em solid rgb(255, 255, 255);=
+ border-left: 0.5em solid transparent; border-right: 0.5em solid transparen=
+t; content: ""; left: 0.75em; position: absolute; top: -0.45em; }
+
+.dropotron > li { border-top: 1px solid rgba(124, 128, 129, 0.2); }
+
+.dropotron > li > a { transition: none; color: inherit; text-decoration: no=
+ne; padding: 0px 1em; border: 0px; }
+
+.dropotron > li:hover > a { background: rgb(131, 211, 201); color: white; }
+
+.dropotron > li:first-child { border-top: 0px; }
+
+#banner { background-image: url("../images/banner.jpg"); background-attachm=
+ent: fixed; background-position: center top; background-repeat: no-repeat; =
+background-size: cover; background-color: black; color: white; cursor: defa=
+ult; padding: 6em 0px; text-align: center; }
+
+#banner .inner { background: rgba(0, 0, 0, 0.5); border-radius: 10px; color=
+: white; display: inline-block; padding: 3em; text-align: center; }
+
+#banner .inner header { display: inline-block; border-bottom: 2px solid; bo=
+rder-top: 2px solid; margin: 0px 0px 2em; padding: 3px 0px; }
+
+#banner .inner header h2 { border-bottom: 2px solid; border-top: 2px solid;=
+ font-size: 3em; font-weight: 900; letter-spacing: 0.2em; margin: 0px; padd=
+ing-left: 0.05em; position: relative; text-transform: uppercase; }
+
+#banner .inner p { letter-spacing: 0.1em; margin: 0px; text-transform: uppe=
+rcase; }
+
+#banner .inner p a { color: inherit; font-weight: 400; text-decoration: non=
+e; }
+
+#banner .inner footer { margin: 2em 0px 0px; }
+
+#main { padding: 5em 0px; }
+
+#main > :last-child { margin-bottom: 0px; }
+
+#main .sidebar section { border-top: 1px solid rgba(124, 128, 129, 0.2); ma=
+rgin: 3em 0px 0px; padding: 3em 0px 0px; }
+
+#main .sidebar section:first-child { border-top: 0px; padding-top: 0px; mar=
+gin-top: 0px; }
+
+body.index #main { padding-top: 1em; padding-bottom: 1em; }
+
+#cta { background-attachment: scroll, scroll, scroll, fixed; background-col=
+or: black; background-image: url("images/light-tl.svg"), url("images/light-=
+tr.svg"), url("images/overlay.png"), url("../images/banner.jpg"); backgroun=
+d-position: left top, right top, left top, center bottom; background-repeat=
+: no-repeat, no-repeat, repeat, no-repeat; background-size: 25em, 25em, aut=
+o, cover; color: white; padding: 5em; text-align: center; }
+
+#cta header { margin-bottom: 2em; }
+
+#footer { background: rgb(86, 86, 88); color: rgb(124, 128, 129); padding: =
+5em 5em 10em; text-align: center; }
+
+#footer .copyright { font-size: 0.8em; }
+
+#footer .copyright a { color: inherit; }
+
+#topButton .toggle { height: 100%; left: 0px; position: absolute; text-alig=
+n: center; top: 0px; width: 100%; }
+
+#topButton .toggle::before { -webkit-font-smoothing: antialiased; font-fami=
+ly: FontAwesome; font-style: normal; font-weight: normal; }
+
+#topButton .toggle::before { color: white; content: "=EF=80=B9"; font-size:=
+ 0.75em; height: 30px; left: 0px; line-height: 30px; opacity: 0.5; position=
+: absolute; top: 0px; width: 100%; z-index: 1; }
+
+#topButton .toggle::after { background: rgba(163, 169, 170, 0.75); border-r=
+adius: 0px 0px 4px 4px; content: ""; height: 30px; left: 50%; margin-left: =
+-40px; position: absolute; top: 0px; width: 80px; }
+
+#sideButton .toggle { height: 100%; left: 0px; position: absolute; text-ali=
+gn: center; top: 0px; width: 100%; }
+
+#sideButton .toggle::before { -webkit-font-smoothing: antialiased; font-fam=
+ily: FontAwesome; font-style: normal; font-weight: normal; }
+
+#sideButton .toggle::before { color: white; content: "=EF=80=B9"; font-size=
+: 1em; height: 40px; left: 10px; line-height: 40px; opacity: 0.5; position:=
+ absolute; top: 11px; width: 60px; z-index: 1; }
+
+#sideButton .toggle::after { background: rgba(163, 169, 170, 0.75); border-=
+radius: 2px; content: ""; height: 40px; left: 10px; position: absolute; top=
+: 10px; width: 60px; }
+
+#topPanel, #sidePanel { background: rgb(28, 32, 33); color: white; font-siz=
+e: 0.8em; letter-spacing: 0.075em; text-transform: uppercase; }
+
+#topPanel nav, #sidePanel nav { padding: 0.25em 0.5em 1em; }
+
+#topPanel .link, #sidePanel .link { border-width: 1px 0px 0px; border-right=
+-style: initial; border-bottom-style: initial; border-left-style: initial; =
+border-right-color: initial; border-bottom-color: initial; border-left-colo=
+r: initial; border-image: initial; border-top-style: solid; border-top-colo=
+r: rgba(255, 255, 255, 0.05); color: inherit; display: block; height: 3em; =
+line-height: 3em; opacity: 0.75; text-decoration: none; }
+
+#topPanel .link.depth-0, #sidePanel .link.depth-0 { font-weight: 900; }
+
+#topPanel .link:first-child, #sidePanel .link:first-child { border-top: 0px=
+; }
+
+#topPanel .indent-1, #sidePanel .indent-1 { display: inline-block; width: 1=
+em; }
+
+#topPanel .indent-2, #sidePanel .indent-2 { display: inline-block; width: 2=
+em; }
+
+#topPanel .indent-3, #sidePanel .indent-3 { display: inline-block; width: 3=
+em; }
+
+#topPanel .indent-4, #sidePanel .indent-4 { display: inline-block; width: 4=
+em; }
+
+#topPanel .indent-5, #sidePanel .indent-5 { display: inline-block; width: 5=
+em; }
+
+div.pagination { margin-top: 35px; }
+
+div.pagination-left { float: left; }
+
+div.pagination-middle { text-align: center; }
+
+div.pagination-right { float: right; }
+
+.highlight { font-family: "Anonymous Pro"; font-style: normal; font-weight:=
+ 400; background: rgb(39, 40, 34); color: rgb(248, 248, 242); padding: 20px=
+; }
+
+.pill-box-left, .pill-box-right { border: 1px solid rgb(230, 230, 230); bor=
+der-radius: 4px; color: rgb(102, 102, 102); padding: 6px; }
+
+.pill-box-left { background-color: rgb(230, 230, 230); border-bottom-right-=
+radius: 0px; border-top-right-radius: 0px; padding-left: 6px; text-align: c=
+enter; }
+
+.pill-box-right { background-color: rgb(255, 255, 255); border-bottom-left-=
+radius: 0px; border-top-left-radius: 0px; border-left: 0px; padding-left: 4=
+px; padding-right: 6px; }
+
+.pill-blue .pill-box-left, .pill-blue .pill-box-right { border-color: rgb(7=
+7, 166, 255); }
+
+.pill-blue .pill-box-left { background-color: rgb(77, 166, 255); color: rgb=
+(229, 242, 255); }
+
+.pill-red .pill-box-left, .pill-red .pill-box-right { border-color: rgb(255=
+, 112, 77); }
+
+.pill-red .pill-box-left { background-color: rgb(255, 112, 77); color: rgb(=
+153, 31, 0); }
+
+.pill-green .pill-box-left, .pill-green .pill-box-right { border-color: rgb=
+(112, 219, 112); }
+
+.pill-green .pill-box-left { background-color: rgb(112, 219, 112); color: r=
+gb(235, 250, 235); }
+
+.pill-black .pill-box-left, .pill-black .pill-box-right { border-color: rgb=
+(0, 0, 0); }
+
+.pill-black .pill-box-left { background-color: rgb(0, 0, 0); color: rgb(255=
+, 255, 255); }
+
+.pill-purple .pill-box-left, .pill-purple .pill-box-right { border-color: r=
+gb(219, 77, 255); }
+
+.pill-purple .pill-box-left { background-color: rgb(219, 77, 255); color: r=
+gb(255, 255, 255); }
+
+.inner > header h2 { line-height: 120%; padding-top: 20px; padding-bottom: =
+20px; font-size: 3.5em; }
+
+.inner > h3 { font-size: 4.5em; line-height: 1em; margin-bottom: 0px; }
+
+h1.logo { font-size: 18px !important; }
+
+#footer { padding-bottom: 4px; padding-top: 20px; }
+
+.table th { font-weight: bold; }
+
+.table tr { border-bottom: 1px solid rgb(238, 244, 244); }
+
+.table td { padding-top: 10px; }
+
+#main > header > h2 { font-size: 3em; font-weight: bold; }
+
+header.special { margin-bottom: 2em !important; }
+
+tr.warning { background-color: rgb(255, 239, 229) !important; }
+
+tr.info { background-color: rgb(252, 248, 227) !important; }
+
+.course-personnel img { border-radius: 50%; }
+
+.course-personnel th { font-weight: bold; text-align: left; }
+
+.course-personnel td { padding: 2px; vertical-align: middle !important; }
+
+.table-striped tr:nth-child(2n) { background-color: rgb(239, 239, 243); }
+
+.table-striped th { border-bottom: 1px solid rgb(129, 126, 128); margin-bot=
+tom: 8px; }
+
+.personnel-photo { width: 14%; text-align: center; }
+
+.personnel-name { width: 31%; }
+
+.personnel-hours { width: 25%; }
+
+.personnel-location { width: 30%; }
+
+table.instructors img { max-width: 100px; }
+
+table.tas img { max-width: 80px; }
+
+.image-link { border-bottom: none; }
+
+.published { text-align: right; }
+
+.calendar-date { width: 15%; font-size: 95%; }
+
+.calendar-activity .lecture-title { font-weight: bold; font-size: 110%; }
+
+.calendar-activity { padding-bottom: 4px; }
+
+div.pill-box { margin-bottom: 6px; }
+
+a.schedule-badge { border: none !important; }
+
+a.schedule-badge:hover { background: rgb(255, 255, 204); }
+
+.calendar-activity span.special { font-style: italic; color: rgb(18, 5, 17)=
+; }
+
+.calendar-video, .calendar-slides, .calendar-notes { text-align: center; }
+
+tr:target, div:target { background-color: rgb(255, 255, 204); border: 3px s=
+olid rgb(231, 76, 60); }
+
+.table > thead > tr { background-color: rgb(239, 239, 243); }
+
+.table > thead > td { padding-top: 6px; padding-bottom: 6px; }
+
+.anchor { text-decoration: none; line-height: 1; border: none !important; }
+
+.anchor-icon { vertical-align: middle; visibility: hidden; }
+
+.calendar-date:hover .anchor-icon { visibility: visible; }
+
+.course-info-list { font-size: 1.2em; }
+
+.course-info h2, .course-personnel h2 { font-weight: bold; font-size: 115%;=
+ }
+
+.content h1 { margin-bottom: 2px; padding-top: 0.5em; padding-bottom: 0px; =
+line-height: 100%; font-size: 160%; letter-spacing: 0.1em; border-bottom: 3=
+px solid rgb(232, 238, 244); }
+
+.content h2 { font-size: 135%; font-weight: bold; margin-bottom: 0em; margi=
+n-top: 0.5em; }
+
+.content h3 { font-size: 115%; margin-bottom: 0px; font-weight: bold; }
+
+#course-description { padding-right: 40px; }
+
+.course-info h1 { font-size: 125%; }
+
+.wrapper.style2 { padding: 3em; background-color: rgb(158, 158, 51) !import=
+ant; }
+
+.wrapper.style2 a { color: white; }
+
+.wrapper.style2 { padding: 3em; border-radius: 10px; }
+
+.wrapper { padding-top: 1em !important; padding-bottom: 10px !important; }
+
+code { padding: 2px 4px; font-size: 90%; color: rgb(199, 37, 78); backgroun=
+d-color: rgb(249, 242, 244); white-space: nowrap; border-radius: 4px; }
+
+code, tt, pre { font-family: Menlo, Monaco, Consolas, "Courier New", monosp=
+ace; }
+
+tt.filepath { color: rgb(96, 99, 100); background-color: rgb(238, 244, 244)=
+; }
+
+pre { display: block; padding: 10px; margin: 0px 0px 10.5px; font-size: 14p=
+x; line-height: 1.42857; word-break: break-all; overflow-wrap: break-word; =
+background-color: rgb(236, 240, 241); border: 1px solid rgb(204, 204, 204);=
+ border-radius: 4px; color: rgb(62, 63, 58); font-weight: bold; }
+
+p.warning { padding: 15px; font-size: 120%; margin-bottom: 4px; border-radi=
+us: 4px; }
+
+.bg-fatal { color: white; font-weight: bold; background-color: rgb(18, 5, 1=
+7); }
+
+.bg-danger { background-color: rgb(255, 239, 229); margin-bottom: 1px; bord=
+er: 1px solid rgb(204, 204, 204); border-radius: 4px; }
+
+.bg-danger a { color: rgb(196, 18, 48); font-weight: bold; }
+
+.bg-info { background-color: rgb(223, 240, 216); border: 1px solid rgb(204,=
+ 204, 204); border-radius: 4px; }
+
+.bg-info a { color: rgb(196, 18, 48); font-weight: bold; }
+
+div.assignments { padding: 2px 2px 2px 4px; }
+
+div.assignments span { font-size: 120%; }
+
+table.assignments a { font-weight: bold; }
+
+td.assignment-name { padding-left: 2px; }
+
+div.question { border-bottom: 2px solid rgb(221, 221, 221); margin-top: 2px=
+; margin-bottom: 20px; }
+
+ul.sponsors { min-height: 50px; margin-top: 10px; margin-bottom: 0px; paddi=
+ng-bottom: 0px; text-align: center; }
+
+.sponsors li { list-style: none; padding: 0px; margin-left: 0px; margin-bot=
+tom: 10px; }
+
+.sponsors img { width: 100%; height: auto; }
+
+.faq h2 { line-height: 1.1em; }
+
+div.faq { margin-top: 1em; margin-bottom: 1em; }
+
+ul.faq { border-bottom: 1px solid rgb(86, 88, 89); line-height: 1em; }
+
+.faq li { margin-bottom: 0.75em; }
+
+@media (max-width: 1024px) {
+  .course-info h2, .course-personnel h2 { font-size: 1.05em; }
+  table.instructors img { max-width: 90px; }
+  table.tas img { max-width: 70px; }
+  .calendar-activity .lecture-title { font-size: 100%; }
+  .table { font-size: 90%; }
+  .wrapper { padding-bottom: 10px !important; }
+  .course-personnel th { text-align: center; }
+  .sponsors li { padding-bottom: 10px; }
+  #footer img { max-width: 30% !important; }
+  #footer { padding: 2px !important; }
+  code, tt, pre { font-size: 90%; }
+}
+
+@media (max-width: 600px) {
+  table { font-size: 50%; }
+  .calendar-date { font-size: 60%; }
+  table.instructors img { max-width: 60px; }
+  table.tas img { max-width: 40px; }
+  div.pill-box { margin-top: 16px; font-size: 80%; }
+  #course-description { padding-right: 0px; }
+  .course-info-list { font-size: 100%; text-align: left; }
+  .table-striped { font-size: 80%; line-height: 105%; }
+  .course-info h2, .course-personnel h2 { font-size: 110%; }
+  #footer img { max-width: 50% !important; }
+  code, tt, pre { font-size: 80%; }
+  .calendar-activity span.special { display: block; }
+  .faq li { padding-left: 0px; }
+}
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-85c05ad7-ed7c-4f13-af46-3ef649d3b888@mhtml.blink
+
+@charset "utf-8";
+
+.eusoft-eudic-translate-failed-container[_ngcontent-ng-c3081775404] { posit=
+ion: fixed !important; bottom: 50px !important; right: 50px !important; bor=
+der-radius: 5px !important; box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 24px !i=
+mportant; z-index: 2147483647 !important; }
+
+.eusoft-eudic-translate-failed-content-script[_ngcontent-ng-c3081775404] { =
+border: 1px solid rgb(232, 232, 232) !important; background-color: rgb(248,=
+ 250, 254) !important; }
+
+html.light-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.light-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.dark-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.dark-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-contai=
+ner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(89, 89, 89) !importa=
+nt; background-color: rgb(33, 33, 37) !important; }
+
+html.sepia-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.sepia-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-en [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-fr [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-de [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+
+html.green-es [_nghost-ng-c3081775404] .eusoft-eudic-translate-failed-conta=
+iner[_ngcontent-ng-c3081775404] { border: 1px solid rgb(232, 232, 232) !imp=
+ortant; background-color: rgb(248, 250, 254) !important; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-82b0fdf8-2cfb-4c2e-aaef-c633bd8ff7f4@mhtml.blink
+
+@charset "utf-8";
+
+.eudic-tippy-content-container[_ngcontent-ng-c614250349] { max-width: 250px=
+ !important; }
+
+.eusoft-chrome-extension-popup-menu[_ngcontent-ng-c614250349] { position: f=
+ixed; z-index: 2147483647; top: 50%; }
+
+.eusoft-chrome-extension-popup-menu.eusoft-chrome-extension-popup-menu-left=
+[_ngcontent-ng-c614250349] { left: 4px; }
+
+.eusoft-chrome-extension-popup-menu.eusoft-chrome-extension-popup-menu-righ=
+t[_ngcontent-ng-c614250349] { right: 4px; }
+
+.eusoft-chrome-extension-mask-container[_ngcontent-ng-c614250349] { backgro=
+und-color: transparent; position: fixed; inset: 0px; z-index: 2147483646; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-875ced87-ed1e-4979-ac13-89d4c86c6e18@mhtml.blink
+
+@charset "utf-8";
+
+.not-global, .not-wide { display: none !important; }
+
+.only-normal, .only-narrow, .only-narrower, .only-mobile { display: none !i=
+mportant; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-b0153255-0f20-4c93-9887-e05ec91e2629@mhtml.blink
+
+@charset "utf-8";
+
+.row > * { padding-left: 40px; }
+
+.row + .row > * { padding: 40px 0px 0px 40px; }
+
+.row { margin-left: -40px; }
+
+.row.flush > * { padding-left: 0px; }
+
+.row + .row.flush > * { padding: 0px; }
+
+.row.flush { margin-left: 0px; }
+
+.row.half > * { padding-left: 20px; }
+
+.row + .row.half > * { padding: 20px 0px 0px 20px; }
+
+.row.half { margin-left: -20px; }
+
+.row.quarter > * { padding-left: 10px; }
+
+.row + .row.quarter > * { padding: 10px 0px 0px 10px; }
+
+.row.quarter { margin-left: -10px; }
+
+.row.oneandhalf > * { padding-left: 60px; }
+
+.row + .row.oneandhalf > * { padding: 60px 0px 0px 60px; }
+
+.row.oneandhalf { margin-left: -60px; }
+
+.row.double > * { padding-left: 80px; }
+
+.row + .row.double > * { padding: 80px 0px 0px 80px; }
+
+.row.double { margin-left: -80px; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-6468ef46-c15d-4adc-9bf7-79e666b2edf7@mhtml.blink
+
+@charset "utf-8";
+
+.row > * { float: left; }
+
+.row::after { content: ""; display: block; clear: both; height: 0px; }
+
+.row:first-child > * { padding-top: 0px !important; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-6a610cd7-452d-4ab0-8191-747628b87341@mhtml.blink
+
+@charset "utf-8";
+
+.\31 2u { width: 100%; }
+
+.\31 1u { width: 91.6667%; }
+
+.\31 0u { width: 83.3333%; }
+
+.\39 u { width: 75%; }
+
+.\38 u { width: 66.6667%; }
+
+.\37 u { width: 58.3333%; }
+
+.\36 u { width: 50%; }
+
+.\35 u { width: 41.6667%; }
+
+.\34 u { width: 33.3333%; }
+
+.\33 u { width: 25%; }
+
+.\32 u { width: 16.6667%; }
+
+.\31 u { width: 8.33333%; }
+
+.-\31 1u { margin-left: 91.6667%; }
+
+.-\31 0u { margin-left: 83.3333%; }
+
+.-\39 u { margin-left: 75%; }
+
+.-\38 u { margin-left: 66.6667%; }
+
+.-\37 u { margin-left: 58.3333%; }
+
+.-\36 u { margin-left: 50%; }
+
+.-\35 u { margin-left: 41.6667%; }
+
+.-\34 u { margin-left: 33.3333%; }
+
+.-\33 u { margin-left: 25%; }
+
+.-\32 u { margin-left: 16.6667%; }
+
+.-\31 u { margin-left: 8.33333%; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-19ce6d42-9685-46bd-9930-f64478d66ead@mhtml.blink
+
+@charset "utf-8";
+
+body { min-width: 1200px; }
+
+.container { margin-left: auto; margin-right: auto; width: 1200px; }
+
+.container.small { width: 900px; }
+
+.container.big { width: 100%; max-width: 1500px; min-width: 1200px; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-774f9380-4e00-46ab-99f2-fde461993b6d@mhtml.blink
+
+@charset "utf-8";
+
+*, ::before, ::after { box-sizing: border-box; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-df438f12-223c-422e-ac83-1c0e462d10c1@mhtml.blink
+
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, b=
+lockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, i=
+mg, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i=
+, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, cap=
+tion, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, emb=
+ed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, se=
+ction, summary, time, mark, audio, video { margin: 0px; padding: 0px; borde=
+r: 0px; font: inherit; vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, =
+nav, section { display: block; }
+
+body { line-height: 1; }
+
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+
+blockquote::before, blockquote::after, q::before, q::after { content: none;=
+ }
+
+table { border-collapse: collapse; border-spacing: 0px; }
+
+body { text-size-adjust: none; }
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-c7d48cb3-2c41-4266-945d-e6457e03699e@mhtml.blink
+
+@charset "utf-8";
+=0A
+------MultipartBoundary--eQgd0QuYgQBXliI21i74fRNMz7HducUarQNAKw47OX------
