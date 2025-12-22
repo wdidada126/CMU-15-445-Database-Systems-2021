@@ -1,0 +1,30 @@
+\doxysection{hash\+\_\+table\+\_\+page\+\_\+defs.\+h}
+\hypertarget{hash__table__page__defs_8h_source}{}\label{hash__table__page__defs_8h_source}\index{src/include/storage/page/hash\_table\_page\_defs.h@{src/include/storage/page/hash\_table\_page\_defs.h}}
+\mbox{\hyperlink{hash__table__page__defs_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ hash\_table\_page\_defs.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/page/hash\_table\_page\_defs.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ MappingType\ std::pair<KeyType,\ ValueType>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ HASH\_TABLE\_BLOCK\_TYPE\ HashTableBlockPage<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ BLOCK\_ARRAY\_SIZE\ (4\ *\ PAGE\_SIZE\ /\ (4\ *\ sizeof(MappingType)\ +\ 1))}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ HASH\_TABLE\_BUCKET\_TYPE\ HashTableBucketPage<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ DIRECTORY\_ARRAY\_SIZE\ 512}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ BUCKET\_ARRAY\_SIZE\ (4\ *\ PAGE\_SIZE\ /\ (4\ *\ sizeof(MappingType)\ +\ 1))}}
+
+\end{DoxyCode}

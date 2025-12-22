@@ -1,0 +1,75 @@
+\doxysection{rid.\+h}
+\hypertarget{rid_8h_source}{}\label{rid_8h_source}\index{src/include/common/rid.h@{src/include/common/rid.h}}
+\mbox{\hyperlink{rid_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ rid.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/rid.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1RID_a29fbe3a56cef33f801c68d284d53ea8a}{RID}}\ \{}
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classbustub_1_1RID_a29fbe3a56cef33f801c68d284d53ea8a}{RID}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classbustub_1_1RID_a3d225968869088d169a1031c3420f1e0}{RID}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ uint32\_t\ slot\_num)\ :\ page\_id\_(page\_id),\ slot\_num\_(slot\_num)\ \{\}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1RID_a4f106a41491a0db93732ef48085f069d}{RID}}(int64\_t\ rid)\ :\ page\_id\_(static\_cast<\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}>(rid\ >>\ 32)),\ slot\_num\_(static\_cast<uint32\_t>(rid))\ \{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{inline}\ int64\_t\ \mbox{\hyperlink{classbustub_1_1RID_a2509e5be277f0edba95c3f92f4e22523}{Get}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(page\_id\_))\ <<\ 32\ |\ slot\_num\_;\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1RID_a2fac5cab17e148288788027bfbebe4fb}{GetPageId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ page\_id\_;\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{classbustub_1_1RID_a3796539ae3abfca5bd1f31a0cbe3bb12}{GetSlotNum}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ slot\_num\_;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1RID_af0c4a7160277b101ba0c8769ec4415db}{Set}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ uint32\_t\ slot\_num)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ page\_id\_\ =\ page\_id;}
+\DoxyCodeLine{00045\ \ \ \ \ slot\_num\_\ =\ slot\_num;}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classbustub_1_1RID_aa34404d002063443032f61f7f359a8c3}{ToString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ std::stringstream\ os;}
+\DoxyCodeLine{00050\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}page\_id:\ "{}}\ <<\ page\_id\_;}
+\DoxyCodeLine{00051\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}\ slot\_num:\ "{}}\ <<\ slot\_num\_\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{return}\ os.str();}
+\DoxyCodeLine{00054\ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classbustub_1_1RID_af45cdb4bd0fac43ee9fddd5006748f2d}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID_a29fbe3a56cef33f801c68d284d53ea8a}{RID}}\ \&rid)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ os\ <<\ rid.\mbox{\hyperlink{classbustub_1_1RID_aa34404d002063443032f61f7f359a8c3}{ToString}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00059\ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1RID_a74e9de11f0a37f1d6902d7555ec5ca24}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID_a29fbe3a56cef33f801c68d284d53ea8a}{RID}}\ \&other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ page\_id\_\ ==\ other.page\_id\_\ \&\&\ slot\_num\_\ ==\ other.slot\_num\_;\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id\_\{INVALID\_PAGE\_ID\};}
+\DoxyCodeLine{00065\ \ \ uint32\_t\ slot\_num\_\{0\};\ \ \textcolor{comment}{//\ logical\ offset\ from\ 0,\ 1...}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacestd}{std}}\ \{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00072\ \textcolor{keyword}{struct\ }hash<\mbox{\hyperlink{namespacebustub}{bustub}}::RID>\ \{}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01bustub_1_1RID_01_4_aabd8cc4bce3d20d639036ffa25f90c02}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{bustub::RID}}\ \&obj)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ hash<int64\_t>()(obj.\mbox{\hyperlink{classbustub_1_1RID_a2509e5be277f0edba95c3f92f4e22523}{Get}}());\ \}}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ \}\ \ \textcolor{comment}{//\ namespace\ std}}
+
+\end{DoxyCode}

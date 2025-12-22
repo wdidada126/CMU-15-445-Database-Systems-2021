@@ -1,0 +1,135 @@
+\doxysection{bustub\+::Nested\+Index\+Join\+Plan\+Node Class Reference}
+\hypertarget{classbustub_1_1NestedIndexJoinPlanNode}{}\label{classbustub_1_1NestedIndexJoinPlanNode}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+
+
+{\ttfamily \#include $<$nested\+\_\+index\+\_\+join\+\_\+plan.\+h$>$}
+
+Inheritance diagram for bustub\+::Nested\+Index\+Join\+Plan\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1NestedIndexJoinPlanNode}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a9c35c6cabd60187eed6308ef1727d4eb}{Nested\+Index\+Join\+Plan\+Node}} (const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}output\+\_\+schema, std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \&\&children, const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}predicate, \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} inner\+\_\+table\+\_\+oid, std\+::string index\+\_\+name, const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}outer\+\_\+table\+\_\+schema, const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}inner\+\_\+table\+\_\+schema)
+\item 
+\mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{Plan\+Type}} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_abfcf513ea5436954dadd061d9dfcb152}{Get\+Type}} () const override
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_ab0020f40de3ea35a47d2365edff72eea}{Predicate}} () const
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a792e797ff184deb6a41ac13d63730769}{Get\+Child\+Plan}} () const
+\item 
+\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a52e11bfaf16689ff40958e46b3630c43}{Get\+Inner\+Table\+Oid}} () const
+\item 
+std\+::string \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a52e44c8b5b9e4210779326c95e84861a}{Get\+Index\+Name}} () const
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_ab94a4e3a92395752053d9132ad67480f}{Outer\+Table\+Schema}} () const
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a0e5b4bf02efe1c2fecd79b133d56e57d}{Inner\+Table\+Schema}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{bustub\+::\+Abstract\+Plan\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{Abstract\+Plan\+Node}} (const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}output\+\_\+schema, std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \&\&children)
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a336250e94ce6a76115d8dea2e9be8ba8}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Plan\+Node}} ()=default
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_add8fcf8896a3455425747beea83ed57b}{Output\+Schema}} () const
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{Get\+Child\+At}} (uint32\+\_\+t child\+\_\+idx) const
+\item 
+const std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{Get\+Children}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1NestedIndexJoinPlanNode}{Nested\+Index\+Join\+Plan\+Node} is used to represent performing a nested index join between two tables The outer table tuples are propogated using a child executor, but the inner table tuples should be obtained using the outer table tuples as well as the index from the catalog. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_a9c35c6cabd60187eed6308ef1727d4eb}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!NestedIndexJoinPlanNode@{NestedIndexJoinPlanNode}}
+\index{NestedIndexJoinPlanNode@{NestedIndexJoinPlanNode}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{NestedIndexJoinPlanNode()}{NestedIndexJoinPlanNode()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_a9c35c6cabd60187eed6308ef1727d4eb} 
+bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Nested\+Index\+Join\+Plan\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}}]{output\+\_\+schema}{, }\item[{std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \&\&}]{children}{, }\item[{const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}}]{predicate}{, }\item[{\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}}}]{inner\+\_\+table\+\_\+oid}{, }\item[{std\+::string}]{index\+\_\+name}{, }\item[{const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}}]{outer\+\_\+table\+\_\+schema}{, }\item[{const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}}]{inner\+\_\+table\+\_\+schema}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_a792e797ff184deb6a41ac13d63730769}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!GetChildPlan@{GetChildPlan}}
+\index{GetChildPlan@{GetChildPlan}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetChildPlan()}{GetChildPlan()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_a792e797ff184deb6a41ac13d63730769} 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Get\+Child\+Plan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the plan node for the outer table of the nested index join 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_a52e44c8b5b9e4210779326c95e84861a}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!GetIndexName@{GetIndexName}}
+\index{GetIndexName@{GetIndexName}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetIndexName()}{GetIndexName()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_a52e44c8b5b9e4210779326c95e84861a} 
+std\+::string bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Get\+Index\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the index associated with the nested index join 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_a52e11bfaf16689ff40958e46b3630c43}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!GetInnerTableOid@{GetInnerTableOid}}
+\index{GetInnerTableOid@{GetInnerTableOid}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetInnerTableOid()}{GetInnerTableOid()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_a52e11bfaf16689ff40958e46b3630c43} 
+\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Get\+Inner\+Table\+Oid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the table oid for the inner table of the nested index join 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_abfcf513ea5436954dadd061d9dfcb152}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!GetType@{GetType}}
+\index{GetType@{GetType}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_abfcf513ea5436954dadd061d9dfcb152} 
+\mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{Plan\+Type}} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+the type of this plan node 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a68b80a5e248dfb5dfe0858a4afd8bc93}{bustub\+::\+Abstract\+Plan\+Node}}.
+
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_a0e5b4bf02efe1c2fecd79b133d56e57d}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!InnerTableSchema@{InnerTableSchema}}
+\index{InnerTableSchema@{InnerTableSchema}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{InnerTableSchema()}{InnerTableSchema()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_a0e5b4bf02efe1c2fecd79b133d56e57d} 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Inner\+Table\+Schema (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classbustub_1_1Schema}{Schema} with needed columns in from the inner table 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_ab94a4e3a92395752053d9132ad67480f}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!OuterTableSchema@{OuterTableSchema}}
+\index{OuterTableSchema@{OuterTableSchema}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{OuterTableSchema()}{OuterTableSchema()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_ab94a4e3a92395752053d9132ad67480f} 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Outer\+Table\+Schema (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classbustub_1_1Schema}{Schema} with needed columns in from the outer table 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1NestedIndexJoinPlanNode_ab0020f40de3ea35a47d2365edff72eea}\index{bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}!Predicate@{Predicate}}
+\index{Predicate@{Predicate}!bustub::NestedIndexJoinPlanNode@{bustub::NestedIndexJoinPlanNode}}
+\doxysubsubsection{\texorpdfstring{Predicate()}{Predicate()}}
+{\footnotesize\ttfamily \label{classbustub_1_1NestedIndexJoinPlanNode_ab0020f40de3ea35a47d2365edff72eea} 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} bustub\+::\+Nested\+Index\+Join\+Plan\+Node\+::\+Predicate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the predicate to be used in the nested index join 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/execution/plans/\mbox{\hyperlink{nested__index__join__plan_8h}{nested\+\_\+index\+\_\+join\+\_\+plan.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+\doxysection{executor\+\_\+context.\+h}
+\hypertarget{executor__context_8h_source}{}\label{executor__context_8h_source}\index{src/include/execution/executor\_context.h@{src/include/execution/executor\_context.h}}
+\mbox{\hyperlink{executor__context_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ executor\_context.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executor\_context.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction_8h}{concurrency/transaction.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tmp__tuple__page_8h}{storage/page/tmp\_tuple\_page.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9}{ExecutorContext}}\ \{}
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9}{ExecutorContext}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *catalog,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm,\ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *txn\_mgr,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_mgr)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ :\ transaction\_(transaction),\ catalog\_\{catalog\},\ bpm\_\{bpm\},\ txn\_mgr\_(txn\_mgr),\ lock\_mgr\_(lock\_mgr)\ \{\}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classbustub_1_1ExecutorContext_a906e1c53716668a43b8768b3bd155319}{\string~ExecutorContext}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{classbustub_1_1ExecutorContext_afdd17636324cbed13a8fbe79b0af6004}{DISALLOW\_COPY\_AND\_MOVE}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9}{ExecutorContext}});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_a3ec6025e9b671f70590bd8a33d0a51f8}{GetTransaction}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ transaction\_;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_af73efe7bdb13e7bb00a33380402e087d}{GetCatalog}}()\ \{\ \textcolor{keywordflow}{return}\ catalog\_;\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_aa3d876c1cafdb85039c31935b29af5e5}{GetBufferPoolManager}}()\ \{\ \textcolor{keywordflow}{return}\ bpm\_;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_aef2c865b038638054e1c711c2269daf9}{GetLogManager}}()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_a49430eb028e3e009673547b777a161cf}{GetLockManager}}()\ \{\ \textcolor{keywordflow}{return}\ lock\_mgr\_;\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *\mbox{\hyperlink{classbustub_1_1ExecutorContext_a00458010ca878cc6a155b42e8a5c9f1f}{GetTransactionManager}}()\ \{\ \textcolor{keywordflow}{return}\ txn\_mgr\_;\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\_;}
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *catalog\_;}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm\_;}
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *txn\_mgr\_;}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_mgr\_;}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

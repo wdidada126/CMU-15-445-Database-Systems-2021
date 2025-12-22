@@ -1,0 +1,31 @@
+\doxysection{tmp\+\_\+tuple\+\_\+page.\+h}
+\hypertarget{tmp__tuple__page_8h_source}{}\label{tmp__tuple__page_8h_source}\index{src/include/storage/page/tmp\_tuple\_page.h@{src/include/storage/page/tmp\_tuple\_page.h}}
+\mbox{\hyperlink{tmp__tuple__page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{page_8h}{storage/page/page.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tmp__tuple_8h}{storage/table/tmp\_tuple.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ To\ pass\ the\ test\ cases\ for\ this\ class,\ you\ must\ follow\ the\ existing\ TmpTuplePage\ format\ and\ implement\ the}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ existing\ functions\ exactly\ as\ they\ are!\ It\ may\ be\ helpful\ to\ look\ at\ TablePage.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Remember\ that\ this\ task\ is\ optional,\ you\ get\ full\ credit\ if\ you\ finish\ the\ next\ task.}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TmpTuplePage}{TmpTuplePage}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c}{Page}}\ \{}
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TmpTuplePage_af60711b753ceadf4c12b6a31b0981b75}{Init}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ uint32\_t\ page\_size)\ \{\}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1TmpTuplePage_a6575e8df79130a7815218c51bbca52ab}{GetTablePageId}}()\ \{\ \textcolor{keywordflow}{return}\ INVALID\_PAGE\_ID;\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1TmpTuplePage_a4535ae880637a62357603e400621940f}{Insert}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple,\ \mbox{\hyperlink{classbustub_1_1TmpTuple}{TmpTuple}}\ *out)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{static\_assert}(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}})\ ==\ 4);}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

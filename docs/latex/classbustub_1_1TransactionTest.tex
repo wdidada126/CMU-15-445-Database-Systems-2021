@@ -1,0 +1,136 @@
+\doxysection{bustub\+::Transaction\+Test Class Reference}
+\hypertarget{classbustub_1_1TransactionTest}{}\label{classbustub_1_1TransactionTest}\index{bustub::TransactionTest@{bustub::TransactionTest}}
+Inheritance diagram for bustub\+::Transaction\+Test\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1TransactionTest}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classbustub_1_1TransactionTest_a82944332c2c88942109a148b521234fc}{Set\+Up}} () override
+\item 
+void \mbox{\hyperlink{classbustub_1_1TransactionTest_a1735b40213fd6563486204049d3749db}{Tear\+Down}} () override
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a5070a5a31acb73a042e34d1465d07c83}{Get\+Executor\+Context}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutionEngine}{Execution\+Engine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a42a17717cf0413cafaac84e6c17e6c2b}{Get\+Execution\+Engine}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a41194f325d687e258254ef1786129c5e}{Get\+Txn}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a6a6a57e61cdf29e9ecb0c5e3c39066d8}{Get\+Txn\+Manager}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a6acec8ccef614a78d12ca1fd280ec2a6}{Get\+Catalog}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_abad000d9a8f4e6526647c99335624142}{Get\+BPM}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_ade9b93d2ac990e94442c2edfd5e5fcca}{Get\+Lock\+Manager}} ()
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a14119b5e7c12606eab53acdd0ce39475}{Make\+Column\+Value\+Expression}} (const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \&schema, uint32\+\_\+t tuple\+\_\+idx, const std\+::string \&col\+\_\+name)
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a6e5775f3965720e26418d873475cab5b}{Make\+Constant\+Value\+Expression}} (const \mbox{\hyperlink{classbustub_1_1Value}{Value}} \&val)
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a89ab7f3e2b41d08215c08b6e3bd537a1}{Make\+Comparison\+Expression}} (const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}lhs, const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}rhs, \mbox{\hyperlink{namespacebustub_a314657f14ab5ad66e4a32d3e91cd3a9b}{Comparison\+Type}} comp\+\_\+type)
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a3c1c74b18e5cd338200f995b59ebe5f1}{Make\+Aggregate\+Value\+Expression}} (bool is\+\_\+group\+\_\+by\+\_\+term, uint32\+\_\+t term\+\_\+idx)
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1TransactionTest_a1154d762a00692c3f9499677af134463}{Make\+Output\+Schema}} (const std\+::vector$<$ std\+::pair$<$ std\+::string, const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} $>$ $>$ \&exprs)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1TransactionTest_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1TransactionTest_abad000d9a8f4e6526647c99335624142}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetBPM@{GetBPM}}
+\index{GetBPM@{GetBPM}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetBPM()}{GetBPM()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_abad000d9a8f4e6526647c99335624142} 
+\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+BPM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a6acec8ccef614a78d12ca1fd280ec2a6}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetCatalog@{GetCatalog}}
+\index{GetCatalog@{GetCatalog}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetCatalog()}{GetCatalog()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a6acec8ccef614a78d12ca1fd280ec2a6} 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Catalog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a42a17717cf0413cafaac84e6c17e6c2b}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetExecutionEngine@{GetExecutionEngine}}
+\index{GetExecutionEngine@{GetExecutionEngine}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetExecutionEngine()}{GetExecutionEngine()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a42a17717cf0413cafaac84e6c17e6c2b} 
+\mbox{\hyperlink{classbustub_1_1ExecutionEngine}{Execution\+Engine}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Execution\+Engine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a5070a5a31acb73a042e34d1465d07c83}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetExecutorContext@{GetExecutorContext}}
+\index{GetExecutorContext@{GetExecutorContext}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetExecutorContext()}{GetExecutorContext()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a5070a5a31acb73a042e34d1465d07c83} 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Executor\+Context (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the executor context in our test class 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1TransactionTest_ade9b93d2ac990e94442c2edfd5e5fcca}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetLockManager@{GetLockManager}}
+\index{GetLockManager@{GetLockManager}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetLockManager()}{GetLockManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_ade9b93d2ac990e94442c2edfd5e5fcca} 
+\mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Lock\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a41194f325d687e258254ef1786129c5e}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetTxn@{GetTxn}}
+\index{GetTxn@{GetTxn}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetTxn()}{GetTxn()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a41194f325d687e258254ef1786129c5e} 
+\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Txn (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a6a6a57e61cdf29e9ecb0c5e3c39066d8}\index{bustub::TransactionTest@{bustub::TransactionTest}!GetTxnManager@{GetTxnManager}}
+\index{GetTxnManager@{GetTxnManager}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{GetTxnManager()}{GetTxnManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a6a6a57e61cdf29e9ecb0c5e3c39066d8} 
+\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Get\+Txn\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a3c1c74b18e5cd338200f995b59ebe5f1}\index{bustub::TransactionTest@{bustub::TransactionTest}!MakeAggregateValueExpression@{MakeAggregateValueExpression}}
+\index{MakeAggregateValueExpression@{MakeAggregateValueExpression}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{MakeAggregateValueExpression()}{MakeAggregateValueExpression()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a3c1c74b18e5cd338200f995b59ebe5f1} 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Make\+Aggregate\+Value\+Expression (\begin{DoxyParamCaption}\item[{bool}]{is\+\_\+group\+\_\+by\+\_\+term}{, }\item[{uint32\+\_\+t}]{term\+\_\+idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a14119b5e7c12606eab53acdd0ce39475}\index{bustub::TransactionTest@{bustub::TransactionTest}!MakeColumnValueExpression@{MakeColumnValueExpression}}
+\index{MakeColumnValueExpression@{MakeColumnValueExpression}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{MakeColumnValueExpression()}{MakeColumnValueExpression()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a14119b5e7c12606eab53acdd0ce39475} 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Make\+Column\+Value\+Expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \&}]{schema}{, }\item[{uint32\+\_\+t}]{tuple\+\_\+idx}{, }\item[{const std\+::string \&}]{col\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a89ab7f3e2b41d08215c08b6e3bd537a1}\index{bustub::TransactionTest@{bustub::TransactionTest}!MakeComparisonExpression@{MakeComparisonExpression}}
+\index{MakeComparisonExpression@{MakeComparisonExpression}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{MakeComparisonExpression()}{MakeComparisonExpression()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a89ab7f3e2b41d08215c08b6e3bd537a1} 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Make\+Comparison\+Expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}}]{lhs}{, }\item[{const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*}}]{rhs}{, }\item[{\mbox{\hyperlink{namespacebustub_a314657f14ab5ad66e4a32d3e91cd3a9b}{Comparison\+Type}}}]{comp\+\_\+type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a6e5775f3965720e26418d873475cab5b}\index{bustub::TransactionTest@{bustub::TransactionTest}!MakeConstantValueExpression@{MakeConstantValueExpression}}
+\index{MakeConstantValueExpression@{MakeConstantValueExpression}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{MakeConstantValueExpression()}{MakeConstantValueExpression()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a6e5775f3965720e26418d873475cab5b} 
+const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Make\+Constant\+Value\+Expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1Value}{Value}} \&}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a1154d762a00692c3f9499677af134463}\index{bustub::TransactionTest@{bustub::TransactionTest}!MakeOutputSchema@{MakeOutputSchema}}
+\index{MakeOutputSchema@{MakeOutputSchema}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{MakeOutputSchema()}{MakeOutputSchema()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a1154d762a00692c3f9499677af134463} 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} bustub\+::\+Transaction\+Test\+::\+Make\+Output\+Schema (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ std\+::string, const \mbox{\hyperlink{classbustub_1_1AbstractExpression}{Abstract\+Expression}} \texorpdfstring{$\ast$}{*} $>$ $>$ \&}]{exprs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a82944332c2c88942109a148b521234fc}\index{bustub::TransactionTest@{bustub::TransactionTest}!SetUp@{SetUp}}
+\index{SetUp@{SetUp}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{SetUp()}{SetUp()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a82944332c2c88942109a148b521234fc} 
+void bustub\+::\+Transaction\+Test\+::\+Set\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+\Hypertarget{classbustub_1_1TransactionTest_a1735b40213fd6563486204049d3749db}\index{bustub::TransactionTest@{bustub::TransactionTest}!TearDown@{TearDown}}
+\index{TearDown@{TearDown}!bustub::TransactionTest@{bustub::TransactionTest}}
+\doxysubsubsection{\texorpdfstring{TearDown()}{TearDown()}}
+{\footnotesize\ttfamily \label{classbustub_1_1TransactionTest_a1735b40213fd6563486204049d3749db} 
+void bustub\+::\+Transaction\+Test\+::\+Tear\+Down (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+test/concurrency/\mbox{\hyperlink{transaction__test_8cpp}{transaction\+\_\+test.\+cpp}}\end{DoxyCompactItemize}

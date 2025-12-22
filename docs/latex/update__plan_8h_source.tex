@@ -1,0 +1,59 @@
+\doxysection{update\+\_\+plan.\+h}
+\hypertarget{update__plan_8h_source}{}\label{update__plan_8h_source}\index{src/include/execution/plans/update\_plan.h@{src/include/execution/plans/update\_plan.h}}
+\mbox{\hyperlink{update__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ update\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/update\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356}{UpdateType}}\ \{\ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356aec211f7c20af43e742bf2570c3cb84f9}{Add}},\ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356a5d5b78699e57104f2fa03bbdf7b9197b}{Set}}\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1UpdateInfo_a75b936909c76199322185a3fe3019dc4}{UpdateInfo}}\ \{}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{structbustub_1_1UpdateInfo_a75b936909c76199322185a3fe3019dc4}{UpdateInfo}}(\mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356}{UpdateType}}\ type,\ \textcolor{keywordtype}{int}\ update\_val)\ :\ \mbox{\hyperlink{structbustub_1_1UpdateInfo_a8965a6306d1bc9af322b064b19d7a4fa}{type\_}}\{type\},\ \mbox{\hyperlink{structbustub_1_1UpdateInfo_a9b8503161b05e3fe46a284f748b64208}{update\_val\_}}\{update\_val\}\ \{\}}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356}{UpdateType}}\ \mbox{\hyperlink{structbustub_1_1UpdateInfo_a8965a6306d1bc9af322b064b19d7a4fa}{type\_}};}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbustub_1_1UpdateInfo_a9b8503161b05e3fe46a284f748b64208}{update\_val\_}};}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1UpdatePlanNode_a83bf00d2c315cf17192d8e347d47543d}{UpdatePlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00040\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{classbustub_1_1UpdatePlanNode_a83bf00d2c315cf17192d8e347d47543d}{UpdatePlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *child,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<uint32\_t,\ UpdateInfo>\ update\_attrs)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(nullptr,\ \{child\}),\ table\_oid\_\{table\_oid\},\ update\_attrs\_\{std::move(update\_attrs)\}\ \{\}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1UpdatePlanNode_a29fe706265b8a8e0705b8d40a4ed75e2}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfa06933067aafd48425d67bcb01bba5cb6}{PlanType::Update}};\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1UpdatePlanNode_af8560dd4c15d3c92bfbeeee006740f30}{TableOid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ table\_oid\_;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1UpdatePlanNode_a053d1fe7442ee98e36b4acd566534ca6}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().size()\ ==\ 1,\ \textcolor{stringliteral}{"{}UPDATE\ should\ have\ at\ most\ one\ child\ plan."{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);}
+\DoxyCodeLine{00060\ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ std::unordered\_map<uint32\_t,\ UpdateInfo>\ \&\mbox{\hyperlink{classbustub_1_1UpdatePlanNode_a6bd03430480404f31f25d2e5e29755f3}{GetUpdateAttr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ update\_attrs\_;\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid\_;}
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{const}\ std::unordered\_map<uint32\_t,\ UpdateInfo>\ update\_attrs\_;}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

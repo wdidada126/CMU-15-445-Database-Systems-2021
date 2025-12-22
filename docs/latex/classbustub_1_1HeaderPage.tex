@@ -1,0 +1,116 @@
+\doxysection{bustub\+::Header\+Page Class Reference}
+\hypertarget{classbustub_1_1HeaderPage}{}\label{classbustub_1_1HeaderPage}\index{bustub::HeaderPage@{bustub::HeaderPage}}
+
+
+{\ttfamily \#include $<$header\+\_\+page.\+h$>$}
+
+Inheritance diagram for bustub\+::Header\+Page\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1HeaderPage}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classbustub_1_1HeaderPage_af0b7db4b90df261907c4e8a6d79242db}{Init}} ()
+\item 
+bool \mbox{\hyperlink{classbustub_1_1HeaderPage_a5dd8351a937cf4c7b9e2120bfccea6d4}{Insert\+Record}} (const std\+::string \&name, \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} root\+\_\+id)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1HeaderPage_a6bfba827dd72a7779c88f7526f88ed1f}{Delete\+Record}} (const std\+::string \&name)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1HeaderPage_a1899ea4452bc38cbaf7f8737f192b118}{Update\+Record}} (const std\+::string \&name, \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} root\+\_\+id)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1HeaderPage_ac31c09dd65e135911a8ff3c99e66f7fd}{Get\+Root\+Id}} (const std\+::string \&name, \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}root\+\_\+id)
+\item 
+int \mbox{\hyperlink{classbustub_1_1HeaderPage_adc1411fed4514eb0f2d8ed1ac3fe8449}{Get\+Record\+Count}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1Page}{bustub\+::\+Page}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c}{Page}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1Page_a4fd72b8a165c84cc0ba0f8e8bbd96867}{\texorpdfstring{$\sim$}{\string~}\+Page}} ()=default
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173}{Get\+Data}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \mbox{\hyperlink{classbustub_1_1Page_a59347ea2a6ff5e6db0fdfa636d638d83}{Get\+Page\+Id}} ()
+\item 
+int \mbox{\hyperlink{classbustub_1_1Page_a7e99d02c403ff48e442d0f242a9beb9f}{Get\+Pin\+Count}} ()
+\item 
+bool \mbox{\hyperlink{classbustub_1_1Page_ab61aaf6c7e21166f4e6f8e411918bb27}{Is\+Dirty}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a6d38fd55842571c7718d10c17b646a2c}{WLatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_ac5abcb7ce7a768e6e95de71f2594b576}{WUnlatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_abaaeefa7de3ecb2b31d9ba4c25ecbc41}{RLatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a79046b095db19e7930a8cb57ba80e5c0}{RUnlatch}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} \mbox{\hyperlink{classbustub_1_1Page_a1c4c64be1941191d276fa8906438e281}{Get\+LSN}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a46a145f2040f20e4a962fa64d5544398}{Set\+LSN}} (\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} lsn)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classbustub_1_1Page}{bustub\+::\+Page}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_ac29193a4bf340cd201154d0885c189ff}{SIZE\+\_\+\+PAGE\+\_\+\+HEADER}} = 8
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_ae118444d525b99a9b5ebe856cf5280ab}{OFFSET\+\_\+\+PAGE\+\_\+\+START}} = 0
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_a8ee2b0802e375db5bc0ea1d575265ec4}{OFFSET\+\_\+\+LSN}} = 4
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Database use the first page (page\+\_\+id = 0) as header page to store metadata, in our case, we will contain information about table/index name (length less than 32 bytes) and their corresponding root\+\_\+id\hypertarget{classbustub_1_1HeaderPage_autotoc_md28}{}\doxysubsubsection{\texorpdfstring{Format (size in byte)\+:}{Format (size in byte)\+:}}\label{classbustub_1_1HeaderPage_autotoc_md28}
+\hypertarget{classbustub_1_1HeaderPage_autotoc_md29}{}\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\vert$}{|} Record\+Count (4) \texorpdfstring{$\vert$}{|} Entry\+\_\+1 name (32) \texorpdfstring{$\vert$}{|} Entry\+\_\+1 root\+\_\+id (4) \texorpdfstring{$\vert$}{|} ... \texorpdfstring{$\vert$}{|}}{\texorpdfstring{$\vert$}{|} Record\+Count (4) \texorpdfstring{$\vert$}{|} Entry\+\_\+1 name (32) \texorpdfstring{$\vert$}{|} Entry\+\_\+1 root\+\_\+id (4) \texorpdfstring{$\vert$}{|} ... \texorpdfstring{$\vert$}{|}}}\label{classbustub_1_1HeaderPage_autotoc_md29}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1HeaderPage_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1HeaderPage_a6bfba827dd72a7779c88f7526f88ed1f}\index{bustub::HeaderPage@{bustub::HeaderPage}!DeleteRecord@{DeleteRecord}}
+\index{DeleteRecord@{DeleteRecord}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{DeleteRecord()}{DeleteRecord()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_a6bfba827dd72a7779c88f7526f88ed1f} 
+bool bustub\+::\+Header\+Page\+::\+Delete\+Record (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1HeaderPage_adc1411fed4514eb0f2d8ed1ac3fe8449}\index{bustub::HeaderPage@{bustub::HeaderPage}!GetRecordCount@{GetRecordCount}}
+\index{GetRecordCount@{GetRecordCount}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{GetRecordCount()}{GetRecordCount()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_adc1411fed4514eb0f2d8ed1ac3fe8449} 
+int bustub\+::\+Header\+Page\+::\+Get\+Record\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+helper functions \Hypertarget{classbustub_1_1HeaderPage_ac31c09dd65e135911a8ff3c99e66f7fd}\index{bustub::HeaderPage@{bustub::HeaderPage}!GetRootId@{GetRootId}}
+\index{GetRootId@{GetRootId}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{GetRootId()}{GetRootId()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_ac31c09dd65e135911a8ff3c99e66f7fd} 
+bool bustub\+::\+Header\+Page\+::\+Get\+Root\+Id (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{root\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1HeaderPage_af0b7db4b90df261907c4e8a6d79242db}\index{bustub::HeaderPage@{bustub::HeaderPage}!Init@{Init}}
+\index{Init@{Init}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_af0b7db4b90df261907c4e8a6d79242db} 
+void bustub\+::\+Header\+Page\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1HeaderPage_a5dd8351a937cf4c7b9e2120bfccea6d4}\index{bustub::HeaderPage@{bustub::HeaderPage}!InsertRecord@{InsertRecord}}
+\index{InsertRecord@{InsertRecord}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{InsertRecord()}{InsertRecord()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_a5dd8351a937cf4c7b9e2120bfccea6d4} 
+bool bustub\+::\+Header\+Page\+::\+Insert\+Record (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{root\+\_\+id}{}\end{DoxyParamCaption})}
+
+Record related \Hypertarget{classbustub_1_1HeaderPage_a1899ea4452bc38cbaf7f8737f192b118}\index{bustub::HeaderPage@{bustub::HeaderPage}!UpdateRecord@{UpdateRecord}}
+\index{UpdateRecord@{UpdateRecord}!bustub::HeaderPage@{bustub::HeaderPage}}
+\doxysubsubsection{\texorpdfstring{UpdateRecord()}{UpdateRecord()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HeaderPage_a1899ea4452bc38cbaf7f8737f192b118} 
+bool bustub\+::\+Header\+Page\+::\+Update\+Record (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{root\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/include/storage/page/\mbox{\hyperlink{header__page_8h}{header\+\_\+page.\+h}}\item 
+src/storage/page/\mbox{\hyperlink{header__page_8cpp}{header\+\_\+page.\+cpp}}\end{DoxyCompactItemize}

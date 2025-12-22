@@ -1,0 +1,162 @@
+\doxysection{log\+\_\+record.\+h}
+\hypertarget{log__record_8h_source}{}\label{log__record_8h_source}\index{src/include/recovery/log\_record.h@{src/include/recovery/log\_record.h}}
+\mbox{\hyperlink{log__record_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ log\_record.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/recovery/log\_record.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ \{}
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}}\ =\ 0,}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca61ee777e7f71dc466c3b2c685d8d313b}{INSERT}},}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccab8de8a905dc66fe3ce79f69048f89925}{MARKDELETE}},}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca2bdab37eb029de6ebdc954c5e083d1ac}{APPLYDELETE}},}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccaea1b585bcae9cf50acd809ac025eefc0}{ROLLBACKDELETE}},}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca15a8022d0ed9cd9c2a2e756822703eb4}{UPDATE}},}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca19aad9f2fe3ce0023298ab83f7e75775}{BEGIN}},}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca1d0ba376e273b9d622641124d8c59264}{COMMIT}},}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca8d12a2ca7e5a64036d7251a3eda51a38}{ABORT}},}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca7f017bac5893c98adb824a61b1f1e6b0}{NEWPAGE}},}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LogRecord_ac42f06f821c1e9ebb80a647e3d4a0d28}{LogRecord}}\ \{}
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LogRecord_a42122844816425e371e961638cdaf796}{LogManager}};}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LogRecord_a0a38999bad446d23993955f77e0acce0}{LogRecovery}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_ac42f06f821c1e9ebb80a647e3d4a0d28}{LogRecord}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{comment}{//\ constructor\ for\ Transaction\ type(BEGIN/COMMIT/ABORT)}}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_ad8571e9de7b2180e5b6a499e1734e14f}{LogRecord}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn,\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ log\_record\_type)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ :\ size\_(HEADER\_SIZE),\ txn\_id\_(txn\_id),\ prev\_lsn\_(prev\_lsn),\ log\_record\_type\_(log\_record\_type)\ \{\}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//\ constructor\ for\ INSERT/DELETE\ type}}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_a0928587b6dae9e6336e6ebd4534416a6}{LogRecord}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn,\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ log\_record\_type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ :\ txn\_id\_(txn\_id),\ prev\_lsn\_(prev\_lsn),\ log\_record\_type\_(log\_record\_type)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_record\_type\ ==\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca61ee777e7f71dc466c3b2c685d8d313b}{LogRecordType::INSERT}})\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ insert\_rid\_\ =\ rid;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ insert\_tuple\_\ =\ tuple;}
+\DoxyCodeLine{00078\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ assert(log\_record\_type\ ==\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca2bdab37eb029de6ebdc954c5e083d1ac}{LogRecordType::APPLYDELETE}}\ ||\ log\_record\_type\ ==\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccab8de8a905dc66fe3ce79f69048f89925}{LogRecordType::MARKDELETE}}\ ||}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ log\_record\_type\ ==\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccaea1b585bcae9cf50acd809ac025eefc0}{LogRecordType::ROLLBACKDELETE}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ delete\_rid\_\ =\ rid;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ delete\_tuple\_\ =\ tuple;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ calculate\ log\ record\ size}}
+\DoxyCodeLine{00085\ \ \ \ \ size\_\ =\ HEADER\_SIZE\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classbustub_1_1RID}{RID}})\ +\ \textcolor{keyword}{sizeof}(int32\_t)\ +\ tuple.\mbox{\hyperlink{classbustub_1_1Tuple_a4e9758243717bf4ebe1e74e1fb4f8a21}{GetLength}}();}
+\DoxyCodeLine{00086\ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//\ constructor\ for\ UPDATE\ type}}
+\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_ae0a6385db4601054c2a9f688cc49010c}{LogRecord}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn,\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ log\_record\_type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&update\_rid,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&old\_tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&new\_tuple)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ :\ txn\_id\_(txn\_id),}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ prev\_lsn\_(prev\_lsn),}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ log\_record\_type\_(log\_record\_type),}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ update\_rid\_(update\_rid),}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ old\_tuple\_(old\_tuple),}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ new\_tuple\_(new\_tuple)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ calculate\ log\ record\ size}}
+\DoxyCodeLine{00098\ \ \ \ \ size\_\ =\ HEADER\_SIZE\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classbustub_1_1RID}{RID}})\ +\ old\_tuple.\mbox{\hyperlink{classbustub_1_1Tuple_a4e9758243717bf4ebe1e74e1fb4f8a21}{GetLength}}()\ +\ new\_tuple.\mbox{\hyperlink{classbustub_1_1Tuple_a4e9758243717bf4ebe1e74e1fb4f8a21}{GetLength}}()\ +\ 2\ *\ \textcolor{keyword}{sizeof}(int32\_t);}
+\DoxyCodeLine{00099\ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{comment}{//\ constructor\ for\ NEWPAGE\ type}}
+\DoxyCodeLine{00102\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_a48c7b48c6c51d38516e205aa38b8b5a9}{LogRecord}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn,\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ log\_record\_type,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ prev\_page\_id,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ :\ size\_(HEADER\_SIZE),}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ txn\_id\_(txn\_id),}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ prev\_lsn\_(prev\_lsn),}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ log\_record\_type\_(log\_record\_type),}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ prev\_page\_id\_(prev\_page\_id),}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ page\_id\_(page\_id)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ calculate\ log\ record\ size,\ header\ size\ +\ sizeof(prev\_page\_id)\ +\ sizeof(page\_id)}}
+\DoxyCodeLine{00110\ \ \ \ \ size\_\ =\ HEADER\_SIZE\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}})\ *\ 2;}
+\DoxyCodeLine{00111\ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{classbustub_1_1LogRecord_a1a92d2d915cab58ec52ed7fbbd82803d}{\string~LogRecord}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_af4859c36f81ddcc15e27846b8d462f88}{GetDeleteTuple}}()\ \{\ \textcolor{keywordflow}{return}\ delete\_tuple\_;\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_aa545a146813013a97d4d716b7a82d871}{GetDeleteRID}}()\ \{\ \textcolor{keywordflow}{return}\ delete\_rid\_;\ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_a43efeaa583f094719bab73edf4138b43}{GetInsertTuple}}()\ \{\ \textcolor{keywordflow}{return}\ insert\_tuple\_;\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_addcf36b9e6fcae6d9644f3e52ced4a92}{GetInsertRID}}()\ \{\ \textcolor{keywordflow}{return}\ insert\_rid\_;\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_a7dd10146fab3b47d79776bf3391ae94d}{GetOriginalTuple}}()\ \{\ \textcolor{keywordflow}{return}\ old\_tuple\_;\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_a4e272914d1b1ff1df05fa5ee4aea4c25}{GetUpdateTuple}}()\ \{\ \textcolor{keywordflow}{return}\ new\_tuple\_;\ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_af507b82d93743e1c0e35c9bbbb25dc5b}{GetUpdateRID}}()\ \{\ \textcolor{keywordflow}{return}\ update\_rid\_;\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1LogRecord_a21350012b32ba066e5bc2390651b49d0}{GetNewPageRecord}}()\ \{\ \textcolor{keywordflow}{return}\ prev\_page\_id\_;\ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{inline}\ int32\_t\ \mbox{\hyperlink{classbustub_1_1LogRecord_a38b76788d331ccf95920c373f71651f0}{GetSize}}()\ \{\ \textcolor{keywordflow}{return}\ size\_;\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1LogRecord_a9b340f91ea758fabd6b0cd6861a0d231}{GetLSN}}()\ \{\ \textcolor{keywordflow}{return}\ lsn\_;\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1LogRecord_a6958da2b944265e15b72000654507468}{GetTxnId}}()\ \{\ \textcolor{keywordflow}{return}\ txn\_id\_;\ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1LogRecord_a1132f382e81a8cc35bfc5b82fe0c3021}{GetPrevLSN}}()\ \{\ \textcolor{keywordflow}{return}\ prev\_lsn\_;\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ \&\mbox{\hyperlink{classbustub_1_1LogRecord_a46bdb96b4c526c824af94710105c2a07}{GetLogRecordType}}()\ \{\ \textcolor{keywordflow}{return}\ log\_record\_type\_;\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \textcolor{comment}{//\ For\ debug\ purpose}}
+\DoxyCodeLine{00142\ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{classbustub_1_1LogRecord_a35e0aaef68344367709f61caf2fb3b99}{ToString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00143\ \ \ \ \ std::ostringstream\ os;}
+\DoxyCodeLine{00144\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Log["{}}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}size:"{}}\ <<\ size\_\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}LSN:"{}}\ <<\ lsn\_\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}transID:"{}}\ <<\ txn\_id\_\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}prevLSN:"{}}\ <<\ prev\_lsn\_\ <<\ \textcolor{stringliteral}{"{},\ "{}}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}LogType:"{}}\ <<\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(log\_record\_type\_)\ <<\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{return}\ os.str();}
+\DoxyCodeLine{00152\ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00155\ \ \ \textcolor{comment}{//\ the\ length\ of\ log\ record(for\ serialization,\ in\ bytes)}}
+\DoxyCodeLine{00156\ \ \ int32\_t\ size\_\{0\};}
+\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//\ must\ have\ fields}}
+\DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ lsn\_\{INVALID\_LSN\};}
+\DoxyCodeLine{00159\ \ \ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id\_\{INVALID\_TXN\_ID\};}
+\DoxyCodeLine{00160\ \ \ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn\_\{INVALID\_LSN\};}
+\DoxyCodeLine{00161\ \ \ \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{LogRecordType}}\ log\_record\_type\_\{\mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccaccc0377a8afbf50e7094f5c23a8af223}{LogRecordType::INVALID}}\};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \textcolor{comment}{//\ case1:\ for\ delete\ operation,\ delete\_tuple\_\ for\ UNDO\ operation}}
+\DoxyCodeLine{00164\ \ \ RID\ delete\_rid\_;}
+\DoxyCodeLine{00165\ \ \ Tuple\ delete\_tuple\_;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \textcolor{comment}{//\ case2:\ for\ insert\ operation}}
+\DoxyCodeLine{00168\ \ \ RID\ insert\_rid\_;}
+\DoxyCodeLine{00169\ \ \ Tuple\ insert\_tuple\_;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{comment}{//\ case3:\ for\ update\ operation}}
+\DoxyCodeLine{00172\ \ \ RID\ update\_rid\_;}
+\DoxyCodeLine{00173\ \ \ Tuple\ old\_tuple\_;}
+\DoxyCodeLine{00174\ \ \ Tuple\ new\_tuple\_;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \textcolor{comment}{//\ case4:\ for\ new\ page\ operation}}
+\DoxyCodeLine{00177\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ prev\_page\_id\_\{INVALID\_PAGE\_ID\};}
+\DoxyCodeLine{00178\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id\_\{INVALID\_PAGE\_ID\};}
+\DoxyCodeLine{00179\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ HEADER\_SIZE\ =\ 20;}
+\DoxyCodeLine{00180\ \};\ \ \textcolor{comment}{//\ namespace\ bustub}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

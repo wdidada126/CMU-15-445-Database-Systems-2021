@@ -1,0 +1,56 @@
+\doxysection{src/include/concurrency/transaction.h File Reference}
+\hypertarget{transaction_8h}{}\label{transaction_8h}\index{src/include/concurrency/transaction.h@{src/include/concurrency/transaction.h}}
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include "{}common/config.\+h"{}}\newline
+{\ttfamily \#include "{}common/logger.\+h"{}}\newline
+{\ttfamily \#include "{}storage/page/page.\+h"{}}\newline
+{\ttfamily \#include "{}storage/table/tuple.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbustub_1_1TableWriteRecord}{bustub\+::\+Table\+Write\+Record}}
+\item 
+class \mbox{\hyperlink{classbustub_1_1IndexWriteRecord}{bustub\+::\+Index\+Write\+Record}}
+\item 
+class \mbox{\hyperlink{classbustub_1_1TransactionAbortException}{bustub\+::\+Transaction\+Abort\+Exception}}
+\item 
+class \mbox{\hyperlink{classbustub_1_1Transaction}{bustub\+::\+Transaction}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{bustub\+::\+Transaction\+State}} \{ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a53a5c6962088d681882494048d2f0817}{bustub\+::\+GROWING}}
+, \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20aff1f34de72566813b10e966b03977ac0}{bustub\+::\+SHRINKING}}
+, \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a1c372d13f50af5ca9a935ebc78006e82}{bustub\+::\+COMMITTED}}
+, \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a4e6c860e5da10e31c5fd9cb76ddc2025}{bustub\+::\+ABORTED}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{bustub\+::\+Isolation\+Level}} \{ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5a7b5722b7d02a9d8ff3a8bdfcb7d278c3}{bustub\+::\+READ\+\_\+\+UNCOMMITTED}}
+, \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5aa4b37efaa1a6b533614ed81660dbf912}{bustub\+::\+REPEATABLE\+\_\+\+READ}}
+, \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5a1671fb17b5ce9bd0af0cf47f3f4ea337}{bustub\+::\+READ\+\_\+\+COMMITTED}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{bustub\+::\+WType}} \{ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca61ee777e7f71dc466c3b2c685d8d313b}{bustub\+::\+INSERT}} = 0
+, \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca32f68a60cef40faedbc6af20298c1a1e}{bustub\+::\+DELETE}}
+, \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca15a8022d0ed9cd9c2a2e756822703eb4}{bustub\+::\+UPDATE}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07ca}{bustub\+::\+Abort\+Reason}} \{ \newline
+\mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa97eb89545356d08442dbf5fdd92b3d5a}{bustub\+::\+LOCK\+\_\+\+ON\+\_\+\+SHRINKING}}
+, \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa83c1f3829c0646534509d50730097b68}{bustub\+::\+UNLOCK\+\_\+\+ON\+\_\+\+SHRINKING}}
+, \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa49847c93d1589c51e27451e384da1025}{bustub\+::\+UPGRADE\+\_\+\+CONFLICT}}
+, \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa8f35b656de87c54e18710fc94d73a614}{bustub\+::\+DEADLOCK}}
+, \newline
+\mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caaccf87b15ab00dd3ea4718d693f18feb5}{bustub\+::\+LOCKSHARED\+\_\+\+ON\+\_\+\+READ\+\_\+\+UNCOMMITTED}}
+ \}
+\end{DoxyCompactItemize}

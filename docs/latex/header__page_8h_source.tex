@@ -1,0 +1,41 @@
+\doxysection{header\+\_\+page.\+h}
+\hypertarget{header__page_8h_source}{}\label{header__page_8h_source}\index{src/include/storage/page/header\_page.h@{src/include/storage/page/header\_page.h}}
+\mbox{\hyperlink{header__page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CMU-\/DB\ Project\ (15-\/445/645)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***DO\ NO\ SHARE\ PUBLICLY***}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Identification:\ src/include/page/header\_page.h}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Copyright\ (c)\ 2018,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{page_8h}{storage/page/page.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1HeaderPage}{HeaderPage}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c}{Page}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_af0b7db4b90df261907c4e8a6d79242db}{Init}}()\ \{\ SetRecordCount(0);\ \}}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_a5dd8351a937cf4c7b9e2120bfccea6d4}{InsertRecord}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ root\_id);}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_a6bfba827dd72a7779c88f7526f88ed1f}{DeleteRecord}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_a1899ea4452bc38cbaf7f8737f192b118}{UpdateRecord}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ root\_id);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ return\ root\_id\ if\ success}}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_ac31c09dd65e135911a8ff3c99e66f7fd}{GetRootId}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *root\_id);}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1HeaderPage_adc1411fed4514eb0f2d8ed1ac3fe8449}{GetRecordCount}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{int}\ FindRecord(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ SetRecordCount(\textcolor{keywordtype}{int}\ record\_count);}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

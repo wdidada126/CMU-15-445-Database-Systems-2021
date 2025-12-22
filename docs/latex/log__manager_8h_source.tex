@@ -1,0 +1,74 @@
+\doxysection{log\+\_\+manager.\+h}
+\hypertarget{log__manager_8h_source}{}\label{log__manager_8h_source}\index{src/include/recovery/log\_manager.h@{src/include/recovery/log\_manager.h}}
+\mbox{\hyperlink{log__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ log\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/recovery/log\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <condition\_variable>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <future>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__record_8h}{recovery/log\_record.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{disk__manager_8h}{storage/disk/disk\_manager.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LogManager_a977736471c8af225c05910c73c406d1a}{LogManager}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1LogManager_a977736471c8af225c05910c73c406d1a}{LogManager}}(\mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ :\ next\_lsn\_(0),\ persistent\_lsn\_(INVALID\_LSN),\ disk\_manager\_(disk\_manager)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ log\_buffer\_\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[LOG\_BUFFER\_SIZE];}
+\DoxyCodeLine{00034\ \ \ \ \ flush\_buffer\_\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}[LOG\_BUFFER\_SIZE];}
+\DoxyCodeLine{00035\ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager_a458fb8788f0a56e48f8c119c54eab3a7}{\string~LogManager}}()\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{delete}[]\ log\_buffer\_;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{delete}[]\ flush\_buffer\_;}
+\DoxyCodeLine{00040\ \ \ \ \ log\_buffer\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00041\ \ \ \ \ flush\_buffer\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LogManager_aed5cfe542a06ac552fa9af09df523456}{RunFlushThread}}();}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LogManager_a8662153d94b4c02b5993c5966cd5b8be}{StopFlushThread}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1LogManager_a08d69070337d7327260930e3bc2e7bb0}{AppendLogRecord}}(\mbox{\hyperlink{classbustub_1_1LogRecord}{LogRecord}}\ *log\_record);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1LogManager_a8cd3fc75ca8c936031edadacc25ea9e1}{GetNextLSN}}()\ \{\ \textcolor{keywordflow}{return}\ next\_lsn\_;\ \}}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1LogManager_a2400cbcc6aee4c8f4315978a015c727b}{GetPersistentLSN}}()\ \{\ \textcolor{keywordflow}{return}\ persistent\_lsn\_;\ \}}
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LogManager_a2895715933995bb794729404e4d60ac0}{SetPersistentLSN}}(\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ lsn)\ \{\ persistent\_lsn\_\ =\ lsn;\ \}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classbustub_1_1LogManager_ac09dcd2ecd33a6241fa7516d363cd23e}{GetLogBuffer}}()\ \{\ \textcolor{keywordflow}{return}\ log\_buffer\_;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ TODO(students):\ you\ may\ add\ your\ own\ member\ variables}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ std::atomic<lsn\_t>\ next\_lsn\_;}
+\DoxyCodeLine{00060\ \ \ std::atomic<lsn\_t>\ persistent\_lsn\_;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{char}\ *log\_buffer\_;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{char}\ *flush\_buffer\_;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ std::mutex\ latch\_;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ std::thread\ *flush\_thread\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ std::condition\_variable\ cv\_;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,164 @@
+\doxysection{p0\+\_\+starter.\+h}
+\hypertarget{p0__starter_8h_source}{}\label{p0__starter_8h_source}\index{src/include/primer/p0\_starter.h@{src/include/primer/p0\_starter.h}}
+\mbox{\hyperlink{p0__starter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ p0\_starter.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/primer/p0\_starter.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2020,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exception_8h}{common/exception.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Matrix_a53cfac4ef3d6e7bb04b9f769b6bda70c}{Matrix}}\ \{}
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1Matrix_a53cfac4ef3d6e7bb04b9f769b6bda70c}{Matrix}}(\textcolor{keywordtype}{int}\ rows,\ \textcolor{keywordtype}{int}\ cols)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{rows\_}}\ =\ rows;}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{cols\_}}\ =\ cols;}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Matrix_a83502de5402eaea4593700065ce46e8f}{linear\_}}\ =\ \textcolor{keyword}{new}\ T[rows\ *\ cols];}
+\DoxyCodeLine{00044\ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{rows\_}};}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{cols\_}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ T\ *\mbox{\hyperlink{classbustub_1_1Matrix_a83502de5402eaea4593700065ce46e8f}{linear\_}};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1Matrix_a0005bd416cde0ba18545896b1c822386}{GetRowCount}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1Matrix_a10e655a5dde7351c8f11916c462ca485}{GetColumnCount}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{virtual}\ T\ \mbox{\hyperlink{classbustub_1_1Matrix_a4786a04feec0fe5dc2d7da9d55315f61}{GetElement}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Matrix_ac5bb3b8283dd711b1cb4c8fe20adff8e}{SetElement}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ T\ val)\ =\ 0;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Matrix_a87d65a4e266282333947bf122818a34c}{FillFrom}}(\textcolor{keyword}{const}\ std::vector<T>\ \&source)\ =\ 0;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classbustub_1_1Matrix_a8a837d0e05e8d73815e6abac6116cc42}{\string~Matrix}}()\ \{\ \textcolor{keyword}{delete}[]\ \mbox{\hyperlink{classbustub_1_1Matrix_a83502de5402eaea4593700065ce46e8f}{linear\_}};\ \}}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00112\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1RowMatrix_ab350557ba5e16e3902c3601db4b2d7a2}{RowMatrix}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Matrix_a53cfac4ef3d6e7bb04b9f769b6bda70c}{Matrix}}<T>\ \{}
+\DoxyCodeLine{00113\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00121\ \ \ \mbox{\hyperlink{classbustub_1_1RowMatrix_ab350557ba5e16e3902c3601db4b2d7a2}{RowMatrix}}(\textcolor{keywordtype}{int}\ rows,\ \textcolor{keywordtype}{int}\ cols)\ :\ \mbox{\hyperlink{classbustub_1_1Matrix_a53cfac4ef3d6e7bb04b9f769b6bda70c}{Matrix}}<T>(rows,\ cols)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ data\_\ =\ \textcolor{keyword}{new}\ T\ *[rows];}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rows;\ i++)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ data\_[i]\ =\ \&\mbox{\hyperlink{classbustub_1_1Matrix_a83502de5402eaea4593700065ce46e8f}{Matrix<T>::linear\_}}[i\ *\ cols];}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{Matrix<T>::rows\_}};\ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{Matrix<T>::cols\_}};\ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00152\ \ \ T\ \mbox{\hyperlink{classbustub_1_1RowMatrix_a1ea08c8a9195a6d5060f0f98dd29ac63}{GetElement}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(0\ <=\ i\ \&\&\ i\ <\ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{Matrix<T>::rows\_}}\ \&\&\ 0\ <=\ j\ \&\&\ j\ <\ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{Matrix<T>::cols\_}}))\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ std::string\ error\_msg\ =}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RowMatrix::GetElement:\ index\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ std::to\_string(j)\ +\ \textcolor{stringliteral}{"{}\ out\ of\ range."{}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ error\_msg);}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ data\_[i][j];}
+\DoxyCodeLine{00159\ \ \ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1RowMatrix_af1a3ee8a91d62156af9ffc6abc05b770}{SetElement}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ T\ val)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(0\ <=\ i\ \&\&\ i\ <\ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{Matrix<T>::rows\_}}\ \&\&\ 0\ <=\ j\ \&\&\ j\ <\ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{Matrix<T>::cols\_}}))\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ std::string\ error\_msg\ =}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RowMatrix::SetElement:\ index\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ std::to\_string(j)\ +\ \textcolor{stringliteral}{"{}\ out\ of\ range."{}};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ error\_msg);}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ data\_[i][j]\ =\ val;}
+\DoxyCodeLine{00178\ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00191\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1RowMatrix_ab081c54856354d23da7f1270333b23a9}{FillFrom}}(\textcolor{keyword}{const}\ std::vector<T>\ \&source)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{int}\ source\_size\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(source.size());}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{int}\ expected\_size\ =\ \mbox{\hyperlink{classbustub_1_1Matrix_a42644a0c97568198ab9c93618a5afce8}{Matrix<T>::rows\_}}\ *\ \mbox{\hyperlink{classbustub_1_1Matrix_a5f0897360b4e392d17b4d7bf0f3b8673}{Matrix<T>::cols\_}};}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{if}\ (source\_size\ !=\ expected\_size)\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ std::string\ error\_msg\ =\ \textcolor{stringliteral}{"{}RowMatrix::FillFrom:\ expect\ source\ of\ size\ "{}}\ +\ std::to\_string(expected\_size)\ +}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ but\ get\ size\ "{}}\ +\ std::to\_string(source\_size)\ +\ \textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ error\_msg);}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ std::copy(source.begin(),\ source.end(),\ \mbox{\hyperlink{classbustub_1_1Matrix_a83502de5402eaea4593700065ce46e8f}{Matrix<T>::linear\_}});}
+\DoxyCodeLine{00200\ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00207\ \ \ \mbox{\hyperlink{classbustub_1_1RowMatrix_aedff534c2eb65c6e2350c85fdb6570e4}{\string~RowMatrix}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keyword}{delete}[]\ data\_;\ \}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00218\ \ \ T\ **data\_;}
+\DoxyCodeLine{00219\ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00225\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00226\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1RowMatrixOperations}{RowMatrixOperations}}\ \{}
+\DoxyCodeLine{00227\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00235\ \ \ \textcolor{keyword}{static}\ std::unique\_ptr<RowMatrix<T>>\ \mbox{\hyperlink{classbustub_1_1RowMatrixOperations_a05c64829e547e5985a58350005c248c8}{Add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixA,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixB)\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ TODO(P0):\ Add\ implementation}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{if}\ (matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\ !=\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\ ||\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}()\ !=\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}())\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unique\_ptr<RowMatrix<T>>(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}();}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}();}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{auto}\ sum\ =\ std::make\_unique<RowMatrix<T>>(row,\ col);}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ row;\ i++)\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ col;\ j++)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a1ea08c8a9195a6d5060f0f98dd29ac63}{GetElement}}(i,\ j)\ +\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a1ea08c8a9195a6d5060f0f98dd29ac63}{GetElement}}(i,\ j);}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ sum-\/>SetElement(i,\ j,\ num);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordflow}{return}\ sum;}
+\DoxyCodeLine{00252\ \ \ \}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00261\ \ \ \textcolor{keyword}{static}\ std::unique\_ptr<RowMatrix<T>>\ \mbox{\hyperlink{classbustub_1_1RowMatrixOperations_a8525e27e1c3c6d883a7654683d215b86}{Multiply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixA,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixB)\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//\ TODO(P0):\ Add\ implementation}}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordflow}{if}\ (matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}()\ !=\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}())\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unique\_ptr<RowMatrix<T>>(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00265\ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}();}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}();}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{int}\ same\ =\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}();}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{auto}\ product\ =\ std::make\_unique<RowMatrix<T>>(row,\ col);}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ row;\ i++)\ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ col;\ j++)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ same;\ k++)\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ num\ +=\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a1ea08c8a9195a6d5060f0f98dd29ac63}{GetElement}}(i,\ k)\ *\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a1ea08c8a9195a6d5060f0f98dd29ac63}{GetElement}}(k,\ j);}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ product-\/>SetElement(i,\ j,\ num);}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{return}\ product;}
+\DoxyCodeLine{00282\ \ \ \}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00292\ \ \ \textcolor{keyword}{static}\ std::unique\_ptr<RowMatrix<T>>\ \mbox{\hyperlink{classbustub_1_1RowMatrixOperations_a07646fe860edbb2be60b0fa65c8d7019}{GEMM}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixA,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixB,}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RowMatrix}{RowMatrix<T>}}\ *matrixC)\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{comment}{//\ TODO(P0):\ Add\ implementation}}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordflow}{if}\ (matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}()\ !=\ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\ ||\ matrixA-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\ !=\ matrixC-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_a137f08212ad58ef5f70010066474ab4e}{GetRowCount}}()\ ||}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ matrixB-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}()\ !=\ matrixC-\/>\mbox{\hyperlink{classbustub_1_1RowMatrix_adcac4369904a4514a1c351cafd51c370}{GetColumnCount}}())\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unique\_ptr<RowMatrix<T>>(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00298\ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{auto}\ product\ =\ \mbox{\hyperlink{classbustub_1_1RowMatrixOperations_a8525e27e1c3c6d883a7654683d215b86}{Multiply}}(matrixA,\ matrixB);}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356aec211f7c20af43e742bf2570c3cb84f9}{Add}}(product.get(),\ matrixC);}
+\DoxyCodeLine{00301\ \ \ \}}
+\DoxyCodeLine{00302\ \};}
+\DoxyCodeLine{00303\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,68 @@
+\doxysection{decimal\+\_\+type.\+h}
+\hypertarget{decimal__type_8h_source}{}\label{decimal__type_8h_source}\index{src/include/type/decimal\_type.h@{src/include/type/decimal\_type.h}}
+\mbox{\hyperlink{decimal__type_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ decimal\_type.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/type/decimal\_type.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{numeric__type_8h}{type/numeric\_type.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1DecimalType_a3e89b75e7b54729060ea9cead405367a}{DecimalType}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1NumericType_a077d23741e2413110133ab71ef0328c1}{NumericType}}\ \{}
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classbustub_1_1DecimalType_a3e89b75e7b54729060ea9cead405367a}{DecimalType}}();}
+\DoxyCodeLine{00021\ \ \ \textcolor{comment}{//\ DecimalValue(DecDef\ definition);}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//\ Other\ mathematical\ functions}}
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{namespacebustub_a2bbb62d13571c1de8ac209439f5fc356aec211f7c20af43e742bf2570c3cb84f9}{Add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_ae2bd5453904228c201d72dab80ca2705}{Subtract}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a27d3a3c76c567a4a1f606f982b921b80}{Multiply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a8e5df2ae65664e2f903f10310cae7701}{Divide}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a1b60ba265ad0699f5d4aff06f019e38e}{Modulo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a87924754611e91b4db5e5989fb1321b1}{Min}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_ab4b103efeda3b1074c549333d7d72af9}{Max}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a4fb2caaa2cbcae020be7cc728732580f}{Sqrt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a68b3b283c514a8ac968e737700f4edc7}{IsZero}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//\ Comparison\ functions}}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a4315f0984133270773cfa60e6415fe56}{CompareEquals}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a93cb95345ad451b446427c6b7c267ff5}{CompareNotEquals}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a092c0ebc69fa65bf76343f55e4fbe748}{CompareLessThan}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a69552b500bafa8c687d33dd31304aeb3}{CompareLessThanEquals}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a32aa6ed7175ab38780e26444602ad78b}{CompareGreaterThan}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_aa48404b74f850234cb4306005e0dd50e}{CompareGreaterThanEquals}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a7e3c7f8067b991cd3bde35d750107ba6}{CastAs}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val,\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type\_id)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{comment}{//\ Decimal\ types\ are\ always\ inlined}}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a9358a3cbd25ec3f3ab9b724ef3949458}{IsInlined}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val)\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{comment}{//\ Debug}}
+\DoxyCodeLine{00048\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1DecimalType_a619079bb98ec2084d7f0b80e14b7dffc}{ToString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ Serialize\ this\ value\ into\ the\ given\ storage\ space}}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a18dc3426871da0b9d4ee2d9e85cd9b10}{SerializeTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val,\ \textcolor{keywordtype}{char}\ *storage)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//\ Deserialize\ a\ value\ of\ the\ given\ type\ from\ the\ given\ storage\ space.}}
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_adcc566eeb71d4cddde880d13ceae2918}{DeserializeFrom}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *storage)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{comment}{//\ Create\ a\ copy\ of\ this\ value}}
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1DecimalType_a65fdd0cc73f94ebf500532674ca086b9}{Copy}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&val)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ OperateNull(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&left,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&right)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

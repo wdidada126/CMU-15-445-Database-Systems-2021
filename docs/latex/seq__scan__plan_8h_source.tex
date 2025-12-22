@@ -1,0 +1,43 @@
+\doxysection{seq\+\_\+scan\+\_\+plan.\+h}
+\hypertarget{seq__scan__plan_8h_source}{}\label{seq__scan__plan_8h_source}\index{src/include/execution/plans/seq\_scan\_plan.h@{src/include/execution/plans/seq\_scan\_plan.h}}
+\mbox{\hyperlink{seq__scan__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ seq\_scan\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/seq\_scan\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1SeqScanPlanNode_ae30f843be376c84f00ec3f31b9ea947e}{SeqScanPlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classbustub_1_1SeqScanPlanNode_ae30f843be376c84f00ec3f31b9ea947e}{SeqScanPlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *output,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *predicate,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(output,\ \{\}),\ predicate\_\{predicate\},\ table\_oid\_\{table\_oid\}\ \{\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1SeqScanPlanNode_a6a89ee5d9812eef80d4a0be8549fb85c}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfa3f18bd6473be45124c858db37d6b9495}{PlanType::SeqScan}};\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1SeqScanPlanNode_a6b31d10c28a4720bf4ff91f15fe894b9}{GetPredicate}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ predicate\_;\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1SeqScanPlanNode_a449c001bbee9327dd96b9737eb6608ff}{GetTableOid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ table\_oid\_;\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *predicate\_;}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid\_;}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

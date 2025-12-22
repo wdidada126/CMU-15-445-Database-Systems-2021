@@ -1,0 +1,74 @@
+\doxysection{bustub\+::Execution\+Engine Class Reference}
+\hypertarget{classbustub_1_1ExecutionEngine}{}\label{classbustub_1_1ExecutionEngine}\index{bustub::ExecutionEngine@{bustub::ExecutionEngine}}
+
+
+{\ttfamily \#include $<$execution\+\_\+engine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab}{Execution\+Engine}} (\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}bpm, \mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}txn\+\_\+mgr, \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}catalog)
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutionEngine_a16fa8f9b9220a0ff60245b41e4ba1f07}{DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE}} (\mbox{\hyperlink{classbustub_1_1ExecutionEngine}{Execution\+Engine}})
+\item 
+bool \mbox{\hyperlink{classbustub_1_1ExecutionEngine_a60aeb4acd0f4e2838c5b51df283ab0fa}{Execute}} (const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*}plan, std\+::vector$<$ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} $>$ \texorpdfstring{$\ast$}{*}result\+\_\+set, \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, \mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*}exec\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classbustub_1_1ExecutionEngine}{Execution\+Engine} class executes query plans. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1ExecutionEngine_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab}\index{bustub::ExecutionEngine@{bustub::ExecutionEngine}!ExecutionEngine@{ExecutionEngine}}
+\index{ExecutionEngine@{ExecutionEngine}!bustub::ExecutionEngine@{bustub::ExecutionEngine}}
+\doxysubsubsection{\texorpdfstring{ExecutionEngine()}{ExecutionEngine()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab} 
+bustub\+::\+Execution\+Engine\+::\+Execution\+Engine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{bpm}{, }\item[{\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}}]{txn\+\_\+mgr}{, }\item[{\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}}]{catalog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new \doxylink{classbustub_1_1ExecutionEngine}{Execution\+Engine} instance. 
+\begin{DoxyParams}{Parameters}
+{\em bpm} & The buffer pool manager used by the execution engine \\
+\hline
+{\em txn\+\_\+mgr} & The transaction manager used by the execution engine \\
+\hline
+{\em catalog} & The catalog used by the execution engine \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1ExecutionEngine_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1ExecutionEngine_a16fa8f9b9220a0ff60245b41e4ba1f07}\index{bustub::ExecutionEngine@{bustub::ExecutionEngine}!DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}}
+\index{DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}!bustub::ExecutionEngine@{bustub::ExecutionEngine}}
+\doxysubsubsection{\texorpdfstring{DISALLOW\_COPY\_AND\_MOVE()}{DISALLOW\_COPY\_AND\_MOVE()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutionEngine_a16fa8f9b9220a0ff60245b41e4ba1f07} 
+bustub\+::\+Execution\+Engine\+::\+DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1ExecutionEngine}{Execution\+Engine}}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1ExecutionEngine_a60aeb4acd0f4e2838c5b51df283ab0fa}\index{bustub::ExecutionEngine@{bustub::ExecutionEngine}!Execute@{Execute}}
+\index{Execute@{Execute}!bustub::ExecutionEngine@{bustub::ExecutionEngine}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutionEngine_a60aeb4acd0f4e2838c5b51df283ab0fa} 
+bool bustub\+::\+Execution\+Engine\+::\+Execute (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*}}]{plan}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} $>$ \texorpdfstring{$\ast$}{*}}]{result\+\_\+set}{, }\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{txn}{, }\item[{\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*}}]{exec\+\_\+ctx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Execute a query plan. 
+\begin{DoxyParams}{Parameters}
+{\em plan} & The query plan to execute \\
+\hline
+{\em result\+\_\+set} & The set of tuples produced by executing the plan \\
+\hline
+{\em txn} & The transaction context in which the query executes \\
+\hline
+{\em exec\+\_\+ctx} & The executor context in which the query executes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if execution of the query plan succeeds, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/execution/\mbox{\hyperlink{execution__engine_8h}{execution\+\_\+engine.\+h}}\end{DoxyCompactItemize}

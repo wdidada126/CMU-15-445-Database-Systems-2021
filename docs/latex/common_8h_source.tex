@@ -1,0 +1,82 @@
+\doxysection{common.\+h}
+\hypertarget{common_8h_source}{}\label{common_8h_source}\index{test/include/logging/common.h@{test/include/logging/common.h}}
+\mbox{\hyperlink{common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ common.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ test/include/logging/common.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <chrono>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ use\ a\ fixed\ schema\ to\ construct\ a\ random\ tuple}}
+\DoxyCodeLine{00026\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \mbox{\hyperlink{namespacebustub_af3ffb0114338fd405be0456c8c8c8cf3}{ConstructTuple}}(\mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema)\ \{}
+\DoxyCodeLine{00027\ \ \ std::vector<Value>\ values;}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ v(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{TypeId::INVALID}});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{auto}\ seed\ =\ std::chrono::system\_clock::now().time\_since\_epoch().count();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ std::mt19937\ generator(seed);\ \ \textcolor{comment}{//\ mt19937\ is\ a\ standard\ mersenne\_twister\_engine}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ schema-\/>\mbox{\hyperlink{classbustub_1_1Schema_a204fc2589a38b56c36fb9fe81828a480}{GetColumnCount}}();\ i++)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ get\ type}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&col\ =\ schema-\/>\mbox{\hyperlink{classbustub_1_1Schema_a0e9f2a4edce5c898e090bbbd1e9325ae}{GetColumn}}(i);}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type\ =\ col.GetType();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(generator()\ \%\ 2));}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(generator())\ \%\ 1000);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(generator())\ \%\ 1000);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(generator())\ \%\ 1000);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(generator())\ \%\ 1000);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ alphanum[]\ =}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}0123456789"{}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ABCDEFGHIJKLMNOPQRSTUVWXYZ"{}}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}abcdefghijklmnopqrstuvwxyz"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ len\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(1\ +\ generator()\ \%\ 9);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ s[10];}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ j\ =\ 0;\ j\ <\ len;\ ++j)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ s[j]\ =\ alphanum[generator()\ \%\ (\textcolor{keyword}{sizeof}(alphanum)\ -\/\ 1)];}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ s[len]\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ v\ =\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(type,\ s,\ len\ +\ 1,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ values.emplace\_back(v);}
+\DoxyCodeLine{00072\ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}(values,\ schema);}
+\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

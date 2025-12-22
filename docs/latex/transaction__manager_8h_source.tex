@@ -1,0 +1,85 @@
+\doxysection{transaction\+\_\+manager.\+h}
+\hypertarget{transaction__manager_8h_source}{}\label{transaction__manager_8h_source}\index{src/include/concurrency/transaction\_manager.h@{src/include/concurrency/transaction\_manager.h}}
+\mbox{\hyperlink{transaction__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ transaction\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/concurrency/transaction\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <shared\_mutex>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lock__manager_8h}{concurrency/lock\_manager.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction_8h}{concurrency/transaction.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TransactionManager_aecf907c4b365e6ca283948f5841d512a}{TransactionManager}}\ \{}
+\DoxyCodeLine{00032\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1TransactionManager_aecf907c4b365e6ca283948f5841d512a}{TransactionManager}}(\mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ :\ lock\_manager\_(lock\_manager),\ log\_manager\_(log\_manager)\ \{\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager_aea75b9783284e10319f315b33912b3f7}{\string~TransactionManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *\mbox{\hyperlink{classbustub_1_1TransactionManager_a7bd696ba2d4b6481ccd773cd6347fe0e}{Begin}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{IsolationLevel}}\ isolation\_level\ =\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5aa4b37efaa1a6b533614ed81660dbf912}{IsolationLevel::REPEATABLE\_READ}});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TransactionManager_a03a9f5e5c04b71ad71dc91dddfdec3a3}{Commit}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TransactionManager_ac5fd161a27a717980dca5a8f7dec17d6}{Abort}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{static}\ std::unordered\_map<txn\_id\_t,\ Transaction\ *>\ \mbox{\hyperlink{classbustub_1_1TransactionManager_a27eec0bd42b0c7495a858c415fc5b5c2}{txn\_map}};}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{static}\ std::shared\_mutex\ \mbox{\hyperlink{classbustub_1_1TransactionManager_ad7cb35550f3a850045706f5bc6630fba}{txn\_map\_mutex}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *\mbox{\hyperlink{classbustub_1_1TransactionManager_a9a44b23f97e3e59ba1a58c1ab1bfc06a}{GetTransaction}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager_ad7cb35550f3a850045706f5bc6630fba}{TransactionManager::txn\_map\_mutex}}.lock\_shared();}
+\DoxyCodeLine{00073\ \ \ \ \ assert(\mbox{\hyperlink{classbustub_1_1TransactionManager_a27eec0bd42b0c7495a858c415fc5b5c2}{TransactionManager::txn\_map}}.find(txn\_id)\ !=\ \mbox{\hyperlink{classbustub_1_1TransactionManager_a27eec0bd42b0c7495a858c415fc5b5c2}{TransactionManager::txn\_map}}.end());}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{auto}\ *res\ =\ \mbox{\hyperlink{classbustub_1_1TransactionManager_a27eec0bd42b0c7495a858c415fc5b5c2}{TransactionManager::txn\_map}}[txn\_id];}
+\DoxyCodeLine{00075\ \ \ \ \ assert(res\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager_ad7cb35550f3a850045706f5bc6630fba}{TransactionManager::txn\_map\_mutex}}.unlock\_shared();}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00078\ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TransactionManager_a71689acd200a9aafd465d33eb3f1dba9}{BlockAllTransactions}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TransactionManager_ab01133499d3abf91933837c167d28b6d}{ResumeTransactions}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ ReleaseLocks(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ std::unordered\_set<RID>\ lock\_set;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ *txn-\/>\mbox{\hyperlink{classbustub_1_1Transaction_a4c411cb92fb57b5cd740e8348207a94e}{GetExclusiveLockSet}}())\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ lock\_set.emplace(item);}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ *txn-\/>\mbox{\hyperlink{classbustub_1_1Transaction_ab3e853e5661afc74322f7d694875103b}{GetSharedLockSet}}())\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ lock\_set.emplace(item);}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ locked\_rid\ :\ lock\_set)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ lock\_manager\_-\/>Unlock(txn,\ locked\_rid);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ std::atomic<txn\_id\_t>\ next\_txn\_id\_\{0\};}
+\DoxyCodeLine{00105\ \ \ LockManager\ *lock\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00106\ \ \ LogManager\ *log\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ ReaderWriterLatch\ global\_txn\_latch\_;}
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

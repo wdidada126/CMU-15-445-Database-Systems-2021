@@ -1,0 +1,70 @@
+\doxysection{hash\+\_\+table\+\_\+block\+\_\+page.\+h}
+\hypertarget{hash__table__block__page_8h_source}{}\label{hash__table__block__page_8h_source}\index{src/include/storage/page/hash\_table\_block\_page.h@{src/include/storage/page/hash\_table\_block\_page.h}}
+\mbox{\hyperlink{hash__table__block__page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ hash\_table\_block\_page.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/page/hash\_table\_block\_page.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{int__comparator_8h}{storage/index/int\_comparator.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table__page__defs_8h}{storage/page/hash\_table\_page\_defs.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ KeyType,\ \textcolor{keyword}{typename}\ ValueType,\ \textcolor{keyword}{typename}\ KeyComparator>}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a1979c63cee9d2485f5d3546f4a2a48c1}{HashTableBlockPage}}\ \{}
+\DoxyCodeLine{00038\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ Delete\ all\ constructor\ /\ destructor\ to\ ensure\ memory\ safety}}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a1979c63cee9d2485f5d3546f4a2a48c1}{HashTableBlockPage}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a88de6215fbfad68387844f12b0ea5213}{KeyAt}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \ \ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a48fd372b1dcbf7958c88b303cce2395f}{ValueAt}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a129f9a74404118d30950804fcb808470}{Insert}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_aed18afda3bfffcb51dfdb98854cea353}{Remove}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a8efb1333a5e5e6675591b77f64c4e80e}{IsOccupied}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a7a465b23356d5dddc8ae264b877aef4a}{IsReadable}}(\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ bucket\_ind)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_aa9ef7d1952e196d851db9f3dfe83cb09}{GetValue}}(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ KeyComparator\ cmp,\ std::vector<ValueType>\ *result);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a35fc49937b15e97ecf91164bef4d46b7}{Insert}}(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ value,\ KeyComparator\ cmp);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_ab1203fda11b8814ccadae64de8445edf}{Remove}}(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ value,\ KeyComparator\ cmp);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00124\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a13346ba2617f8cc33044e133c5cdb352}{NumReadable}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a625b9a734c545f51f7e466e5dd946169}{IsFull}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a1d68fd5f399751f95173dfcc74acf037}{IsEmpty}}();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1HashTableBlockPage_a3a0d146d53148dc87205de890028b2bb}{PrintBucket}}();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00142\ \ \ std::atomic\_char\ occupied\_[(\mbox{\hyperlink{hash__table__page__defs_8h_aa248adf6523ba18254eca1aef1a12670}{BLOCK\_ARRAY\_SIZE}}\ -\/\ 1)\ /\ 8\ +\ 1];}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \textcolor{comment}{//\ 0\ if\ tombstone/brand\ new\ (never\ occupied),\ 1\ otherwise.}}
+\DoxyCodeLine{00145\ \ \ std::atomic\_char\ readable\_[(\mbox{\hyperlink{hash__table__page__defs_8h_aa248adf6523ba18254eca1aef1a12670}{BLOCK\_ARRAY\_SIZE}}\ -\/\ 1)\ /\ 8\ +\ 1];}
+\DoxyCodeLine{00146\ \ \ \mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{MappingType}}\ array\_[0];}
+\DoxyCodeLine{00147\ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

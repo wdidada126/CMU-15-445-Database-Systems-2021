@@ -1,0 +1,51 @@
+\doxysection{insert\+\_\+executor.\+h}
+\hypertarget{insert__executor_8h_source}{}\label{insert__executor_8h_source}\index{src/include/execution/executors/insert\_executor.h@{src/include/execution/executors/insert\_executor.h}}
+\mbox{\hyperlink{insert__executor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ insert\_executor.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executors/insert\_executor.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__executor_8h}{execution/executors/abstract\_executor.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{insert__plan_8h}{execution/plans/insert\_plan.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1InsertExecutor_ad4f0fd49939e24442ec26142ad7ff6a3}{InsertExecutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{AbstractExecutor}}\ \{}
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1InsertExecutor_ad4f0fd49939e24442ec26142ad7ff6a3}{InsertExecutor}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1InsertPlanNode}{InsertPlanNode}}\ *plan,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<AbstractExecutor>\ \&\&child\_executor);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1InsertExecutor_a61e8a5d3523537775914475ed527f6ca}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1InsertExecutor_a45d271f704bd6ca859d29d777e45929a}{Next}}([[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1InsertExecutor_a7d6f5f0e2fbadd7506c51f5d4d08541b}{GetOutputSchema}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ plan\_-\/>OutputSchema();\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<AbstractExecutor>\ child\_executor\_;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1InsertPlanNode}{InsertPlanNode}}\ *plan\_;}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *table\_info\_;}
+\DoxyCodeLine{00065\ \ \ std::vector<IndexInfo\ *>\ table\_indexes\_;}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{size\_t}\ index\_for\_tuple\_to\_insert\_\ =\ 0;}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

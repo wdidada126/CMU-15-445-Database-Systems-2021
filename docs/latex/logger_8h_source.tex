@@ -1,0 +1,201 @@
+\doxysection{logger.\+h}
+\hypertarget{logger_8h_source}{}\label{logger_8h_source}\index{src/include/common/logger.h@{src/include/common/logger.h}}
+\mbox{\hyperlink{logger_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ logger.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/logger.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/***************************************************************************}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ Copyright\ (C)\ 2008\ by\ H-\/Store\ Project\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ Brown\ University\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ Massachusetts\ Institute\ of\ Technology\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ Yale\ University\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ This\ software\ may\ be\ modified\ and\ distributed\ under\ the\ terms\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ \ \ of\ the\ MIT\ license.\ \ See\ the\ LICENSE\ file\ for\ details.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ ***************************************************************************/}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifndef\ HSTOREDEBUGLOG\_H}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ HSTOREDEBUGLOG\_H}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ https://blog.galowicz.de/2016/02/20/short\_file\_macro/}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ =\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ PastLastSlash(\mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ a,\ \mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ b)\ \{}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordflow}{return}\ *a\ ==\ \textcolor{charliteral}{'\(\backslash\)0'}\ ?\ b\ :\ *b\ ==\ \textcolor{charliteral}{'/'}\ ?\ PastLastSlash(a\ +\ 1,\ a\ +\ 1)\ :\ PastLastSlash(a\ +\ 1,\ b);}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ PastLastSlash(\mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{cstr}}\ a)\ \{\ \textcolor{keywordflow}{return}\ PastLastSlash(a,\ a);\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ \_\_SHORT\_FILE\_\_\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ constexpr\ cstr\ sf\_\_\{PastLastSlash(\_\_FILE\_\_)\};\ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ sf\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \})}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Log\ levels.}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_OFF\ =\ 1000;}
+\DoxyCodeLine{00058\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_ERROR\ =\ 500;}
+\DoxyCodeLine{00059\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_WARN\ =\ 400;}
+\DoxyCodeLine{00060\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_INFO\ =\ 300;}
+\DoxyCodeLine{00061\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_DEBUG\ =\ 200;}
+\DoxyCodeLine{00062\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_TRACE\ =\ 100;}
+\DoxyCodeLine{00063\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\_ALL\ =\ 0;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ LOG\_LOG\_TIME\_FORMAT\ "{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ LOG\_OUTPUT\_STREAM\ stdout}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ Compile\ Option}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#ifndef\ LOG\_LEVEL}}
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ TODO(TAs)\ :\ any\ way\ to\ use\ pragma\ message\ in\ GCC?}}
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ \#pragma\ message("{}Warning:\ LOG\_LEVEL\ compile\ option\ was\ not\ explicitly}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ given."{})}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#ifndef\ NDEBUG}}
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_LEVEL\_DEBUG\ is\ used\ instead\ as\ DEBUG\ option\ is\ on."{})}}
+\DoxyCodeLine{00075\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\ =\ LOG\_LEVEL\_DEBUG;}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_LEVEL\_WARN\ is\ used\ instead\ as\ DEBUG\ option\ is\ off."{})}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_LEVEL\ =\ LOG\_LEVEL\_INFO;}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ \#pragma\ message("{}Give\ LOG\_LEVEL\ compile\ option\ to\ overwrite\ the\ default}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ level."{})}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ For\ compilers\ which\ do\ not\ support\ \_\_FUNCTION\_\_}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#if\ !defined(\_\_FUNCTION\_\_)\ \&\&\ !defined(\_\_GNUC\_\_)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ \_\_FUNCTION\_\_\ "{}"{}}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacebustub_ae7444c6e31def3ed0a77e91799ca24c2}{OutputLogHeader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *func,\ \textcolor{keywordtype}{int}\ level);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ Two\ convenient\ macros\ for\ debugging}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ 1.\ Logging\ macros.}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ 2.\ LOG\_XXX\_ENABLED\ macros.\ Use\ these\ to\ "{}eliminate"{}\ all\ the\ debug\ blocks\ from}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ release\ binary.}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#ifdef\ LOG\_ERROR\_ENABLED}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#undef\ LOG\_ERROR\_ENABLED}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#if\ LOG\_LEVEL\ <=\ LOG\_LEVEL\_ERROR}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ LOG\_ERROR\_ENABLED}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_ERROR\ was\ enabled."{})}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(...)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ OutputLogHeader(\_\_SHORT\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ LOG\_LEVEL\_ERROR);\ \(\backslash\)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ ::fprintf(LOG\_OUTPUT\_STREAM,\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ fprintf(LOG\_OUTPUT\_STREAM,\ "{}\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ ::fflush(stdout)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ LOG\_ERROR(...)\ ((void)0)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#ifdef\ LOG\_WARN\_ENABLED}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#undef\ LOG\_WARN\_ENABLED}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#if\ LOG\_LEVEL\ <=\ LOG\_LEVEL\_WARN}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ LOG\_WARN\_ENABLED}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_WARN\ was\ enabled."{})}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ LOG\_WARN(...)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ OutputLogHeader(\_\_SHORT\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ LOG\_LEVEL\_WARN);\ \(\backslash\)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ ::fprintf(LOG\_OUTPUT\_STREAM,\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ fprintf(LOG\_OUTPUT\_STREAM,\ "{}\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \ ::fflush(stdout)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ LOG\_WARN(...)\ ((void)0)}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#ifdef\ LOG\_INFO\_ENABLED}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#undef\ LOG\_INFO\_ENABLED}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#if\ LOG\_LEVEL\ <=\ LOG\_LEVEL\_INFO}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ LOG\_INFO\_ENABLED}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_INFO\ was\ enabled."{})}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ LOG\_INFO(...)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ OutputLogHeader(\_\_SHORT\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ LOG\_LEVEL\_INFO);\ \(\backslash\)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ ::fprintf(LOG\_OUTPUT\_STREAM,\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ fprintf(LOG\_OUTPUT\_STREAM,\ "{}\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ ::fflush(stdout)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ LOG\_INFO(...)\ ((void)0)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#ifdef\ LOG\_DEBUG\_ENABLED}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#undef\ LOG\_DEBUG\_ENABLED}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#if\ LOG\_LEVEL\ <=\ LOG\_LEVEL\_DEBUG}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ LOG\_DEBUG\_ENABLED}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_DEBUG\ was\ enabled."{})}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ LOG\_DEBUG(...)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ OutputLogHeader(\_\_SHORT\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ LOG\_LEVEL\_DEBUG);\ \(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ ::fprintf(LOG\_OUTPUT\_STREAM,\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ fprintf(LOG\_OUTPUT\_STREAM,\ "{}\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ ::fflush(stdout)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ LOG\_DEBUG(...)\ ((void)0)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#ifdef\ LOG\_TRACE\_ENABLED}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#undef\ LOG\_TRACE\_ENABLED}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#if\ LOG\_LEVEL\ <=\ LOG\_LEVEL\_TRACE}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ LOG\_TRACE\_ENABLED}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ \#pragma\ message("{}LOG\_TRACE\ was\ enabled."{})}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ LOG\_TRACE(...)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ OutputLogHeader(\_\_SHORT\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_,\ LOG\_LEVEL\_TRACE);\ \(\backslash\)}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ ::fprintf(LOG\_OUTPUT\_STREAM,\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ fprintf(LOG\_OUTPUT\_STREAM,\ "{}\(\backslash\)n"{});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\ \ ::fflush(stdout)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ LOG\_TRACE(...)\ ((void)0)}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ Output\ log\ message\ header\ in\ this\ format:\ [type]\ [file:line:function]\ time\ -\/}}
+\DoxyCodeLine{00171\ \textcolor{comment}{//\ ex:\ [ERROR]\ [somefile.cpp:123:doSome()]\ 2008/07/06\ 10:00:00\ -\/}}
+\DoxyCodeLine{00172\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacebustub_ae7444c6e31def3ed0a77e91799ca24c2}{OutputLogHeader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *func,\ \textcolor{keywordtype}{int}\ level)\ \{}
+\DoxyCodeLine{00173\ \ \ time\_t\ t\ =\ ::time(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00174\ \ \ tm\ *curTime\ =\ localtime(\&t);\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{char}\ time\_str[32];\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ FIXME}}
+\DoxyCodeLine{00176\ \ \ ::strftime(time\_str,\ 32,\ \mbox{\hyperlink{logger_8h_a751fad8e9e150aa1f520ea6deabe9cea}{LOG\_LOG\_TIME\_FORMAT}},\ curTime);}
+\DoxyCodeLine{00177\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *type;}
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordflow}{switch}\ (level)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{case}\ LOG\_LEVEL\_ERROR:}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}ERROR"{}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordflow}{case}\ LOG\_LEVEL\_WARN:}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}WARN\ "{}};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{case}\ LOG\_LEVEL\_INFO:}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}INFO\ "{}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{case}\ LOG\_LEVEL\_DEBUG:}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}DEBUG"{}};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{case}\ LOG\_LEVEL\_TRACE:}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}TRACE"{}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}UNKWN"{}};}
+\DoxyCodeLine{00196\ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \textcolor{comment}{//\ PAVLO:\ DO\ NOT\ CHANGE\ THIS}}
+\DoxyCodeLine{00198\ \ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\%s\ [\%s:\%d:\%s]\ \%s\ -\/\ "{}},\ time\_str,\ file,\ line,\ func,\ type);}
+\DoxyCodeLine{00199\ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

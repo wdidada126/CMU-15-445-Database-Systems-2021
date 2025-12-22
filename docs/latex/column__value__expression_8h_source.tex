@@ -1,0 +1,52 @@
+\doxysection{column\+\_\+value\+\_\+expression.\+h}
+\hypertarget{column__value__expression_8h_source}{}\label{column__value__expression_8h_source}\index{src/include/execution/expressions/column\_value\_expression.h@{src/include/execution/expressions/column\_value\_expression.h}}
+\mbox{\hyperlink{column__value__expression_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ column\_value\_expression.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/expression/column\_value\_expression.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/19,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{schema_8h}{catalog/schema.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a5009d815d272e0e6d4f8dd4d9a102b3c}{ColumnValueExpression}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression_a14f9c4449434a35dd98335ff1884f028}{AbstractExpression}}\ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a5009d815d272e0e6d4f8dd4d9a102b3c}{ColumnValueExpression}}(uint32\_t\ tuple\_idx,\ uint32\_t\ col\_idx,\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ ret\_type)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractExpression_a14f9c4449434a35dd98335ff1884f028}{AbstractExpression}}(\{\},\ ret\_type),\ tuple\_idx\_\{tuple\_idx\},\ col\_idx\_\{col\_idx\}\ \{\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_ae48653bbd0c7b0addebe1c3b9b16fae9}{Evaluate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema)\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ tuple-\/>\mbox{\hyperlink{classbustub_1_1Tuple_a835afa31e7cf5c282bd8fff6acb83fb1}{GetValue}}(schema,\ col\_idx\_);\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a69857c12f468f5f54babeea64464f488}{EvaluateJoin}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *left\_tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *left\_schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *right\_tuple,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *right\_schema)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ tuple\_idx\_\ ==\ 0\ ?\ left\_tuple-\/>\mbox{\hyperlink{classbustub_1_1Tuple_a835afa31e7cf5c282bd8fff6acb83fb1}{GetValue}}(left\_schema,\ col\_idx\_)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ right\_tuple-\/>\mbox{\hyperlink{classbustub_1_1Tuple_a835afa31e7cf5c282bd8fff6acb83fb1}{GetValue}}(right\_schema,\ col\_idx\_);}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a976239d1f0a570036680600091a8216e}{EvaluateAggregate}}(\textcolor{keyword}{const}\ std::vector<Value>\ \&group\_bys,\ \textcolor{keyword}{const}\ std::vector<Value>\ \&aggregates)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Aggregation\ should\ only\ refer\ to\ group-\/by\ and\ aggregates."{}});}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a6bdcd8ffa6982c567deabb3fc32497b5}{GetTupleIdx}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tuple\_idx\_;\ \}}
+\DoxyCodeLine{00049\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1ColumnValueExpression_a1531cc72996b587c6a480b8ca8a32f50}{GetColIdx}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ col\_idx\_;\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ uint32\_t\ tuple\_idx\_;}
+\DoxyCodeLine{00055\ \ \ uint32\_t\ col\_idx\_;}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

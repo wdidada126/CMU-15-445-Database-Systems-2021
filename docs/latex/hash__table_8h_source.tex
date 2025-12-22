@@ -1,0 +1,42 @@
+\doxysection{hash\+\_\+table.\+h}
+\hypertarget{hash__table_8h_source}{}\label{hash__table_8h_source}\index{src/include/container/hash/hash\_table.h@{src/include/container/hash/hash\_table.h}}
+\mbox{\hyperlink{hash__table_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ hash\_table.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/container/hash/hash\_table.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction_8h}{concurrency/transaction.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table__page__defs_8h}{storage/page/hash\_table\_page\_defs.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ KeyType,\ \textcolor{keyword}{typename}\ ValueType,\ \textcolor{keyword}{typename}\ KeyComparator>}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1HashTable}{HashTable}}\ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classbustub_1_1HashTable_ac4c7944bce149193947ff913d5ea86fb}{\string~HashTable}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTable_aa210942f79353b8ce4f234937177f1ef}{Insert}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value)\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTable_afe270f191a766e41e891730a6d587ad7}{Remove}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value)\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1HashTable_a1b5ffceaf3a1d1e2ce161d9f806277a7}{GetValue}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ std::vector<ValueType>\ *result)\ =\ 0;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

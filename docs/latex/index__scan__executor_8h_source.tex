@@ -1,0 +1,45 @@
+\doxysection{index\+\_\+scan\+\_\+executor.\+h}
+\hypertarget{index__scan__executor_8h_source}{}\label{index__scan__executor_8h_source}\index{src/include/execution/executors/index\_scan\_executor.h@{src/include/execution/executors/index\_scan\_executor.h}}
+\mbox{\hyperlink{index__scan__executor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ index\_scan\_executor.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executors/index\_scan\_executor.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/20,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rid_8h}{common/rid.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__executor_8h}{execution/executors/abstract\_executor.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{index__scan__plan_8h}{execution/plans/index\_scan\_plan.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1IndexScanExecutor_ad9e6f658c1636dc64d3e8d180e99a911}{IndexScanExecutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{AbstractExecutor}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classbustub_1_1IndexScanExecutor_ad9e6f658c1636dc64d3e8d180e99a911}{IndexScanExecutor}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1IndexScanPlanNode}{IndexScanPlanNode}}\ *plan);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1IndexScanExecutor_a8fc8f4039d32b9da8327e9311b8c4148}{GetOutputSchema}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ plan\_-\/>OutputSchema();\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1IndexScanExecutor_a286511d06856e7f38b2dc62794004a5f}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1IndexScanExecutor_a90279c688f8c0b2980191ee154f6dc9d}{Next}}(\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1IndexScanPlanNode}{IndexScanPlanNode}}\ *plan\_;}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,117 @@
+\doxysection{b\+\_\+plus\+\_\+tree.\+h}
+\hypertarget{b__plus__tree_8h_source}{}\label{b__plus__tree_8h_source}\index{src/include/storage/index/b\_plus\_tree.h@{src/include/storage/index/b\_plus\_tree.h}}
+\mbox{\hyperlink{b__plus__tree_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CMU-\/DB\ Project\ (15-\/445/645)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***DO\ NO\ SHARE\ PUBLICLY***}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Identification:\ src/include/index/b\_plus\_tree.h}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Copyright\ (c)\ 2018,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction_8h}{concurrency/transaction.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{index__iterator_8h}{storage/index/index\_iterator.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{b__plus__tree__internal__page_8h}{storage/page/b\_plus\_tree\_internal\_page.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{b__plus__tree__leaf__page_8h}{storage/page/b\_plus\_tree\_leaf\_page.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ BPLUSTREE\_TYPE\ BPlusTree<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{b__plus__tree__page_8h_a4c3acf10c136a6a89b0805e36e535847}{INDEX\_TEMPLATE\_ARGUMENTS}}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1BPlusTree_a929e3c85b179ec888cec4179a110dec5}{BPlusTree}}\ \{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{using\ }InternalPage\ =\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage<KeyType,\ page\_id\_t,\ KeyComparator>}};}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{using\ }LeafPage\ =\ \mbox{\hyperlink{classbustub_1_1BPlusTreeLeafPage}{BPlusTreeLeafPage<KeyType,\ ValueType,\ KeyComparator>}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a929e3c85b179ec888cec4179a110dec5}{BPlusTree}}(std::string\ name,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager,\ \textcolor{keyword}{const}\ KeyComparator\ \&comparator,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ leaf\_max\_size\ =\ \mbox{\hyperlink{b__plus__tree__leaf__page_8h_a1bf27d964f8ae5ad340eb82a7bd5fee7}{LEAF\_PAGE\_SIZE}},\ \textcolor{keywordtype}{int}\ internal\_max\_size\ =\ \mbox{\hyperlink{b__plus__tree__internal__page_8h_a04db3f924b29e986d8b3e94dbbbb9d55}{INTERNAL\_PAGE\_SIZE}});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ Returns\ true\ if\ this\ B+\ tree\ has\ no\ keys\ and\ values.}}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a1418a13a1b403a49668cc25dc3712cdb}{IsEmpty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//\ Insert\ a\ key-\/value\ pair\ into\ this\ B+\ tree.}}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_ac358f442e7fd6b5b06d45e7073c1afbc}{Insert}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ Remove\ a\ key\ and\ its\ value\ from\ this\ B+\ tree.}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a393f00bb2a87eaa0d331aee763ab13c5}{Remove}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ return\ the\ value\ associated\ with\ a\ given\ key}}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_ae618d991f386649a85292745b9f5c1fb}{GetValue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ std::vector<ValueType>\ *result,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ index\ iterator}}
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{index__iterator_8h_af44bbf16ed06a9a1165c4d6e74335f31}{INDEXITERATOR\_TYPE}}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a21b544f9e739b62763e383d155fbe8fa}{Begin}}();}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{index__iterator_8h_af44bbf16ed06a9a1165c4d6e74335f31}{INDEXITERATOR\_TYPE}}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_acbe4d262c41153611d6b8f0c046be091}{Begin}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key);}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{index__iterator_8h_af44bbf16ed06a9a1165c4d6e74335f31}{INDEXITERATOR\_TYPE}}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_ac0131dd40d2fe7ec50ed85c6edac82e0}{End}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a21c9225f6334233dab4adbfdcc02e67c}{Print}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ ToString(\textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *\textcolor{keyword}{>}(bpm-\/>\mbox{\hyperlink{classbustub_1_1BufferPoolManager_a3b883dc4d00d27a5421bac105996154f}{FetchPage}}(root\_page\_id\_)-\/>\mbox{\hyperlink{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173}{GetData}}()),\ bpm);}
+\DoxyCodeLine{00064\ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a1b2017f5d001c8afaca49cf15686e634}{Draw}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm,\ \textcolor{keyword}{const}\ std::string\ \&outf)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ std::ofstream\ out(outf);}
+\DoxyCodeLine{00068\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}digraph\ G\ \{"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00069\ \ \ \ \ ToGraph(\textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *\textcolor{keyword}{>}(bpm-\/>\mbox{\hyperlink{classbustub_1_1BufferPoolManager_a3b883dc4d00d27a5421bac105996154f}{FetchPage}}(root\_page\_id\_)-\/>\mbox{\hyperlink{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173}{GetData}}()),\ bpm,\ out);}
+\DoxyCodeLine{00070\ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}\}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ out.close();}
+\DoxyCodeLine{00072\ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ read\ data\ from\ file\ and\ insert\ one\ by\ one}}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a0ac52d9af5613ae9db998cddf9942599}{InsertFromFile}}(\textcolor{keyword}{const}\ std::string\ \&file\_name,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ read\ data\ from\ file\ and\ remove\ one\ by\ one}}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTree_a01cfda0b89c37ee0e3e9f69cc67ee133}{RemoveFromFile}}(\textcolor{keyword}{const}\ std::string\ \&file\_name,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00079\ \ \ \textcolor{comment}{//\ expose\ for\ test\ purpose}}
+\DoxyCodeLine{00080\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BPlusTree_ad73e4e45432c9d62649125293442b8d2}{FindLeafPage}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keywordtype}{bool}\ leftMost\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ StartNewTree(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{bool}\ InsertIntoLeaf(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ InsertIntoParent(\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *old\_node,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *new\_node,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ N>}
+\DoxyCodeLine{00091\ \ \ N\ *Split(N\ *node);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ N>}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{bool}\ CoalesceOrRedistribute(N\ *node,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ N>}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{bool}\ Coalesce(N\ **neighbor\_node,\ N\ **node,\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage<KeyType,\ page\_id\_t,\ KeyComparator>}}\ **parent,}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ N>}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ Redistribute(N\ *neighbor\_node,\ N\ *node,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{bool}\ AdjustRoot(\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *node);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ UpdateRootPageId(\textcolor{keywordtype}{int}\ insert\_record\ =\ 0);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{/*\ Debug\ Routines\ for\ FREE!!\ */}}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ ToGraph(\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *page,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm,\ std::ofstream\ \&out)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{void}\ ToString(\mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ *page,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ member\ variable}}
+\DoxyCodeLine{00113\ \ \ std::string\ index\_name\_;}
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ root\_page\_id\_;}
+\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager\_;}
+\DoxyCodeLine{00116\ \ \ KeyComparator\ comparator\_;}
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{int}\ leaf\_max\_size\_;}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{int}\ internal\_max\_size\_;}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

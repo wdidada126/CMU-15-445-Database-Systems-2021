@@ -1,0 +1,25 @@
+var classbustub_1_1Transaction =
+[
+    [ "Transaction", "classbustub_1_1Transaction.html#a28e9466588ff92f30f1699db79926d1f", null ],
+    [ "~Transaction", "classbustub_1_1Transaction.html#a2ab0d2d2b2af598c72444f877e589299", null ],
+    [ "AddIntoDeletedPageSet", "classbustub_1_1Transaction.html#a566882a46c5776a73b35163246d86137", null ],
+    [ "AddIntoPageSet", "classbustub_1_1Transaction.html#a0abb42496c37ad0f17891adbd31044f0", null ],
+    [ "AppendTableWriteRecord", "classbustub_1_1Transaction.html#ad15ea926fe7d27e7b9b4ee32a6295662", null ],
+    [ "AppendTableWriteRecord", "classbustub_1_1Transaction.html#a390e0bd71d4aabec9ac3ced5bfd5783a", null ],
+    [ "DISALLOW_COPY", "classbustub_1_1Transaction.html#a4bdedef75c39b7574b50291c7524ca11", null ],
+    [ "GetDeletedPageSet", "classbustub_1_1Transaction.html#af836e40aa18d3bcb75060b0b11d2c9d0", null ],
+    [ "GetExclusiveLockSet", "classbustub_1_1Transaction.html#a4c411cb92fb57b5cd740e8348207a94e", null ],
+    [ "GetIndexWriteSet", "classbustub_1_1Transaction.html#ae3a95dfdc5a70d1ff9c9d243b91aa1b7", null ],
+    [ "GetIsolationLevel", "classbustub_1_1Transaction.html#a100094714e13f9ce019e867e2bb752e4", null ],
+    [ "GetPageSet", "classbustub_1_1Transaction.html#ad4f0768c5495a1093c291e03963ab136", null ],
+    [ "GetPrevLSN", "classbustub_1_1Transaction.html#ab03797e599bc450b05bb39b942c7e7bc", null ],
+    [ "GetSharedLockSet", "classbustub_1_1Transaction.html#ab3e853e5661afc74322f7d694875103b", null ],
+    [ "GetState", "classbustub_1_1Transaction.html#a3a63bf5fd5c24a33121fc0a5c434792e", null ],
+    [ "GetThreadId", "classbustub_1_1Transaction.html#a5a87c3574b1bcd54b6d16fcd83fcfcf1", null ],
+    [ "GetTransactionId", "classbustub_1_1Transaction.html#ad30ce1a623728bb953ab64302c9980d0", null ],
+    [ "GetWriteSet", "classbustub_1_1Transaction.html#a8361db06ae3c6b0aa9aeb89ba6f32d5e", null ],
+    [ "IsExclusiveLocked", "classbustub_1_1Transaction.html#a7362744c2c061f7f8732d5476ec971ad", null ],
+    [ "IsSharedLocked", "classbustub_1_1Transaction.html#a17dc46d5400d52734f24f5ae8f9c184a", null ],
+    [ "SetPrevLSN", "classbustub_1_1Transaction.html#a3696b0bb3e56c39a90f2efeabf65cb69", null ],
+    [ "SetState", "classbustub_1_1Transaction.html#acb83d7f742cc82273aca365eb07511f3", null ]
+];

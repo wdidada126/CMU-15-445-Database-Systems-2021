@@ -1,0 +1,53 @@
+\doxysection{nested\+\_\+loop\+\_\+join\+\_\+executor.\+h}
+\hypertarget{nested__loop__join__executor_8h_source}{}\label{nested__loop__join__executor_8h_source}\index{src/include/execution/executors/nested\_loop\_join\_executor.h@{src/include/execution/executors/nested\_loop\_join\_executor.h}}
+\mbox{\hyperlink{nested__loop__join__executor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ nested\_loop\_join\_executor.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executors/nested\_loop\_join\_executor.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__executor_8h}{execution/executors/abstract\_executor.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{nested__loop__join__plan_8h}{execution/plans/nested\_loop\_join\_plan.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1NestedLoopJoinExecutor_a9344b3eb951a7e596ab95a05fef27f5b}{NestedLoopJoinExecutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{AbstractExecutor}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classbustub_1_1NestedLoopJoinExecutor_a9344b3eb951a7e596ab95a05fef27f5b}{NestedLoopJoinExecutor}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1NestedLoopJoinPlanNode}{NestedLoopJoinPlanNode}}\ *plan,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<AbstractExecutor>\ \&\&left\_executor,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<AbstractExecutor>\ \&\&right\_executor);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1NestedLoopJoinExecutor_a66ff12e840ec50fe3d3dfef770f839d5}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1NestedLoopJoinExecutor_ad1aa6ecd884258b17968a4d3711af14e}{Next}}(\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1NestedLoopJoinExecutor_a66a11bc4c2f11da3da8faf639ace8b09}{GetOutputSchema}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ plan\_-\/>OutputSchema();\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1NestedLoopJoinPlanNode}{NestedLoopJoinPlanNode}}\ *plan\_;}
+\DoxyCodeLine{00059\ \ \ std::unique\_ptr<AbstractExecutor>\ left\_executor\_;}
+\DoxyCodeLine{00060\ \ \ std::unique\_ptr<AbstractExecutor>\ right\_executor\_;}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ left\_tuple\_\{\};}
+\DoxyCodeLine{00062\ \ \ RID\ left\_rid\_;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{bool}\ Advance(Tuple\ *left\_tuple,\ RID\ *left\_rid,\ Tuple\ *right\_tuple,\ RID\ *right\_rid);}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

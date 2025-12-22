@@ -1,0 +1,94 @@
+\doxysection{bustub\+::Index\+Write\+Record Class Reference}
+\hypertarget{classbustub_1_1IndexWriteRecord}{}\label{classbustub_1_1IndexWriteRecord}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+
+
+{\ttfamily \#include $<$transaction.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9f3924d4654e0fb9ed0831bda33b0c05}{Index\+Write\+Record}} (\mbox{\hyperlink{classbustub_1_1RID}{RID}} rid, \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} table\+\_\+oid, \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}} wtype, const \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \&tuple, \mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\+\_\+oid\+\_\+t}} index\+\_\+oid, \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}catalog)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1RID}{RID}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aaaef3fbbb54004a69c1c4fd4cb2f470b}{rid\+\_\+}}
+\item 
+\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae9787d08408966959fb6513f8070b6d2}{table\+\_\+oid\+\_\+}}
+\item 
+\mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aae025bdf361ecddab79f369564194fbf}{wtype\+\_\+}}
+\item 
+\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9eb2503a42aff09a40d5c63e41ecb98a}{tuple\+\_\+}}
+\item 
+\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_af2b02ad8fb3267377aea25eb4589cc23}{old\+\_\+tuple\+\_\+}}
+\item 
+\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\+\_\+oid\+\_\+t}} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a92c5f98805d0da96b12d7bad2586ff2d}{index\+\_\+oid\+\_\+}}
+\item 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae1f41b2ab547d9b1cd7146d934c4e73b}{catalog\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Write\+Record tracks information related to a write. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1IndexWriteRecord_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1IndexWriteRecord_a9f3924d4654e0fb9ed0831bda33b0c05}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!IndexWriteRecord@{IndexWriteRecord}}
+\index{IndexWriteRecord@{IndexWriteRecord}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{IndexWriteRecord()}{IndexWriteRecord()}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_a9f3924d4654e0fb9ed0831bda33b0c05} 
+bustub\+::\+Index\+Write\+Record\+::\+Index\+Write\+Record (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1RID}{RID}}}]{rid}{, }\item[{\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}}}]{table\+\_\+oid}{, }\item[{\mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}}]{wtype}{, }\item[{const \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \&}]{tuple}{, }\item[{\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\+\_\+oid\+\_\+t}}}]{index\+\_\+oid}{, }\item[{\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}}]{catalog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classbustub_1_1IndexWriteRecord_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classbustub_1_1IndexWriteRecord_ae1f41b2ab547d9b1cd7146d934c4e73b}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!catalog\_@{catalog\_}}
+\index{catalog\_@{catalog\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{catalog\_}{catalog\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_ae1f41b2ab547d9b1cd7146d934c4e73b} 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\texorpdfstring{$\ast$}{*} bustub\+::\+Index\+Write\+Record\+::catalog\+\_\+}
+
+The catalog contains metadata required to locate index. \Hypertarget{classbustub_1_1IndexWriteRecord_a92c5f98805d0da96b12d7bad2586ff2d}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!index\_oid\_@{index\_oid\_}}
+\index{index\_oid\_@{index\_oid\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{index\_oid\_}{index\_oid\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_a92c5f98805d0da96b12d7bad2586ff2d} 
+\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\+\_\+oid\+\_\+t}} bustub\+::\+Index\+Write\+Record\+::index\+\_\+oid\+\_\+}
+
+Each table has an index list, this is the identifier of an index into the list. \Hypertarget{classbustub_1_1IndexWriteRecord_af2b02ad8fb3267377aea25eb4589cc23}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!old\_tuple\_@{old\_tuple\_}}
+\index{old\_tuple\_@{old\_tuple\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{old\_tuple\_}{old\_tuple\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_af2b02ad8fb3267377aea25eb4589cc23} 
+\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} bustub\+::\+Index\+Write\+Record\+::old\+\_\+tuple\+\_\+}
+
+The old tuple is only used for the update operation. \Hypertarget{classbustub_1_1IndexWriteRecord_aaaef3fbbb54004a69c1c4fd4cb2f470b}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!rid\_@{rid\_}}
+\index{rid\_@{rid\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{rid\_}{rid\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_aaaef3fbbb54004a69c1c4fd4cb2f470b} 
+\mbox{\hyperlink{classbustub_1_1RID}{RID}} bustub\+::\+Index\+Write\+Record\+::rid\+\_\+}
+
+The rid is the value stored in the index. \Hypertarget{classbustub_1_1IndexWriteRecord_ae9787d08408966959fb6513f8070b6d2}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!table\_oid\_@{table\_oid\_}}
+\index{table\_oid\_@{table\_oid\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{table\_oid\_}{table\_oid\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_ae9787d08408966959fb6513f8070b6d2} 
+\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\+\_\+oid\+\_\+t}} bustub\+::\+Index\+Write\+Record\+::table\+\_\+oid\+\_\+}
+
+Table oid. \Hypertarget{classbustub_1_1IndexWriteRecord_a9eb2503a42aff09a40d5c63e41ecb98a}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!tuple\_@{tuple\_}}
+\index{tuple\_@{tuple\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{tuple\_}{tuple\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_a9eb2503a42aff09a40d5c63e41ecb98a} 
+\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} bustub\+::\+Index\+Write\+Record\+::tuple\+\_\+}
+
+The tuple is used to construct an index key. \Hypertarget{classbustub_1_1IndexWriteRecord_aae025bdf361ecddab79f369564194fbf}\index{bustub::IndexWriteRecord@{bustub::IndexWriteRecord}!wtype\_@{wtype\_}}
+\index{wtype\_@{wtype\_}!bustub::IndexWriteRecord@{bustub::IndexWriteRecord}}
+\doxysubsubsection{\texorpdfstring{wtype\_}{wtype\_}}
+{\footnotesize\ttfamily \label{classbustub_1_1IndexWriteRecord_aae025bdf361ecddab79f369564194fbf} 
+\mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}} bustub\+::\+Index\+Write\+Record\+::wtype\+\_\+}
+
+Write type. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/concurrency/\mbox{\hyperlink{transaction_8h}{transaction.\+h}}\end{DoxyCompactItemize}

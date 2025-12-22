@@ -1,0 +1,79 @@
+\doxysection{buffer\+\_\+pool\+\_\+manager\+\_\+instance.\+h}
+\hypertarget{buffer__pool__manager__instance_8h_source}{}\label{buffer__pool__manager__instance_8h_source}\index{src/include/buffer/buffer\_pool\_manager\_instance.h@{src/include/buffer/buffer\_pool\_manager\_instance.h}}
+\mbox{\hyperlink{buffer__pool__manager__instance_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ buffer\_pool\_manager\_instance.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/buffer/buffer\_pool\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lru__replacer_8h}{buffer/lru\_replacer.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{disk__manager_8h}{storage/disk/disk\_manager.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{page_8h}{storage/page/page.h}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_af3f83b54c7ac8d706dc9095a4b26f015}{BufferPoolManagerInstance}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{BufferPoolManager}}\ \{}
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_af3f83b54c7ac8d706dc9095a4b26f015}{BufferPoolManagerInstance}}(\textcolor{keywordtype}{size\_t}\ pool\_size,\ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_af3f83b54c7ac8d706dc9095a4b26f015}{BufferPoolManagerInstance}}(\textcolor{keywordtype}{size\_t}\ pool\_size,\ uint32\_t\ num\_instances,\ uint32\_t\ instance\_index,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_ad90c588e160e646ac1abc329404b33da}{\string~BufferPoolManagerInstance}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a85c9f27cdf20808f38f9f3335cb6b771}{GetPoolSize}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a70978fcac37652cd2c8f9466e9a020e8}{pool\_size\_}};\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a9905ea99dc9c9fe8cfa4905bf23a096b}{GetPages}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a6383bd96c6310f8b451afb8a2617214a}{pages\_}};\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a03b394acdbcdb847ad61aadd7143a6eb}{FetchPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a78c7a0b207e6f37b267cac6a5d3cd43a}{UnpinPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{bool}\ is\_dirty)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a92b23b88d357e8e89b0b95f925e6dd67}{FlushPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_aa286e2adbd48f2b68e6782ce4a866d89}{NewPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *page\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a256384e9d22a21adc432ea7f6b9d4298}{DeletePgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a892663bed7b1ff075f1489d2d0de70ff}{FlushAllPgsImp}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a9e0bdb328ff02e1c8d8a34599e9d6b6e}{AllocatePage}}();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_ae81e58036aa3435f8296ca0f5ccc518b}{DeallocatePage}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_af53be7717190a321a0f86e227b0a2114}{\_\_attribute\_\_}}((unused))\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ no-\/nop\ right\ now\ without\ a\ more\ complex\ data\ structure\ to\ track\ deallocated\ pages}}
+\DoxyCodeLine{00115\ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_ad7e6b2254336d351292fa326dac800c1}{ValidatePageId}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a70978fcac37652cd2c8f9466e9a020e8}{pool\_size\_}};}
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{const}\ uint32\_t\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a4b3b59d7bbfe82ee2ef44184f2a5235f}{num\_instances\_}}\ =\ 1;}
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{const}\ uint32\_t\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a27d8ad98ffadf1895c569f86bdde7749}{instance\_index\_}}\ =\ 0;}
+\DoxyCodeLine{00131\ \ \ std::atomic<page\_id\_t>\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_aec8c5697a47fdfcba57f7c94e7857a5f}{next\_page\_id\_}}\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a27d8ad98ffadf1895c569f86bdde7749}{instance\_index\_}};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00134\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a6383bd96c6310f8b451afb8a2617214a}{pages\_}};}
+\DoxyCodeLine{00136\ \ \ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager\_\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_af53be7717190a321a0f86e227b0a2114}{\_\_attribute\_\_}}((\_\_unused\_\_));}
+\DoxyCodeLine{00138\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\_\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a61358627867c51e3934b529653c5a657}{\_\_attribute\_\_}}((\_\_unused\_\_));}
+\DoxyCodeLine{00140\ \ \ std::unordered\_map<page\_id\_t,\ frame\_id\_t>\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a1b4f4864a7bfc8bea8645a3ad937b9b8}{page\_table\_}};}
+\DoxyCodeLine{00142\ \ \ \mbox{\hyperlink{classbustub_1_1Replacer}{Replacer}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_abb3cc4a87d179f19bcd1aa515944dd2a}{replacer\_}};}
+\DoxyCodeLine{00144\ \ \ std::vector<frame\_id\_t>\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a9e81e2f508cbce31f907c78fa5b29c91}{free\_list\_}};}
+\DoxyCodeLine{00146\ \ \ std::mutex\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance_a37c17d0a23108bbe03ed9d63485a895f}{latch\_}};}
+\DoxyCodeLine{00147\ \};}
+\DoxyCodeLine{00148\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

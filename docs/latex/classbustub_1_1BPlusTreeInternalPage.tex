@@ -1,0 +1,175 @@
+\doxysection{bustub\+::BPlus\+Tree\+Internal\+Page Class Reference}
+\hypertarget{classbustub_1_1BPlusTreeInternalPage}{}\label{classbustub_1_1BPlusTreeInternalPage}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+
+
+{\ttfamily \#include $<$b\+\_\+plus\+\_\+tree\+\_\+internal\+\_\+page.\+h$>$}
+
+Inheritance diagram for bustub\+::BPlus\+Tree\+Internal\+Page\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1BPlusTreeInternalPage}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a4dd6232021db898aa40a584b67f58bd4}{Init}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} parent\+\_\+id=INVALID\+\_\+\+PAGE\+\_\+\+ID, int max\+\_\+size=\mbox{\hyperlink{b__plus__tree__internal__page_8h_a04db3f924b29e986d8b3e94dbbbb9d55}{INTERNAL\+\_\+\+PAGE\+\_\+\+SIZE}})
+\item 
+\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_ac9d73757f98a8a6cecdec216b9d638ef}{Key\+At}} (int index) const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_ae62354e05741a3ba82a12e26e65cf480}{Set\+Key\+At}} (int index, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&key)
+\item 
+int \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a09a8d1214e65fab1d6fba2dea1403f1a}{Value\+Index}} (const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&value) const
+\item 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a3200271275b122bb877156de58fa952d}{Value\+At}} (int index) const
+\item 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a81c9a71108a302005d83d76a69a3058c}{Lookup}} (const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&key, const Key\+Comparator \&comparator) const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a320e01c523a06461445d2dae4f63cc35}{Populate\+New\+Root}} (const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&old\+\_\+value, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&new\+\_\+key, const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&new\+\_\+value)
+\item 
+int \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_adaed0bcb8a748f0756bd15c943de091d}{Insert\+Node\+After}} (const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&old\+\_\+value, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&new\+\_\+key, const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&new\+\_\+value)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a96eadea594d6852c0ad376093fbe9dd8}{Remove}} (int index)
+\item 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a04c0db7b184a7de53ac0a876c555cc81}{Remove\+And\+Return\+Only\+Child}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a1c870a7f82a2b6b583dfeb66a99c5a08}{Move\+All\+To}} (\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}recipient, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&middle\+\_\+key, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}buffer\+\_\+pool\+\_\+manager)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_af9890b00379cd810229f4b672f440539}{Move\+Half\+To}} (\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}recipient, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}buffer\+\_\+pool\+\_\+manager)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a12562ace2b9590e03a3a06d65947239a}{Move\+First\+To\+End\+Of}} (\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}recipient, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&middle\+\_\+key, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}buffer\+\_\+pool\+\_\+manager)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a4c129c1ab7a401e179189a6fdbf9087f}{Move\+Last\+To\+Front\+Of}} (\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}recipient, const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&middle\+\_\+key, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}buffer\+\_\+pool\+\_\+manager)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1BPlusTreePage}{bustub\+::\+BPlus\+Tree\+Page$<$ Key\+Type, Value\+Type $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a129ccc80aad454529f6332e9801567fc}{Is\+Leaf\+Page}} () const
+\item 
+bool \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a85eac20f44afd763e2c063ca40d1e5f9}{Is\+Root\+Page}} () const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_aa0398bdea8e3f485ed23297a8c14a271}{Set\+Page\+Type}} (\mbox{\hyperlink{namespacebustub_aa22b843a31f36c3abba2ac5410480497}{Index\+Page\+Type}} page\+\_\+type)
+\item 
+int \mbox{\hyperlink{classbustub_1_1BPlusTreePage_af799edfbc000dd931fc31eae2d15c2cf}{Get\+Size}} () const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a919ffad8f58f423e93af4549b501c53c}{Set\+Size}} (int size)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a07e60651c8afbefd77b6ab819cc2672e}{Increase\+Size}} (int amount)
+\item 
+int \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a67cd3e87eaab8a6eba66130c6f6ad93d}{Get\+Max\+Size}} () const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_af8c78f6e528b6126ffd3aaecec612b6d}{Set\+Max\+Size}} (int max\+\_\+size)
+\item 
+int \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a2f164d0e916a94fcb5ec1d2e7b025bcf}{Get\+Min\+Size}} () const
+\item 
+\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a8704a9d1cd89eb7dd06e9993a30162f1}{Get\+Parent\+Page\+Id}} () const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a2ce23b7ad1ce558ddaed8c4edc81772a}{Set\+Parent\+Page\+Id}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} parent\+\_\+page\+\_\+id)
+\item 
+\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a7fb7ffc4f4ed246f98944d7a52c2acdb}{Get\+Page\+Id}} () const
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a969d68a1cd60d43eb5738cc37616a083}{Set\+Page\+Id}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a095cdfcc6b86120644b9b0a72b03cfb6}{Set\+LSN}} (\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} lsn=INVALID\+\_\+\+LSN)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BPlusTreePage_a641b6e1cf8acb2e231dde90ae9a4d366}{Get\+Info}} (\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} key, \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} val)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Store n indexed keys and n+1 child pointers (page\+\_\+id) within internal page. Pointer PAGE\+\_\+\+ID(i) points to a subtree in which all keys K satisfy\+: K(i) \texorpdfstring{$<$}{<}= K \texorpdfstring{$<$}{<} K(i+1). NOTE\+: since the number of keys does not equal to number of child pointers, the first key always remains invalid. That is to say, any search/lookup should ignore the first key.\hypertarget{classbustub_1_1BPlusTreeInternalPage_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Internal page format (keys are stored in increasing order)\+:}{Internal page format (keys are stored in increasing order)\+:}}\label{classbustub_1_1BPlusTreeInternalPage_autotoc_md10}
+\hypertarget{classbustub_1_1BPlusTreeInternalPage_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\vert$}{|} HEADER \texorpdfstring{$\vert$}{|} KEY(1)+PAGE\+\_\+\+ID(1) \texorpdfstring{$\vert$}{|} KEY(2)+PAGE\+\_\+\+ID(2) \texorpdfstring{$\vert$}{|} ... \texorpdfstring{$\vert$}{|} KEY(n)+PAGE\+\_\+\+ID(n) \texorpdfstring{$\vert$}{|}}{\texorpdfstring{$\vert$}{|} HEADER \texorpdfstring{$\vert$}{|} KEY(1)+PAGE\+\_\+\+ID(1) \texorpdfstring{$\vert$}{|} KEY(2)+PAGE\+\_\+\+ID(2) \texorpdfstring{$\vert$}{|} ... \texorpdfstring{$\vert$}{|} KEY(n)+PAGE\+\_\+\+ID(n) \texorpdfstring{$\vert$}{|}}}\label{classbustub_1_1BPlusTreeInternalPage_autotoc_md11}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a4dd6232021db898aa40a584b67f58bd4}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!Init@{Init}}
+\index{Init@{Init}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a4dd6232021db898aa40a584b67f58bd4} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{page\+\_\+id}{, }\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{parent\+\_\+id}{ = {\ttfamily INVALID\+\_\+PAGE\+\_\+ID}, }\item[{int}]{max\+\_\+size}{ = {\ttfamily \mbox{\hyperlink{b__plus__tree__internal__page_8h_a04db3f924b29e986d8b3e94dbbbb9d55}{INTERNAL\+\_\+\+PAGE\+\_\+\+SIZE}}}}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_adaed0bcb8a748f0756bd15c943de091d}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!InsertNodeAfter@{InsertNodeAfter}}
+\index{InsertNodeAfter@{InsertNodeAfter}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{InsertNodeAfter()}{InsertNodeAfter()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_adaed0bcb8a748f0756bd15c943de091d} 
+int bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Insert\+Node\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&}]{old\+\_\+value}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{new\+\_\+key}{, }\item[{const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&}]{new\+\_\+value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_ac9d73757f98a8a6cecdec216b9d638ef}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!KeyAt@{KeyAt}}
+\index{KeyAt@{KeyAt}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{KeyAt()}{KeyAt()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_ac9d73757f98a8a6cecdec216b9d638ef} 
+\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Key\+At (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a81c9a71108a302005d83d76a69a3058c}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!Lookup@{Lookup}}
+\index{Lookup@{Lookup}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{Lookup()}{Lookup()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a81c9a71108a302005d83d76a69a3058c} 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Lookup (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{key}{, }\item[{const Key\+Comparator \&}]{comparator}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a1c870a7f82a2b6b583dfeb66a99c5a08}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!MoveAllTo@{MoveAllTo}}
+\index{MoveAllTo@{MoveAllTo}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{MoveAllTo()}{MoveAllTo()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a1c870a7f82a2b6b583dfeb66a99c5a08} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Move\+All\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}}]{recipient}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{middle\+\_\+key}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{buffer\+\_\+pool\+\_\+manager}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a12562ace2b9590e03a3a06d65947239a}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!MoveFirstToEndOf@{MoveFirstToEndOf}}
+\index{MoveFirstToEndOf@{MoveFirstToEndOf}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{MoveFirstToEndOf()}{MoveFirstToEndOf()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a12562ace2b9590e03a3a06d65947239a} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Move\+First\+To\+End\+Of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}}]{recipient}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{middle\+\_\+key}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{buffer\+\_\+pool\+\_\+manager}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_af9890b00379cd810229f4b672f440539}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!MoveHalfTo@{MoveHalfTo}}
+\index{MoveHalfTo@{MoveHalfTo}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{MoveHalfTo()}{MoveHalfTo()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_af9890b00379cd810229f4b672f440539} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Move\+Half\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}}]{recipient}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{buffer\+\_\+pool\+\_\+manager}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a4c129c1ab7a401e179189a6fdbf9087f}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!MoveLastToFrontOf@{MoveLastToFrontOf}}
+\index{MoveLastToFrontOf@{MoveLastToFrontOf}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{MoveLastToFrontOf()}{MoveLastToFrontOf()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a4c129c1ab7a401e179189a6fdbf9087f} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Move\+Last\+To\+Front\+Of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlus\+Tree\+Internal\+Page}} \texorpdfstring{$\ast$}{*}}]{recipient}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{middle\+\_\+key}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{buffer\+\_\+pool\+\_\+manager}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a320e01c523a06461445d2dae4f63cc35}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!PopulateNewRoot@{PopulateNewRoot}}
+\index{PopulateNewRoot@{PopulateNewRoot}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{PopulateNewRoot()}{PopulateNewRoot()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a320e01c523a06461445d2dae4f63cc35} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Populate\+New\+Root (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&}]{old\+\_\+value}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{new\+\_\+key}{, }\item[{const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&}]{new\+\_\+value}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a96eadea594d6852c0ad376093fbe9dd8}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!Remove@{Remove}}
+\index{Remove@{Remove}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a96eadea594d6852c0ad376093fbe9dd8} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Remove (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a04c0db7b184a7de53ac0a876c555cc81}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!RemoveAndReturnOnlyChild@{RemoveAndReturnOnlyChild}}
+\index{RemoveAndReturnOnlyChild@{RemoveAndReturnOnlyChild}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{RemoveAndReturnOnlyChild()}{RemoveAndReturnOnlyChild()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a04c0db7b184a7de53ac0a876c555cc81} 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Remove\+And\+Return\+Only\+Child (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_ae62354e05741a3ba82a12e26e65cf480}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!SetKeyAt@{SetKeyAt}}
+\index{SetKeyAt@{SetKeyAt}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{SetKeyAt()}{SetKeyAt()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_ae62354e05741a3ba82a12e26e65cf480} 
+void bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Set\+Key\+At (\begin{DoxyParamCaption}\item[{int}]{index}{, }\item[{const \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{Key\+Type}} \&}]{key}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a3200271275b122bb877156de58fa952d}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!ValueAt@{ValueAt}}
+\index{ValueAt@{ValueAt}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{ValueAt()}{ValueAt()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a3200271275b122bb877156de58fa952d} 
+\mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Value\+At (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classbustub_1_1BPlusTreeInternalPage_a09a8d1214e65fab1d6fba2dea1403f1a}\index{bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}!ValueIndex@{ValueIndex}}
+\index{ValueIndex@{ValueIndex}!bustub::BPlusTreeInternalPage@{bustub::BPlusTreeInternalPage}}
+\doxysubsubsection{\texorpdfstring{ValueIndex()}{ValueIndex()}}
+{\footnotesize\ttfamily \label{classbustub_1_1BPlusTreeInternalPage_a09a8d1214e65fab1d6fba2dea1403f1a} 
+int bustub\+::\+BPlus\+Tree\+Internal\+Page\+::\+Value\+Index (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{Value\+Type}} \&}]{value}{}\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/storage/page/\mbox{\hyperlink{b__plus__tree__internal__page_8h}{b\+\_\+plus\+\_\+tree\+\_\+internal\+\_\+page.\+h}}\end{DoxyCompactItemize}

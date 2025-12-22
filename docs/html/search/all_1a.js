@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['undo_0',['Undo',['../classbustub_1_1LogRecovery.html#ada7eb68a4804e153449cc107e9656474',1,'bustub::LogRecovery']]],
+  ['unknown_5ftype_1',['UNKNOWN_TYPE',['../namespacebustub.html#adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27',1,'bustub']]],
+  ['unlock_2',['Unlock',['../classbustub_1_1LockManager.html#a31f7958e0a0aaee34af6dd52961e7618',1,'bustub::LockManager']]],
+  ['unlock_5fon_5fshrinking_3',['UNLOCK_ON_SHRINKING',['../namespacebustub.html#af44028a0a3ce771db1a77e858f3e07caa83c1f3829c0646534509d50730097b68',1,'bustub']]],
+  ['unpin_4',['Unpin',['../classbustub_1_1ClockReplacer.html#a39bd3057946458831b46017455e790f6',1,'bustub::ClockReplacer::Unpin()'],['../classbustub_1_1LRUReplacer.html#abc7c5e45551d242c08ac82ea3519d0bc',1,'bustub::LRUReplacer::Unpin()'],['../classbustub_1_1Replacer.html#afdd9f2f50f45ac89e3b5460bb81ce4cd',1,'bustub::Replacer::Unpin()']]],
+  ['unpinpage_5',['UnpinPage',['../classbustub_1_1BufferPoolManager.html#ad1bdff550cf569917063b109ff2aeb9b',1,'bustub::BufferPoolManager::UnpinPage()'],['../classbustub_1_1MockBufferPoolManager.html#af6e8ac2e8c5a098c5b7ccb5301d1ea69',1,'bustub::MockBufferPoolManager::UnpinPage()'],['../namespacebustub.html#aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a',1,'bustub::UnpinPage']]],
+  ['unpinpgimp_6',['UnpinPgImp',['../classbustub_1_1BufferPoolManager.html#aa8871523e4ae89bad7b56fae79515344',1,'bustub::BufferPoolManager::UnpinPgImp()'],['../classbustub_1_1BufferPoolManagerInstance.html#a78c7a0b207e6f37b267cac6a5d3cd43a',1,'bustub::BufferPoolManagerInstance::UnpinPgImp()'],['../classbustub_1_1ParallelBufferPoolManager.html#a39cba8710ae8dd4aad37c76a6abf3887',1,'bustub::ParallelBufferPoolManager::UnpinPgImp()']]],
+  ['unreachable_7',['UNREACHABLE',['../macros_8h.html#ab1282cb3b18636534805bfc9448e889f',1,'macros.h']]],
+  ['update_8',['UPDATE',['../namespacebustub.html#a10572b38743f7663ec041295d3810caca15a8022d0ed9cd9c2a2e756822703eb4',1,'bustub::UPDATE'],['../namespacebustub.html#a43eda6cb555f74433d860efc5e45b9cca15a8022d0ed9cd9c2a2e756822703eb4',1,'bustub::UPDATE']]],
+  ['update_9',['Update',['../namespacebustub.html#ad7d821859993f0ecb02cde3b7a9f2ccfa06933067aafd48425d67bcb01bba5cb6',1,'bustub']]],
+  ['update_20type_20log_20record_10',['For update type log record',['../classbustub_1_1LogRecord.html#autotoc_md6',1,'']]],
+  ['update_5fexecutor_2ecpp_11',['update_executor.cpp',['../update__executor_8cpp.html',1,'']]],
+  ['update_5fexecutor_2eh_12',['update_executor.h',['../update__executor_8h.html',1,'']]],
+  ['update_5fplan_2eh_13',['update_plan.h',['../update__plan_8h.html',1,'']]],
+  ['update_5fval_5f_14',['update_val_',['../structbustub_1_1UpdateInfo.html#a9b8503161b05e3fe46a284f748b64208',1,'bustub::UpdateInfo']]],
+  ['updateexecutor_15',['UpdateExecutor',['../classbustub_1_1UpdateExecutor.html',1,'bustub::UpdateExecutor'],['../classbustub_1_1UpdateExecutor.html#aa37b5ff335082d2e943811bb3527b7d0',1,'bustub::UpdateExecutor::UpdateExecutor()']]],
+  ['updateinfo_16',['UpdateInfo',['../structbustub_1_1UpdateInfo.html',1,'bustub::UpdateInfo'],['../structbustub_1_1UpdateInfo.html#a75b936909c76199322185a3fe3019dc4',1,'bustub::UpdateInfo::UpdateInfo()']]],
+  ['updateplannode_17',['UpdatePlanNode',['../classbustub_1_1UpdatePlanNode.html',1,'bustub::UpdatePlanNode'],['../classbustub_1_1UpdateExecutor.html#a3ef53b2abf0c3796c1369f3ecffdc718',1,'bustub::UpdateExecutor::UpdatePlanNode()'],['../classbustub_1_1UpdatePlanNode.html#a83bf00d2c315cf17192d8e347d47543d',1,'bustub::UpdatePlanNode::UpdatePlanNode()']]],
+  ['updaterecord_18',['UpdateRecord',['../classbustub_1_1HeaderPage.html#a1899ea4452bc38cbaf7f8737f192b118',1,'bustub::HeaderPage']]],
+  ['updatetuple_19',['UpdateTuple',['../classbustub_1_1TablePage.html#a34876d543258622a723068250aa6dc73',1,'bustub::TablePage::UpdateTuple()'],['../classbustub_1_1TableHeap.html#a5593b0d83a185907dadb647bae98d1a0',1,'bustub::TableHeap::UpdateTuple()']]],
+  ['updatetype_20',['UpdateType',['../namespacebustub.html#a2bbb62d13571c1de8ac209439f5fc356',1,'bustub']]],
+  ['upgrade_5fconflict_21',['UPGRADE_CONFLICT',['../namespacebustub.html#af44028a0a3ce771db1a77e858f3e07caa49847c93d1589c51e27451e384da1025',1,'bustub']]],
+  ['upgradetest_22',['UpgradeTest',['../namespacebustub.html#accbd35cf2c05faafa936452ad2ab6f84',1,'bustub']]],
+  ['upper_23',['Upper',['../classbustub_1_1StringUtil.html#a8778b53e19ab97d3ebe4930afe0f608d',1,'bustub::StringUtil']]],
+  ['usagemessage_24',['UsageMessage',['../namespacebustub.html#a5983ca92b311fdfb24e78829ede3f987',1,'bustub']]]
+];

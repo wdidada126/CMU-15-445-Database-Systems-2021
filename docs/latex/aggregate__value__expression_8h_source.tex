@@ -1,0 +1,50 @@
+\doxysection{aggregate\+\_\+value\+\_\+expression.\+h}
+\hypertarget{aggregate__value__expression_8h_source}{}\label{aggregate__value__expression_8h_source}\index{src/include/execution/expressions/aggregate\_value\_expression.h@{src/include/execution/expressions/aggregate\_value\_expression.h}}
+\mbox{\hyperlink{aggregate__value__expression_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ aggregate\_value\_expression.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/expression/aggregate\_value\_expression.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{schema_8h}{catalog/schema.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1AggregateValueExpression_a7b0dd58bcb77b438da3f9f636dc4f924}{AggregateValueExpression}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression_a14f9c4449434a35dd98335ff1884f028}{AbstractExpression}}\ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classbustub_1_1AggregateValueExpression_a7b0dd58bcb77b438da3f9f636dc4f924}{AggregateValueExpression}}(\textcolor{keywordtype}{bool}\ is\_group\_by\_term,\ uint32\_t\ term\_idx,\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ ret\_type)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractExpression_a14f9c4449434a35dd98335ff1884f028}{AbstractExpression}}(\{\},\ ret\_type),\ is\_group\_by\_term\_\{is\_group\_by\_term\},\ term\_idx\_\{term\_idx\}\ \{\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1AggregateValueExpression_a7552c6cc8841219b4cbc76ed16647faf}{Evaluate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{macros_8h_ab1282cb3b18636534805bfc9448e889f}{UNREACHABLE}}(\textcolor{stringliteral}{"{}Aggregation\ should\ only\ refer\ to\ group-\/by\ and\ aggregates."{}});}
+\DoxyCodeLine{00039\ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1AggregateValueExpression_aca4ec7661197a272be53b6d34f54aca4}{EvaluateJoin}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *left\_tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *left\_schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *right\_tuple,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *right\_schema)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{macros_8h_ab1282cb3b18636534805bfc9448e889f}{UNREACHABLE}}(\textcolor{stringliteral}{"{}Aggregation\ should\ only\ refer\ to\ group-\/by\ and\ aggregates."{}});}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1AggregateValueExpression_af724dfde04df7d5ab3e207b893ba9088}{EvaluateAggregate}}(\textcolor{keyword}{const}\ std::vector<Value>\ \&group\_bys,\ \textcolor{keyword}{const}\ std::vector<Value>\ \&aggregates)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ is\_group\_by\_term\_\ ?\ group\_bys[term\_idx\_]\ :\ aggregates[term\_idx\_];}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ is\_group\_by\_term\_;}
+\DoxyCodeLine{00061\ \ \ uint32\_t\ term\_idx\_;}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

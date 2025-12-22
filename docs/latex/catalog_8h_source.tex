@@ -1,0 +1,249 @@
+\doxysection{catalog.\+h}
+\hypertarget{catalog_8h_source}{}\label{catalog_8h_source}\index{src/include/catalog/catalog.h@{src/include/catalog/catalog.h}}
+\mbox{\hyperlink{catalog_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ catalog.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/catalog/catalog.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{schema_8h}{catalog/schema.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__function_8h}{container/hash/hash\_function.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{extendible__hash__table__index_8h}{storage/index/extendible\_hash\_table\_index.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{index_8h}{storage/index/index.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{table__heap_8h}{storage/table/table\_heap.h}}"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ =\ uint32\_t;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a667f0aec11e5c9447f32f274d588d8d6}{column\_oid\_t}}\ =\ uint32\_t;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ =\ uint32\_t;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1TableInfo_adb524bc384304efa173717b863094ab2}{TableInfo}}\ \{}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{structbustub_1_1TableInfo_adb524bc384304efa173717b863094ab2}{TableInfo}}(\mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ schema,\ std::string\ name,\ std::unique\_ptr<TableHeap>\ \&\&table,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ oid)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ :\ \mbox{\hyperlink{structbustub_1_1TableInfo_a5188214fbf6261d6715b041e0225183f}{schema\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(schema)\},\ \mbox{\hyperlink{structbustub_1_1TableInfo_af48624677d8c6a4e29799b349483ab9d}{name\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(name)\},\ \mbox{\hyperlink{structbustub_1_1TableInfo_aedc7851873b8f7c6afe7b59fca3496f5}{table\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(table)\},\ \mbox{\hyperlink{structbustub_1_1TableInfo_a66ac974d5d4aaa82fe12bda2eb3ccca8}{oid\_}}\{oid\}\ \{\}}
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \mbox{\hyperlink{structbustub_1_1TableInfo_a5188214fbf6261d6715b041e0225183f}{schema\_}};}
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{structbustub_1_1TableInfo_af48624677d8c6a4e29799b349483ab9d}{name\_}};}
+\DoxyCodeLine{00055\ \ \ std::unique\_ptr<TableHeap>\ \mbox{\hyperlink{structbustub_1_1TableInfo_aedc7851873b8f7c6afe7b59fca3496f5}{table\_}};}
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{structbustub_1_1TableInfo_a66ac974d5d4aaa82fe12bda2eb3ccca8}{oid\_}};}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1IndexInfo_a481e741c76acaf071a433d4678f8b6ef}{IndexInfo}}\ \{}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_a481e741c76acaf071a433d4678f8b6ef}{IndexInfo}}(\mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ key\_schema,\ std::string\ name,\ std::unique\_ptr<Index>\ \&\&index,\ \mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ index\_oid,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ table\_name,\ \textcolor{keywordtype}{size\_t}\ key\_size)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ :\ \mbox{\hyperlink{structbustub_1_1IndexInfo_aabc5117a84247be05ee2dde57b1dbec2}{key\_schema\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(key\_schema)\},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_a68d4dd98fe1d34f97306220138b12c26}{name\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(name)\},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_ad40a53fd447351b1c3ae2c229336f1d3}{index\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(index)\},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_a801ec95a91bc556e0498129834bfe710}{index\_oid\_}}\{index\_oid\},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_a03c487397cc5874074ac5c28af1c1992}{table\_name\_}}\{\mbox{\hyperlink{namespacestd}{std}}::move(table\_name)\},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo_a62e839084f6d64bfa64433e23a3f58fc}{key\_size\_}}\{key\_size\}\ \{\}}
+\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \mbox{\hyperlink{structbustub_1_1IndexInfo_aabc5117a84247be05ee2dde57b1dbec2}{key\_schema\_}};}
+\DoxyCodeLine{00084\ \ \ std::string\ \mbox{\hyperlink{structbustub_1_1IndexInfo_a68d4dd98fe1d34f97306220138b12c26}{name\_}};}
+\DoxyCodeLine{00086\ \ \ std::unique\_ptr<Index>\ \mbox{\hyperlink{structbustub_1_1IndexInfo_ad40a53fd447351b1c3ae2c229336f1d3}{index\_}};}
+\DoxyCodeLine{00088\ \ \ \mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ \mbox{\hyperlink{structbustub_1_1IndexInfo_a801ec95a91bc556e0498129834bfe710}{index\_oid\_}};}
+\DoxyCodeLine{00090\ \ \ std::string\ \mbox{\hyperlink{structbustub_1_1IndexInfo_a03c487397cc5874074ac5c28af1c1992}{table\_name\_}};}
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structbustub_1_1IndexInfo_a62e839084f6d64bfa64433e23a3f58fc}{key\_size\_}};}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Catalog_aa4b4a6e0e658107a40ad43e8f2835eca}{Catalog}}\ \{}
+\DoxyCodeLine{00101\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_a6d234b84b1ba178a75a3ea2cb1f050fb}{NULL\_TABLE\_INFO}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structbustub_1_1IndexInfo}{IndexInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}}\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{classbustub_1_1Catalog_aa4b4a6e0e658107a40ad43e8f2835eca}{Catalog}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm,\ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ :\ bpm\_\{bpm\},\ lock\_manager\_\{lock\_manager\},\ log\_manager\_\{log\_manager\}\ \{\}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00124\ \ \ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_ace7a6cf11e5e1227e8848a9a7f729864}{CreateTable}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn,\ \textcolor{keyword}{const}\ std::string\ \&table\_name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \&schema)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_names\_.count(table\_name)\ !=\ 0)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_a6d234b84b1ba178a75a3ea2cb1f050fb}{NULL\_TABLE\_INFO}};}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Construct\ the\ table\ heap}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{auto}\ table\ =\ std::make\_unique<TableHeap>(bpm\_,\ lock\_manager\_,\ log\_manager\_,\ txn);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ Fetch\ the\ table\ OID\ for\ the\ new\ table}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ table\_oid\ =\ next\_table\_oid\_.fetch\_add(1);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ Construct\ the\ table\ information}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{auto}\ meta\ =\ std::make\_unique<TableInfo>(schema,\ table\_name,\ std::move(table),\ table\_oid);}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{auto}\ *tmp\ =\ meta.get();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ Update\ the\ internal\ tracking\ mechanisms}}
+\DoxyCodeLine{00140\ \ \ \ \ tables\_.emplace(table\_oid,\ std::move(meta));}
+\DoxyCodeLine{00141\ \ \ \ \ table\_names\_.emplace(table\_name,\ table\_oid);}
+\DoxyCodeLine{00142\ \ \ \ \ index\_names\_.emplace(table\_name,\ std::unordered\_map<std::string,\ index\_oid\_t>\{\});}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00145\ \ \ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00152\ \ \ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_acddea4de2f1abfcdd7ced1bc97bd1660}{GetTable}}(\textcolor{keyword}{const}\ std::string\ \&table\_name)\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{auto}\ table\_oid\ =\ table\_names\_.find(table\_name);}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_oid\ ==\ table\_names\_.end())\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{comment}{//\ Table\ not\ found}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_a6d234b84b1ba178a75a3ea2cb1f050fb}{NULL\_TABLE\_INFO}};}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{auto}\ meta\ =\ tables\_.find(table\_oid-\/>second);}
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(meta\ !=\ tables\_.end(),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{return}\ (meta-\/>second).get();}
+\DoxyCodeLine{00163\ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00170\ \ \ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_aa30264ab2e0dda97d4a7606da972030a}{GetTable}}(\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{auto}\ meta\ =\ tables\_.find(table\_oid);}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (meta\ ==\ tables\_.end())\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_a6d234b84b1ba178a75a3ea2cb1f050fb}{NULL\_TABLE\_INFO}};}
+\DoxyCodeLine{00174\ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{return}\ (meta-\/>second).get();}
+\DoxyCodeLine{00177\ \ \ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00191\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ KeyType,\ \textcolor{keyword}{class}\ ValueType,\ \textcolor{keyword}{class}\ KeyComparator>}
+\DoxyCodeLine{00192\ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo}{IndexInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_a93cb96b58262523fecf4f5791a1a7180}{CreateIndex}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn,\ \textcolor{keyword}{const}\ std::string\ \&index\_name,\ \textcolor{keyword}{const}\ std::string\ \&table\_name,}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \&schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \&key\_schema,\ \textcolor{keyword}{const}\ std::vector<uint32\_t>\ \&key\_attrs,}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ keysize,\ \mbox{\hyperlink{classbustub_1_1HashFunction}{HashFunction<KeyType>}}\ hash\_function)\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ Reject\ the\ creation\ request\ for\ nonexistent\ table}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_names\_.find(table\_name)\ ==\ table\_names\_.end())\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{comment}{//\ If\ the\ table\ exists,\ an\ entry\ for\ the\ table\ should\ already\ be\ present\ in\ index\_names\_}}
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}((index\_names\_.find(table\_name)\ !=\ index\_names\_.end()),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//\ Determine\ if\ the\ requested\ index\ already\ exists\ for\ this\ table}}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{auto}\ \&table\_indexes\ =\ index\_names\_.find(table\_name)-\/>second;}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_indexes.find(index\_name)\ !=\ table\_indexes.end())\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ requested\ index\ already\ exists\ for\ this\ table}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ Construct\ index\ metdata}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{auto}\ meta\ =\ std::make\_unique<IndexMetadata>(index\_name,\ table\_name,\ \&schema,\ key\_attrs);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//\ Construct\ the\ index,\ take\ ownership\ of\ metadata}}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ TODO(Kyle):\ We\ should\ update\ the\ API\ for\ CreateIndex}}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{comment}{//\ to\ allow\ specification\ of\ the\ index\ type\ itself,\ not}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ just\ the\ key,\ value,\ and\ comparator\ types}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{auto}\ index\ =\ std::make\_unique<ExtendibleHashTableIndex<KeyType,\ ValueType,\ KeyComparator>>(std::move(meta),\ bpm\_,}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hash\_function);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ Populate\ the\ index\ with\ all\ tuples\ in\ table\ heap}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{auto}\ *table\_meta\ =\ \mbox{\hyperlink{classbustub_1_1Catalog_acddea4de2f1abfcdd7ced1bc97bd1660}{GetTable}}(table\_name);}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{auto}\ *heap\ =\ table\_meta-\/>table\_.get();}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ tuple\ =\ heap-\/>Begin(txn);\ tuple\ !=\ heap-\/>End();\ ++tuple)\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ index-\/>InsertEntry(tuple-\/>KeyFromTuple(schema,\ key\_schema,\ key\_attrs),\ tuple-\/>GetRid(),\ txn);}
+\DoxyCodeLine{00225\ \ \ \ \ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ next\ OID\ for\ the\ new\ index}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ index\_oid\ =\ next\_index\_oid\_.fetch\_add(1);}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//\ Construct\ index\ information;\ IndexInfo\ takes\ ownership\ of\ the\ Index\ itself}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{auto}\ index\_info\ =}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ std::make\_unique<IndexInfo>(key\_schema,\ index\_name,\ std::move(index),\ index\_oid,\ table\_name,\ keysize);}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{auto}\ *tmp\ =\ index\_info.get();}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{comment}{//\ Update\ internal\ tracking}}
+\DoxyCodeLine{00236\ \ \ \ \ indexes\_.emplace(index\_oid,\ std::move(index\_info));}
+\DoxyCodeLine{00237\ \ \ \ \ table\_indexes.emplace(index\_name,\ index\_oid);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00240\ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00248\ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo}{IndexInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_a90448dfd32f49ff5cc85b839c5d7c2a7}{GetIndex}}(\textcolor{keyword}{const}\ std::string\ \&index\_name,\ \textcolor{keyword}{const}\ std::string\ \&table\_name)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{auto}\ table\ =\ index\_names\_.find(table\_name);}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\ ==\ index\_names\_.end())\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}((table\_names\_.find(table\_name)\ ==\ table\_names\_.end()),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{auto}\ \&table\_indexes\ =\ table-\/>second;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keyword}{auto}\ index\_meta\ =\ table\_indexes.find(index\_name);}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\_meta\ ==\ table\_indexes.end())\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{auto}\ index\ =\ indexes\_.find(index\_meta-\/>second);}
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}((index\ !=\ indexes\_.end()),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{return}\ index-\/>second.get();}
+\DoxyCodeLine{00266\ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00274\ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo}{IndexInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_a7aab6bc1a959aed8222a0f14b553b12c}{GetIndex}}(\textcolor{keyword}{const}\ std::string\ \&index\_name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{comment}{//\ Locate\ the\ table\ metadata\ for\ the\ specified\ table\ OID}}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keyword}{auto}\ table\_meta\ =\ tables\_.find(table\_oid);}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_meta\ ==\ tables\_.end())\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \textcolor{comment}{//\ Table\ not\ found}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_a90448dfd32f49ff5cc85b839c5d7c2a7}{GetIndex}}(index\_name,\ table\_meta-\/>second-\/>name\_);}
+\DoxyCodeLine{00283\ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00290\ \ \ \mbox{\hyperlink{structbustub_1_1IndexInfo}{IndexInfo}}\ *\mbox{\hyperlink{classbustub_1_1Catalog_a112425b1bb02dc8b8a9cb0d16d49eee4}{GetIndex}}(\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ index\_oid)\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keyword}{auto}\ index\ =\ indexes\_.find(index\_oid);}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ ==\ indexes\_.end())\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Catalog_aa9561fc08b86fcf05dc02496cc3c9989}{NULL\_INDEX\_INFO}};}
+\DoxyCodeLine{00294\ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{return}\ index-\/>second.get();}
+\DoxyCodeLine{00297\ \ \ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00305\ \ \ std::vector<IndexInfo\ *>\ \mbox{\hyperlink{classbustub_1_1Catalog_a78224f0490b5d428014785708e714b9b}{GetTableIndexes}}(\textcolor{keyword}{const}\ std::string\ \&table\_name)\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{comment}{//\ Ensure\ the\ table\ exists}}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordflow}{if}\ (table\_names\_.find(table\_name)\ ==\ table\_names\_.end())\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<IndexInfo\ *>\{\};}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keyword}{auto}\ table\_indexes\ =\ index\_names\_.find(table\_name);}
+\DoxyCodeLine{00312\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}((table\_indexes\ !=\ index\_names\_.end()),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ std::vector<IndexInfo\ *>\ indexes\{\};}
+\DoxyCodeLine{00315\ \ \ \ \ indexes.reserve(table\_indexes-\/>second.size());}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&index\_meta\ :\ table\_indexes-\/>second)\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ index\ =\ indexes\_.find(index\_meta.second);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}((index\ !=\ indexes\_.end()),\ \textcolor{stringliteral}{"{}Broken\ Invariant"{}});}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ indexes.push\_back(index-\/>second.get());}
+\DoxyCodeLine{00320\ \ \ \ \ \}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{return}\ indexes;}
+\DoxyCodeLine{00323\ \ \ \}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00326\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm\_;}
+\DoxyCodeLine{00327\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager\_;}
+\DoxyCodeLine{00328\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\_;}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00335\ \ \ std::unordered\_map<table\_oid\_t,\ std::unique\_ptr<TableInfo>>\ tables\_;}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00338\ \ \ std::unordered\_map<std::string,\ table\_oid\_t>\ table\_names\_;}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00341\ \ \ std::atomic<table\_oid\_t>\ next\_table\_oid\_\{0\};}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00348\ \ \ std::unordered\_map<index\_oid\_t,\ std::unique\_ptr<IndexInfo>>\ indexes\_;}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00351\ \ \ std::unordered\_map<std::string,\ std::unordered\_map<std::string,\ index\_oid\_t>>\ index\_names\_;}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00354\ \ \ std::atomic<index\_oid\_t>\ next\_index\_oid\_\{0\};}
+\DoxyCodeLine{00355\ \};}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\doxysection{limit\+\_\+plan.\+h}
+\hypertarget{limit__plan_8h_source}{}\label{limit__plan_8h_source}\index{src/include/execution/plans/limit\_plan.h@{src/include/execution/plans/limit\_plan.h}}
+\mbox{\hyperlink{limit__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ limit\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/limit\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LimitPlanNode_af7b8b0f78b15dbc725d8997c2cadbf9f}{LimitPlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classbustub_1_1LimitPlanNode_af7b8b0f78b15dbc725d8997c2cadbf9f}{LimitPlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *output\_schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *child,\ std::size\_t\ limit)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(output\_schema,\ \{child\}),\ limit\_\{limit\}\ \{\}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1LimitPlanNode_a18805c99f08c0b4260bb964772f3a869}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfa80d2677cf518f4d04320042f4ea6c146}{PlanType::Limit}};\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classbustub_1_1LimitPlanNode_aa246920a46f7f5f6f67d7db975ef8afb}{GetLimit}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ limit\_;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1LimitPlanNode_a638cb508d1378e43b7ef855aba93ce88}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().size()\ ==\ 1,\ \textcolor{stringliteral}{"{}Limit\ should\ have\ at\ most\ one\ child\ plan."{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ std::size\_t\ limit\_;}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

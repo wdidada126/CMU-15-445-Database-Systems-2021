@@ -1,0 +1,59 @@
+\doxysection{b\+\_\+plus\+\_\+tree\+\_\+internal\+\_\+page.\+h}
+\hypertarget{b__plus__tree__internal__page_8h_source}{}\label{b__plus__tree__internal__page_8h_source}\index{src/include/storage/page/b\_plus\_tree\_internal\_page.h@{src/include/storage/page/b\_plus\_tree\_internal\_page.h}}
+\mbox{\hyperlink{b__plus__tree__internal__page_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CMU-\/DB\ Project\ (15-\/445/645)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ***DO\ NO\ SHARE\ PUBLICLY***}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Identification:\ src/include/page/b\_plus\_tree\_internal\_page.h}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Copyright\ (c)\ 2018,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{b__plus__tree__page_8h}{storage/page/b\_plus\_tree\_page.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ B\_PLUS\_TREE\_INTERNAL\_PAGE\_TYPE\ BPlusTreeInternalPage<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ INTERNAL\_PAGE\_HEADER\_SIZE\ 24}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ INTERNAL\_PAGE\_SIZE\ ((PAGE\_SIZE\ -\/\ INTERNAL\_PAGE\_HEADER\_SIZE)\ /\ (sizeof(MappingType)))}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00035\ \mbox{\hyperlink{b__plus__tree__page_8h_a4c3acf10c136a6a89b0805e36e535847}{INDEX\_TEMPLATE\_ARGUMENTS}}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1BPlusTreePage}{BPlusTreePage}}\ \{}
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ must\ call\ initialize\ method\ after\ "{}create"{}\ a\ new\ node}}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a4dd6232021db898aa40a584b67f58bd4}{Init}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ parent\_id\ =\ INVALID\_PAGE\_ID,\ \textcolor{keywordtype}{int}\ max\_size\ =\ \mbox{\hyperlink{b__plus__tree__internal__page_8h_a04db3f924b29e986d8b3e94dbbbb9d55}{INTERNAL\_PAGE\_SIZE}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_ac9d73757f98a8a6cecdec216b9d638ef}{KeyAt}}(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_ae62354e05741a3ba82a12e26e65cf480}{SetKeyAt}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key);}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a09a8d1214e65fab1d6fba2dea1403f1a}{ValueIndex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a3200271275b122bb877156de58fa952d}{ValueAt}}(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a81c9a71108a302005d83d76a69a3058c}{Lookup}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ KeyComparator\ \&comparator)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a320e01c523a06461445d2dae4f63cc35}{PopulateNewRoot}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&old\_value,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&new\_key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&new\_value);}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_adaed0bcb8a748f0756bd15c943de091d}{InsertNodeAfter}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&old\_value,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&new\_key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&new\_value);}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a96eadea594d6852c0ad376093fbe9dd8}{Remove}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a04c0db7b184a7de53ac0a876c555cc81}{RemoveAndReturnOnlyChild}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//\ Split\ and\ Merge\ utility\ methods}}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a1c870a7f82a2b6b583dfeb66a99c5a08}{MoveAllTo}}(\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage}}\ *recipient,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&middle\_key,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_af9890b00379cd810229f4b672f440539}{MoveHalfTo}}(\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage}}\ *recipient,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a12562ace2b9590e03a3a06d65947239a}{MoveFirstToEndOf}}(\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage}}\ *recipient,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&middle\_key,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage_a4c129c1ab7a401e179189a6fdbf9087f}{MoveLastToFrontOf}}(\mbox{\hyperlink{classbustub_1_1BPlusTreeInternalPage}{BPlusTreeInternalPage}}\ *recipient,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&middle\_key,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ CopyNFrom(\mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{MappingType}}\ *items,\ \textcolor{keywordtype}{int}\ size,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ CopyLastFrom(\textcolor{keyword}{const}\ \mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{MappingType}}\ \&pair,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ CopyFirstFrom(\textcolor{keyword}{const}\ \mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{MappingType}}\ \&pair,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager);}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{MappingType}}\ array\_[0];}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

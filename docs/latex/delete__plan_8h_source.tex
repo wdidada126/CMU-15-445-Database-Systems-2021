@@ -1,0 +1,45 @@
+\doxysection{delete\+\_\+plan.\+h}
+\hypertarget{delete__plan_8h_source}{}\label{delete__plan_8h_source}\index{src/include/execution/plans/delete\_plan.h@{src/include/execution/plans/delete\_plan.h}}
+\mbox{\hyperlink{delete__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ delete\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/delete\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1DeletePlanNode_a2e937fcb14ca5aae23c817237d1f586c}{DeletePlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classbustub_1_1DeletePlanNode_a2e937fcb14ca5aae23c817237d1f586c}{DeletePlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *child,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(nullptr,\ \{child\}),\ table\_oid\_\{table\_oid\}\ \{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1DeletePlanNode_af4634440d1f49fb3565d13a3a8af6acd}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfaf2a6c498fb90ee345d997f888fce3b18}{PlanType::Delete}};\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1DeletePlanNode_a8cd6d19b4027146dad6c578d9412ac25}{TableOid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ table\_oid\_;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1DeletePlanNode_a88ede1eb806fbfd15291e6785caaede2}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().size()\ ==\ 1,\ \textcolor{stringliteral}{"{}delete\ should\ have\ at\ most\ one\ child\ plan."{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);}
+\DoxyCodeLine{00047\ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid\_;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

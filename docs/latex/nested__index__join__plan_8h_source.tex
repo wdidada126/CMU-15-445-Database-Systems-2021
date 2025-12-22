@@ -1,0 +1,64 @@
+\doxysection{nested\+\_\+index\+\_\+join\+\_\+plan.\+h}
+\hypertarget{nested__index__join__plan_8h_source}{}\label{nested__index__join__plan_8h_source}\index{src/include/execution/plans/nested\_index\_join\_plan.h@{src/include/execution/plans/nested\_index\_join\_plan.h}}
+\mbox{\hyperlink{nested__index__join__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ nested\_index\_join\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/nested\_index\_join\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/19,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a9c35c6cabd60187eed6308ef1727d4eb}{NestedIndexJoinPlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a9c35c6cabd60187eed6308ef1727d4eb}{NestedIndexJoinPlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *output\_schema,\ std::vector<const\ AbstractPlanNode\ *>\ \&\&children,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *predicate,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ inner\_table\_oid,\ std::string\ index\_name,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *outer\_table\_schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *inner\_table\_schema)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(output\_schema,\ \mbox{\hyperlink{namespacestd}{std}}::move(children)),}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ predicate\_(predicate),}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ inner\_table\_oid\_(inner\_table\_oid),}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ index\_name\_(\mbox{\hyperlink{namespacestd}{std}}::move(index\_name)),}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ outer\_table\_schema\_(outer\_table\_schema),}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ inner\_table\_schema\_(inner\_table\_schema)\ \{\}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_abfcf513ea5436954dadd061d9dfcb152}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfa94c13100d36b9eea5279efd74793b177}{PlanType::NestedIndexJoin}};\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_ab0020f40de3ea35a47d2365edff72eea}{Predicate}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ predicate\_;\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a792e797ff184deb6a41ac13d63730769}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a52e11bfaf16689ff40958e46b3630c43}{GetInnerTableOid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ inner\_table\_oid\_;\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a52e44c8b5b9e4210779326c95e84861a}{GetIndexName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ index\_name\_;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_ab94a4e3a92395752053d9132ad67480f}{OuterTableSchema}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ outer\_table\_schema\_;\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1NestedIndexJoinPlanNode_a0e5b4bf02efe1c2fecd79b133d56e57d}{InnerTableSchema}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ inner\_table\_schema\_;\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *predicate\_;}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ inner\_table\_oid\_;}
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{const}\ std::string\ index\_name\_;}
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *outer\_table\_schema\_;}
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *inner\_table\_schema\_;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

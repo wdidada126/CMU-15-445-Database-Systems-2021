@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2019 Arthur de Araújo Farias
+# 
+# SPDX-License-Identifier: Apache-2.0
+
+OUTPUT_DIRECTORY       = /mnt/d/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/docs/
+INPUT                  = /mnt/d/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/src/ /mnt/d/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/test/ /mnt/d/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/third_party/
+USE_MDFILE_AS_MAINPAGE = /mnt/d/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/README.md
+EXCLUDE_PATTERNS       = */.git/*
+EXCLUDE_PATTERNS      += */subprojects/*
+EXCLUDE_PATTERNS      += */tests/*
+
+DOXYFILE_ENCODING      = UTF-8
+PROJECT_NAME           = CMU-15-445-Database-Systems-2021
+TYPEDEF_HIDES_STRUCT   = YES
+EXTRACT_ALL            = YES
+EXTRACT_LOCAL_CLASSES  = YES
+SHOW_INCLUDE_FILES     = YES
+INLINE_INFO            = YES
+SORT_MEMBER_DOCS       = YES
+GENERATE_TODOLIST      = YES
+GENERATE_BUGLIST       = YES
+GENERATE_DEPRECATEDLIST = YES
+SHOW_USED_FILES        = YES
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+INPUT_ENCODING         = UTF-8
+RECURSIVE              = YES

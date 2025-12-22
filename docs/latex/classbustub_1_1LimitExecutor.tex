@@ -1,0 +1,115 @@
+\doxysection{bustub\+::Limit\+Executor Class Reference}
+\hypertarget{classbustub_1_1LimitExecutor}{}\label{classbustub_1_1LimitExecutor}\index{bustub::LimitExecutor@{bustub::LimitExecutor}}
+
+
+{\ttfamily \#include $<$limit\+\_\+executor.\+h$>$}
+
+Inheritance diagram for bustub\+::Limit\+Executor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1LimitExecutor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1LimitExecutor_abdee3b7d73a18da7ffba6481cd432428}{Limit\+Executor}} (\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*}exec\+\_\+ctx, const \mbox{\hyperlink{classbustub_1_1LimitPlanNode}{Limit\+Plan\+Node}} \texorpdfstring{$\ast$}{*}plan, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbustub_1_1AbstractExecutor}{Abstract\+Executor}} $>$ \&\&child\+\_\+executor)
+\item 
+void \mbox{\hyperlink{classbustub_1_1LimitExecutor_a7d44cb9ffec09e0bc897be5cc051370b}{Init}} () override
+\item 
+bool \mbox{\hyperlink{classbustub_1_1LimitExecutor_a53da82b52319b8711d14b142e81e4307}{Next}} (\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \texorpdfstring{$\ast$}{*}tuple, \mbox{\hyperlink{classbustub_1_1RID}{RID}} \texorpdfstring{$\ast$}{*}rid) override
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1LimitExecutor_ae73ea276b3d15aa959dbdb980ef9d780}{Get\+Output\+Schema}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1AbstractExecutor}{bustub\+::\+Abstract\+Executor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{Abstract\+Executor}} (\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*}exec\+\_\+ctx)
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1AbstractExecutor_ab28201d3024a7b09e8c41af42a8def68}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Executor}} ()=default
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractExecutor_ad89e207178e920f8a9e8221a30ecd3d3}{Get\+Executor\+Context}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classbustub_1_1AbstractExecutor}{bustub\+::\+Abstract\+Executor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a5591a244cd884bbae01ebbc58b3b2769}{exec\+\_\+ctx\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1LimitExecutor}{Limit\+Executor} limits the number of output tuples produced by a child operator. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1LimitExecutor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1LimitExecutor_abdee3b7d73a18da7ffba6481cd432428}\index{bustub::LimitExecutor@{bustub::LimitExecutor}!LimitExecutor@{LimitExecutor}}
+\index{LimitExecutor@{LimitExecutor}!bustub::LimitExecutor@{bustub::LimitExecutor}}
+\doxysubsubsection{\texorpdfstring{LimitExecutor()}{LimitExecutor()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LimitExecutor_abdee3b7d73a18da7ffba6481cd432428} 
+bustub\+::\+Limit\+Executor\+::\+Limit\+Executor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}} \texorpdfstring{$\ast$}{*}}]{exec\+\_\+ctx}{, }\item[{const \mbox{\hyperlink{classbustub_1_1LimitPlanNode}{Limit\+Plan\+Node}} \texorpdfstring{$\ast$}{*}}]{plan}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classbustub_1_1AbstractExecutor}{Abstract\+Executor}} $>$ \&\&}]{child\+\_\+executor}{}\end{DoxyParamCaption})}
+
+Construct a new \doxylink{classbustub_1_1LimitExecutor}{Limit\+Executor} instance. 
+\begin{DoxyParams}{Parameters}
+{\em exec\+\_\+ctx} & The executor context \\
+\hline
+{\em plan} & The limit plan to be executed \\
+\hline
+{\em child\+\_\+executor} & The child executor from which limited tuples are pulled \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1LimitExecutor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1LimitExecutor_ae73ea276b3d15aa959dbdb980ef9d780}\index{bustub::LimitExecutor@{bustub::LimitExecutor}!GetOutputSchema@{GetOutputSchema}}
+\index{GetOutputSchema@{GetOutputSchema}!bustub::LimitExecutor@{bustub::LimitExecutor}}
+\doxysubsubsection{\texorpdfstring{GetOutputSchema()}{GetOutputSchema()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LimitExecutor_ae73ea276b3d15aa959dbdb980ef9d780} 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} bustub\+::\+Limit\+Executor\+::\+Get\+Output\+Schema (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+The output schema for the limit 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classbustub_1_1AbstractExecutor_aca40277c62805994fdde1e8a34af8b6f}{bustub\+::\+Abstract\+Executor}}.
+
+\Hypertarget{classbustub_1_1LimitExecutor_a7d44cb9ffec09e0bc897be5cc051370b}\index{bustub::LimitExecutor@{bustub::LimitExecutor}!Init@{Init}}
+\index{Init@{Init}!bustub::LimitExecutor@{bustub::LimitExecutor}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LimitExecutor_a7d44cb9ffec09e0bc897be5cc051370b} 
+void bustub\+::\+Limit\+Executor\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Initialize the limit 
+
+Implements \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a8de18536ea3222d01514b14387082ec8}{bustub\+::\+Abstract\+Executor}}.
+
+\Hypertarget{classbustub_1_1LimitExecutor_a53da82b52319b8711d14b142e81e4307}\index{bustub::LimitExecutor@{bustub::LimitExecutor}!Next@{Next}}
+\index{Next@{Next}!bustub::LimitExecutor@{bustub::LimitExecutor}}
+\doxysubsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LimitExecutor_a53da82b52319b8711d14b142e81e4307} 
+bool bustub\+::\+Limit\+Executor\+::\+Next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}} \texorpdfstring{$\ast$}{*}}]{tuple}{, }\item[{\mbox{\hyperlink{classbustub_1_1RID}{RID}} \texorpdfstring{$\ast$}{*}}]{rid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Yield the next tuple from the limit. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{out}}  & {\em tuple} & The next tuple produced by the limit \\
+\hline
+\mbox{\texttt{out}}  & {\em rid} & The next tuple \doxylink{classbustub_1_1RID}{RID} produced by the limit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if a tuple was produced, {\ttfamily false} if there are no more tuples 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a5baf2d49aa23901553398d6c309d2afe}{bustub\+::\+Abstract\+Executor}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/include/execution/executors/\mbox{\hyperlink{limit__executor_8h}{limit\+\_\+executor.\+h}}\item 
+src/execution/\mbox{\hyperlink{limit__executor_8cpp}{limit\+\_\+executor.\+cpp}}\end{DoxyCompactItemize}

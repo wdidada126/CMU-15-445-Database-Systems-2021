@@ -1,0 +1,116 @@
+\doxysection{bustub\+::Lock\+Manager Class Reference}
+\hypertarget{classbustub_1_1LockManager}{}\label{classbustub_1_1LockManager}\index{bustub::LockManager@{bustub::LockManager}}
+
+
+{\ttfamily \#include $<$lock\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1LockManager_a9a6999ff8d30e8f121741d074cb88775}{Lock\+Manager}} ()=default
+\item 
+\mbox{\hyperlink{classbustub_1_1LockManager_a0cfc2bf3b90aa926e617872bb69f3630}{\texorpdfstring{$\sim$}{\string~}\+Lock\+Manager}} ()=default
+\item 
+bool \mbox{\hyperlink{classbustub_1_1LockManager_ac80e538d02ed9d24abcca62c8bb4baf8}{Lock\+Shared}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&rid)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1LockManager_a59132c6f6c42bcf2d683b1a15be35d10}{Lock\+Exclusive}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&rid)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1LockManager_a8bdc05ee2c34433aef981bf4879cf544}{Lock\+Upgrade}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&rid)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1LockManager_a31f7958e0a0aaee34af6dd52961e7618}{Unlock}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&rid)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1LockManager}{Lock\+Manager} handles transactions asking for locks on records. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1LockManager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1LockManager_a9a6999ff8d30e8f121741d074cb88775}\index{bustub::LockManager@{bustub::LockManager}!LockManager@{LockManager}}
+\index{LockManager@{LockManager}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{LockManager()}{LockManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_a9a6999ff8d30e8f121741d074cb88775} 
+bustub\+::\+Lock\+Manager\+::\+Lock\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Creates a new lock manager configured for the deadlock prevention policy. \Hypertarget{classbustub_1_1LockManager_a0cfc2bf3b90aa926e617872bb69f3630}\index{bustub::LockManager@{bustub::LockManager}!````~LockManager@{\texorpdfstring{$\sim$}{\string~}LockManager}}
+\index{````~LockManager@{\texorpdfstring{$\sim$}{\string~}LockManager}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LockManager()}{\string~LockManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_a0cfc2bf3b90aa926e617872bb69f3630} 
+bustub\+::\+Lock\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Lock\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1LockManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1LockManager_a59132c6f6c42bcf2d683b1a15be35d10}\index{bustub::LockManager@{bustub::LockManager}!LockExclusive@{LockExclusive}}
+\index{LockExclusive@{LockExclusive}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{LockExclusive()}{LockExclusive()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_a59132c6f6c42bcf2d683b1a15be35d10} 
+bool bustub\+::\+Lock\+Manager\+::\+Lock\+Exclusive (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{txn}{, }\item[{const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&}]{rid}{}\end{DoxyParamCaption})}
+
+Acquire a lock on \doxylink{classbustub_1_1RID}{RID} in exclusive mode. See \mbox{[}LOCK\+\_\+\+NOTE\mbox{]} in header file. 
+\begin{DoxyParams}{Parameters}
+{\em txn} & the transaction requesting the exclusive lock \\
+\hline
+{\em rid} & the \doxylink{classbustub_1_1RID}{RID} to be locked in exclusive mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the lock is granted, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1LockManager_ac80e538d02ed9d24abcca62c8bb4baf8}\index{bustub::LockManager@{bustub::LockManager}!LockShared@{LockShared}}
+\index{LockShared@{LockShared}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{LockShared()}{LockShared()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_ac80e538d02ed9d24abcca62c8bb4baf8} 
+bool bustub\+::\+Lock\+Manager\+::\+Lock\+Shared (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{txn}{, }\item[{const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&}]{rid}{}\end{DoxyParamCaption})}
+
+Acquire a lock on \doxylink{classbustub_1_1RID}{RID} in shared mode. See \mbox{[}LOCK\+\_\+\+NOTE\mbox{]} in header file. 
+\begin{DoxyParams}{Parameters}
+{\em txn} & the transaction requesting the shared lock \\
+\hline
+{\em rid} & the \doxylink{classbustub_1_1RID}{RID} to be locked in shared mode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the lock is granted, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1LockManager_a8bdc05ee2c34433aef981bf4879cf544}\index{bustub::LockManager@{bustub::LockManager}!LockUpgrade@{LockUpgrade}}
+\index{LockUpgrade@{LockUpgrade}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{LockUpgrade()}{LockUpgrade()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_a8bdc05ee2c34433aef981bf4879cf544} 
+bool bustub\+::\+Lock\+Manager\+::\+Lock\+Upgrade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{txn}{, }\item[{const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&}]{rid}{}\end{DoxyParamCaption})}
+
+Upgrade a lock from a shared lock to an exclusive lock. 
+\begin{DoxyParams}{Parameters}
+{\em txn} & the transaction requesting the lock upgrade \\
+\hline
+{\em rid} & the \doxylink{classbustub_1_1RID}{RID} that should already be locked in shared mode by the requesting transaction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the upgrade is successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1LockManager_a31f7958e0a0aaee34af6dd52961e7618}\index{bustub::LockManager@{bustub::LockManager}!Unlock@{Unlock}}
+\index{Unlock@{Unlock}!bustub::LockManager@{bustub::LockManager}}
+\doxysubsubsection{\texorpdfstring{Unlock()}{Unlock()}}
+{\footnotesize\ttfamily \label{classbustub_1_1LockManager_a31f7958e0a0aaee34af6dd52961e7618} 
+bool bustub\+::\+Lock\+Manager\+::\+Unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{txn}{, }\item[{const \mbox{\hyperlink{classbustub_1_1RID}{RID}} \&}]{rid}{}\end{DoxyParamCaption})}
+
+Release the lock held by the transaction. 
+\begin{DoxyParams}{Parameters}
+{\em txn} & the transaction releasing the lock, it should actually hold the lock \\
+\hline
+{\em rid} & the \doxylink{classbustub_1_1RID}{RID} that is locked by the transaction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the unlock is successful, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/include/concurrency/\mbox{\hyperlink{lock__manager_8h}{lock\+\_\+manager.\+h}}\item 
+src/concurrency/\mbox{\hyperlink{lock__manager_8cpp}{lock\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

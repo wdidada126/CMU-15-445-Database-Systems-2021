@@ -1,0 +1,103 @@
+\doxysection{aggregation\+\_\+plan.\+h}
+\hypertarget{aggregation__plan_8h_source}{}\label{aggregation__plan_8h_source}\index{src/include/execution/plans/aggregation\_plan.h@{src/include/execution/plans/aggregation\_plan.h}}
+\mbox{\hyperlink{aggregation__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ aggregation\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/aggregation\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__util_8h}{common/util/hash\_util.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fff}{AggregationType}}\ \{\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa8680b6686c29f5bfdad5ce95bcec6cc5}{CountAggregate}},\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffad1debde475bd10120fc7c9bec94c2b8e}{SumAggregate}},\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffae4fc8446a8df86a42a1efdc33d760e26}{MinAggregate}},\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa4cca396904429e99393b99aa650d3456}{MaxAggregate}}\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a04eaa3a918d43f3ce9dda229766b8430}{AggregationPlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00034\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a04eaa3a918d43f3ce9dda229766b8430}{AggregationPlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *output\_schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *child,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *having,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<const\ AbstractExpression\ *>\ \&\&group\_bys,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<const\ AbstractExpression\ *>\ \&\&aggregates,\ std::vector<AggregationType>\ \&\&agg\_types)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(output\_schema,\ \{child\}),}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ having\_(having),}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ group\_bys\_(std::move(group\_bys)),}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ aggregates\_(std::move(aggregates)),}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ agg\_types\_(std::move(agg\_types))\ \{\}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a91a663686ff6add0e34168dcb597dfb8}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfad9ceca6b3a280ab6926157d124ea15d7}{PlanType::Aggregation}};\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a941dca65b7a07b03991eb8b48b36d376}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().size()\ ==\ 1,\ \textcolor{stringliteral}{"{}Aggregation\ expected\ to\ only\ have\ one\ child."{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);}
+\DoxyCodeLine{00060\ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a429a3925084ba7d456badea38669e0aa}{GetHaving}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ having\_;\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a3b618a722ccc9d7f161c3b31b74cea6c}{GetGroupByAt}}(uint32\_t\ idx)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ group\_bys\_[idx];\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{const}\ std::vector<const\ AbstractExpression\ *>\ \&\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_ae06e769d97e495f3f084bfb28bcd71ac}{GetGroupBys}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ group\_bys\_;\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_a0e9bf6c6fb45646b8c6d816a9a25134b}{GetAggregateAt}}(uint32\_t\ idx)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ aggregates\_[idx];\ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{const}\ std::vector<const\ AbstractExpression\ *>\ \&\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_ac288572e7792bf3e8b1987fe545fbdf1}{GetAggregates}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ aggregates\_;\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keyword}{const}\ std::vector<AggregationType>\ \&\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_ac7e32ad61e9bdfb1d6263de71fe2c9a0}{GetAggregateTypes}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ agg\_types\_;\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *having\_;}
+\DoxyCodeLine{00084\ \ \ std::vector<const\ AbstractExpression\ *>\ group\_bys\_;}
+\DoxyCodeLine{00086\ \ \ std::vector<const\ AbstractExpression\ *>\ aggregates\_;}
+\DoxyCodeLine{00088\ \ \ std::vector<AggregationType>\ agg\_types\_;}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1AggregateKey}{AggregateKey}}\ \{}
+\DoxyCodeLine{00094\ \ \ std::vector<Value>\ \mbox{\hyperlink{structbustub_1_1AggregateKey_af4e6381640894809865ac634bd8eb61e}{group\_bys\_}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structbustub_1_1AggregateKey_af9f590e9cd643f3f85f6663a78dc8e56}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateKey}{AggregateKey}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ other.\mbox{\hyperlink{structbustub_1_1AggregateKey_af4e6381640894809865ac634bd8eb61e}{group\_bys\_}}.size();\ i++)\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structbustub_1_1AggregateKey_af4e6381640894809865ac634bd8eb61e}{group\_bys\_}}[i].CompareEquals(other.\mbox{\hyperlink{structbustub_1_1AggregateKey_af4e6381640894809865ac634bd8eb61e}{group\_bys\_}}[i])\ !=\ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560a4485704eca2114c51657b73f650d9771}{CmpBool::CmpTrue}})\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00108\ \ \ \}}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ \{}
+\DoxyCodeLine{00114\ \ \ std::vector<Value>\ \mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}};}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacestd}{std}}\ \{}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00123\ \textcolor{keyword}{struct\ }hash<\mbox{\hyperlink{namespacebustub}{bustub}}::AggregateKey>\ \{}
+\DoxyCodeLine{00124\ \ \ std::size\_t\ \mbox{\hyperlink{structstd_1_1hash_3_01bustub_1_1AggregateKey_01_4_a55e5efb9f0196de636fcc76cb89b3d61}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateKey}{bustub::AggregateKey}}\ \&agg\_key)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ curr\_hash\ =\ 0;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&key\ :\ agg\_key.\mbox{\hyperlink{structbustub_1_1AggregateKey_af4e6381640894809865ac634bd8eb61e}{group\_bys\_}})\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!key.IsNull())\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ curr\_hash\ =\ \mbox{\hyperlink{classbustub_1_1HashUtil_a57625941c324a94a2dc5b72523bf7d95}{bustub::HashUtil::CombineHashes}}(curr\_hash,\ \mbox{\hyperlink{classbustub_1_1HashUtil_af6af7c20591db61847e9a5a01419dd62}{bustub::HashUtil::HashValue}}(\&key));}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{return}\ curr\_hash;}
+\DoxyCodeLine{00132\ \ \ \}}
+\DoxyCodeLine{00133\ \};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \}\ \ \textcolor{comment}{//\ namespace\ std}}
+
+\end{DoxyCode}

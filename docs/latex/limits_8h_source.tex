@@ -1,0 +1,66 @@
+\doxysection{limits.\+h}
+\hypertarget{limits_8h_source}{}\label{limits_8h_source}\index{src/include/type/limits.h@{src/include/type/limits.h}}
+\mbox{\hyperlink{limits_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ limits.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/type/limits.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <cfloat>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ DBL\_LOWEST\ =\ std::numeric\_limits<double>::lowest();}
+\DoxyCodeLine{00022\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ FLT\_LOWEST\ =\ std::numeric\_limits<float>::lowest();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_INT8\_MIN\ =\ (SCHAR\_MIN\ +\ 1);}
+\DoxyCodeLine{00025\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int16\_t\ BUSTUB\_INT16\_MIN\ =\ (SHRT\_MIN\ +\ 1);}
+\DoxyCodeLine{00026\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int32\_t\ BUSTUB\_INT32\_MIN\ =\ (INT\_MIN\ +\ 1);}
+\DoxyCodeLine{00027\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ BUSTUB\_INT64\_MIN\ =\ (LLONG\_MIN\ +\ 1);}
+\DoxyCodeLine{00028\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ BUSTUB\_DECIMAL\_MIN\ =\ FLT\_LOWEST;}
+\DoxyCodeLine{00029\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_TIMESTAMP\_MIN\ =\ 0;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ BUSTUB\_DATE\_MIN\ =\ 0;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_BOOLEAN\_MIN\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_INT8\_MAX\ =\ SCHAR\_MAX;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int16\_t\ BUSTUB\_INT16\_MAX\ =\ SHRT\_MAX;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int32\_t\ BUSTUB\_INT32\_MAX\ =\ INT\_MAX;}
+\DoxyCodeLine{00036\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ BUSTUB\_INT64\_MAX\ =\ LLONG\_MAX;}
+\DoxyCodeLine{00037\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_UINT64\_MAX\ =\ ULLONG\_MAX\ -\/\ 1;}
+\DoxyCodeLine{00038\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ BUSTUB\_DECIMAL\_MAX\ =\ DBL\_MAX;}
+\DoxyCodeLine{00039\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_TIMESTAMP\_MAX\ =\ 11231999986399999999U;}
+\DoxyCodeLine{00040\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_DATE\_MAX\ =\ INT\_MAX;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_BOOLEAN\_MAX\ =\ 1;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ BUSTUB\_VALUE\_NULL\ =\ UINT\_MAX;}
+\DoxyCodeLine{00044\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_INT8\_NULL\ =\ SCHAR\_MIN;}
+\DoxyCodeLine{00045\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int16\_t\ BUSTUB\_INT16\_NULL\ =\ SHRT\_MIN;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int32\_t\ BUSTUB\_INT32\_NULL\ =\ INT\_MIN;}
+\DoxyCodeLine{00047\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int64\_t\ BUSTUB\_INT64\_NULL\ =\ LLONG\_MIN;}
+\DoxyCodeLine{00048\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_DATE\_NULL\ =\ 0;}
+\DoxyCodeLine{00049\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ BUSTUB\_TIMESTAMP\_NULL\ =\ ULLONG\_MAX;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{double}\ BUSTUB\_DECIMAL\_NULL\ =\ DBL\_LOWEST;}
+\DoxyCodeLine{00051\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int8\_t\ BUSTUB\_BOOLEAN\_NULL\ =\ SCHAR\_MIN;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ BUSTUB\_VARCHAR\_MAX\_LEN\ =\ UINT\_MAX;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ Use\ to\ make\ TEXT\ type\ as\ the\ alias\ of\ VARCHAR(TEXT\_MAX\_LENGTH)}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ BUSTUB\_TEXT\_MAX\_LEN\ =\ 1000000000;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ Objects\ (i.e.,\ VARCHAR)\ with\ length\ prefix\ of\ -\/1\ are\ NULL}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ OBJECTLENGTH\_NULL\ =\ -\/1;}
+\DoxyCodeLine{00060\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

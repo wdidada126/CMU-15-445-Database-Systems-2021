@@ -1,0 +1,130 @@
+\doxysection{bustub\+::Executor\+Context Class Reference}
+\hypertarget{classbustub_1_1ExecutorContext}{}\label{classbustub_1_1ExecutorContext}\index{bustub::ExecutorContext@{bustub::ExecutorContext}}
+
+
+{\ttfamily \#include $<$executor\+\_\+context.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9}{Executor\+Context}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}transaction, \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}catalog, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}bpm, \mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}txn\+\_\+mgr, \mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*}lock\+\_\+mgr)
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext_a906e1c53716668a43b8768b3bd155319}{\texorpdfstring{$\sim$}{\string~}\+Executor\+Context}} ()=default
+\item 
+\mbox{\hyperlink{classbustub_1_1ExecutorContext_afdd17636324cbed13a8fbe79b0af6004}{DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE}} (\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}})
+\item 
+\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_a3ec6025e9b671f70590bd8a33d0a51f8}{Get\+Transaction}} () const
+\item 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_af73efe7bdb13e7bb00a33380402e087d}{Get\+Catalog}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_aa3d876c1cafdb85039c31935b29af5e5}{Get\+Buffer\+Pool\+Manager}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_aef2c865b038638054e1c711c2269daf9}{Get\+Log\+Manager}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_a49430eb028e3e009673547b777a161cf}{Get\+Lock\+Manager}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1ExecutorContext_a00458010ca878cc6a155b42e8a5c9f1f}{Get\+Transaction\+Manager}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1ExecutorContext}{Executor\+Context} stores all the context necessary to run an executor. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1ExecutorContext_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!ExecutorContext@{ExecutorContext}}
+\index{ExecutorContext@{ExecutorContext}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{ExecutorContext()}{ExecutorContext()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_a731b85f20ac798c7a3e4c7a90f82baf9} 
+bustub\+::\+Executor\+Context\+::\+Executor\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}}]{transaction}{, }\item[{\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*}}]{catalog}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{bpm}{, }\item[{\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}}]{txn\+\_\+mgr}{, }\item[{\mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*}}]{lock\+\_\+mgr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Creates an \doxylink{classbustub_1_1ExecutorContext}{Executor\+Context} for the transaction that is executing the query. 
+\begin{DoxyParams}{Parameters}
+{\em transaction} & The transaction executing the query \\
+\hline
+{\em catalog} & The catalog that the executor uses \\
+\hline
+{\em bpm} & The buffer pool manager that the executor uses \\
+\hline
+{\em txn\+\_\+mgr} & The transaction manager that the executor uses \\
+\hline
+{\em lock\+\_\+mgr} & The lock manager that the executor uses \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classbustub_1_1ExecutorContext_a906e1c53716668a43b8768b3bd155319}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!````~ExecutorContext@{\texorpdfstring{$\sim$}{\string~}ExecutorContext}}
+\index{````~ExecutorContext@{\texorpdfstring{$\sim$}{\string~}ExecutorContext}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ExecutorContext()}{\string~ExecutorContext()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_a906e1c53716668a43b8768b3bd155319} 
+bustub\+::\+Executor\+Context\+::\texorpdfstring{$\sim$}{\string~}\+Executor\+Context (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1ExecutorContext_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1ExecutorContext_afdd17636324cbed13a8fbe79b0af6004}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}}
+\index{DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{DISALLOW\_COPY\_AND\_MOVE()}{DISALLOW\_COPY\_AND\_MOVE()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_afdd17636324cbed13a8fbe79b0af6004} 
+bustub\+::\+Executor\+Context\+::\+DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1ExecutorContext}{Executor\+Context}}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1ExecutorContext_aa3d876c1cafdb85039c31935b29af5e5}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetBufferPoolManager@{GetBufferPoolManager}}
+\index{GetBufferPoolManager@{GetBufferPoolManager}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetBufferPoolManager()}{GetBufferPoolManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_aa3d876c1cafdb85039c31935b29af5e5} 
+\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Buffer\+Pool\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the buffer pool manager 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1ExecutorContext_af73efe7bdb13e7bb00a33380402e087d}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetCatalog@{GetCatalog}}
+\index{GetCatalog@{GetCatalog}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetCatalog()}{GetCatalog()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_af73efe7bdb13e7bb00a33380402e087d} 
+\mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Catalog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the catalog 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1ExecutorContext_a49430eb028e3e009673547b777a161cf}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetLockManager@{GetLockManager}}
+\index{GetLockManager@{GetLockManager}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetLockManager()}{GetLockManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_a49430eb028e3e009673547b777a161cf} 
+\mbox{\hyperlink{classbustub_1_1LockManager}{Lock\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Lock\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the lock manager 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1ExecutorContext_aef2c865b038638054e1c711c2269daf9}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetLogManager@{GetLogManager}}
+\index{GetLogManager@{GetLogManager}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetLogManager()}{GetLogManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_aef2c865b038638054e1c711c2269daf9} 
+\mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Log\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the log manager -\/ don\textquotesingle{}t worry about it for now 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1ExecutorContext_a3ec6025e9b671f70590bd8a33d0a51f8}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetTransaction@{GetTransaction}}
+\index{GetTransaction@{GetTransaction}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetTransaction()}{GetTransaction()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_a3ec6025e9b671f70590bd8a33d0a51f8} 
+\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Transaction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the running transaction 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1ExecutorContext_a00458010ca878cc6a155b42e8a5c9f1f}\index{bustub::ExecutorContext@{bustub::ExecutorContext}!GetTransactionManager@{GetTransactionManager}}
+\index{GetTransactionManager@{GetTransactionManager}!bustub::ExecutorContext@{bustub::ExecutorContext}}
+\doxysubsubsection{\texorpdfstring{GetTransactionManager()}{GetTransactionManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1ExecutorContext_a00458010ca878cc6a155b42e8a5c9f1f} 
+\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*} bustub\+::\+Executor\+Context\+::\+Get\+Transaction\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the transaction manager 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/execution/\mbox{\hyperlink{executor__context_8h}{executor\+\_\+context.\+h}}\end{DoxyCompactItemize}

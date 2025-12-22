@@ -1,0 +1,65 @@
+\doxysection{insert\+\_\+plan.\+h}
+\hypertarget{insert__plan_8h_source}{}\label{insert__plan_8h_source}\index{src/include/execution/plans/insert\_plan.h@{src/include/execution/plans/insert\_plan.h}}
+\mbox{\hyperlink{insert__plan_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ insert\_plan.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/plans/insert\_plan.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1InsertPlanNode_accf55276aa693dc4694c3e0f5c5dcb14}{InsertPlanNode}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ \{}
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classbustub_1_1InsertPlanNode_accf55276aa693dc4694c3e0f5c5dcb14}{InsertPlanNode}}(std::vector<std::vector<Value>>\ \&\&raw\_values,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(nullptr,\ \{\}),\ raw\_values\_\{std::move(raw\_values)\},\ table\_oid\_\{table\_oid\}\ \{\}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{classbustub_1_1InsertPlanNode_a58305fcaf4e7fcc1437f01e2f348f57d}{InsertPlanNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *child,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}(nullptr,\ \{child\}),\ table\_oid\_(table\_oid)\ \{\}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ \mbox{\hyperlink{classbustub_1_1InsertPlanNode_a0b499220af1d7ede523b7a45ced6c412}{GetType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfaa458be0f08b7e4ff3c0f633c100176c0}{PlanType::Insert}};\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1InsertPlanNode_aabfc7b539c2ccc3b59ab6303e161dd1a}{TableOid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ table\_oid\_;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1InsertPlanNode_aa4ecb944efd374122e3693bbdc7f60db}{IsRawInsert}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().empty();\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{const}\ std::vector<Value>\ \&\mbox{\hyperlink{classbustub_1_1InsertPlanNode_af3aa644e16e3f388aff22f364e6bea6b}{RawValuesAt}}(uint32\_t\ idx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1InsertPlanNode_aa4ecb944efd374122e3693bbdc7f60db}{IsRawInsert}}(),\ \textcolor{stringliteral}{"{}This\ is\ not\ a\ raw\ insert,\ you\ should\ use\ the\ child\ plan."{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ raw\_values\_[idx];}
+\DoxyCodeLine{00064\ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{const}\ std::vector<std::vector<Value>>\ \&\mbox{\hyperlink{classbustub_1_1InsertPlanNode_adaf638ea7f5ec663ab29aedae26bf5b1}{RawValues}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1InsertPlanNode_aa4ecb944efd374122e3693bbdc7f60db}{IsRawInsert}}(),\ \textcolor{stringliteral}{"{}This\ is\ not\ a\ raw\ insert,\ you\ should\ use\ the\ child\ plan."{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ raw\_values\_;}
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{AbstractPlanNode}}\ *\mbox{\hyperlink{classbustub_1_1InsertPlanNode_a9ce08d294188e060967b520b6c800f39}{GetChildPlan}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(!\mbox{\hyperlink{classbustub_1_1InsertPlanNode_aa4ecb944efd374122e3693bbdc7f60db}{IsRawInsert}}(),\ \textcolor{stringliteral}{"{}This\ is\ a\ raw\ insert,\ no\ child\ plan\ should\ be\ used."{}});}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{GetChildren}}().size()\ ==\ 1,\ \textcolor{stringliteral}{"{}Insert\ should\ have\ at\ most\ one\ child\ plan."{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{GetChildAt}}(0);}
+\DoxyCodeLine{00077\ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00081\ \ \ std::vector<std::vector<Value>>\ raw\_values\_;}
+\DoxyCodeLine{00083\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid\_;}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

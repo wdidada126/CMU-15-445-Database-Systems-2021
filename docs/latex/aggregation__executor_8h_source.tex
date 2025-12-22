@@ -1,0 +1,166 @@
+\doxysection{aggregation\+\_\+executor.\+h}
+\hypertarget{aggregation__executor_8h_source}{}\label{aggregation__executor_8h_source}\index{src/include/execution/executors/aggregation\_executor.h@{src/include/execution/executors/aggregation\_executor.h}}
+\mbox{\hyperlink{aggregation__executor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ aggregation\_executor.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executors/aggregation\_executor.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__util_8h}{common/util/hash\_util.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__function_8h}{container/hash/hash\_function.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__executor_8h}{execution/executors/abstract\_executor.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__expression_8h}{execution/expressions/abstract\_expression.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{aggregation__plan_8h}{execution/plans/aggregation\_plan.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{value__factory_8h}{type/value\_factory.h}}"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_abf4a8b2e013c0eea60eee8f43844dbde}{SimpleAggregationHashTable}}\ \{}
+\DoxyCodeLine{00035\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_abf4a8b2e013c0eea60eee8f43844dbde}{SimpleAggregationHashTable}}(\textcolor{keyword}{const}\ std::vector<const\ AbstractExpression\ *>\ \&agg\_exprs,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<AggregationType>\ \&agg\_types)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ :\ agg\_exprs\_\{agg\_exprs\},\ agg\_types\_\{agg\_types\}\ \{\}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a0552c6909b839ac1d9e80cbbc723c690}{GenerateInitialAggregateValue}}()\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ std::vector<Value>\ values\{\};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&agg\_type\ :\ agg\_types\_)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (agg\_type)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa8680b6686c29f5bfdad5ce95bcec6cc5}{AggregationType::CountAggregate}}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Count\ starts\ at\ zero.}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ values.emplace\_back(\mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(0));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffad1debde475bd10120fc7c9bec94c2b8e}{AggregationType::SumAggregate}}:}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sum\ starts\ at\ zero.}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ values.emplace\_back(\mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(0));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffae4fc8446a8df86a42a1efdc33d760e26}{AggregationType::MinAggregate}}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Min\ starts\ at\ INT\_MAX.}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ values.emplace\_back(\mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(BUSTUB\_INT32\_MAX));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa4cca396904429e99393b99aa650d3456}{AggregationType::MaxAggregate}}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Max\ starts\ at\ INT\_MIN.}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ values.emplace\_back(\mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(BUSTUB\_INT32\_MIN));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ \{values\};}
+\DoxyCodeLine{00069\ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a9595059ad4fdffad5ce7b9af5e842ee4}{CombineAggregateValues}}(\mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ *result,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ \&input)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ agg\_exprs\_.size();\ i++)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (agg\_types\_[i])\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa8680b6686c29f5bfdad5ce95bcec6cc5}{AggregationType::CountAggregate}}:}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Count\ increases\ by\ one.}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]\ =\ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i].Add(\mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(1));}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffad1debde475bd10120fc7c9bec94c2b8e}{AggregationType::SumAggregate}}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sum\ increases\ by\ addition.}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]\ =\ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i].Add(input.\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffae4fc8446a8df86a42a1efdc33d760e26}{AggregationType::MinAggregate}}:}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Min\ is\ just\ the\ min.}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]\ =\ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i].Min(input.\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa4cca396904429e99393b99aa650d3456}{AggregationType::MaxAggregate}}:}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Max\ is\ just\ the\ max.}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]\ =\ result-\/>\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i].Max(input.\mbox{\hyperlink{structbustub_1_1AggregateValue_a77de9c876067723b49afc617bde64e7e}{aggregates\_}}[i]);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_ab5ae3b479b6bfb7d0380acefacb7e2c0}{InsertCombine}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateKey}{AggregateKey}}\ \&agg\_key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ \&agg\_val)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (ht\_.count(agg\_key)\ ==\ 0)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ ht\_.insert(\{agg\_key,\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a0552c6909b839ac1d9e80cbbc723c690}{GenerateInitialAggregateValue}}()\});}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a9595059ad4fdffad5ce7b9af5e842ee4}{CombineAggregateValues}}(\&ht\_[agg\_key],\ agg\_val);}
+\DoxyCodeLine{00109\ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ae2729ce11fc78dddfc063987bddeb0e6}{Iterator}}\ \{}
+\DoxyCodeLine{00113\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ae2729ce11fc78dddfc063987bddeb0e6}{Iterator}}(std::unordered\_map<AggregateKey,\ AggregateValue>::const\_iterator\ iter)\ :\ iter\_\{iter\}\ \{\}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateKey}{AggregateKey}}\ \&\mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_a0dd5c1013e0f9d3ea5a9e220c7bfec28}{Key}}()\ \{\ \textcolor{keywordflow}{return}\ iter\_-\/>first;\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structbustub_1_1AggregateValue}{AggregateValue}}\ \&\mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_aae9d744964069410223ca4d5d961ca61}{Val}}()\ \{\ \textcolor{keywordflow}{return}\ iter\_-\/>second;\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ae2729ce11fc78dddfc063987bddeb0e6}{Iterator}}\ \&\mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ab6281e0d3a25261f8908a3a288871919}{operator++}}()\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ ++iter\_;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_a84dbcf9754ea4225715bbf3a307e9b26}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ae2729ce11fc78dddfc063987bddeb0e6}{Iterator}}\ \&other)\ \{\ \textcolor{keywordflow}{return}\ this-\/>iter\_\ ==\ other.iter\_;\ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_a1956b6340d99250e2d33dfa3be5d183f}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator_ae2729ce11fc78dddfc063987bddeb0e6}{Iterator}}\ \&other)\ \{\ \textcolor{keywordflow}{return}\ this-\/>iter\_\ !=\ other.iter\_;\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00137\ \ \ \ \ std::unordered\_map<AggregateKey,\ AggregateValue>::const\_iterator\ iter\_;}
+\DoxyCodeLine{00138\ \ \ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00141\ \ \ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a157daa73cb09a12a584f90512bd6ed81}{Begin}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator}{Iterator}}\{ht\_.cbegin()\};\ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00144\ \ \ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_a1d8972f37cbcf60e71557069314ad66d}{End}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1SimpleAggregationHashTable_1_1Iterator}{Iterator}}\{ht\_.cend()\};\ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00148\ \ \ std::unordered\_map<AggregateKey,\ AggregateValue>\ ht\_\{\};}
+\DoxyCodeLine{00150\ \ \ \textcolor{keyword}{const}\ std::vector<const\ AbstractExpression\ *>\ \&agg\_exprs\_;}
+\DoxyCodeLine{00152\ \ \ \textcolor{keyword}{const}\ std::vector<AggregationType>\ \&agg\_types\_;}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1AggregationExecutor_a5cc76c029a26735e3c62724bb683435c}{AggregationExecutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{AbstractExecutor}}\ \{}
+\DoxyCodeLine{00160\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00167\ \ \ \mbox{\hyperlink{classbustub_1_1AggregationExecutor_a5cc76c029a26735e3c62724bb683435c}{AggregationExecutor}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AggregationPlanNode}{AggregationPlanNode}}\ *plan,}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<AbstractExecutor>\ \&\&child);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1AggregationExecutor_a6a78d10b7c70db1dba1965e53e9c6d2f}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00179\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1AggregationExecutor_a7b2eec656f3858ce7815893b7ecef80b}{Next}}(\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00182\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1AggregationExecutor_ad54744294c08faafc62e8d5122687717}{GetOutputSchema}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ plan\_-\/>OutputSchema();\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00185\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor}{AbstractExecutor}}\ *\mbox{\hyperlink{classbustub_1_1AggregationExecutor_a3c53bdfe29332034effe63cd060220db}{GetChildExecutor}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00189\ \ \ \mbox{\hyperlink{structbustub_1_1AggregateKey}{AggregateKey}}\ MakeAggregateKey(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ std::vector<Value>\ keys;}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&expr\ :\ plan\_-\/>\mbox{\hyperlink{classbustub_1_1AggregationPlanNode_ae06e769d97e495f3f084bfb28bcd71ac}{GetGroupBys}}())\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ keys.emplace\_back(expr-\/>Evaluate(tuple,\ child\_-\/>GetOutputSchema()));}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{return}\ \{keys\};}
+\DoxyCodeLine{00195\ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00198\ \ \ AggregateValue\ MakeAggregateValue(\textcolor{keyword}{const}\ Tuple\ *tuple)\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ std::vector<Value>\ vals;}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&expr\ :\ plan\_-\/>GetAggregates())\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ vals.emplace\_back(expr-\/>Evaluate(tuple,\ child\_-\/>GetOutputSchema()));}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{return}\ \{vals\};}
+\DoxyCodeLine{00204\ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00208\ \ \ \textcolor{keyword}{const}\ AggregationPlanNode\ *plan\_;}
+\DoxyCodeLine{00210\ \ \ std::unique\_ptr<AbstractExecutor>\ child\_;}
+\DoxyCodeLine{00212\ \ \ SimpleAggregationHashTable\ aht\_;}
+\DoxyCodeLine{00214\ \ \ SimpleAggregationHashTable::Iterator\ aht\_iterator\_;}
+\DoxyCodeLine{00215\ \ \ std::vector<Column>\ output\_columns\_;}
+\DoxyCodeLine{00216\ \};}
+\DoxyCodeLine{00217\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,34 @@
+\doxysection{src/include/execution/plans/aggregation\+\_\+plan.h File Reference}
+\hypertarget{aggregation__plan_8h}{}\label{aggregation__plan_8h}\index{src/include/execution/plans/aggregation\_plan.h@{src/include/execution/plans/aggregation\_plan.h}}
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}common/util/hash\+\_\+util.\+h"{}}\newline
+{\ttfamily \#include "{}execution/plans/abstract\+\_\+plan.\+h"{}}\newline
+{\ttfamily \#include "{}storage/table/tuple.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbustub_1_1AggregationPlanNode}{bustub\+::\+Aggregation\+Plan\+Node}}
+\item 
+struct \mbox{\hyperlink{structbustub_1_1AggregateKey}{bustub\+::\+Aggregate\+Key}}
+\item 
+struct \mbox{\hyperlink{structbustub_1_1AggregateValue}{bustub\+::\+Aggregate\+Value}}
+\item 
+struct \mbox{\hyperlink{structstd_1_1hash_3_01bustub_1_1AggregateKey_01_4}{std\+::hash$<$ bustub\+::\+Aggregate\+Key $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\item 
+namespace \mbox{\hyperlink{namespacestd}{std}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fff}{bustub\+::\+Aggregation\+Type}} \{ \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa8680b6686c29f5bfdad5ce95bcec6cc5}{bustub\+::\+Count\+Aggregate}}
+, \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffad1debde475bd10120fc7c9bec94c2b8e}{bustub\+::\+Sum\+Aggregate}}
+, \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffae4fc8446a8df86a42a1efdc33d760e26}{bustub\+::\+Min\+Aggregate}}
+, \mbox{\hyperlink{namespacebustub_a00cf530eb8a8c97e85e5030651b64fffa4cca396904429e99393b99aa650d3456}{bustub\+::\+Max\+Aggregate}}
+ \}
+\end{DoxyCompactItemize}

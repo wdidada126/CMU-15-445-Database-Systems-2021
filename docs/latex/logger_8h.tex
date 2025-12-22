@@ -1,0 +1,187 @@
+\doxysection{src/include/common/logger.h File Reference}
+\hypertarget{logger_8h}{}\label{logger_8h}\index{src/include/common/logger.h@{src/include/common/logger.h}}
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\+\_\+\+\_\+\+SHORT\+\_\+\+FILE\+\_\+\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a751fad8e9e150aa1f520ea6deabe9cea}{LOG\+\_\+\+LOG\+\_\+\+TIME\+\_\+\+FORMAT}}~"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S"{}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\+\_\+\+OUTPUT\+\_\+\+STREAM}}~stdout
+\item 
+\#define \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\+\_\+\+\_\+\+FUNCTION\+\_\+\+\_\+}}~"{}"{}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a683353bb7505f077bff1fff446beac4d}{LOG\+\_\+\+ERROR\+\_\+\+ENABLED}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_ad4a9117ce894e3319e903142347a0f63}{LOG\+\_\+\+ERROR}}(...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a2613df29c73e9a080ac48d350321f2aa}{LOG\+\_\+\+WARN\+\_\+\+ENABLED}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_add82efa459e0af380b68522c29b9fd44}{LOG\+\_\+\+WARN}}(...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a4690d76db76927ae412ba4860e008b16}{LOG\+\_\+\+INFO\+\_\+\+ENABLED}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a378e28bfcb78d17285210d6bbb70a083}{LOG\+\_\+\+INFO}}(...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_aebce09616e526858093c3252925bffe2}{LOG\+\_\+\+DEBUG\+\_\+\+ENABLED}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a754b3d074e0af4ad3c7b918dd77ecb2d}{LOG\+\_\+\+DEBUG}}(...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a04e549630a5d2b3b2631940bb029e24f}{LOG\+\_\+\+TRACE\+\_\+\+ENABLED}}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a58c994180e09d2f6400133b19b1d7036}{LOG\+\_\+\+TRACE}}(...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacebustub_a35c26da9e53ddaf609bddab7d3ce5ee9}{bustub\+::cstr}} = const char \texorpdfstring{$\ast$}{*}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacebustub_ae7444c6e31def3ed0a77e91799ca24c2}{bustub\+::\+Output\+Log\+Header}} (const char \texorpdfstring{$\ast$}{*}file, int line, const char \texorpdfstring{$\ast$}{*}func, int level)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{logger_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{logger_8h_a828bb1dfda1afd67ca795075903d227d}\index{logger.h@{logger.h}!\_\_FUNCTION\_\_@{\_\_FUNCTION\_\_}}
+\index{\_\_FUNCTION\_\_@{\_\_FUNCTION\_\_}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{\_\_FUNCTION\_\_}{\_\_FUNCTION\_\_}}
+{\footnotesize\ttfamily \label{logger_8h_a828bb1dfda1afd67ca795075903d227d} 
+\#define \+\_\+\+\_\+\+FUNCTION\+\_\+\+\_\+~"{}"{}}
+
+\Hypertarget{logger_8h_a42617cfd690fdcad76942009fb503b2f}\index{logger.h@{logger.h}!\_\_SHORT\_FILE\_\_@{\_\_SHORT\_FILE\_\_}}
+\index{\_\_SHORT\_FILE\_\_@{\_\_SHORT\_FILE\_\_}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{\_\_SHORT\_FILE\_\_}{\_\_SHORT\_FILE\_\_}}
+{\footnotesize\ttfamily \label{logger_8h_a42617cfd690fdcad76942009fb503b2f} 
+\#define \+\_\+\+\_\+\+SHORT\+\_\+\+FILE\+\_\+\+\_\+}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ (\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{constexpr}\ cstr\ sf\_\_\{PastLastSlash(\_\_FILE\_\_)\};\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ sf\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_a754b3d074e0af4ad3c7b918dd77ecb2d}\index{logger.h@{logger.h}!LOG\_DEBUG@{LOG\_DEBUG}}
+\index{LOG\_DEBUG@{LOG\_DEBUG}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_DEBUG}{LOG\_DEBUG}}
+{\footnotesize\ttfamily \label{logger_8h_a754b3d074e0af4ad3c7b918dd77ecb2d} 
+\#define LOG\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ OutputLogHeader(\mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\_\_SHORT\_FILE\_\_}},\ \_\_LINE\_\_,\ \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\_\_FUNCTION\_\_}},\ LOG\_LEVEL\_DEBUG);\ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fflush(stdout)}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_aebce09616e526858093c3252925bffe2}\index{logger.h@{logger.h}!LOG\_DEBUG\_ENABLED@{LOG\_DEBUG\_ENABLED}}
+\index{LOG\_DEBUG\_ENABLED@{LOG\_DEBUG\_ENABLED}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_DEBUG\_ENABLED}{LOG\_DEBUG\_ENABLED}}
+{\footnotesize\ttfamily \label{logger_8h_aebce09616e526858093c3252925bffe2} 
+\#define LOG\+\_\+\+DEBUG\+\_\+\+ENABLED}
+
+\Hypertarget{logger_8h_ad4a9117ce894e3319e903142347a0f63}\index{logger.h@{logger.h}!LOG\_ERROR@{LOG\_ERROR}}
+\index{LOG\_ERROR@{LOG\_ERROR}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_ERROR}{LOG\_ERROR}}
+{\footnotesize\ttfamily \label{logger_8h_ad4a9117ce894e3319e903142347a0f63} 
+\#define LOG\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ OutputLogHeader(\mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\_\_SHORT\_FILE\_\_}},\ \_\_LINE\_\_,\ \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\_\_FUNCTION\_\_}},\ LOG\_LEVEL\_ERROR);\ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fflush(stdout)}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_a683353bb7505f077bff1fff446beac4d}\index{logger.h@{logger.h}!LOG\_ERROR\_ENABLED@{LOG\_ERROR\_ENABLED}}
+\index{LOG\_ERROR\_ENABLED@{LOG\_ERROR\_ENABLED}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_ERROR\_ENABLED}{LOG\_ERROR\_ENABLED}}
+{\footnotesize\ttfamily \label{logger_8h_a683353bb7505f077bff1fff446beac4d} 
+\#define LOG\+\_\+\+ERROR\+\_\+\+ENABLED}
+
+\Hypertarget{logger_8h_a378e28bfcb78d17285210d6bbb70a083}\index{logger.h@{logger.h}!LOG\_INFO@{LOG\_INFO}}
+\index{LOG\_INFO@{LOG\_INFO}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_INFO}{LOG\_INFO}}
+{\footnotesize\ttfamily \label{logger_8h_a378e28bfcb78d17285210d6bbb70a083} 
+\#define LOG\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ OutputLogHeader(\mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\_\_SHORT\_FILE\_\_}},\ \_\_LINE\_\_,\ \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\_\_FUNCTION\_\_}},\ LOG\_LEVEL\_INFO);\ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fflush(stdout)}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_a4690d76db76927ae412ba4860e008b16}\index{logger.h@{logger.h}!LOG\_INFO\_ENABLED@{LOG\_INFO\_ENABLED}}
+\index{LOG\_INFO\_ENABLED@{LOG\_INFO\_ENABLED}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_INFO\_ENABLED}{LOG\_INFO\_ENABLED}}
+{\footnotesize\ttfamily \label{logger_8h_a4690d76db76927ae412ba4860e008b16} 
+\#define LOG\+\_\+\+INFO\+\_\+\+ENABLED}
+
+\Hypertarget{logger_8h_a751fad8e9e150aa1f520ea6deabe9cea}\index{logger.h@{logger.h}!LOG\_LOG\_TIME\_FORMAT@{LOG\_LOG\_TIME\_FORMAT}}
+\index{LOG\_LOG\_TIME\_FORMAT@{LOG\_LOG\_TIME\_FORMAT}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_LOG\_TIME\_FORMAT}{LOG\_LOG\_TIME\_FORMAT}}
+{\footnotesize\ttfamily \label{logger_8h_a751fad8e9e150aa1f520ea6deabe9cea} 
+\#define LOG\+\_\+\+LOG\+\_\+\+TIME\+\_\+\+FORMAT~"{}\%Y-\/\%m-\/\%d \%H\+:\%M\+:\%S"{}}
+
+\Hypertarget{logger_8h_a37a570bb24520aac854efd5638c98688}\index{logger.h@{logger.h}!LOG\_OUTPUT\_STREAM@{LOG\_OUTPUT\_STREAM}}
+\index{LOG\_OUTPUT\_STREAM@{LOG\_OUTPUT\_STREAM}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_OUTPUT\_STREAM}{LOG\_OUTPUT\_STREAM}}
+{\footnotesize\ttfamily \label{logger_8h_a37a570bb24520aac854efd5638c98688} 
+\#define LOG\+\_\+\+OUTPUT\+\_\+\+STREAM~stdout}
+
+\Hypertarget{logger_8h_a58c994180e09d2f6400133b19b1d7036}\index{logger.h@{logger.h}!LOG\_TRACE@{LOG\_TRACE}}
+\index{LOG\_TRACE@{LOG\_TRACE}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_TRACE}{LOG\_TRACE}}
+{\footnotesize\ttfamily \label{logger_8h_a58c994180e09d2f6400133b19b1d7036} 
+\#define LOG\+\_\+\+TRACE(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ OutputLogHeader(\mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\_\_SHORT\_FILE\_\_}},\ \_\_LINE\_\_,\ \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\_\_FUNCTION\_\_}},\ LOG\_LEVEL\_TRACE);\ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fflush(stdout)}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_a04e549630a5d2b3b2631940bb029e24f}\index{logger.h@{logger.h}!LOG\_TRACE\_ENABLED@{LOG\_TRACE\_ENABLED}}
+\index{LOG\_TRACE\_ENABLED@{LOG\_TRACE\_ENABLED}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_TRACE\_ENABLED}{LOG\_TRACE\_ENABLED}}
+{\footnotesize\ttfamily \label{logger_8h_a04e549630a5d2b3b2631940bb029e24f} 
+\#define LOG\+\_\+\+TRACE\+\_\+\+ENABLED}
+
+\Hypertarget{logger_8h_add82efa459e0af380b68522c29b9fd44}\index{logger.h@{logger.h}!LOG\_WARN@{LOG\_WARN}}
+\index{LOG\_WARN@{LOG\_WARN}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_WARN}{LOG\_WARN}}
+{\footnotesize\ttfamily \label{logger_8h_add82efa459e0af380b68522c29b9fd44} 
+\#define LOG\+\_\+\+WARN(\begin{DoxyParamCaption}\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ OutputLogHeader(\mbox{\hyperlink{logger_8h_a42617cfd690fdcad76942009fb503b2f}{\_\_SHORT\_FILE\_\_}},\ \_\_LINE\_\_,\ \mbox{\hyperlink{logger_8h_a828bb1dfda1afd67ca795075903d227d}{\_\_FUNCTION\_\_}},\ LOG\_LEVEL\_WARN);\ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \_\_VA\_ARGS\_\_);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(\mbox{\hyperlink{logger_8h_a37a570bb24520aac854efd5638c98688}{LOG\_OUTPUT\_STREAM}},\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ ::fflush(stdout)}
+
+\end{DoxyCode}
+\Hypertarget{logger_8h_a2613df29c73e9a080ac48d350321f2aa}\index{logger.h@{logger.h}!LOG\_WARN\_ENABLED@{LOG\_WARN\_ENABLED}}
+\index{LOG\_WARN\_ENABLED@{LOG\_WARN\_ENABLED}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_WARN\_ENABLED}{LOG\_WARN\_ENABLED}}
+{\footnotesize\ttfamily \label{logger_8h_a2613df29c73e9a080ac48d350321f2aa} 
+\#define LOG\+\_\+\+WARN\+\_\+\+ENABLED}
+

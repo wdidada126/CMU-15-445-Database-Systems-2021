@@ -1,0 +1,55 @@
+\doxysection{lru\+\_\+replacer.\+h}
+\hypertarget{lru__replacer_8h_source}{}\label{lru__replacer_8h_source}\index{src/include/buffer/lru\_replacer.h@{src/include/buffer/lru\_replacer.h}}
+\mbox{\hyperlink{lru__replacer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ lru\_replacer.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/buffer/lru\_replacer.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <shared\_mutex>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{replacer_8h}{buffer/replacer.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LRUReplacer_abcc09dd9051794dc295e61d60b52599b}{LRUReplacer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Replacer_a9e5a07149491afbbe9b763e41a8ae25e}{Replacer}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1LRUReplacer_abcc09dd9051794dc295e61d60b52599b}{LRUReplacer}}(\textcolor{keywordtype}{size\_t}\ num\_pages);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1LRUReplacer_ad87fe8c6f336c8d39203b5c021170857}{\string~LRUReplacer}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1LRUReplacer_a914e299d1dab934f415f4230356bf8a0}{Victim}}(\mbox{\hyperlink{namespacebustub_ace90203993c773ca0b86249d34990a5a}{frame\_id\_t}}\ *frame\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LRUReplacer_aadd029af7df0d9e3a7e34db50809cb7a}{Pin}}(\mbox{\hyperlink{namespacebustub_ace90203993c773ca0b86249d34990a5a}{frame\_id\_t}}\ frame\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LRUReplacer_abc7c5e45551d242c08ac82ea3519d0bc}{Unpin}}(\mbox{\hyperlink{namespacebustub_ace90203993c773ca0b86249d34990a5a}{frame\_id\_t}}\ frame\_id)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classbustub_1_1LRUReplacer_a344a5705fdc3399d2c97c976a076ffa0}{Size}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ TODO(student):\ implement\ me!}}
+\DoxyCodeLine{00052\ \ \ std::shared\_mutex\ r\_mu\_;}
+\DoxyCodeLine{00053\ \ \ std::mutex\ w\_mu\_;}
+\DoxyCodeLine{00054\ \ \ std::vector<bool>\ iter\_valid\_;}
+\DoxyCodeLine{00055\ \ \ std::vector<std::list<frame\_id\_t>::const\_iterator>\ iters\_;}
+\DoxyCodeLine{00056\ \ \ std::list<frame\_id\_t>\ unpinned\_pages\_;}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

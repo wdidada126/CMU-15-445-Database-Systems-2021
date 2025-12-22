@@ -1,0 +1,190 @@
+\doxysection{transaction.\+h}
+\hypertarget{transaction_8h_source}{}\label{transaction_8h_source}\index{src/include/concurrency/transaction.h@{src/include/concurrency/transaction.h}}
+\mbox{\hyperlink{transaction_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ transaction.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/concurrency/transaction.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <thread>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{logger_8h}{common/logger.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{page_8h}{storage/page/page.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{TransactionState}}\ \{\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a53a5c6962088d681882494048d2f0817}{GROWING}},\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20aff1f34de72566813b10e966b03977ac0}{SHRINKING}},\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a1c372d13f50af5ca9a935ebc78006e82}{COMMITTED}},\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a4e6c860e5da10e31c5fd9cb76ddc2025}{ABORTED}}\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{IsolationLevel}}\ \{\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5a7b5722b7d02a9d8ff3a8bdfcb7d278c3}{READ\_UNCOMMITTED}},\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5aa4b37efaa1a6b533614ed81660dbf912}{REPEATABLE\_READ}},\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5a1671fb17b5ce9bd0af0cf47f3f4ea337}{READ\_COMMITTED}}\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}\ \{\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca61ee777e7f71dc466c3b2c685d8d313b}{INSERT}}\ =\ 0,\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca32f68a60cef40faedbc6af20298c1a1e}{DELETE}},\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810caca15a8022d0ed9cd9c2a2e756822703eb4}{UPDATE}}\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{class\ }TableHeap;}
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }Catalog;}
+\DoxyCodeLine{00058\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ =\ uint32\_t;}
+\DoxyCodeLine{00059\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ =\ uint32\_t;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TableWriteRecord_ad2c5585e7b92be33c3c5cc146ab69a75}{TableWriteRecord}}\ \{}
+\DoxyCodeLine{00065\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_ad2c5585e7b92be33c3c5cc146ab69a75}{TableWriteRecord}}(\mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid,\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}\ wtype,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple,\ \mbox{\hyperlink{classbustub_1_1TableHeap}{TableHeap}}\ *table)}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_abb4a593aeb39a82bd08929e3cbae1858}{rid\_}}(rid),\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_a275477dc5e513f6c21b9be12f8ea34d3}{wtype\_}}(wtype),\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_aaa6a12f5f093ae20bdad829e987499a8}{tuple\_}}(tuple),\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_ab6791eadc71229acb4885e89978d51e8}{table\_}}(table)\ \{\}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_abb4a593aeb39a82bd08929e3cbae1858}{rid\_}};}
+\DoxyCodeLine{00070\ \ \ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_a275477dc5e513f6c21b9be12f8ea34d3}{wtype\_}};}
+\DoxyCodeLine{00072\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord_aaa6a12f5f093ae20bdad829e987499a8}{tuple\_}};}
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap}{TableHeap}}\ *\mbox{\hyperlink{classbustub_1_1TableWriteRecord_ab6791eadc71229acb4885e89978d51e8}{table\_}};}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9f3924d4654e0fb9ed0831bda33b0c05}{IndexWriteRecord}}\ \{}
+\DoxyCodeLine{00081\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9f3924d4654e0fb9ed0831bda33b0c05}{IndexWriteRecord}}(\mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid,\ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ table\_oid,\ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}\ wtype,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple,\ \mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ index\_oid,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *catalog)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aaaef3fbbb54004a69c1c4fd4cb2f470b}{rid\_}}(rid),\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae9787d08408966959fb6513f8070b6d2}{table\_oid\_}}(table\_oid),\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aae025bdf361ecddab79f369564194fbf}{wtype\_}}(wtype),\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9eb2503a42aff09a40d5c63e41ecb98a}{tuple\_}}(tuple),\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a92c5f98805d0da96b12d7bad2586ff2d}{index\_oid\_}}(index\_oid),\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae1f41b2ab547d9b1cd7146d934c4e73b}{catalog\_}}(catalog)\ \{\}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aaaef3fbbb54004a69c1c4fd4cb2f470b}{rid\_}};}
+\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{namespacebustub_a466abed405162fcbfd5922323da71e94}{table\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae9787d08408966959fb6513f8070b6d2}{table\_oid\_}};}
+\DoxyCodeLine{00091\ \ \ \mbox{\hyperlink{namespacebustub_a10572b38743f7663ec041295d3810cac}{WType}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_aae025bdf361ecddab79f369564194fbf}{wtype\_}};}
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a9eb2503a42aff09a40d5c63e41ecb98a}{tuple\_}};}
+\DoxyCodeLine{00095\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_af2b02ad8fb3267377aea25eb4589cc23}{old\_tuple\_}};}
+\DoxyCodeLine{00097\ \ \ \mbox{\hyperlink{namespacebustub_a2ca01467423e9c59090000887c5ccd80}{index\_oid\_t}}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord_a92c5f98805d0da96b12d7bad2586ff2d}{index\_oid\_}};}
+\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *\mbox{\hyperlink{classbustub_1_1IndexWriteRecord_ae1f41b2ab547d9b1cd7146d934c4e73b}{catalog\_}};}
+\DoxyCodeLine{00100\ \};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07ca}{AbortReason}}\ \{}
+\DoxyCodeLine{00106\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa97eb89545356d08442dbf5fdd92b3d5a}{LOCK\_ON\_SHRINKING}},}
+\DoxyCodeLine{00107\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa83c1f3829c0646534509d50730097b68}{UNLOCK\_ON\_SHRINKING}},}
+\DoxyCodeLine{00108\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa49847c93d1589c51e27451e384da1025}{UPGRADE\_CONFLICT}},}
+\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa8f35b656de87c54e18710fc94d73a614}{DEADLOCK}},}
+\DoxyCodeLine{00110\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caaccf87b15ab00dd3ea4718d693f18feb5}{LOCKSHARED\_ON\_READ\_UNCOMMITTED}}}
+\DoxyCodeLine{00111\ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TransactionAbortException_a5671aadf68a10eb33e1fe11d21cb411e}{TransactionAbortException}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00117\ \ \ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id\_;}
+\DoxyCodeLine{00118\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07ca}{AbortReason}}\ abort\_reason\_;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00121\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1TransactionAbortException_a5671aadf68a10eb33e1fe11d21cb411e}{TransactionAbortException}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07ca}{AbortReason}}\ abort\_reason)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ :\ txn\_id\_(txn\_id),\ abort\_reason\_(abort\_reason)\ \{\}}
+\DoxyCodeLine{00123\ \ \ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1TransactionAbortException_aadbc3b0a7d7bdc046bad0cc144d28599}{GetTransactionId}}()\ \{\ \textcolor{keywordflow}{return}\ txn\_id\_;\ \}}
+\DoxyCodeLine{00124\ \ \ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07ca}{AbortReason}}\ \mbox{\hyperlink{classbustub_1_1TransactionAbortException_a37429a11a3523863bd6e9b67754d5601}{GetAbortReason}}()\ \{\ \textcolor{keywordflow}{return}\ abort\_reason\_;\ \}}
+\DoxyCodeLine{00125\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1TransactionAbortException_a869dfc4731a98faf86c779ce4bb76b65}{GetInfo}}()\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{switch}\ (abort\_reason\_)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa97eb89545356d08442dbf5fdd92b3d5a}{AbortReason::LOCK\_ON\_SHRINKING}}:}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transaction\ "{}}\ +\ std::to\_string(txn\_id\_)\ +}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ aborted\ because\ it\ can\ not\ take\ locks\ in\ the\ shrinking\ state\(\backslash\)n"{}};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa83c1f3829c0646534509d50730097b68}{AbortReason::UNLOCK\_ON\_SHRINKING}}:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transaction\ "{}}\ +\ std::to\_string(txn\_id\_)\ +}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ aborted\ because\ it\ can\ not\ excute\ unlock\ in\ the\ shrinking\ state\(\backslash\)n"{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa49847c93d1589c51e27451e384da1025}{AbortReason::UPGRADE\_CONFLICT}}:}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transaction\ "{}}\ +\ std::to\_string(txn\_id\_)\ +}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ aborted\ because\ another\ transaction\ is\ already\ waiting\ to\ upgrade\ its\ lock\(\backslash\)n"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caa8f35b656de87c54e18710fc94d73a614}{AbortReason::DEADLOCK}}:}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transaction\ "{}}\ +\ std::to\_string(txn\_id\_)\ +\ \textcolor{stringliteral}{"{}\ aborted\ on\ deadlock\(\backslash\)n"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_af44028a0a3ce771db1a77e858f3e07caaccf87b15ab00dd3ea4718d693f18feb5}{AbortReason::LOCKSHARED\_ON\_READ\_UNCOMMITTED}}:}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Transaction\ "{}}\ +\ std::to\_string(txn\_id\_)\ +\ \textcolor{stringliteral}{"{}\ aborted\ on\ lockshared\ on\ READ\_UNCOMMITTED\(\backslash\)n"{}};}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ Todo:\ Should\ fail\ with\ unreachable.}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00143\ \ \ \}}
+\DoxyCodeLine{00144\ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Transaction_a28e9466588ff92f30f1699db79926d1f}{Transaction}}\ \{}
+\DoxyCodeLine{00150\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00151\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1Transaction_a28e9466588ff92f30f1699db79926d1f}{Transaction}}(\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id,\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{IsolationLevel}}\ isolation\_level\ =\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5aa4b37efaa1a6b533614ed81660dbf912}{IsolationLevel::REPEATABLE\_READ}})}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ :\ state\_(\mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{TransactionState}}::\mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a53a5c6962088d681882494048d2f0817}{GROWING}}),}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ isolation\_level\_(isolation\_level),}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ thread\_id\_(\mbox{\hyperlink{namespacestd}{std}}::this\_thread::get\_id()),}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ txn\_id\_(txn\_id),}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ prev\_lsn\_(INVALID\_LSN),}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ shared\_lock\_set\_\{new\ \mbox{\hyperlink{namespacestd}{std}}::unordered\_set<\mbox{\hyperlink{classbustub_1_1RID}{RID}}>\},}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ exclusive\_lock\_set\_\{new\ \mbox{\hyperlink{namespacestd}{std}}::unordered\_set<\mbox{\hyperlink{classbustub_1_1RID}{RID}}>\}\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ sets\ that\ will\ be\ tracked.}}
+\DoxyCodeLine{00160\ \ \ \ \ table\_write\_set\_\ =\ std::make\_shared<std::deque<TableWriteRecord>>();}
+\DoxyCodeLine{00161\ \ \ \ \ index\_write\_set\_\ =\ std::make\_shared<std::deque<IndexWriteRecord>>();}
+\DoxyCodeLine{00162\ \ \ \ \ page\_set\_\ =\ std::make\_shared<std::deque<bustub::Page\ *>>();}
+\DoxyCodeLine{00163\ \ \ \ \ deleted\_page\_set\_\ =\ std::make\_shared<std::unordered\_set<page\_id\_t>>();}
+\DoxyCodeLine{00164\ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \mbox{\hyperlink{classbustub_1_1Transaction_a2ab0d2d2b2af598c72444f877e589299}{\string~Transaction}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \mbox{\hyperlink{classbustub_1_1Transaction_a4bdedef75c39b7574b50291c7524ca11}{DISALLOW\_COPY}}(\mbox{\hyperlink{classbustub_1_1Transaction_a28e9466588ff92f30f1699db79926d1f}{Transaction}});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keyword}{inline}\ std::thread::id\ \mbox{\hyperlink{classbustub_1_1Transaction_a5a87c3574b1bcd54b6d16fcd83fcfcf1}{GetThreadId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ thread\_id\_;\ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00174\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1Transaction_ad30ce1a623728bb953ab64302c9980d0}{GetTransactionId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ txn\_id\_;\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00177\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{IsolationLevel}}\ \mbox{\hyperlink{classbustub_1_1Transaction_a100094714e13f9ce019e867e2bb752e4}{GetIsolationLevel}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ isolation\_level\_;\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00180\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::deque<TableWriteRecord>>\ \mbox{\hyperlink{classbustub_1_1Transaction_a8361db06ae3c6b0aa9aeb89ba6f32d5e}{GetWriteSet}}()\ \{\ \textcolor{keywordflow}{return}\ table\_write\_set\_;\ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00183\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::deque<IndexWriteRecord>>\ \mbox{\hyperlink{classbustub_1_1Transaction_ae3a95dfdc5a70d1ff9c9d243b91aa1b7}{GetIndexWriteSet}}()\ \{\ \textcolor{keywordflow}{return}\ index\_write\_set\_;\ \}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00186\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::deque<Page\ *>>\ \mbox{\hyperlink{classbustub_1_1Transaction_ad4f0768c5495a1093c291e03963ab136}{GetPageSet}}()\ \{\ \textcolor{keywordflow}{return}\ page\_set\_;\ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00192\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_a390e0bd71d4aabec9ac3ced5bfd5783a}{AppendTableWriteRecord}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1TableWriteRecord}{TableWriteRecord}}\ \&write\_record)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ table\_write\_set\_-\/>push\_back(write\_record);}
+\DoxyCodeLine{00194\ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00200\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_ad15ea926fe7d27e7b9b4ee32a6295662}{AppendTableWriteRecord}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1IndexWriteRecord}{IndexWriteRecord}}\ \&write\_record)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ index\_write\_set\_-\/>push\_back(write\_record);}
+\DoxyCodeLine{00202\ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00208\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_a0abb42496c37ad0f17891adbd31044f0}{AddIntoPageSet}}(\mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *page)\ \{\ page\_set\_-\/>push\_back(page);\ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00211\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::unordered\_set<page\_id\_t>>\ \mbox{\hyperlink{classbustub_1_1Transaction_af836e40aa18d3bcb75060b0b11d2c9d0}{GetDeletedPageSet}}()\ \{\ \textcolor{keywordflow}{return}\ deleted\_page\_set\_;\ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00217\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_a566882a46c5776a73b35163246d86137}{AddIntoDeletedPageSet}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{\ deleted\_page\_set\_-\/>insert(page\_id);\ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00220\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::unordered\_set<RID>>\ \mbox{\hyperlink{classbustub_1_1Transaction_ab3e853e5661afc74322f7d694875103b}{GetSharedLockSet}}()\ \{\ \textcolor{keywordflow}{return}\ shared\_lock\_set\_;\ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00223\ \ \ \textcolor{keyword}{inline}\ std::shared\_ptr<std::unordered\_set<RID>>\ \mbox{\hyperlink{classbustub_1_1Transaction_a4c411cb92fb57b5cd740e8348207a94e}{GetExclusiveLockSet}}()\ \{\ \textcolor{keywordflow}{return}\ exclusive\_lock\_set\_;\ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00226\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Transaction_a17dc46d5400d52734f24f5ae8f9c184a}{IsSharedLocked}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid)\ \{\ \textcolor{keywordflow}{return}\ shared\_lock\_set\_-\/>find(rid)\ !=\ shared\_lock\_set\_-\/>end();\ \}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00229\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Transaction_a7362744c2c061f7f8732d5476ec971ad}{IsExclusiveLocked}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid)\ \{\ \textcolor{keywordflow}{return}\ exclusive\_lock\_set\_-\/>find(rid)\ !=\ exclusive\_lock\_set\_-\/>end();\ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00232\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{TransactionState}}\ \mbox{\hyperlink{classbustub_1_1Transaction_a3a63bf5fd5c24a33121fc0a5c434792e}{GetState}}()\ \{\ \textcolor{keywordflow}{return}\ state\_;\ \}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00238\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_acb83d7f742cc82273aca365eb07511f3}{SetState}}(\mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{TransactionState}}\ state)\ \{\ state\_\ =\ state;\ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00241\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ \mbox{\hyperlink{classbustub_1_1Transaction_ab03797e599bc450b05bb39b942c7e7bc}{GetPrevLSN}}()\ \{\ \textcolor{keywordflow}{return}\ prev\_lsn\_;\ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Transaction_a3696b0bb3e56c39a90f2efeabf65cb69}{SetPrevLSN}}(\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn)\ \{\ prev\_lsn\_\ =\ prev\_lsn;\ \}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00251\ \ \ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20}{TransactionState}}\ state\_;}
+\DoxyCodeLine{00253\ \ \ \mbox{\hyperlink{namespacebustub_a57ce43470b186e0066e7f128390005b5}{IsolationLevel}}\ isolation\_level\_;}
+\DoxyCodeLine{00255\ \ \ std::thread::id\ thread\_id\_;}
+\DoxyCodeLine{00257\ \ \ \mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ txn\_id\_;}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00260\ \ \ std::shared\_ptr<std::deque<TableWriteRecord>>\ table\_write\_set\_;}
+\DoxyCodeLine{00262\ \ \ std::shared\_ptr<std::deque<IndexWriteRecord>>\ index\_write\_set\_;}
+\DoxyCodeLine{00264\ \ \ \mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ prev\_lsn\_;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00267\ \ \ std::shared\_ptr<std::deque<Page\ *>>\ page\_set\_;}
+\DoxyCodeLine{00269\ \ \ std::shared\_ptr<std::unordered\_set<page\_id\_t>>\ deleted\_page\_set\_;}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00272\ \ \ std::shared\_ptr<std::unordered\_set<RID>>\ shared\_lock\_set\_;}
+\DoxyCodeLine{00274\ \ \ std::shared\_ptr<std::unordered\_set<RID>>\ exclusive\_lock\_set\_;}
+\DoxyCodeLine{00275\ \};}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

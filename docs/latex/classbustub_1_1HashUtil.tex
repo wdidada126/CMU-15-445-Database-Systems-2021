@@ -1,0 +1,72 @@
+\doxysection{bustub\+::Hash\+Util Class Reference}
+\hypertarget{classbustub_1_1HashUtil}{}\label{classbustub_1_1HashUtil}\index{bustub::HashUtil@{bustub::HashUtil}}
+
+
+{\ttfamily \#include $<$hash\+\_\+util.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_a24e7e1a97997a99ad10a2f161d7ac2de}{Hash\+Bytes}} (const char \texorpdfstring{$\ast$}{*}bytes, size\+\_\+t length)
+\item 
+static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_a57625941c324a94a2dc5b72523bf7d95}{Combine\+Hashes}} (\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} l, \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} r)
+\item 
+static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_ae23145df631cde3a1bd24690bbd5921f}{Sum\+Hashes}} (\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} l, \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} r)
+\item 
+{\footnotesize template$<$typename T$>$ }\\static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_af7bd4b37cae7d1fd82291c2fcd90cf7a}{Hash}} (const T \texorpdfstring{$\ast$}{*}ptr)
+\item 
+{\footnotesize template$<$typename T$>$ }\\static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_a546f47c7db0546a0d8af6ba950f3de11}{Hash\+Ptr}} (const T \texorpdfstring{$\ast$}{*}ptr)
+\item 
+static \mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} \mbox{\hyperlink{classbustub_1_1HashUtil_af6af7c20591db61847e9a5a01419dd62}{Hash\+Value}} (const \mbox{\hyperlink{classbustub_1_1Value}{Value}} \texorpdfstring{$\ast$}{*}val)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1HashUtil_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1HashUtil_a57625941c324a94a2dc5b72523bf7d95}\index{bustub::HashUtil@{bustub::HashUtil}!CombineHashes@{CombineHashes}}
+\index{CombineHashes@{CombineHashes}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{CombineHashes()}{CombineHashes()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_a57625941c324a94a2dc5b72523bf7d95} 
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Combine\+Hashes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}}}]{l}{, }\item[{\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classbustub_1_1HashUtil_af7bd4b37cae7d1fd82291c2fcd90cf7a}\index{bustub::HashUtil@{bustub::HashUtil}!Hash@{Hash}}
+\index{Hash@{Hash}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{Hash()}{Hash()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_af7bd4b37cae7d1fd82291c2fcd90cf7a} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Hash (\begin{DoxyParamCaption}\item[{const T \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classbustub_1_1HashUtil_a24e7e1a97997a99ad10a2f161d7ac2de}\index{bustub::HashUtil@{bustub::HashUtil}!HashBytes@{HashBytes}}
+\index{HashBytes@{HashBytes}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{HashBytes()}{HashBytes()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_a24e7e1a97997a99ad10a2f161d7ac2de} 
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Hash\+Bytes (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{bytes}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classbustub_1_1HashUtil_a546f47c7db0546a0d8af6ba950f3de11}\index{bustub::HashUtil@{bustub::HashUtil}!HashPtr@{HashPtr}}
+\index{HashPtr@{HashPtr}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{HashPtr()}{HashPtr()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_a546f47c7db0546a0d8af6ba950f3de11} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Hash\+Ptr (\begin{DoxyParamCaption}\item[{const T \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classbustub_1_1HashUtil_af6af7c20591db61847e9a5a01419dd62}\index{bustub::HashUtil@{bustub::HashUtil}!HashValue@{HashValue}}
+\index{HashValue@{HashValue}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{HashValue()}{HashValue()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_af6af7c20591db61847e9a5a01419dd62} 
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Hash\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1Value}{Value}} \texorpdfstring{$\ast$}{*}}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+the hash of the value 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1HashUtil_ae23145df631cde3a1bd24690bbd5921f}\index{bustub::HashUtil@{bustub::HashUtil}!SumHashes@{SumHashes}}
+\index{SumHashes@{SumHashes}!bustub::HashUtil@{bustub::HashUtil}}
+\doxysubsubsection{\texorpdfstring{SumHashes()}{SumHashes()}}
+{\footnotesize\ttfamily \label{classbustub_1_1HashUtil_ae23145df631cde3a1bd24690bbd5921f} 
+\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}} bustub\+::\+Hash\+Util\+::\+Sum\+Hashes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}}}]{l}{, }\item[{\mbox{\hyperlink{namespacebustub_a8898b5813fe3f48307345ecb5a23f4f8}{hash\+\_\+t}}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/common/util/\mbox{\hyperlink{hash__util_8h}{hash\+\_\+util.\+h}}\end{DoxyCompactItemize}

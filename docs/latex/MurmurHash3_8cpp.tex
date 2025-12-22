@@ -1,0 +1,76 @@
+\doxysection{third\+\_\+party/murmur3/\+Murmur\+Hash3.cpp File Reference}
+\hypertarget{MurmurHash3_8cpp}{}\label{MurmurHash3_8cpp}\index{third\_party/murmur3/MurmurHash3.cpp@{third\_party/murmur3/MurmurHash3.cpp}}
+{\ttfamily \#include "{}Murmur\+Hash3.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacemurmur3}{murmur3}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{MurmurHash3_8cpp_ac032d233a8ebfcd82fd49d0824eefb18}{FORCE\+\_\+\+INLINE}}~inline \+\_\+\+\_\+attribute\+\_\+\+\_\+((always\+\_\+inline))
+\item 
+\#define \mbox{\hyperlink{MurmurHash3_8cpp_ab32bb365c62dcb0da675e248b7e814a9}{ROTL32}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{MurmurHash3_8cpp_a612c70207b96b27f06eff614e3b9ffd9}{ROTL64}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{MurmurHash3_8cpp_a8e0f90a6ea3d3db65033b8ace70cb65a}{BIG\+\_\+\+CONSTANT}}(x)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{namespacemurmur3_a6a50cfe03d27b8149e06682378f05626}{murmur3\+::rotl32}} (uint32\+\_\+t x, int8\+\_\+t r)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespacemurmur3_accf798d389267fb2a54914fb33c21403}{murmur3\+::rotl64}} (uint64\+\_\+t x, int8\+\_\+t r)
+\item 
+int32\+\_\+t \mbox{\hyperlink{namespacemurmur3_a83562bb42a04bb1881105ff287863dc6}{murmur3\+::\+Murmur\+Hash3\+\_\+x64\+\_\+128}} (const void \texorpdfstring{$\ast$}{*}key, const int len, const uint32\+\_\+t seed)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{namespacemurmur3_ae87455ad115dcfe9f0b4897638dea4ed}{murmur3\+::\+Murmur\+Hash3\+\_\+x86\+\_\+32}} (const void \texorpdfstring{$\ast$}{*}key, uint32\+\_\+t len, uint32\+\_\+t seed)
+\item 
+void \mbox{\hyperlink{namespacemurmur3_a7b8558a08e99938b49f6100002ec7de6}{murmur3\+::\+Murmur\+Hash3\+\_\+x64\+\_\+128}} (const void \texorpdfstring{$\ast$}{*}key, const int len, const uint32\+\_\+t seed, void \texorpdfstring{$\ast$}{*}out)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{MurmurHash3_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{MurmurHash3_8cpp_a8e0f90a6ea3d3db65033b8ace70cb65a}\index{MurmurHash3.cpp@{MurmurHash3.cpp}!BIG\_CONSTANT@{BIG\_CONSTANT}}
+\index{BIG\_CONSTANT@{BIG\_CONSTANT}!MurmurHash3.cpp@{MurmurHash3.cpp}}
+\doxysubsubsection{\texorpdfstring{BIG\_CONSTANT}{BIG\_CONSTANT}}
+{\footnotesize\ttfamily \label{MurmurHash3_8cpp_a8e0f90a6ea3d3db65033b8ace70cb65a} 
+\#define BIG\+\_\+\+CONSTANT(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(x\#\#LLU)}
+
+\end{DoxyCode}
+\Hypertarget{MurmurHash3_8cpp_ac032d233a8ebfcd82fd49d0824eefb18}\index{MurmurHash3.cpp@{MurmurHash3.cpp}!FORCE\_INLINE@{FORCE\_INLINE}}
+\index{FORCE\_INLINE@{FORCE\_INLINE}!MurmurHash3.cpp@{MurmurHash3.cpp}}
+\doxysubsubsection{\texorpdfstring{FORCE\_INLINE}{FORCE\_INLINE}}
+{\footnotesize\ttfamily \label{MurmurHash3_8cpp_ac032d233a8ebfcd82fd49d0824eefb18} 
+\#define FORCE\+\_\+\+INLINE~inline \+\_\+\+\_\+attribute\+\_\+\+\_\+((always\+\_\+inline))}
+
+\Hypertarget{MurmurHash3_8cpp_ab32bb365c62dcb0da675e248b7e814a9}\index{MurmurHash3.cpp@{MurmurHash3.cpp}!ROTL32@{ROTL32}}
+\index{ROTL32@{ROTL32}!MurmurHash3.cpp@{MurmurHash3.cpp}}
+\doxysubsubsection{\texorpdfstring{ROTL32}{ROTL32}}
+{\footnotesize\ttfamily \label{MurmurHash3_8cpp_ab32bb365c62dcb0da675e248b7e814a9} 
+\#define ROTL32(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rotl32(x,y)}
+
+\end{DoxyCode}
+\Hypertarget{MurmurHash3_8cpp_a612c70207b96b27f06eff614e3b9ffd9}\index{MurmurHash3.cpp@{MurmurHash3.cpp}!ROTL64@{ROTL64}}
+\index{ROTL64@{ROTL64}!MurmurHash3.cpp@{MurmurHash3.cpp}}
+\doxysubsubsection{\texorpdfstring{ROTL64}{ROTL64}}
+{\footnotesize\ttfamily \label{MurmurHash3_8cpp_a612c70207b96b27f06eff614e3b9ffd9} 
+\#define ROTL64(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rotl64(x,y)}
+
+\end{DoxyCode}

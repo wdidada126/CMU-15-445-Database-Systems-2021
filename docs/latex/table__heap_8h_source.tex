@@ -1,0 +1,66 @@
+\doxysection{table\+\_\+heap.\+h}
+\hypertarget{table__heap_8h_source}{}\label{table__heap_8h_source}\index{src/include/storage/table/table\_heap.h@{src/include/storage/table/table\_heap.h}}
+\mbox{\hyperlink{table__heap_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ table\_heap.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/table/table\_heap.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{table__page_8h}{storage/page/table\_page.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{table__iterator_8h}{storage/table/table\_iterator.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TableHeap_a72213faf3a731eb00cf293e50ab66bae}{TableHeap}}\ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TableHeap_ab0165532e287d023758cc64c24e40fb7}{TableIterator}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap_ae2b0fde1845735fef6dccc26dc6011dc}{\string~TableHeap}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap_a72213faf3a731eb00cf293e50ab66bae}{TableHeap}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager,\ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ first\_page\_id);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap_a72213faf3a731eb00cf293e50ab66bae}{TableHeap}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager,\ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1TableHeap_a8c15dfcda3195194de230abd36ac1df0}{InsertTuple}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1TableHeap_ae86b26b839b68c9d99825ee3825e7694}{MarkDelete}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);\ \ \textcolor{comment}{//\ for\ delete}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1TableHeap_a5593b0d83a185907dadb647bae98d1a0}{UpdateTuple}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TableHeap_ae9856cfa33a3361d272e6603a206dddd}{ApplyDelete}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1TableHeap_ae8386419c83c5056a23a8d8afcbae417}{RollbackDelete}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1TableHeap_a0762ce2e5a540fff2a1752e5e26b7159}{GetTuple}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \&rid,\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap_ab0165532e287d023758cc64c24e40fb7}{TableIterator}}\ \mbox{\hyperlink{classbustub_1_1TableHeap_a6a6ccb54f871d9fbd5f42aaa29e6b297}{Begin}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \mbox{\hyperlink{classbustub_1_1TableHeap_ab0165532e287d023758cc64c24e40fb7}{TableIterator}}\ \mbox{\hyperlink{classbustub_1_1TableHeap_a2000b613f72177c6a95379491506b5be}{End}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \mbox{\hyperlink{classbustub_1_1TableHeap_af10c6861abbf1cf380252c672e67280f}{GetFirstPageId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ first\_page\_id\_;\ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager\_;}
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *lock\_manager\_;}
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\_;}
+\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ first\_page\_id\_\{\};}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

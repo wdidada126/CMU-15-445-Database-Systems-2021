@@ -1,0 +1,157 @@
+\doxysection{mock\+\_\+buffer\+\_\+pool\+\_\+manager.\+h}
+\hypertarget{mock__buffer__pool__manager_8h_source}{}\label{mock__buffer__pool__manager_8h_source}\index{test/buffer/mock\_buffer\_pool\_manager.h@{test/buffer/mock\_buffer\_pool\_manager.h}}
+\mbox{\hyperlink{mock__buffer__pool__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ mock\_buffer\_pool\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ test/buffer/mock\_buffer\_pool\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../test/buffer/counter.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Add\ callback\ functions\ on\ BufferPoolManager}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba}{MockBufferPoolManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{BufferPoolManager}}\ \{}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{CallbackType}}\ \{\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{BEFORE}},\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{AFTER}}\ \};}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ =\ void\ (\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba}{MockBufferPoolManager}}::*)(\textcolor{keyword}{enum}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{CallbackType}}\ type,\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{FuncType}}\ func\_type);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba}{MockBufferPoolManager}}(\textcolor{keywordtype}{size\_t}\ pool\_size,\ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *disk\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{BufferPoolManager}}(pool\_size,\ disk\_manager,\ log\_manager)\ \{\}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{counter\_callback}}(\textcolor{keyword}{enum}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{CallbackType}}\ type,\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{FuncType}}\ func\_type)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}})\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ counter.Reset();}
+\DoxyCodeLine{00035\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (func\_type)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea63bcf654718eedac774d82491f5e358c}{FuncType::FetchPage}}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ counter.CheckFetchPage();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a}{FuncType::UnpinPage}}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ counter.CheckUnpinPage();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea7f371411f083858c345a0cb17ed91e8b}{FuncType::FlushPage}}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ counter.CheckFlushPage();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea3f73714e896d080d3b09312ee8b38710}{FuncType::NewPage}}:}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ counter.CheckNewPage();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86eaa82c120a2631294b7fd70ea0d3598bd0}{FuncType::DeletePage}}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ counter.CheckDeletePage();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea2ed4ec6c993d4631a71a568ab4151c0a}{FuncType::FlushAllPages}}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ counter.CheckFlushAllPages();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a55b10b7861221f8b80ba3cef0775cb94}{FetchPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea63bcf654718eedac774d82491f5e358c}{FuncType::FetchPage}},\ page\_id);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{auto}\ *result\ =\ FetchPageImpl(page\_id);}
+\DoxyCodeLine{00063\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea63bcf654718eedac774d82491f5e358c}{FuncType::FetchPage}},\ page\_id);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00065\ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_af6e8ac2e8c5a098c5b7ccb5301d1ea69}{UnpinPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{bool}\ is\_dirty,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a}{FuncType::UnpinPage}},\ page\_id);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ UnpinPageImpl(page\_id,\ is\_dirty);}
+\DoxyCodeLine{00072\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a}{FuncType::UnpinPage}},\ page\_id);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00074\ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a186b3fba000389e00bfdc4a4a2e45cc2}{FlushPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea7f371411f083858c345a0cb17ed91e8b}{FuncType::FlushPage}},\ page\_id);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ FlushPageImpl(page\_id);}
+\DoxyCodeLine{00080\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea7f371411f083858c345a0cb17ed91e8b}{FuncType::FlushPage}},\ page\_id);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00082\ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00085\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a1dcbbc52418f976d705a9f0d069f976d}{NewPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *page\_id,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea3f73714e896d080d3b09312ee8b38710}{FuncType::NewPage}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{auto}\ *result\ =\ NewPageImpl(page\_id);}
+\DoxyCodeLine{00088\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea3f73714e896d080d3b09312ee8b38710}{FuncType::NewPage}},\ *page\_id);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00090\ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a7203dda829390b69b5ecdfdf42a513af}{DeletePage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86eaa82c120a2631294b7fd70ea0d3598bd0}{FuncType::DeletePage}},\ page\_id);}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ DeletePageImpl(page\_id);}
+\DoxyCodeLine{00096\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86eaa82c120a2631294b7fd70ea0d3598bd0}{FuncType::DeletePage}},\ page\_id);}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa1ba8f5e2c379b26a2521eff375d5f02}{FlushAllPages}}(\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback\ =\ \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{MockBufferPoolManager::counter\_callback}})\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea2ed4ec6c993d4631a71a568ab4151c0a}{FuncType::FlushAllPages}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00103\ \ \ \ \ FlushAllPagesImpl();}
+\DoxyCodeLine{00104\ \ \ \ \ GradingCallback(callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea2ed4ec6c993d4631a71a568ab4151c0a}{FuncType::FlushAllPages}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00105\ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordtype}{void}\ GradingCallback(\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\_callback\_fn}}\ callback,\ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{CallbackType}}\ callback\_type,\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{FuncType}}\ func\_type,}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (callback\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ (this-\/>*callback)(callback\_type,\ func\_type);}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00127\ \ \ Page\ *FetchPageImpl(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea63bcf654718eedac774d82491f5e358c}{FuncType::FetchPage}});}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{return}\ BufferPoolManager::FetchPageImpl(page\_id);}
+\DoxyCodeLine{00130\ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{bool}\ UnpinPageImpl(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{bool}\ is\_dirty)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a}{FuncType::UnpinPage}});}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ BufferPoolManager::UnpinPageImpl(page\_id,\ is\_dirty);}
+\DoxyCodeLine{00141\ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keywordtype}{bool}\ FlushPageImpl(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea7f371411f083858c345a0cb17ed91e8b}{FuncType::FlushPage}});}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{return}\ BufferPoolManager::FlushPageImpl(page\_id);}
+\DoxyCodeLine{00151\ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ Page\ *NewPageImpl(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *page\_id)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea3f73714e896d080d3b09312ee8b38710}{FuncType::NewPage}});}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{return}\ BufferPoolManager::NewPageImpl(page\_id);}
+\DoxyCodeLine{00161\ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \ \ \textcolor{keywordtype}{bool}\ DeletePageImpl(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86eaa82c120a2631294b7fd70ea0d3598bd0}{FuncType::DeletePage}});}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{return}\ BufferPoolManager::DeletePageImpl(page\_id);}
+\DoxyCodeLine{00171\ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00176\ \ \ \textcolor{keywordtype}{void}\ FlushAllPagesImpl()\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ counter.AddCount(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea2ed4ec6c993d4631a71a568ab4151c0a}{FuncType::FlushAllPages}});}
+\DoxyCodeLine{00178\ \ \ \ \ BufferPoolManager::FlushAllPagesImpl();}
+\DoxyCodeLine{00179\ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \textcolor{comment}{//\ For\ grading.\ Do\ not\ modify!}}
+\DoxyCodeLine{00182\ \ \ Counter\ counter;}
+\DoxyCodeLine{00184\ \ \ \textcolor{keywordtype}{size\_t}\ pool\_size\_;}
+\DoxyCodeLine{00186\ \ \ Page\ *pages\_;}
+\DoxyCodeLine{00188\ \ \ DiskManager\ *disk\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00190\ \ \ LogManager\ *log\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00192\ \ \ std::unordered\_map<page\_id\_t,\ frame\_id\_t>\ page\_table\_;}
+\DoxyCodeLine{00194\ \ \ Replacer\ *replacer\_;}
+\DoxyCodeLine{00196\ \ \ std::list<page\_id\_t>\ free\_list\_;}
+\DoxyCodeLine{00198\ \ \ std::mutex\ latch\_;}
+\DoxyCodeLine{00199\ \};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

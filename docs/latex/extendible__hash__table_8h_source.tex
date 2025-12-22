@@ -1,0 +1,79 @@
+\doxysection{extendible\+\_\+hash\+\_\+table.\+h}
+\hypertarget{extendible__hash__table_8h_source}{}\label{extendible__hash__table_8h_source}\index{src/include/container/hash/extendible\_hash\_table.h@{src/include/container/hash/extendible\_hash\_table.h}}
+\mbox{\hyperlink{extendible__hash__table_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ extendible\_hash\_table.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/container/hash/extendible\_hash\_table.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction_8h}{concurrency/transaction.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__function_8h}{container/hash/hash\_function.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table__bucket__page_8h}{storage/page/hash\_table\_bucket\_page.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__table__directory__page_8h}{storage/page/hash\_table\_directory\_page.h}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ HASH\_TABLE\_TYPE\ ExtendibleHashTable<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ KeyType,\ \textcolor{keyword}{typename}\ ValueType,\ \textcolor{keyword}{typename}\ KeyComparator>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_a7ff61a61730f6e0952d73c018f93b4e1}{ExtendibleHashTable}}\ \{}
+\DoxyCodeLine{00036\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_a7ff61a61730f6e0952d73c018f93b4e1}{ExtendibleHashTable}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ KeyComparator\ \&comparator,\ \mbox{\hyperlink{classbustub_1_1HashFunction}{HashFunction<KeyType>}}\ hash\_fn);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_a53804a4547481146ac5379ae606469dd}{Insert}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_ad211ddfebedc0faa0961369f0d7fad19}{Remove}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ \&value);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_ab9256a62cebfad532331a89dc10dfed3}{GetValue}}(\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ \&key,\ std::vector<ValueType>\ *result);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_a397f0678cc2395b375ebe663a76db495}{GetGlobalDepth}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1ExtendibleHashTable_acef78329e6ec7aec2d6144bb73cab2ae}{VerifyIntegrity}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ Hash(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ KeyToDirectoryIndex(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ \mbox{\hyperlink{classbustub_1_1HashTableDirectoryPage}{HashTableDirectoryPage}}\ *dir\_page);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ KeyToPageId(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ \mbox{\hyperlink{classbustub_1_1HashTableDirectoryPage}{HashTableDirectoryPage}}\ *dir\_page);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \mbox{\hyperlink{classbustub_1_1HashTableDirectoryPage}{HashTableDirectoryPage}}\ *FetchDirectoryPage();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00137\ \ \ \mbox{\hyperlink{hash__table__page__defs_8h_a6100d50b66f0da5c241d2aba0f71305f}{HASH\_TABLE\_BUCKET\_TYPE}}\ *FetchBucketPage(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ bucket\_page\_id);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{bool}\ SplitInsert(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key,\ \mbox{\hyperlink{namespacebustub_a936a85d3455bc5f76e389a6cea51a047}{ValueType}}\ value);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keywordtype}{void}\ Split(\mbox{\hyperlink{classbustub_1_1HashTableDirectoryPage}{HashTableDirectoryPage}}\ *dir\_page,\ \textcolor{keyword}{const}\ uint32\_t\ \&bucket\_index,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ \&bucket\_page\_id,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{hash__table__page__defs_8h_a6100d50b66f0da5c241d2aba0f71305f}{HASH\_TABLE\_BUCKET\_TYPE}}\ *bucket\_page);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00162\ \ \ \textcolor{keywordtype}{void}\ Merge(\mbox{\hyperlink{namespacebustub_a62c79224218d58ecef63518dac583d3c}{KeyType}}\ key);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \textcolor{comment}{//\ member\ variables}}
+\DoxyCodeLine{00165\ \ \ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ directory\_page\_id\_;}
+\DoxyCodeLine{00166\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager\_;}
+\DoxyCodeLine{00167\ \ \ KeyComparator\ comparator\_;}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \textcolor{comment}{//\ Readers\ includes\ inserts\ and\ removes,\ writers\ are\ splits\ and\ merges}}
+\DoxyCodeLine{00170\ \ \ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch}{ReaderWriterLatch}}\ table\_latch\_;}
+\DoxyCodeLine{00171\ \ \ \mbox{\hyperlink{classbustub_1_1HashFunction}{HashFunction<KeyType>}}\ hash\_fn\_;}
+\DoxyCodeLine{00172\ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

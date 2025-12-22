@@ -1,0 +1,255 @@
+\doxysection{type\+\_\+util.\+h}
+\hypertarget{type__util_8h_source}{}\label{type__util_8h_source}\index{src/include/type/type\_util.h@{src/include/type/type\_util.h}}
+\mbox{\hyperlink{type__util_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ type\_util.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/type/type\_util.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{type_8h}{type/type.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1TypeUtil}{TypeUtil}}\ \{}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1TypeUtil_a629084827f499db86b8b37c6fbf0fdfb}{CompareStrings}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str1,\ \textcolor{keywordtype}{int}\ len1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str2,\ \textcolor{keywordtype}{int}\ len2)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ assert(str1\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00033\ \ \ \ \ assert(len1\ >=\ 0);}
+\DoxyCodeLine{00034\ \ \ \ \ assert(str2\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00035\ \ \ \ \ assert(len2\ >=\ 0);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ PAVLO:\ 2017-\/04-\/04}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ The\ reason\ why\ we\ use\ memcmp\ here\ is\ that\ our\ inputs\ are}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ not\ null-\/terminated\ strings,\ so\ we\ can't\ use\ strncmp}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ ret\ =\ memcmp(str1,\ str2,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(std::min(len1,\ len2)));}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (ret\ ==\ 0\ \&\&\ len1\ !=\ len2)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ ret\ =\ len1\ -\/\ len2;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{00044\ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//\ \ /**}}
+\DoxyCodeLine{00047\ \ \ \textcolor{comment}{//\ \ \ *\ Perform\ CompareEquals\ directly\ on\ raw\ pointers.}}
+\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//\ \ \ *\ We\ assume\ that\ the\ left\ and\ right\ values\ are\ the\ same\ type.}}
+\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//\ \ \ *\ We\ also\ do\ not\ check\ for\ nulls\ here.}}
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//\ \ \ *}}
+\DoxyCodeLine{00051\ \ \ \textcolor{comment}{//\ \ \ *\ <B>WARNING:</B>\ This\ is\ dangerous\ AF.\ Use\ at\ your\ own\ risk!!}}
+\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//\ \ \ */}}
+\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//\ \ static\ CmpBool\ CompareEqualsRaw(Type\ type,\ const\ char\ *left,}}
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ char\ *right,\ bool\ inlined)\ \{}}
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ \ \ \ CmpBool\ result\ =\ CmpBool::CMP\_NULL;}}
+\DoxyCodeLine{00056\ \ \ \textcolor{comment}{//\ \ \ \ switch\ (type.GetTypeId())\ \{}}
+\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BOOLEAN:}}
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::TINYINT:\ \{}}
+\DoxyCodeLine{00059\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int8\_t\ *>(left)\ ==}}
+\DoxyCodeLine{00060\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int8\_t\ *>(right)}}
+\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00063\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::SMALLINT:\ \{}}
+\DoxyCodeLine{00066\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int16\_t\ *>(left)\ ==}}
+\DoxyCodeLine{00067\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int16\_t\ *>(right)}}
+\DoxyCodeLine{00068\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00070\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00071\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::INTEGER:\ \{}}
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int32\_t\ *>(left)\ ==}}
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int32\_t\ *>(right)}}
+\DoxyCodeLine{00075\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00076\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00078\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00079\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BIGINT:\ \{}}
+\DoxyCodeLine{00080\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int64\_t\ *>(left)\ ==}}
+\DoxyCodeLine{00081\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int64\_t\ *>(right)}}
+\DoxyCodeLine{00082\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00083\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00084\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00085\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::DECIMAL:\ \{}}
+\DoxyCodeLine{00087\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ double\ *>(left)\ ==}}
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ double\ *>(right)}}
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00090\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00092\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00093\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::VARCHAR:\ \{}}
+\DoxyCodeLine{00094\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *leftPtr\ =\ left;}}
+\DoxyCodeLine{00095\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *rightPtr\ =\ right;}}
+\DoxyCodeLine{00096\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (inlined\ ==\ false)\ \{}}
+\DoxyCodeLine{00097\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ leftPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(left);}}
+\DoxyCodeLine{00098\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ rightPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(right);}}
+\DoxyCodeLine{00099\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00100\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (leftPtr\ ==\ nullptr\ ||\ rightPtr\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00101\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ result\ =\ CmpBool::CMP\_FALSE;}}
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00103\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ leftLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(leftPtr);}}
+\DoxyCodeLine{00105\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ rightLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(rightPtr);}}
+\DoxyCodeLine{00106\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ GetCmpBool(}}
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ TypeUtil::CompareStrings(leftPtr\ +\ sizeof(uint32\_t),\ leftLen,}}
+\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightPtr\ +\ sizeof(uint32\_t),\ rightLen)\ ==\ 0);}}
+\DoxyCodeLine{00109\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00110\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00111\ \ \ \textcolor{comment}{//\ \ \ \ default:\ \{\ break;\ \}}}
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ \ \ \ \}\ //\ SWITCH}}
+\DoxyCodeLine{00113\ \ \ \textcolor{comment}{//\ \ \ \ return\ (result);}}
+\DoxyCodeLine{00114\ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00115\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00116\ \ \ \textcolor{comment}{//\ \ /**}}
+\DoxyCodeLine{00117\ \ \ \textcolor{comment}{//\ \ \ *\ Perform\ CompareLessThan\ directly\ on\ raw\ pointers.}}
+\DoxyCodeLine{00118\ \ \ \textcolor{comment}{//\ \ \ *\ We\ assume\ that\ the\ left\ and\ right\ values\ are\ the\ same\ type.}}
+\DoxyCodeLine{00119\ \ \ \textcolor{comment}{//\ \ \ *\ We\ also\ do\ not\ check\ for\ nulls\ here.}}
+\DoxyCodeLine{00120\ \ \ \textcolor{comment}{//\ \ \ *}}
+\DoxyCodeLine{00121\ \ \ \textcolor{comment}{//\ \ \ *\ <B>WARNING:</B>\ This\ is\ dangerous\ AF.\ Use\ at\ your\ own\ risk!!}}
+\DoxyCodeLine{00122\ \ \ \textcolor{comment}{//\ \ \ */}}
+\DoxyCodeLine{00123\ \ \ \textcolor{comment}{//\ \ static\ CmpBool\ CompareLessThanRaw(const\ Type\ type,\ const\ char\ *left,}}
+\DoxyCodeLine{00124\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ char\ *right,\ bool\ inlined)\ \{}}
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//\ \ \ \ CmpBool\ result\ =\ CmpBool::CMP\_NULL;}}
+\DoxyCodeLine{00126\ \ \ \textcolor{comment}{//\ \ \ \ switch\ (type.GetTypeId())\ \{}}
+\DoxyCodeLine{00127\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BOOLEAN:}}
+\DoxyCodeLine{00128\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::TINYINT:\ \{}}
+\DoxyCodeLine{00129\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int8\_t\ *>(left)\ <}}
+\DoxyCodeLine{00130\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int8\_t\ *>(right)}}
+\DoxyCodeLine{00131\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00132\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00133\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00134\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00135\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::SMALLINT:\ \{}}
+\DoxyCodeLine{00136\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int16\_t\ *>(left)\ <}}
+\DoxyCodeLine{00137\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int16\_t\ *>(right)}}
+\DoxyCodeLine{00138\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00139\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00140\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00141\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00142\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::INTEGER:\ \{}}
+\DoxyCodeLine{00143\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int32\_t\ *>(left)\ <}}
+\DoxyCodeLine{00144\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int32\_t\ *>(right)}}
+\DoxyCodeLine{00145\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00146\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00147\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00148\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00149\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BIGINT:\ \{}}
+\DoxyCodeLine{00150\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int64\_t\ *>(left)\ <}}
+\DoxyCodeLine{00151\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int64\_t\ *>(right)}}
+\DoxyCodeLine{00152\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00153\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00154\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00155\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00156\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::DECIMAL:\ \{}}
+\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ double\ *>(left)\ <}}
+\DoxyCodeLine{00158\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ double\ *>(right)}}
+\DoxyCodeLine{00159\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00160\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00161\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00162\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00163\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::VARCHAR:\ \{}}
+\DoxyCodeLine{00164\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *leftPtr\ =\ left;}}
+\DoxyCodeLine{00165\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *rightPtr\ =\ right;}}
+\DoxyCodeLine{00166\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (inlined\ ==\ false)\ \{}}
+\DoxyCodeLine{00167\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ leftPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(left);}}
+\DoxyCodeLine{00168\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ rightPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(right);}}
+\DoxyCodeLine{00169\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00170\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (leftPtr\ ==\ nullptr\ ||\ rightPtr\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00171\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ result\ =\ CmpBool::CMP\_FALSE;}}
+\DoxyCodeLine{00172\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00174\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ leftLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(leftPtr);}}
+\DoxyCodeLine{00175\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ rightLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(rightPtr);}}
+\DoxyCodeLine{00176\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ GetCmpBool(}}
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ TypeUtil::CompareStrings(leftPtr\ +\ sizeof(uint32\_t),\ leftLen,}}
+\DoxyCodeLine{00178\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightPtr\ +\ sizeof(uint32\_t),\ rightLen)\ <\ 0);}}
+\DoxyCodeLine{00179\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00180\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00181\ \ \ \textcolor{comment}{//\ \ \ \ default:\ \{\ break;\ \}}}
+\DoxyCodeLine{00182\ \ \ \textcolor{comment}{//\ \ \ \ \}\ //\ SWITCH}}
+\DoxyCodeLine{00183\ \ \ \textcolor{comment}{//\ \ \ \ return\ (result);}}
+\DoxyCodeLine{00184\ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00185\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00186\ \ \ \textcolor{comment}{//\ \ /**}}
+\DoxyCodeLine{00187\ \ \ \textcolor{comment}{//\ \ \ *\ Perform\ CompareGreaterThan\ directly\ on\ raw\ pointers.}}
+\DoxyCodeLine{00188\ \ \ \textcolor{comment}{//\ \ \ *\ We\ assume\ that\ the\ left\ and\ right\ values\ are\ the\ same\ type.}}
+\DoxyCodeLine{00189\ \ \ \textcolor{comment}{//\ \ \ *\ We\ also\ do\ not\ check\ for\ nulls\ here.}}
+\DoxyCodeLine{00190\ \ \ \textcolor{comment}{//\ \ \ *}}
+\DoxyCodeLine{00191\ \ \ \textcolor{comment}{//\ \ \ *\ <B>WARNING:</B>\ This\ is\ dangerous\ AF.\ Use\ at\ your\ own\ risk!!}}
+\DoxyCodeLine{00192\ \ \ \textcolor{comment}{//\ \ \ */}}
+\DoxyCodeLine{00193\ \ \ \textcolor{comment}{//\ \ static\ CmpBool\ CompareGreaterThanRaw(const\ Type\ type,\ const\ char\ *left,}}
+\DoxyCodeLine{00194\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ char\ *right,\ bool\ inlined)\ \{}}
+\DoxyCodeLine{00195\ \ \ \textcolor{comment}{//\ \ \ \ CmpBool\ result\ =\ CmpBool::CMP\_NULL;}}
+\DoxyCodeLine{00196\ \ \ \textcolor{comment}{//\ \ \ \ switch\ (type.GetTypeId())\ \{}}
+\DoxyCodeLine{00197\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BOOLEAN:}}
+\DoxyCodeLine{00198\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::TINYINT:\ \{}}
+\DoxyCodeLine{00199\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int8\_t\ *>(left)\ >}}
+\DoxyCodeLine{00200\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int8\_t\ *>(right)}}
+\DoxyCodeLine{00201\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00202\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00203\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00204\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00205\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::SMALLINT:\ \{}}
+\DoxyCodeLine{00206\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int16\_t\ *>(left)\ >}}
+\DoxyCodeLine{00207\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int16\_t\ *>(right)}}
+\DoxyCodeLine{00208\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00209\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00210\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00211\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00212\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::INTEGER:\ \{}}
+\DoxyCodeLine{00213\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int32\_t\ *>(left)\ >}}
+\DoxyCodeLine{00214\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int32\_t\ *>(right)}}
+\DoxyCodeLine{00215\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00216\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00217\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00218\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00219\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::BIGINT:\ \{}}
+\DoxyCodeLine{00220\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ int64\_t\ *>(left)\ >}}
+\DoxyCodeLine{00221\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ int64\_t\ *>(right)}}
+\DoxyCodeLine{00222\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00223\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00224\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00225\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00226\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::DECIMAL:\ \{}}
+\DoxyCodeLine{00227\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ (*reinterpret\_cast<const\ double\ *>(left)\ >}}
+\DoxyCodeLine{00228\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *reinterpret\_cast<const\ double\ *>(right)}}
+\DoxyCodeLine{00229\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ CmpBool::CMP\_TRUE}}
+\DoxyCodeLine{00230\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ CmpBool::CMP\_FALSE);}}
+\DoxyCodeLine{00231\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00232\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00233\ \ \ \textcolor{comment}{//\ \ \ \ case\ TypeId::VARCHAR:\ \{}}
+\DoxyCodeLine{00234\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *leftPtr\ =\ left;}}
+\DoxyCodeLine{00235\ \ \ \textcolor{comment}{//\ \ \ \ \ \ const\ char\ *rightPtr\ =\ right;}}
+\DoxyCodeLine{00236\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (inlined\ ==\ false)\ \{}}
+\DoxyCodeLine{00237\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ leftPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(left);}}
+\DoxyCodeLine{00238\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ rightPtr\ =\ *reinterpret\_cast<const\ char\ *const\ *>(right);}}
+\DoxyCodeLine{00239\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00240\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (leftPtr\ ==\ nullptr\ ||\ rightPtr\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00241\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ result\ =\ CmpBool::CMP\_FALSE;}}
+\DoxyCodeLine{00242\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{00243\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00244\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ leftLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(leftPtr);}}
+\DoxyCodeLine{00245\ \ \ \textcolor{comment}{//\ \ \ \ \ \ uint32\_t\ rightLen\ =\ *reinterpret\_cast<const\ uint32\_t\ *>(rightPtr);}}
+\DoxyCodeLine{00246\ \ \ \textcolor{comment}{//\ \ \ \ \ \ result\ =\ GetCmpBool(}}
+\DoxyCodeLine{00247\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ TypeUtil::CompareStrings(leftPtr\ +\ sizeof(uint32\_t),\ leftLen,}}
+\DoxyCodeLine{00248\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightPtr\ +\ sizeof(uint32\_t),\ rightLen)\ >\ 0);}}
+\DoxyCodeLine{00249\ \ \ \textcolor{comment}{//\ \ \ \ \ \ break;}}
+\DoxyCodeLine{00250\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00251\ \ \ \textcolor{comment}{//\ \ \ \ default:\ \{\ break;\ \}}}
+\DoxyCodeLine{00252\ \ \ \textcolor{comment}{//\ \ \ \ \}\ //\ SWITCH}}
+\DoxyCodeLine{00253\ \ \ \textcolor{comment}{//\ \ \ \ return\ (result);}}
+\DoxyCodeLine{00254\ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00255\ \};}
+\DoxyCodeLine{00256\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

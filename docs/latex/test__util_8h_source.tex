@@ -1,0 +1,101 @@
+\doxysection{test\+\_\+util.\+h}
+\hypertarget{test__util_8h_source}{}\label{test__util_8h_source}\index{test/include/test\_util.h@{test/include/test\_util.h}}
+\mbox{\hyperlink{test__util_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ test\_util.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ test/include/test\_util.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{schema_8h}{catalog/schema.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exception_8h}{common/exception.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{logger_8h}{common/logger.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{string__util_8h}{common/util/string\_util.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{header__page_8h}{storage/page/header\_page.h}}"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ std::unique\_ptr<Schema>\ \mbox{\hyperlink{namespacebustub_aadd37740aadf0ad5e28e3bc892d31300}{ParseCreateStatement}}(\textcolor{keyword}{const}\ std::string\ \&sql\_base)\ \{}
+\DoxyCodeLine{00032\ \ \ std::string::size\_type\ n;}
+\DoxyCodeLine{00033\ \ \ std::vector<Column>\ v\{\};}
+\DoxyCodeLine{00034\ \ \ std::string\ column\_name;}
+\DoxyCodeLine{00035\ \ \ std::string\ column\_type;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ column\_length\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ create\ a\ copy\ of\ the\ sql\ query}}
+\DoxyCodeLine{00040\ \ \ std::string\ sql\ =\ sql\_base;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ Preprocess,\ transform\ sql\ string\ into\ lower\ case}}
+\DoxyCodeLine{00043\ \ \ std::transform(sql.begin(),\ sql.end(),\ sql.begin(),\ ::tolower);}
+\DoxyCodeLine{00044\ \ \ std::vector<std::string>\ tok\ =\ \mbox{\hyperlink{classbustub_1_1StringUtil_a899dd140720a7de43e6a87de42a2339c}{StringUtil::Split}}(sql,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//\ Iterate\ through\ returned\ result}}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::string\ \&t\ :\ tok)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}};}
+\DoxyCodeLine{00049\ \ \ \ \ column\_length\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ whitespace\ separate\ column\ name\ and\ type}}
+\DoxyCodeLine{00052\ \ \ \ \ n\ =\ t.find\_first\_of(\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{00053\ \ \ \ \ column\_name\ =\ t.substr(0,\ n);}
+\DoxyCodeLine{00054\ \ \ \ \ column\_type\ =\ t.substr(n\ +\ 1);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Deal\ with\ varchar(size)\ situation}}
+\DoxyCodeLine{00057\ \ \ \ \ n\ =\ column\_type.find\_first\_of(\textcolor{charliteral}{'('});}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ column\_length\ =\ std::stoi(column\_type.substr(n\ +\ 1));}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ column\_type\ =\ column\_type.substr(0,\ n);}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}bool"{}}\ ||\ column\_type\ ==\ \textcolor{stringliteral}{"{}boolean"{}})\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{BOOLEAN}};}
+\DoxyCodeLine{00064\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}tinyint"{}})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TINYINT}};}
+\DoxyCodeLine{00066\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}smallint"{}})\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{SMALLINT}};}
+\DoxyCodeLine{00068\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}int"{}}\ ||\ column\_type\ ==\ \textcolor{stringliteral}{"{}integer"{}})\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{INTEGER}};}
+\DoxyCodeLine{00070\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}bigint"{}})\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{BIGINT}};}
+\DoxyCodeLine{00072\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}double"{}}\ ||\ column\_type\ ==\ \textcolor{stringliteral}{"{}float"{}})\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{DECIMAL}};}
+\DoxyCodeLine{00074\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (column\_type\ ==\ \textcolor{stringliteral}{"{}varchar"{}}\ ||\ column\_type\ ==\ \textcolor{stringliteral}{"{}char"{}})\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ type\ =\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{VARCHAR}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ column\_length\ =\ (column\_length\ ==\ 0)\ ?\ 32\ :\ column\_length;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Construct\ each\ column}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ !=\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}})\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{VARCHAR}})\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Column}{Column}}\ col(column\_name,\ type,\ column\_length);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ v.emplace\_back(col);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Column}{Column}}\ col(column\_name,\ type);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ v.emplace\_back(col);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27}{ExceptionType::UNKNOWN\_TYPE}},\ \textcolor{stringliteral}{"{}unknown\ type\ for\ create\ table"{}});}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<Schema>(v);}
+\DoxyCodeLine{00093\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

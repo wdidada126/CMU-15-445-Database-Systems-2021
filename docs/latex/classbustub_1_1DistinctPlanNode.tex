@@ -1,0 +1,85 @@
+\doxysection{bustub\+::Distinct\+Plan\+Node Class Reference}
+\hypertarget{classbustub_1_1DistinctPlanNode}{}\label{classbustub_1_1DistinctPlanNode}\index{bustub::DistinctPlanNode@{bustub::DistinctPlanNode}}
+
+
+{\ttfamily \#include $<$distinct\+\_\+plan.\+h$>$}
+
+Inheritance diagram for bustub\+::Distinct\+Plan\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1DistinctPlanNode}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1DistinctPlanNode_ad876179a59b122097b6f3db1cc3a2a4d}{Distinct\+Plan\+Node}} (const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}output\+\_\+schema, const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*}child)
+\item 
+\mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{Plan\+Type}} \mbox{\hyperlink{classbustub_1_1DistinctPlanNode_a22c71b70df98bc1bcbeaa4557b75f7c9}{Get\+Type}} () const override
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1DistinctPlanNode_a6cf4d28529e5ec84d980d4a7b724780b}{Get\+Child\+Plan}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{bustub\+::\+Abstract\+Plan\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a303d617ecd601305e7a9090837292aaf}{Abstract\+Plan\+Node}} (const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}output\+\_\+schema, std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \&\&children)
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a336250e94ce6a76115d8dea2e9be8ba8}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Plan\+Node}} ()=default
+\item 
+const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_add8fcf8896a3455425747beea83ed57b}{Output\+Schema}} () const
+\item 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_ab36a6b50900e8f6278e6fbe7ec96957c}{Get\+Child\+At}} (uint32\+\_\+t child\+\_\+idx) const
+\item 
+const std\+::vector$<$ const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_af2532f263d7193b5f7f29b94c03d447b}{Get\+Children}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Distinct removes duplicate rows from the output of a child node. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1DistinctPlanNode_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1DistinctPlanNode_ad876179a59b122097b6f3db1cc3a2a4d}\index{bustub::DistinctPlanNode@{bustub::DistinctPlanNode}!DistinctPlanNode@{DistinctPlanNode}}
+\index{DistinctPlanNode@{DistinctPlanNode}!bustub::DistinctPlanNode@{bustub::DistinctPlanNode}}
+\doxysubsubsection{\texorpdfstring{DistinctPlanNode()}{DistinctPlanNode()}}
+{\footnotesize\ttfamily \label{classbustub_1_1DistinctPlanNode_ad876179a59b122097b6f3db1cc3a2a4d} 
+bustub\+::\+Distinct\+Plan\+Node\+::\+Distinct\+Plan\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbustub_1_1Schema}{Schema}} \texorpdfstring{$\ast$}{*}}]{output\+\_\+schema}{, }\item[{const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*}}]{child}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct a new \doxylink{classbustub_1_1DistinctPlanNode}{Distinct\+Plan\+Node} instance. 
+\begin{DoxyParams}{Parameters}
+{\em child} & The child plan from which tuples are obtained \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1DistinctPlanNode_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1DistinctPlanNode_a6cf4d28529e5ec84d980d4a7b724780b}\index{bustub::DistinctPlanNode@{bustub::DistinctPlanNode}!GetChildPlan@{GetChildPlan}}
+\index{GetChildPlan@{GetChildPlan}!bustub::DistinctPlanNode@{bustub::DistinctPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetChildPlan()}{GetChildPlan()}}
+{\footnotesize\ttfamily \label{classbustub_1_1DistinctPlanNode_a6cf4d28529e5ec84d980d4a7b724780b} 
+const \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{Abstract\+Plan\+Node}} \texorpdfstring{$\ast$}{*} bustub\+::\+Distinct\+Plan\+Node\+::\+Get\+Child\+Plan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+The child plan node 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1DistinctPlanNode_a22c71b70df98bc1bcbeaa4557b75f7c9}\index{bustub::DistinctPlanNode@{bustub::DistinctPlanNode}!GetType@{GetType}}
+\index{GetType@{GetType}!bustub::DistinctPlanNode@{bustub::DistinctPlanNode}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{classbustub_1_1DistinctPlanNode_a22c71b70df98bc1bcbeaa4557b75f7c9} 
+\mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{Plan\+Type}} bustub\+::\+Distinct\+Plan\+Node\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+The type of the plan node 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a68b80a5e248dfb5dfe0858a4afd8bc93}{bustub\+::\+Abstract\+Plan\+Node}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/execution/plans/\mbox{\hyperlink{distinct__plan_8h}{distinct\+\_\+plan.\+h}}\end{DoxyCompactItemize}

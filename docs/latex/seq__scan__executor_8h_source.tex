@@ -1,0 +1,45 @@
+\doxysection{seq\+\_\+scan\+\_\+executor.\+h}
+\hypertarget{seq__scan__executor_8h_source}{}\label{seq__scan__executor_8h_source}\index{src/include/execution/executors/seq\_scan\_executor.h@{src/include/execution/executors/seq\_scan\_executor.h}}
+\mbox{\hyperlink{seq__scan__executor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ seq\_scan\_executor.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/executors/seq\_scan\_executor.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__executor_8h}{execution/executors/abstract\_executor.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{seq__scan__plan_8h}{execution/plans/seq\_scan\_plan.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1SeqScanExecutor_a4d386aa4aa4a4140253ea19738f04562}{SeqScanExecutor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1AbstractExecutor_a77aac90325e53499c7dc96fea4a0f6c9}{AbstractExecutor}}\ \{}
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classbustub_1_1SeqScanExecutor_a4d386aa4aa4a4140253ea19738f04562}{SeqScanExecutor}}(\mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1SeqScanPlanNode}{SeqScanPlanNode}}\ *plan);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1SeqScanExecutor_ac24b874b7d6679bfe5bcf7b32700c468}{Init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1SeqScanExecutor_abfdff19f7469b4ea33c2e29355bb1378}{Next}}(\mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ *tuple,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ *rid)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1SeqScanExecutor_a003d0dbe412a43752f17c3eb7bdb4c64}{GetOutputSchema}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ plan\_-\/>OutputSchema();\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1SeqScanPlanNode}{SeqScanPlanNode}}\ *plan\_;}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{structbustub_1_1TableInfo}{TableInfo}}\ *table\_info\_;}
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{classbustub_1_1TableIterator}{TableIterator}}\ table\_iter\_;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

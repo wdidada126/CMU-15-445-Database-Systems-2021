@@ -1,0 +1,55 @@
+\doxysection{linear\+\_\+probe\+\_\+hash\+\_\+table\+\_\+index.\+h}
+\hypertarget{linear__probe__hash__table__index_8h_source}{}\label{linear__probe__hash__table__index_8h_source}\index{src/include/storage/index/linear\_probe\_hash\_table\_index.h@{src/include/storage/index/linear\_probe\_hash\_table\_index.h}}
+\mbox{\hyperlink{linear__probe__hash__table__index_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ linear\_probe\_hash\_table\_index.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/index/linear\_probe\_hash\_table\_index.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hash__function_8h}{container/hash/hash\_function.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{linear__probe__hash__table_8h}{container/hash/linear\_probe\_hash\_table.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{index_8h}{storage/index/index.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ HASH\_TABLE\_INDEX\_TYPE\ LinearProbeHashTableIndex<KeyType,\ ValueType,\ KeyComparator>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ KeyType,\ \textcolor{keyword}{typename}\ ValueType,\ \textcolor{keyword}{typename}\ KeyComparator>}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_a1881433f449bd9bdbccc1e5c0fda552b}{LinearProbeHashTableIndex}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Index_a598be92864fa8dc44840d1d3cf5f95da}{Index}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_a1881433f449bd9bdbccc1e5c0fda552b}{LinearProbeHashTableIndex}}(std::unique\_ptr<IndexMetadata>\ \&\&metadata,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ num\_buckets,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1HashFunction}{HashFunction<KeyType>}}\ \&hash\_fn);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_a93d0b6d536479fa50f940c5650b258ce}{\string~LinearProbeHashTableIndex}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_ae4a4343b5fcff0bcf96c5abd16fa5ba1}{InsertEntry}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&key,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_a3a2f964b6c03b6359d3fad1a68be72ab}{DeleteEntry}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&key,\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_a095a43725ae531fa4f537b8cbe1c53ac}{ScanKey}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&key,\ std::vector<RID>\ *result,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *transaction)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00043\ \ \ \textcolor{comment}{//\ comparator\ for\ key}}
+\DoxyCodeLine{00044\ \ \ KeyComparator\ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_af46f4bed8b8a1636ef9d4ec97005753c}{comparator\_}};}
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ container}}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTable}{LinearProbeHashTable<KeyType,\ ValueType,\ KeyComparator>}}\ \mbox{\hyperlink{classbustub_1_1LinearProbeHashTableIndex_ad5d5f82f0f51fee263ab67a7f99815e9}{container\_}};}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

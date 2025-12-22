@@ -1,0 +1,28 @@
+var classbustub_1_1BufferPoolManagerInstance =
+[
+    [ "BufferPoolManagerInstance", "classbustub_1_1BufferPoolManagerInstance.html#af3f83b54c7ac8d706dc9095a4b26f015", null ],
+    [ "BufferPoolManagerInstance", "classbustub_1_1BufferPoolManagerInstance.html#a9bb35119fd4f0fec8633ead3ca9c65ff", null ],
+    [ "~BufferPoolManagerInstance", "classbustub_1_1BufferPoolManagerInstance.html#ad90c588e160e646ac1abc329404b33da", null ],
+    [ "__attribute__", "classbustub_1_1BufferPoolManagerInstance.html#af53be7717190a321a0f86e227b0a2114", null ],
+    [ "__attribute__", "classbustub_1_1BufferPoolManagerInstance.html#a61358627867c51e3934b529653c5a657", null ],
+    [ "AllocatePage", "classbustub_1_1BufferPoolManagerInstance.html#a9e0bdb328ff02e1c8d8a34599e9d6b6e", null ],
+    [ "DeallocatePage", "classbustub_1_1BufferPoolManagerInstance.html#ae81e58036aa3435f8296ca0f5ccc518b", null ],
+    [ "DeletePgImp", "classbustub_1_1BufferPoolManagerInstance.html#a256384e9d22a21adc432ea7f6b9d4298", null ],
+    [ "FetchPgImp", "classbustub_1_1BufferPoolManagerInstance.html#a03b394acdbcdb847ad61aadd7143a6eb", null ],
+    [ "FlushAllPgsImp", "classbustub_1_1BufferPoolManagerInstance.html#a892663bed7b1ff075f1489d2d0de70ff", null ],
+    [ "FlushPgImp", "classbustub_1_1BufferPoolManagerInstance.html#a92b23b88d357e8e89b0b95f925e6dd67", null ],
+    [ "GetPages", "classbustub_1_1BufferPoolManagerInstance.html#a9905ea99dc9c9fe8cfa4905bf23a096b", null ],
+    [ "GetPoolSize", "classbustub_1_1BufferPoolManagerInstance.html#a85c9f27cdf20808f38f9f3335cb6b771", null ],
+    [ "NewPgImp", "classbustub_1_1BufferPoolManagerInstance.html#aa286e2adbd48f2b68e6782ce4a866d89", null ],
+    [ "UnpinPgImp", "classbustub_1_1BufferPoolManagerInstance.html#a78c7a0b207e6f37b267cac6a5d3cd43a", null ],
+    [ "ValidatePageId", "classbustub_1_1BufferPoolManagerInstance.html#ad7e6b2254336d351292fa326dac800c1", null ],
+    [ "free_list_", "classbustub_1_1BufferPoolManagerInstance.html#a9e81e2f508cbce31f907c78fa5b29c91", null ],
+    [ "instance_index_", "classbustub_1_1BufferPoolManagerInstance.html#a27d8ad98ffadf1895c569f86bdde7749", null ],
+    [ "latch_", "classbustub_1_1BufferPoolManagerInstance.html#a37c17d0a23108bbe03ed9d63485a895f", null ],
+    [ "next_page_id_", "classbustub_1_1BufferPoolManagerInstance.html#aec8c5697a47fdfcba57f7c94e7857a5f", null ],
+    [ "num_instances_", "classbustub_1_1BufferPoolManagerInstance.html#a4b3b59d7bbfe82ee2ef44184f2a5235f", null ],
+    [ "page_table_", "classbustub_1_1BufferPoolManagerInstance.html#a1b4f4864a7bfc8bea8645a3ad937b9b8", null ],
+    [ "pages_", "classbustub_1_1BufferPoolManagerInstance.html#a6383bd96c6310f8b451afb8a2617214a", null ],
+    [ "pool_size_", "classbustub_1_1BufferPoolManagerInstance.html#a70978fcac37652cd2c8f9466e9a020e8", null ],
+    [ "replacer_", "classbustub_1_1BufferPoolManagerInstance.html#abb3cc4a87d179f19bcd1aa515944dd2a", null ]
+];

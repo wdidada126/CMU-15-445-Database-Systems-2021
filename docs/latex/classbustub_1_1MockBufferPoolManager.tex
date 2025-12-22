@@ -1,0 +1,183 @@
+\doxysection{bustub\+::Mock\+Buffer\+Pool\+Manager Class Reference}
+\hypertarget{classbustub_1_1MockBufferPoolManager}{}\label{classbustub_1_1MockBufferPoolManager}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+
+
+{\ttfamily \#include $<$mock\+\_\+buffer\+\_\+pool\+\_\+manager.\+h$>$}
+
+Inheritance diagram for bustub\+::Mock\+Buffer\+Pool\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1MockBufferPoolManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{Callback\+Type}} \{ \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}{BEFORE}}
+, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}{AFTER}}
+ \}
+\item 
+using \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} = void (Mock\+Buffer\+Pool\+Manager\+::\texorpdfstring{$\ast$}{*})(enum \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{Callback\+Type}} type, \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{Func\+Type}} func\+\_\+type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{bustub\+::\+Buffer\+Pool\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{Callback\+Type}} \{ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{BEFORE}}
+, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{AFTER}}
+ \}
+\item 
+using \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} = void (\texorpdfstring{$\ast$}{*})(enum \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{Callback\+Type}}, const \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba}{Mock\+Buffer\+Pool\+Manager}} (size\+\_\+t pool\+\_\+size, \mbox{\hyperlink{classbustub_1_1DiskManager}{Disk\+Manager}} \texorpdfstring{$\ast$}{*}disk\+\_\+manager, \mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*}log\+\_\+manager=nullptr)
+\item 
+void \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{counter\+\_\+callback}} (enum \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{Callback\+Type}} type, \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{Func\+Type}} func\+\_\+type)
+\item 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a55b10b7861221f8b80ba3cef0775cb94}{Fetch\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\item 
+bool \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_af6e8ac2e8c5a098c5b7ccb5301d1ea69}{Unpin\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, bool is\+\_\+dirty, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\item 
+bool \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a186b3fba000389e00bfdc4a4a2e45cc2}{Flush\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\item 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a1dcbbc52418f976d705a9f0d069f976d}{New\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}page\+\_\+id, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\item 
+bool \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a7203dda829390b69b5ecdfdf42a513af}{Delete\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\item 
+void \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa1ba8f5e2c379b26a2521eff375d5f02}{Flush\+All\+Pages}} (\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}} callback=\&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{bustub\+::\+Buffer\+Pool\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{Buffer\+Pool\+Manager}} ()=default
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a8405b897fdf538beddb60985db1947ac}{\texorpdfstring{$\sim$}{\string~}\+Buffer\+Pool\+Manager}} ()=default
+\item 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a3b883dc4d00d27a5421bac105996154f}{Fetch\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ad1bdff550cf569917063b109ff2aeb9b}{Unpin\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, bool is\+\_\+dirty, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a37a0d00c93e1369a26c23a98e5d09d56}{Flush\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1BufferPoolManager_adf164ffbae650b82fb95a2e7dac55564}{New\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}page\+\_\+id, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a1373eb1950d8d528c6d0e859aeb5041c}{Delete\+Page}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+void \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a959d52c606087936901d12233a25531e}{Flush\+All\+Pages}} (\mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback=nullptr)
+\item 
+virtual size\+\_\+t \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa803b9c1fe285cad7c688c7e5807200c}{Get\+Pool\+Size}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{bustub\+::\+Buffer\+Pool\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{Grading\+Callback}} (\mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\+\_\+callback\+\_\+fn}} callback, \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{Callback\+Type}} callback\+\_\+type, \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a2181435cee96f9e6319c28be39f13bbe}{Fetch\+Pg\+Imp}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)=0
+\item 
+virtual bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa8871523e4ae89bad7b56fae79515344}{Unpin\+Pg\+Imp}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id, bool is\+\_\+dirty)=0
+\item 
+virtual bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac8156b2e4371685daad5765896dab8b6}{Flush\+Pg\+Imp}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)=0
+\item 
+virtual \mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ae0691d5eada4a4ab3c4207ce3c96d09f}{New\+Pg\+Imp}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}page\+\_\+id)=0
+\item 
+virtual bool \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a1c30494c0e3b29e1e6aad70cc6e54a0b}{Delete\+Pg\+Imp}} (\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} page\+\_\+id)=0
+\item 
+virtual void \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa92aa48f53f033bfd7d0db433f2d25af}{Flush\+All\+Pgs\+Imp}} ()=0
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!bufferpool\_callback\_fn@{bufferpool\_callback\_fn}}
+\index{bufferpool\_callback\_fn@{bufferpool\_callback\_fn}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{bufferpool\_callback\_fn}{bufferpool\_callback\_fn}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2} 
+using \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::bufferpool\+\_\+callback\+\_\+fn}} = void (Mock\+Buffer\+Pool\+Manager\+::\texorpdfstring{$\ast$}{*})(enum \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{Callback\+Type}} type, \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{Func\+Type}} func\+\_\+type)}
+
+
+
+\label{doc-enum-members}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!CallbackType@{CallbackType}}
+\index{CallbackType@{CallbackType}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{CallbackType}{CallbackType}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a} 
+enum class \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Callback\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEFORE@{BEFORE}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!BEFORE@{BEFORE}}}\Hypertarget{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07}\label{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aa3525317285c6126ce3b62a8df8c00b07} 
+BEFORE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AFTER@{AFTER}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!AFTER@{AFTER}}}\Hypertarget{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb}\label{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8aac130fda0cb93540bf1574912e78964fb} 
+AFTER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!MockBufferPoolManager@{MockBufferPoolManager}}
+\index{MockBufferPoolManager@{MockBufferPoolManager}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{MockBufferPoolManager()}{MockBufferPoolManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a865fff1261682fe73773f13a9d6b4cba} 
+bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Mock\+Buffer\+Pool\+Manager (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{pool\+\_\+size}{, }\item[{\mbox{\hyperlink{classbustub_1_1DiskManager}{Disk\+Manager}} \texorpdfstring{$\ast$}{*}}]{disk\+\_\+manager}{, }\item[{\mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*}}]{log\+\_\+manager}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!counter\_callback@{counter\_callback}}
+\index{counter\_callback@{counter\_callback}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{counter\_callback()}{counter\_callback()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1} 
+void bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_aa5dfdb42bbc9a9d98dba57ad76e24f8a}{Callback\+Type}}}]{type}{, }\item[{\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{Func\+Type}}}]{func\+\_\+type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1MockBufferPoolManager_a7203dda829390b69b5ecdfdf42a513af}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!DeletePage@{DeletePage}}
+\index{DeletePage@{DeletePage}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{DeletePage()}{DeletePage()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a7203dda829390b69b5ecdfdf42a513af} 
+bool bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Delete\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{page\+\_\+id}{, }\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! \Hypertarget{classbustub_1_1MockBufferPoolManager_a55b10b7861221f8b80ba3cef0775cb94}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!FetchPage@{FetchPage}}
+\index{FetchPage@{FetchPage}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{FetchPage()}{FetchPage()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a55b10b7861221f8b80ba3cef0775cb94} 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Fetch\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{page\+\_\+id}{, }\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! \Hypertarget{classbustub_1_1MockBufferPoolManager_aa1ba8f5e2c379b26a2521eff375d5f02}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!FlushAllPages@{FlushAllPages}}
+\index{FlushAllPages@{FlushAllPages}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{FlushAllPages()}{FlushAllPages()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_aa1ba8f5e2c379b26a2521eff375d5f02} 
+void bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Flush\+All\+Pages (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! \Hypertarget{classbustub_1_1MockBufferPoolManager_a186b3fba000389e00bfdc4a4a2e45cc2}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!FlushPage@{FlushPage}}
+\index{FlushPage@{FlushPage}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{FlushPage()}{FlushPage()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a186b3fba000389e00bfdc4a4a2e45cc2} 
+bool bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Flush\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{page\+\_\+id}{, }\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! \Hypertarget{classbustub_1_1MockBufferPoolManager_a1dcbbc52418f976d705a9f0d069f976d}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!NewPage@{NewPage}}
+\index{NewPage@{NewPage}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{NewPage()}{NewPage()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_a1dcbbc52418f976d705a9f0d069f976d} 
+\mbox{\hyperlink{classbustub_1_1Page}{Page}} \texorpdfstring{$\ast$}{*} bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+New\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{page\+\_\+id}{, }\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! \Hypertarget{classbustub_1_1MockBufferPoolManager_af6e8ac2e8c5a098c5b7ccb5301d1ea69}\index{bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}!UnpinPage@{UnpinPage}}
+\index{UnpinPage@{UnpinPage}!bustub::MockBufferPoolManager@{bustub::MockBufferPoolManager}}
+\doxysubsubsection{\texorpdfstring{UnpinPage()}{UnpinPage()}}
+{\footnotesize\ttfamily \label{classbustub_1_1MockBufferPoolManager_af6e8ac2e8c5a098c5b7ccb5301d1ea69} 
+bool bustub\+::\+Mock\+Buffer\+Pool\+Manager\+::\+Unpin\+Page (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}}}]{page\+\_\+id}{, }\item[{bool}]{is\+\_\+dirty}{, }\item[{\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a19f24521506fceef40e01b4170192cd2}{bufferpool\+\_\+callback\+\_\+fn}}}]{callback}{ = {\ttfamily \&\mbox{\hyperlink{classbustub_1_1MockBufferPoolManager_a5435161f7ddf2c48962d20f13294fcf1}{Mock\+Buffer\+Pool\+Manager\+::counter\+\_\+callback}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Grading function. Do not modify/call! 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+test/buffer/\mbox{\hyperlink{mock__buffer__pool__manager_8h}{mock\+\_\+buffer\+\_\+pool\+\_\+manager.\+h}}\end{DoxyCompactItemize}

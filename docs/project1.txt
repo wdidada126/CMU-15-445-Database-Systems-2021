@@ -195,17 +195,11 @@ $ make
 https://www.gradescope.com/courses/286490/
 
 你只需要包含以下文件：
-
 • src/include/buffer/lru_replacer.h
-
 • src/buffer/lru_replacer.cpp
-
 • src/include/buffer/buffer_pool_manager_instance.h
-
 • src/buffer/buffer_pool_manager_instance.cpp
-
 • src/include/buffer/parallel_buffer_pool_manager.h
-
 • src/buffer/parallel_buffer_pool_manager.cpp
 
 或者，从你的工作目录（即bustub、bustub-private等）运行此zip命令将创建一个名为project1-submission.zip的zip存档，你可以将其提交到Gradescope。你也可以将此命令放在bash文件中并运行该bash文件，以使操作更简单。
@@ -221,25 +215,17 @@ $ zip project1-submission.zip \
 你可以根据需要多次提交答案并获得即时反馈。
 
 关于Gradescope和自动评分器的说明
-
 • 如果你在Gradescope上超时，很可能是因为你的代码中存在死锁，或者你的代码太慢，无法在60秒内运行完毕。
-
 • 如果你的代码太慢，可能是因为你的LRUReplacer效率不够高。
-
 • 如果在提交前不删除日志，自动评分器将无法工作。
-
 • 如果自动评分器无法正常工作，请确保你的格式化命令有效，并且你提交了正确的文件。
-
 • CMU学生应使用Piazza上公布的Gradescope课程代码。
 
 合作政策
 
 • 每个学生必须独立完成此作业。
-
 • 允许学生与他人讨论项目的高级细节。
-
 • 不允许学生在与其他学生会面后复制白板内容。
-
 • 不允许学生复制其他同学的解决方案。
 
 警告：本项目所有代码必须是你自己编写的。不得从其他学生或从网络上找到的其他来源复制源代码。抄袭将不被容忍。有关更多信息，请参阅CMU的学术诚信政策。

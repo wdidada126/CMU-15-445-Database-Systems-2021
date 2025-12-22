@@ -1,0 +1,42 @@
+\doxysection{test/concurrency/lock\+\_\+manager\+\_\+test.cpp File Reference}
+\hypertarget{lock__manager__test_8cpp}{}\label{lock__manager__test_8cpp}\index{test/concurrency/lock\_manager\_test.cpp@{test/concurrency/lock\_manager\_test.cpp}}
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include "{}common/config.\+h"{}}\newline
+{\ttfamily \#include "{}concurrency/lock\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}concurrency/transaction\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}gtest/gtest.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacebustub_a5b6e9cab5bdf4ad9085eeddce5df0d11}{bustub\+::\+Check\+Growing}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn)
+\item 
+void \mbox{\hyperlink{namespacebustub_ab51df53ae1b22ee6d849c0a416003dfa}{bustub\+::\+Check\+Shrinking}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn)
+\item 
+void \mbox{\hyperlink{namespacebustub_ae2caf48f3a754d078d9b842996bd81cc}{bustub\+::\+Check\+Aborted}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn)
+\item 
+void \mbox{\hyperlink{namespacebustub_a05a07f48c4589a578e66e1e32fbe3815}{bustub\+::\+Check\+Committed}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn)
+\item 
+void \mbox{\hyperlink{namespacebustub_a2f452d150b6c3e28c2a836515197a1c4}{bustub\+::\+Check\+Txn\+Lock\+Size}} (\mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}} \texorpdfstring{$\ast$}{*}txn, size\+\_\+t shared\+\_\+size, size\+\_\+t exclusive\+\_\+size)
+\item 
+void \mbox{\hyperlink{namespacebustub_aefda5337ae2ece8f6784f4dc4f0250fe}{bustub\+::\+Basic\+Test1}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_acbe7f41700805e740aa08de197dfeefc}{bustub\+::\+TEST}} (Lock\+Manager\+Test, Basic\+Test)
+\item 
+void \mbox{\hyperlink{namespacebustub_a23afedc018c39d7530f76dbe85615d64}{bustub\+::\+Two\+PLTest}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_abfbab24057ca815f2ce6265d7fe78b2c}{bustub\+::\+TEST}} (Lock\+Manager\+Test, \mbox{\hyperlink{namespacebustub_a23afedc018c39d7530f76dbe85615d64}{Two\+PLTest}})
+\item 
+void \mbox{\hyperlink{namespacebustub_accbd35cf2c05faafa936452ad2ab6f84}{bustub\+::\+Upgrade\+Test}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_adfd22fb743b8ee3cc24f400d0158e00d}{bustub\+::\+TEST}} (Lock\+Manager\+Test, Upgrade\+Lock\+Test)
+\item 
+void \mbox{\hyperlink{namespacebustub_a900b78ee5041c967e5a4880e27e138b5}{bustub\+::\+Wound\+Wait\+Basic\+Test}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_ade69279c6cbf3515b19519f8e6093bc0}{bustub\+::\+TEST}} (Lock\+Manager\+Test, \mbox{\hyperlink{namespacebustub_a900b78ee5041c967e5a4880e27e138b5}{Wound\+Wait\+Basic\+Test}})
+\end{DoxyCompactItemize}

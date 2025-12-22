@@ -1,0 +1,73 @@
+\doxysection{disk\+\_\+manager.\+h}
+\hypertarget{disk__manager_8h_source}{}\label{disk__manager_8h_source}\index{src/include/storage/disk/disk\_manager.h@{src/include/storage/disk/disk\_manager.h}}
+\mbox{\hyperlink{disk__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ disk\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/disk/disk\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <future>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1DiskManager_aba194755344868fb657ee9fa9588b41c}{DiskManager}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1DiskManager_aba194755344868fb657ee9fa9588b41c}{DiskManager}}(\textcolor{keyword}{const}\ std::string\ \&db\_file);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1DiskManager_a46a473815d2e423cf6958387f468fc8e}{\string~DiskManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DiskManager_a570857ef083e9f7410309850609db52b}{ShutDown}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ae89df7f59076403589c78c52482c4ceb}{WritePage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *page\_data);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DiskManager_aa6cc12345be1e07c2fdb70c50af5e2d8}{ReadPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{char}\ *page\_data);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ae3764dd5b64c7cfed48d9ee3f8490171}{WriteLog}}(\textcolor{keywordtype}{char}\ *log\_data,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1DiskManager_abb5b256a7aa917c7814ad0f67404eda5}{ReadLog}}(\textcolor{keywordtype}{char}\ *log\_data,\ \textcolor{keywordtype}{int}\ size,\ \textcolor{keywordtype}{int}\ offset);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ac954db4aee2313467d2eb25912c0cd37}{GetNumFlushes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ade15c71806ed0d7603888a32051419b7}{GetFlushState}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ad80ffbf179c9b030c675d816f5f3f7ee}{GetNumWrites}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1DiskManager_ac26ad206410e4a792e0f095e3ba27f96}{SetFlushLogFuture}}(std::future<void>\ *f)\ \{\ flush\_log\_f\_\ =\ f;\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1DiskManager_a0ee9fba74f52c903bbf18bcf81412d9b}{HasFlushLogFuture}}()\ \{\ \textcolor{keywordflow}{return}\ flush\_log\_f\_\ !=\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{int}\ GetFileSize(\textcolor{keyword}{const}\ std::string\ \&file\_name);}
+\DoxyCodeLine{00094\ \ \ \textcolor{comment}{//\ stream\ to\ write\ log\ file}}
+\DoxyCodeLine{00095\ \ \ std::fstream\ log\_io\_;}
+\DoxyCodeLine{00096\ \ \ std::string\ log\_name\_;}
+\DoxyCodeLine{00097\ \ \ \textcolor{comment}{//\ stream\ to\ write\ db\ file}}
+\DoxyCodeLine{00098\ \ \ std::fstream\ db\_io\_;}
+\DoxyCodeLine{00099\ \ \ std::string\ file\_name\_;}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{int}\ num\_flushes\_;}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{int}\ num\_writes\_;}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{bool}\ flush\_log\_;}
+\DoxyCodeLine{00103\ \ \ std::future<void>\ *flush\_log\_f\_;}
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//\ With\ multiple\ buffer\ pool\ instances,\ need\ to\ protect\ file\ access}}
+\DoxyCodeLine{00105\ \ \ std::mutex\ db\_io\_latch\_;}
+\DoxyCodeLine{00106\ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

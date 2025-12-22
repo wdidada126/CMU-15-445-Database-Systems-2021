@@ -1,0 +1,95 @@
+\doxysection{counter.\+h}
+\hypertarget{counter_8h_source}{}\label{counter_8h_source}\index{test/buffer/counter.h@{test/buffer/counter.h}}
+\mbox{\hyperlink{counter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ counter.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ test/buffer/counter.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}gtest/gtest.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{FuncType}}\ \{\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea63bcf654718eedac774d82491f5e358c}{FetchPage}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea99b30480e8191a9ca9f77e7d4ef49b7a}{UnpinPage}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea7f371411f083858c345a0cb17ed91e8b}{FlushPage}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea3f73714e896d080d3b09312ee8b38710}{NewPage}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86eaa82c120a2631294b7fd70ea0d3598bd0}{DeletePage}},\ \mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86ea2ed4ec6c993d4631a71a568ab4151c0a}{FlushAllPages}}\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbustub_1_1Counter_aaff74ab165f8d2ae872ee59d11905c9d}{Counter}}\ \{}
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//\ 0-\/FetchPage\ \ 1-\/UnpinPage\ \ 2-\/FlushPage\ 3-\/NewPage\ 4-\/DeletePage}}
+\DoxyCodeLine{00024\ \ \ \textcolor{comment}{//\ 5-\/FlushAllPages}}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}}\ =\ 6;}
+\DoxyCodeLine{00026\ \ \ std::atomic\_int\ \mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[\mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}}];}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a32ef67ca1aaa93d2440c41f759db83ff}{Reset}}()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&count\ :\ \mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a94c6557dc5ec246c02a19f603450fbdd}{AddCount}}(\mbox{\hyperlink{namespacebustub_aefe88ae226f304102c289d1472e7f86e}{FuncType}}\ func\_type)\ \{\ ++\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[func\_type];\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//\ Make\ sure\ fetch\ page\ function\ only\ calls\ fetch\ page\ once\ and}}
+\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ does\ not\ call\ other\ functions}}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a4992e7899d18e6de72794c836565a34e}{CheckFetchPage}}()\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[0],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ FetchPage\ once"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}};\ ++i)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}FetchPage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a3d327ef1ab5e86ced648fb3d75dd2b07}{CheckUnpinPage}}()\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[1],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ UnpinPage\ once"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}};\ ++i)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ 1)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}UnPinPage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_ab9fd2b379cf2863589ece0ebed128cd3}{CheckFlushPage}}()\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[2],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ FlushPage\ once"{}};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}};\ ++i)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ 2)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}FlushPage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a4f5d0815d2cd3ae4366c98f14efdbcfb}{CheckNewPage}}()\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[3],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ NewPage\ once"{}};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}};\ ++i)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ 3)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}NewPage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a1b1cdd56041c17594949bf3d66ca897f}{CheckDeletePage}}()\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[4],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ DeletePage\ once"{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{structbustub_1_1Counter_a6c90acbbcea161a657083473c27fa7b5}{num\_types}};\ ++i)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ !=\ 4)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}DeletePage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structbustub_1_1Counter_a9144c0e8126a47a26ae176b4e3172f79}{CheckFlushAllPages}}()\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ 5;\ ++i)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[i],\ 0)\ <<\ \textcolor{stringliteral}{"{}FlushAllPage\ Should\ not\ call\ other\ functions"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ EXPECT\_EQ(\mbox{\hyperlink{structbustub_1_1Counter_a90c18070473605f8f9034c8a99bba293}{counts}}[5],\ 1)\ <<\ \textcolor{stringliteral}{"{}has\ to\ call\ FlushAllPage\ once"{}};}
+\DoxyCodeLine{00086\ \ \ \}}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

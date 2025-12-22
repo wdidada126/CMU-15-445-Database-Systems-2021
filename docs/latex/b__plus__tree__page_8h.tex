@@ -1,0 +1,50 @@
+\doxysection{src/include/storage/page/b\+\_\+plus\+\_\+tree\+\_\+page.h File Reference}
+\hypertarget{b__plus__tree__page_8h}{}\label{b__plus__tree__page_8h}\index{src/include/storage/page/b\_plus\_tree\_page.h@{src/include/storage/page/b\_plus\_tree\_page.h}}
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$climits$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}buffer/buffer\+\_\+pool\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}storage/index/generic\+\_\+key.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbustub_1_1BPlusTreePage}{bustub\+::\+BPlus\+Tree\+Page$<$ Key\+Type, Value\+Type $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}{Mapping\+Type}}~std\+::pair$<$Key\+Type, Value\+Type$>$
+\item 
+\#define \mbox{\hyperlink{b__plus__tree__page_8h_a4c3acf10c136a6a89b0805e36e535847}{INDEX\+\_\+\+TEMPLATE\+\_\+\+ARGUMENTS}}~template $<$typename Key\+Type, typename Value\+Type, typename Key\+Comparator$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_aa22b843a31f36c3abba2ac5410480497}{bustub\+::\+Index\+Page\+Type}} \{ \mbox{\hyperlink{namespacebustub_aa22b843a31f36c3abba2ac5410480497a989ae859024cc4c42b2ff8c522622d9b}{bustub\+::\+INVALID\+\_\+\+INDEX\+\_\+\+PAGE}} = 0
+, \mbox{\hyperlink{namespacebustub_aa22b843a31f36c3abba2ac5410480497a584d5f27cfd3d8d95e2e9d67e898b551}{bustub\+::\+LEAF\+\_\+\+PAGE}}
+, \mbox{\hyperlink{namespacebustub_aa22b843a31f36c3abba2ac5410480497ae11efb2490cfe0280d3f47a76a000bb0}{bustub\+::\+INTERNAL\+\_\+\+PAGE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{b__plus__tree__page_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{b__plus__tree__page_8h_a4c3acf10c136a6a89b0805e36e535847}\index{b\_plus\_tree\_page.h@{b\_plus\_tree\_page.h}!INDEX\_TEMPLATE\_ARGUMENTS@{INDEX\_TEMPLATE\_ARGUMENTS}}
+\index{INDEX\_TEMPLATE\_ARGUMENTS@{INDEX\_TEMPLATE\_ARGUMENTS}!b\_plus\_tree\_page.h@{b\_plus\_tree\_page.h}}
+\doxysubsubsection{\texorpdfstring{INDEX\_TEMPLATE\_ARGUMENTS}{INDEX\_TEMPLATE\_ARGUMENTS}}
+{\footnotesize\ttfamily \label{b__plus__tree__page_8h_a4c3acf10c136a6a89b0805e36e535847} 
+\#define INDEX\+\_\+\+TEMPLATE\+\_\+\+ARGUMENTS~template $<$typename Key\+Type, typename Value\+Type, typename Key\+Comparator$>$}
+
+\Hypertarget{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85}\index{b\_plus\_tree\_page.h@{b\_plus\_tree\_page.h}!MappingType@{MappingType}}
+\index{MappingType@{MappingType}!b\_plus\_tree\_page.h@{b\_plus\_tree\_page.h}}
+\doxysubsubsection{\texorpdfstring{MappingType}{MappingType}}
+{\footnotesize\ttfamily \label{b__plus__tree__page_8h_a139704601c819af8cdce06a6c1080a85} 
+\#define Mapping\+Type~std\+::pair$<$Key\+Type, Value\+Type$>$}
+

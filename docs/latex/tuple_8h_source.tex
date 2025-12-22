@@ -1,0 +1,99 @@
+\doxysection{tuple.\+h}
+\hypertarget{tuple_8h_source}{}\label{tuple_8h_source}\index{src/include/storage/table/tuple.h@{src/include/storage/table/tuple.h}}
+\mbox{\hyperlink{tuple_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ tuple.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/table/tuple.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{schema_8h}{catalog/schema.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rid_8h}{common/rid.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{value_8h}{type/value.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Tuple_af6e96c0d46bd1971f14ca27859ba0edf}{Tuple}}\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Tuple_a3ef2a688c00556060e78eb5fb8f75232}{TablePage}};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Tuple_a543bc6c8d9463e635a4df2cfc370281b}{TableHeap}};}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Tuple_ab0165532e287d023758cc64c24e40fb7}{TableIterator}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//\ Default\ constructor\ (to\ create\ a\ dummy\ tuple)}}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple_af6e96c0d46bd1971f14ca27859ba0edf}{Tuple}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ constructor\ for\ table\ heap\ tuple}}
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1Tuple_a51066340a89c6c54fe0a795b4b3eb94c}{Tuple}}(\mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid)\ :\ rid\_(rid)\ \{\}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ constructor\ for\ creating\ a\ new\ tuple\ based\ on\ input\ value}}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple_af6e96c0d46bd1971f14ca27859ba0edf}{Tuple}}(std::vector<Value>\ values,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ copy\ constructor,\ deep\ copy}}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple_af6e96c0d46bd1971f14ca27859ba0edf}{Tuple}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&other);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//\ assign\ operator,\ deep\ copy}}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&\mbox{\hyperlink{classbustub_1_1Tuple_ade95d9ad9796b1116e6ddc1f3bb7aa85}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&other);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple_a8d53d0502c232df3d44370642b06d751}{\string~Tuple}}()\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (allocated\_)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ data\_;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ allocated\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00056\ \ \ \ \ data\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00057\ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ serialize\ tuple\ data}}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Tuple_aec71e617f14f88c497213a2addd27a0d}{SerializeTo}}(\textcolor{keywordtype}{char}\ *storage)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//\ deserialize\ tuple\ data(deep\ copy)}}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1Tuple_a5391f53c030b6fdeadf25ce927575732}{DeserializeFrom}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *storage);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//\ return\ RID\ of\ current\ tuple}}
+\DoxyCodeLine{00065\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ \mbox{\hyperlink{classbustub_1_1Tuple_ab379a205ca1013092a4eed144b3810a0}{GetRid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ rid\_;\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{comment}{//\ Get\ the\ address\ of\ this\ tuple\ in\ the\ table's\ backing\ store}}
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{classbustub_1_1Tuple_a4c768fbf03fd27f9a1a6747458f632b3}{GetData}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ data\_;\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \textcolor{comment}{//\ Get\ length\ of\ the\ tuple,\ including\ varchar\ legth}}
+\DoxyCodeLine{00071\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Tuple_a4e9758243717bf4ebe1e74e1fb4f8a21}{GetLength}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ size\_;\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ Get\ the\ value\ of\ a\ specified\ column\ (const)}}
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ checks\ the\ schema\ to\ see\ how\ to\ return\ the\ Value.}}
+\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1Tuple_a835afa31e7cf5c282bd8fff6acb83fb1}{GetValue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema,\ uint32\_t\ column\_idx)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ Generates\ a\ key\ tuple\ given\ schemas\ and\ attributes}}
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \mbox{\hyperlink{classbustub_1_1Tuple_ad9c23a86bd4e698ec640b6be4bfc1796}{KeyFromTuple}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \&schema,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ \&key\_schema,\ \textcolor{keyword}{const}\ std::vector<uint32\_t>\ \&key\_attrs);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{comment}{//\ Is\ the\ column\ value\ null\ ?}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Tuple_a6d5ed4fcd12e8b69b0ebbf9100355a0d}{IsNull}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema,\ uint32\_t\ column\_idx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ value\ =\ \mbox{\hyperlink{classbustub_1_1Tuple_a835afa31e7cf5c282bd8fff6acb83fb1}{GetValue}}(schema,\ column\_idx);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{return}\ value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}();}
+\DoxyCodeLine{00084\ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Tuple_a9eb1aff0788d7ee8006a1f22c75f36c4}{IsAllocated}}()\ \{\ \textcolor{keywordflow}{return}\ allocated\_;\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1Tuple_a24c0c2ec213b28c6836804619d211ea8}{ToString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \textcolor{comment}{//\ Get\ the\ starting\ storage\ address\ of\ specific\ column}}
+\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *GetDataPtr(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema,\ uint32\_t\ column\_idx)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{bool}\ allocated\_\{\textcolor{keyword}{false}\};\ \ \textcolor{comment}{//\ is\ allocated?}}
+\DoxyCodeLine{00094\ \ \ RID\ rid\_\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ pointing\ to\ the\ table\ heap,\ the\ rid\ is\ valid}}
+\DoxyCodeLine{00095\ \ \ uint32\_t\ size\_\{0\};}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{char}\ *data\_\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

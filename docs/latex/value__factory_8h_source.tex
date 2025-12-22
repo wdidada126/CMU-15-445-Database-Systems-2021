@@ -1,0 +1,507 @@
+\doxysection{value\+\_\+factory.\+h}
+\hypertarget{value__factory_8h_source}{}\label{value__factory_8h_source}\index{src/include/type/value\_factory.h@{src/include/type/value\_factory.h}}
+\mbox{\hyperlink{value__factory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ value\_factory.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/type/value\_factory.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{macros_8h}{common/macros.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{string__util_8h}{common/util/string\_util.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__pool_8h}{type/abstract\_pool.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{boolean__type_8h}{type/boolean\_type.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{decimal__type_8h}{type/decimal\_type.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{numeric__type_8h}{type/numeric\_type.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{timestamp__type_8h}{type/timestamp\_type.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{value_8h}{type/value.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{varlen__type_8h}{type/varlen\_type.h}}"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Value\ Factory}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ValueFactory}{ValueFactory}}\ \{}
+\DoxyCodeLine{00036\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a01d18c32d6f55161abb4e980957005e3}{Clone}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&src,\ \_\_attribute\_\_((\_\_unused\_\_))\ \mbox{\hyperlink{classbustub_1_1AbstractPool}{AbstractPool}}\ *dataPool\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ src.\mbox{\hyperlink{classbustub_1_1Value_a5915a1e75cf6a919c68ca2a41614c73a}{Copy}}();}
+\DoxyCodeLine{00039\ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{GetTinyIntValue}}(int8\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}},\ value);\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{GetSmallIntValue}}(int16\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}},\ value);\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{GetIntegerValue}}(int32\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}},\ value);\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{GetBigIntValue}}(int64\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}},\ value);\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ab40f2ae6174f2181843f36869a45737c}{GetTimestampValue}}(int64\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1892383b328bad38a6671464424d1e58}{TypeId::TIMESTAMP}},\ value);\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{GetDecimalValue}}(\textcolor{keywordtype}{double}\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}},\ value);\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{GetBooleanValue}}(\mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560}{CmpBool}}\ value)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}},\ value\ ==\ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560ab07ebc4b5f5051839218509ef9d451e1}{CmpBool::CmpNull}}\ ?\ BUSTUB\_BOOLEAN\_NULL\ :\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value));}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a2b973ab00c0877e8569cf7965ced7e87}{GetBooleanValue}}(\textcolor{keywordtype}{bool}\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}},\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value));\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac9ae71fd4df7b389a4d56aca5ef4f852}{GetBooleanValue}}(int8\_t\ value)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}},\ value);\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{GetVarcharValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *value,\ \textcolor{keywordtype}{bool}\ manage\_data,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_((\_\_unused\_\_))\ \mbox{\hyperlink{classbustub_1_1AbstractPool}{AbstractPool}}\ *pool\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{auto}\ len\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(value\ ==\ \textcolor{keyword}{nullptr}\ ?\ 0U\ :\ strlen(value)\ +\ 1);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{GetVarcharValue}}(value,\ len,\ manage\_data);}
+\DoxyCodeLine{00065\ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ab020133077dba419a8a8d890480fd679}{GetVarcharValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *value,\ uint32\_t\ len,\ \textcolor{keywordtype}{bool}\ manage\_data,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_((\_\_unused\_\_))\ \mbox{\hyperlink{classbustub_1_1AbstractPool}{AbstractPool}}\ *pool\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}},\ value,\ len,\ manage\_data);}
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a9ca58e720a6a17b24b1ad33fbf0a7a1c}{GetVarcharValue}}(\textcolor{keyword}{const}\ std::string\ \&value,}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_attribute\_\_((\_\_unused\_\_))\ \mbox{\hyperlink{classbustub_1_1AbstractPool}{AbstractPool}}\ *pool\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}},\ value);}
+\DoxyCodeLine{00075\ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_acceca5f800c4714f000f8560ebfee3ff}{GetNullValueByType}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type\_id)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ ret\_value;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type\_id)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{GetBooleanValue}}(BUSTUB\_BOOLEAN\_NULL);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{GetTinyIntValue}}(BUSTUB\_INT8\_NULL);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{GetSmallIntValue}}(BUSTUB\_INT16\_NULL);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{GetIntegerValue}}(BUSTUB\_INT32\_NULL);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{GetBigIntValue}}(BUSTUB\_INT64\_NULL);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{GetDecimalValue}}(BUSTUB\_DECIMAL\_NULL);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ ret\_value\ =\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{GetVarcharValue}}(\textcolor{keyword}{nullptr},\ \textcolor{keyword}{false},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27}{ExceptionType::UNKNOWN\_TYPE}},\ \textcolor{stringliteral}{"{}Attempting\ to\ create\ invalid\ null\ type"{}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ ret\_value;}
+\DoxyCodeLine{00106\ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a1c3cddcd0e51c15b522aac1ef652626e}{GetZeroValueByType}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type\_id)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ std::string\ zero\_string(\textcolor{stringliteral}{"{}0"{}});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type\_id)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{GetBooleanValue}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{GetTinyIntValue}}(0);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{GetSmallIntValue}}(0);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{GetIntegerValue}}(0);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{GetBigIntValue}}(0);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(0));}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{GetVarcharValue}}(zero\_string);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27}{ExceptionType::UNKNOWN\_TYPE}},\ \textcolor{stringliteral}{"{}Unknown\ type\ for\ GetZeroValueType"{}});}
+\DoxyCodeLine{00130\ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5ae0436dd51a625dbe82351791cc8425}{CastAsBigInt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT64\_NULL));}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>()));}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()));}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()));}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>());}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT64\_MAX)\ ||}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT64\_MIN))\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(\textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ int64\_t\ bigint\ =\ 0;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ bigint\ =\ stoll(str);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Invalid\ input\ syntax\ for\ bigint:\ \(\backslash\)'"{}}\ +\ str\ +\ \textcolor{stringliteral}{"{}\(\backslash\)'"{}});}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bigint\ >\ BUSTUB\_INT64\_MAX\ ||\ bigint\ <\ BUSTUB\_INT64\_MIN)\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a27ff4666f88885d25ceda32a6bd19855}{ValueFactory::GetBigIntValue}}(bigint);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ BIGINT."{}});}
+\DoxyCodeLine{00173\ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5720cfb1bd108e6d2c490286e9f97ba0}{CastAsInteger}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(BUSTUB\_INT32\_NULL);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(\textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>()));}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(\textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()));}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>());}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ >\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT32\_MAX)\ ||}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ <\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT32\_MIN))\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(\textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()));}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT32\_MAX)\ ||}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT32\_MIN))\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(\textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()));}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ int32\_t\ integer\ =\ 0;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ integer\ =\ stoi(str);}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Invalid\ input\ syntax\ for\ integer:\ \(\backslash\)'"{}}\ +\ str\ +\ \textcolor{stringliteral}{"{}\(\backslash\)'"{}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (integer\ >\ BUSTUB\_INT32\_MAX\ ||\ integer\ <\ BUSTUB\_INT32\_MIN)\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ac04d53404e2d8e269cee9a464886e512}{ValueFactory::GetIntegerValue}}(integer);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ INTEGER."{}});}
+\DoxyCodeLine{00222\ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aeaa9628ac436db69db2e12c260fb4fcf}{CastAsSmallInt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(\textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(BUSTUB\_INT16\_NULL));}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(\textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>()));}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>());}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()\ >\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(BUSTUB\_INT16\_MAX)\ ||}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()\ <\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(BUSTUB\_INT16\_MIN))\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(\textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()));}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ >\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT16\_MAX)\ ||}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ <\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT16\_MIN))\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(\textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()));}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT16\_MAX)\ ||}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT16\_MIN))\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(\textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()));}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ int16\_t\ smallint\ =\ 0;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ smallint\ =\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(stoi(str));}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Invalid\ input\ syntax\ for\ smallint:\ \(\backslash\)'"{}}\ +\ str\ +\ \textcolor{stringliteral}{"{}\(\backslash\)'"{}});}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smallint\ <\ BUSTUB\_INT16\_MIN)\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adc61b80eaa6be756079e12348695bed0}{ValueFactory::GetSmallIntValue}}(smallint);}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ SMALLINT."{}});}
+\DoxyCodeLine{00275\ \ \ \}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aaf40840a971fa03a361abb0b852e9063}{CastAsTinyInt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(BUSTUB\_INT8\_NULL);}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>());}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()\ >\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MAX)\ ||}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()\ <\ \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MIN))\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(\textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()));}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()\ >\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MAX)\ ||}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()\ <\ \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MIN))\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(\textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()));}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:\ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ >\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MAX)\ ||}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()\ <\ \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(BUSTUB\_INT8\_MIN))\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(\textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()));}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT8\_MAX)\ ||}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()\ <\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_INT8\_MIN))\ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(\textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>()));}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ int8\_t\ tinyint\ =\ 0;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ tinyint\ =\ \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(stoi(str));}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Invalid\ input\ syntax\ for\ tinyint:\ \(\backslash\)'"{}}\ +\ str\ +\ \textcolor{stringliteral}{"{}\(\backslash\)'"{}});}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tinyint\ <\ BUSTUB\_INT8\_MIN)\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_aabd43856f141232c4e1f3ac4c1519e79}{ValueFactory::GetTinyIntValue}}(tinyint);}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00331\ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ TINYINT."{}});}
+\DoxyCodeLine{00333\ \ \ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a57cfed7de03e77116597e2bd3cabe779}{CastAsDecimal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(BUSTUB\_DECIMAL\_NULL));}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>()));}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int16\_t>()));}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int32\_t>()));}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int64\_t>()));}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<\textcolor{keywordtype}{double}>());}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ res\ =\ 0;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ res\ =\ stod(str);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Invalid\ input\ syntax\ for\ decimal:\ \(\backslash\)'"{}}\ +\ str\ +\ \textcolor{stringliteral}{"{}\(\backslash\)'"{}});}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ >\ BUSTUB\_DECIMAL\_MAX\ ||\ res\ <\ BUSTUB\_DECIMAL\_MIN)\ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Numeric\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a5bbe7a10f7523309fab2704186560491}{ValueFactory::GetDecimalValue}}(res);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ \}}
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ DECIMAL."{}});}
+\DoxyCodeLine{00371\ \ \ \}}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a1342e764d39c20c7f556448c158d58cc}{CastAsVarchar}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{ValueFactory::GetVarcharValue}}(\textcolor{keyword}{nullptr},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_adf97f33f166007cddc14237d40809315}{ValueFactory::GetVarcharValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}());}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00390\ \ \ \ \ \}}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ VARCHAR."{}});}
+\DoxyCodeLine{00392\ \ \ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a7bb5233fcfa536d40b5372df96ea7c09}{CastAsTimestamp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1892383b328bad38a6671464424d1e58}{TypeId::TIMESTAMP}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ab40f2ae6174f2181843f36869a45737c}{ValueFactory::GetTimestampValue}}(BUSTUB\_TIMESTAMP\_NULL);}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1892383b328bad38a6671464424d1e58}{TypeId::TIMESTAMP}}:}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ab40f2ae6174f2181843f36869a45737c}{ValueFactory::GetTimestampValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<uint64\_t>());}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str.length()\ ==\ 22)\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ str\ =\ str.substr(0,\ 19)\ +\ \textcolor{stringliteral}{"{}.000000"{}}\ +\ str.substr(19,\ 3);}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str.length()\ !=\ 29)\ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Timestamp\ format\ error."{}});}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str[10]\ !=\ \textcolor{charliteral}{'\ '}\ ||\ str[4]\ !=\ \textcolor{charliteral}{'-\/'}\ ||\ str[7]\ !=\ \textcolor{charliteral}{'-\/'}\ ||\ str[13]\ !=\ \textcolor{charliteral}{':'}\ ||\ str[16]\ !=\ \textcolor{charliteral}{':'}\ ||\ str[19]\ !=\ \textcolor{charliteral}{'.'}\ ||}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (str[26]\ !=\ \textcolor{charliteral}{'+'}\ \&\&\ str[26]\ !=\ \textcolor{charliteral}{'-\/'}))\ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Timestamp\ format\ error."{}});}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_digit[29]\ =\ \{\textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true},\ \textcolor{keyword}{false},\ \textcolor{keyword}{true},\ \ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 29;\ i++)\ \{}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_digit[i])\ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str[i]\ <\ \textcolor{charliteral}{'0'}\ ||\ str[i]\ >\ \textcolor{charliteral}{'9'})\ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Timestamp\ format\ error."{}});}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tz\ =\ 0;}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ year\ =\ 0;}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ month\ =\ 0;}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ day\ =\ 0;}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ hour\ =\ 0;}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ min\ =\ 0;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ sec\ =\ 0;}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ micro\ =\ 0;}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ uint64\_t\ res\ =\ 0;}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sscanf(str.c\_str(),\ \textcolor{stringliteral}{"{}\%4u-\/\%2u-\/\%2u\ \%2u:\%2u:\%2u.\%6u\%3d"{}},\ \&year,\ \&month,\ \&day,\ \&hour,\ \&min,\ \&sec,\ \&micro,}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&tz)\ !=\ 8)\ \{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Timestamp\ format\ error."{}});}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (year\ >\ 9999\ ||\ month\ >\ 12\ ||\ day\ >\ 31\ ||\ hour\ >\ 23\ ||\ min\ >\ 59\ ||\ sec\ >\ 59\ ||\ micro\ >\ 999999\ ||}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ day\ ==\ 0\ ||\ month\ ==\ 0)\ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Timestamp\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ max\_day[13]\ =\ \{0,\ 31,\ 28,\ 31,\ 30,\ 31,\ 30,\ 31,\ 31,\ 30,\ 31,\ 30,\ 31\};}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ max\_day\_lunar[13]\ =\ \{0,\ 31,\ 29,\ 31,\ 30,\ 31,\ 30,\ 31,\ 31,\ 30,\ 31,\ 30,\ 31\};}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((year\ \%\ 4\ ==\ 0\ \&\&\ year\ \%\ 100\ !=\ 0)\ ||\ year\ \%\ 400\ ==\ 0)\ \{}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (day\ >\ max\_day\_lunar[month])\ \{}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Timestamp\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (day\ >\ max\_day[month])\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}},\ \textcolor{stringliteral}{"{}Timestamp\ value\ out\ of\ range."{}});}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timezone\ =\ tz\ +\ 12;}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tz\ >\ 26)\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Timestamp\ format\ error."{}});}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ res\ +=\ month;}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ res\ *=\ 32;}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ res\ +=\ day;}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ res\ *=\ 27;}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ res\ +=\ timezone;}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ res\ *=\ 10000;}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ res\ +=\ year;}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ res\ *=\ 100000;}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ res\ +=\ hour\ *\ 3600\ +\ min\ *\ 60\ +\ sec;}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ res\ *=\ 1000000;}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ res\ +=\ micro;}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_ab40f2ae6174f2181843f36869a45737c}{ValueFactory::GetTimestampValue}}(res);}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00470\ \ \ \ \ \}}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ TIMESTAMP."{}});}
+\DoxyCodeLine{00472\ \ \ \}}
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00474\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a26ac1defdce5b7842bc906202e46d95e}{CastAsBoolean}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \&value)\ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}})-\/>IsCoercableFrom(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}()))\ \{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a2a12bc87ff412839e75a1dc641beb7da}{IsNull}}())\ \{}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{ValueFactory::GetBooleanValue}}(BUSTUB\_BOOLEAN\_NULL);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())\ \{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{ValueFactory::GetBooleanValue}}(value.\mbox{\hyperlink{classbustub_1_1Value_a38c5e1106426016d1d4c740bb59f7c84}{GetAs}}<int8\_t>());}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:\ \{}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ value.\mbox{\hyperlink{classbustub_1_1Value_a73387211c2edea4633dd21c4c2d1d3c3}{ToString}}();}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ std::transform(str.begin(),\ str.end(),\ str.begin(),\ ::tolower);}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}true"{}}\ ||\ str\ ==\ \textcolor{stringliteral}{"{}1"{}}\ ||\ str\ ==\ \textcolor{stringliteral}{"{}t"{}})\ \{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{ValueFactory::GetBooleanValue}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (str\ ==\ \textcolor{stringliteral}{"{}false"{}}\ ||\ str\ ==\ \textcolor{stringliteral}{"{}0"{}}\ ||\ str\ ==\ \textcolor{stringliteral}{"{}f"{}})\ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1ValueFactory_a4c76c2755e594726910fabbc85293375}{ValueFactory::GetBooleanValue}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Boolean\ value\ format\ error."{}});}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00496\ \ \ \ \ \}}
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classbustub_1_1Exception}{Exception}}(\mbox{\hyperlink{classbustub_1_1Type_a0a4ad12db5fea69c67abe99f4d26734f}{Type::GetInstance}}(value.\mbox{\hyperlink{classbustub_1_1Value_a16d9471eeeab42f3e98d294d39db0b5c}{GetTypeId}}())-\/>ToString(value)\ +\ \textcolor{stringliteral}{"{}\ is\ not\ coercable\ to\ BOOLEAN."{}});}
+\DoxyCodeLine{00498\ \ \ \}}
+\DoxyCodeLine{00499\ \};}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00501\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,85 @@
+\doxysection{src/include/common/macros.h File Reference}
+\hypertarget{macros_8h}{}\label{macros_8h}\index{src/include/common/macros.h@{src/include/common/macros.h}}
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\+\_\+\+ASSERT}}(expr,  message)
+\item 
+\#define \mbox{\hyperlink{macros_8h_ab1282cb3b18636534805bfc9448e889f}{UNREACHABLE}}(message)
+\item 
+\#define \mbox{\hyperlink{macros_8h_a6c7cf594d5cbb5024d5aa43aa7a1e09c}{DISALLOW\+\_\+\+COPY}}(cname)
+\item 
+\#define \mbox{\hyperlink{macros_8h_a97263ebcd2e9e382b9f91b4408453244}{DISALLOW\+\_\+\+MOVE}}(cname)
+\item 
+\#define \mbox{\hyperlink{macros_8h_a2f86593f7e029b7feed3828e30fe5017}{DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE}}(cname)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{macros_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{macros_8h_a76a969385a538dabceb09997d3c06c31}\index{macros.h@{macros.h}!BUSTUB\_ASSERT@{BUSTUB\_ASSERT}}
+\index{BUSTUB\_ASSERT@{BUSTUB\_ASSERT}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{BUSTUB\_ASSERT}{BUSTUB\_ASSERT}}
+{\footnotesize\ttfamily \label{macros_8h_a76a969385a538dabceb09997d3c06c31} 
+\#define BUSTUB\+\_\+\+ASSERT(\begin{DoxyParamCaption}\item[{}]{expr}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{assert((expr)\ \&\&\ (message))}
+
+\end{DoxyCode}
+\Hypertarget{macros_8h_a6c7cf594d5cbb5024d5aa43aa7a1e09c}\index{macros.h@{macros.h}!DISALLOW\_COPY@{DISALLOW\_COPY}}
+\index{DISALLOW\_COPY@{DISALLOW\_COPY}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{DISALLOW\_COPY}{DISALLOW\_COPY}}
+{\footnotesize\ttfamily \label{macros_8h_a6c7cf594d5cbb5024d5aa43aa7a1e09c} 
+\#define DISALLOW\+\_\+\+COPY(\begin{DoxyParamCaption}\item[{}]{cname}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ cname(\textcolor{keyword}{const}\ cname\ \&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ NOLINT\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ cname\ \&operator=(\textcolor{keyword}{const}\ cname\ \&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{/*\ NOLINT\ */}}
+
+\end{DoxyCode}
+\Hypertarget{macros_8h_a2f86593f7e029b7feed3828e30fe5017}\index{macros.h@{macros.h}!DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}}
+\index{DISALLOW\_COPY\_AND\_MOVE@{DISALLOW\_COPY\_AND\_MOVE}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{DISALLOW\_COPY\_AND\_MOVE}{DISALLOW\_COPY\_AND\_MOVE}}
+{\footnotesize\ttfamily \label{macros_8h_a2f86593f7e029b7feed3828e30fe5017} 
+\#define DISALLOW\+\_\+\+COPY\+\_\+\+AND\+\_\+\+MOVE(\begin{DoxyParamCaption}\item[{}]{cname}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{macros_8h_a6c7cf594d5cbb5024d5aa43aa7a1e09c}{DISALLOW\_COPY}}(cname);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ DISALLOW\_MOVE(cname);}
+
+\end{DoxyCode}
+\Hypertarget{macros_8h_a97263ebcd2e9e382b9f91b4408453244}\index{macros.h@{macros.h}!DISALLOW\_MOVE@{DISALLOW\_MOVE}}
+\index{DISALLOW\_MOVE@{DISALLOW\_MOVE}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{DISALLOW\_MOVE}{DISALLOW\_MOVE}}
+{\footnotesize\ttfamily \label{macros_8h_a97263ebcd2e9e382b9f91b4408453244} 
+\#define DISALLOW\+\_\+\+MOVE(\begin{DoxyParamCaption}\item[{}]{cname}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ cname(cname\ \&\&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ NOLINT\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ cname\ \&operator=(cname\ \&\&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{/*\ NOLINT\ */}}
+
+\end{DoxyCode}
+\Hypertarget{macros_8h_ab1282cb3b18636534805bfc9448e889f}\index{macros.h@{macros.h}!UNREACHABLE@{UNREACHABLE}}
+\index{UNREACHABLE@{UNREACHABLE}!macros.h@{macros.h}}
+\doxysubsubsection{\texorpdfstring{UNREACHABLE}{UNREACHABLE}}
+{\footnotesize\ttfamily \label{macros_8h_ab1282cb3b18636534805bfc9448e889f} 
+\#define UNREACHABLE(\begin{DoxyParamCaption}\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{throw}\ std::logic\_error(message)}
+
+\end{DoxyCode}

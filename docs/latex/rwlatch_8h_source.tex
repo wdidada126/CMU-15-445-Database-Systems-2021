@@ -1,0 +1,87 @@
+\doxysection{rwlatch.\+h}
+\hypertarget{rwlatch_8h_source}{}\label{rwlatch_8h_source}\index{src/include/common/rwlatch.h@{src/include/common/rwlatch.h}}
+\mbox{\hyperlink{rwlatch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ rwmutex.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/rwlatch.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <condition\_variable>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{macros_8h}{common/macros.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a3f667dc804e9b8d3b762c4bfad54391e}{ReaderWriterLatch}}\ \{}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{using\ }mutex\_t\ =\ std::mutex;}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{using\ }cond\_t\ =\ std::condition\_variable;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint32\_t\ MAX\_READERS\ =\ UINT\_MAX;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a3f667dc804e9b8d3b762c4bfad54391e}{ReaderWriterLatch}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a121a78576966c7d2d7494ba3afdebc2f}{\string~ReaderWriterLatch}}()\ \{\ std::lock\_guard<mutex\_t>\ guard(mutex\_);\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_ac408f5aac3423a696c1b657447cf9aa1}{DISALLOW\_COPY}}(\mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a3f667dc804e9b8d3b762c4bfad54391e}{ReaderWriterLatch}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_ac448ed1f4f6761130587f1d2c656aae1}{WLock}}()\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ std::unique\_lock<mutex\_t>\ latch(mutex\_);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{while}\ (writer\_entered\_)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ reader\_.wait(latch);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ writer\_entered\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{while}\ (reader\_count\_\ >\ 0)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ writer\_.wait(latch);}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a7fb327d2cdb564f15385c185d78db90a}{WUnlock}}()\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ std::lock\_guard<mutex\_t>\ guard(mutex\_);}
+\DoxyCodeLine{00056\ \ \ \ \ writer\_entered\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ reader\_.notify\_all();}
+\DoxyCodeLine{00058\ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a70e2c9d8e4c30cb2a5f1880044f42d7c}{RLock}}()\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ std::unique\_lock<mutex\_t>\ latch(mutex\_);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{while}\ (writer\_entered\_\ ||\ reader\_count\_\ ==\ MAX\_READERS)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ reader\_.wait(latch);}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ reader\_count\_++;}
+\DoxyCodeLine{00069\ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1ReaderWriterLatch_a5d1151994e4ab33467d761340fa2c1e4}{RUnlock}}()\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ std::lock\_guard<mutex\_t>\ guard(mutex\_);}
+\DoxyCodeLine{00076\ \ \ \ \ reader\_count\_-\/-\/;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (writer\_entered\_)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reader\_count\_\ ==\ 0)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ writer\_.notify\_one();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reader\_count\_\ ==\ MAX\_READERS\ -\/\ 1)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ reader\_.notify\_one();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ \ \ mutex\_t\ mutex\_;}
+\DoxyCodeLine{00090\ \ \ cond\_t\ writer\_;}
+\DoxyCodeLine{00091\ \ \ cond\_t\ reader\_;}
+\DoxyCodeLine{00092\ \ \ uint32\_t\ reader\_count\_\{0\};}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{bool}\ writer\_entered\_\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,66 @@
+\doxysection{test/catalog/catalog\+\_\+test.cpp File Reference}
+\hypertarget{catalog__test_8cpp}{}\label{catalog__test_8cpp}\index{test/catalog/catalog\_test.cpp@{test/catalog/catalog\_test.cpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}buffer/buffer\+\_\+pool\+\_\+manager\+\_\+instance.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/catalog.\+h"{}}\newline
+{\ttfamily \#include "{}catalog/table\+\_\+generator.\+h"{}}\newline
+{\ttfamily \#include "{}execution/executor\+\_\+context.\+h"{}}\newline
+{\ttfamily \#include "{}gtest/gtest.\+h"{}}\newline
+{\ttfamily \#include "{}type/value\+\_\+factory.\+h"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacebustub_ae600de96cb9658967ad34df50c8d0d3c}{bustub\+::\+Bigint\+Key\+Type}} = \mbox{\hyperlink{classbustub_1_1GenericKey}{Generic\+Key}}$<$BIGINT\+\_\+\+SIZE$>$
+\item 
+using \mbox{\hyperlink{namespacebustub_afe13a0a0c8eef13cf6acc7182f515bcf}{bustub\+::\+Bigint\+Value\+Type}} = \mbox{\hyperlink{classbustub_1_1RID}{RID}}
+\item 
+using \mbox{\hyperlink{namespacebustub_a9f2d4a33e7048c5a80aace6d88db2d07}{bustub\+::\+Bigint\+Comparator\+Type}} = \mbox{\hyperlink{classbustub_1_1GenericComparator}{Generic\+Comparator}}$<$BIGINT\+\_\+\+SIZE$>$
+\item 
+using \mbox{\hyperlink{namespacebustub_a58d15cfee45c5a913917e11095eb078c}{bustub\+::\+Bigint\+Hash\+Function\+Type}} = \mbox{\hyperlink{classbustub_1_1HashFunction}{Hash\+Function}}$<$\mbox{\hyperlink{namespacebustub_ae600de96cb9658967ad34df50c8d0d3c}{Bigint\+Key\+Type}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacebustub_ae4a71fc56d9d1edd970e8f45027a3134}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Table1)
+\item 
+\mbox{\hyperlink{namespacebustub_aeee6201a5a18808ca7297ed74078b14b}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Table2)
+\item 
+\mbox{\hyperlink{namespacebustub_a3e1329fc5d13f2004386248c0bc080f7}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Table3)
+\item 
+\mbox{\hyperlink{namespacebustub_a093e55f535e299a142a0dc36ddc59ce5}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Table\+Test)
+\item 
+\mbox{\hyperlink{namespacebustub_aac5fb894d1a570a00daa68f3d98db26d}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Index1)
+\item 
+\mbox{\hyperlink{namespacebustub_a6a36f80d785f1abb77d950246fc7dc85}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Index2)
+\item 
+\mbox{\hyperlink{namespacebustub_a4a5aaf1f086b5688a5d8363dbbea76d8}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Create\+Index3)
+\item 
+\mbox{\hyperlink{namespacebustub_a256185cdb15b160fccab48c8e661abbd}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Query\+Index1)
+\item 
+\mbox{\hyperlink{namespacebustub_a4ad482e1d08aeb986bfab2dfdd40e558}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Query\+Index2)
+\item 
+\mbox{\hyperlink{namespacebustub_a3c8d757c6c800db0598dad79dde6e845}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Failed\+Query1)
+\item 
+\mbox{\hyperlink{namespacebustub_a9d1e97980dd367e78665b43a4d9436b5}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Failed\+Query2)
+\item 
+\mbox{\hyperlink{namespacebustub_a4b19ce67894b9c157d06f5e49f650555}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Failed\+Query3)
+\item 
+\mbox{\hyperlink{namespacebustub_ac162c461e5f59e4100d150e3579089d3}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Failed\+Query4)
+\item 
+\mbox{\hyperlink{namespacebustub_aa0ed5707429ea24f62598ddb6d60d09c}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Failed\+Query5)
+\item 
+\mbox{\hyperlink{namespacebustub_a9642735ddd745188526702918a566f67}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Index\+Interaction0)
+\item 
+\mbox{\hyperlink{namespacebustub_a0d56d4fa4be9b3d46b51c9cb257e954d}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Index\+Interaction1)
+\item 
+\mbox{\hyperlink{namespacebustub_a280dcac6558e13be4172f544fec5fdfd}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Index\+Interaction2)
+\item 
+\mbox{\hyperlink{namespacebustub_a1624930319a9e1a67803cc097918314c}{bustub\+::\+TEST}} (Catalog\+Test, DISABLED\+\_\+\+Index\+Interaction3)
+\end{DoxyCompactItemize}

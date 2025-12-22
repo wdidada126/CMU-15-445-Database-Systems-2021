@@ -1,0 +1,46 @@
+\doxysection{checkpoint\+\_\+manager.\+h}
+\hypertarget{checkpoint__manager_8h_source}{}\label{checkpoint__manager_8h_source}\index{src/include/recovery/checkpoint\_manager.h@{src/include/recovery/checkpoint\_manager.h}}
+\mbox{\hyperlink{checkpoint__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ checkpoint\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/recovery/checkpoint\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction__manager_8h}{concurrency/transaction\_manager.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1CheckpointManager_a302d42345a3dfece7174dd6752ef15ac}{CheckpointManager}}\ \{}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classbustub_1_1CheckpointManager_a302d42345a3dfece7174dd6752ef15ac}{CheckpointManager}}(\mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *transaction\_manager,\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ :\ transaction\_manager\_(transaction\_manager),}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ log\_manager\_(log\_manager),}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ buffer\_pool\_manager\_(buffer\_pool\_manager)\ \{\}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{classbustub_1_1CheckpointManager_a5d0605de6506163c31c8873a71a8ffcd}{\string~CheckpointManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1CheckpointManager_a63ce45dee27bf8c2ee6b72a7babe2be2}{BeginCheckpoint}}();}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1CheckpointManager_a23ebc478f843339e204229637566181d}{EndCheckpoint}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *transaction\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *log\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *buffer\_pool\_manager\_\ \_\_attribute\_\_((\_\_unused\_\_));}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

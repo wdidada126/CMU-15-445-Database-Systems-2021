@@ -1,0 +1,192 @@
+\doxysection{bustub\+::Page Class Reference}
+\hypertarget{classbustub_1_1Page}{}\label{classbustub_1_1Page}\index{bustub::Page@{bustub::Page}}
+
+
+{\ttfamily \#include $<$page.\+h$>$}
+
+Inheritance diagram for bustub\+::Page\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbustub_1_1Page}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c}{Page}} ()
+\item 
+\mbox{\hyperlink{classbustub_1_1Page_a4fd72b8a165c84cc0ba0f8e8bbd96867}{\texorpdfstring{$\sim$}{\string~}\+Page}} ()=default
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173}{Get\+Data}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} \mbox{\hyperlink{classbustub_1_1Page_a59347ea2a6ff5e6db0fdfa636d638d83}{Get\+Page\+Id}} ()
+\item 
+int \mbox{\hyperlink{classbustub_1_1Page_a7e99d02c403ff48e442d0f242a9beb9f}{Get\+Pin\+Count}} ()
+\item 
+bool \mbox{\hyperlink{classbustub_1_1Page_ab61aaf6c7e21166f4e6f8e411918bb27}{Is\+Dirty}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a6d38fd55842571c7718d10c17b646a2c}{WLatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_ac5abcb7ce7a768e6e95de71f2594b576}{WUnlatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_abaaeefa7de3ecb2b31d9ba4c25ecbc41}{RLatch}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a79046b095db19e7930a8cb57ba80e5c0}{RUnlatch}} ()
+\item 
+\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} \mbox{\hyperlink{classbustub_1_1Page_a1c4c64be1941191d276fa8906438e281}{Get\+LSN}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1Page_a46a145f2040f20e4a962fa64d5544398}{Set\+LSN}} (\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} lsn)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_ac29193a4bf340cd201154d0885c189ff}{SIZE\+\_\+\+PAGE\+\_\+\+HEADER}} = 8
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_ae118444d525b99a9b5ebe856cf5280ab}{OFFSET\+\_\+\+PAGE\+\_\+\+START}} = 0
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classbustub_1_1Page_a8ee2b0802e375db5bc0ea1d575265ec4}{OFFSET\+\_\+\+LSN}} = 4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbustub_1_1Page_aee8ccb3891e4b9b839c87c20f0180734}{Buffer\+Pool\+Manager\+Instance}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1Page}{Page} is the basic unit of storage within the database system. \doxylink{classbustub_1_1Page}{Page} provides a wrapper for actual data pages being held in main memory. \doxylink{classbustub_1_1Page}{Page} also contains book-\/keeping information that is used by the buffer pool manager, e.\+g. pin count, dirty flag, page id, etc. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1Page_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c}\index{bustub::Page@{bustub::Page}!Page@{Page}}
+\index{Page@{Page}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{Page()}{Page()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_afe05b1a2d213f4f1fd5f819006cd2e5c} 
+bustub\+::\+Page\+::\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor. Zeros out the page data. \Hypertarget{classbustub_1_1Page_a4fd72b8a165c84cc0ba0f8e8bbd96867}\index{bustub::Page@{bustub::Page}!````~Page@{\texorpdfstring{$\sim$}{\string~}Page}}
+\index{````~Page@{\texorpdfstring{$\sim$}{\string~}Page}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Page()}{\string~Page()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a4fd72b8a165c84cc0ba0f8e8bbd96867} 
+bustub\+::\+Page\+::\texorpdfstring{$\sim$}{\string~}\+Page (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default destructor. 
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1Page_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173}\index{bustub::Page@{bustub::Page}!GetData@{GetData}}
+\index{GetData@{GetData}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{GetData()}{GetData()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a689f719ff25b564047d025c0072b9173} 
+char \texorpdfstring{$\ast$}{*} bustub\+::\+Page\+::\+Get\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the actual data contained within this page 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1Page_a1c4c64be1941191d276fa8906438e281}\index{bustub::Page@{bustub::Page}!GetLSN@{GetLSN}}
+\index{GetLSN@{GetLSN}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{GetLSN()}{GetLSN()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a1c4c64be1941191d276fa8906438e281} 
+\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}} bustub\+::\+Page\+::\+Get\+LSN (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the page LSN. 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1Page_a59347ea2a6ff5e6db0fdfa636d638d83}\index{bustub::Page@{bustub::Page}!GetPageId@{GetPageId}}
+\index{GetPageId@{GetPageId}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{GetPageId()}{GetPageId()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a59347ea2a6ff5e6db0fdfa636d638d83} 
+\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\+\_\+id\+\_\+t}} bustub\+::\+Page\+::\+Get\+Page\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the page id of this page 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1Page_a7e99d02c403ff48e442d0f242a9beb9f}\index{bustub::Page@{bustub::Page}!GetPinCount@{GetPinCount}}
+\index{GetPinCount@{GetPinCount}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{GetPinCount()}{GetPinCount()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a7e99d02c403ff48e442d0f242a9beb9f} 
+int bustub\+::\+Page\+::\+Get\+Pin\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+the pin count of this page 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1Page_ab61aaf6c7e21166f4e6f8e411918bb27}\index{bustub::Page@{bustub::Page}!IsDirty@{IsDirty}}
+\index{IsDirty@{IsDirty}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{IsDirty()}{IsDirty()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_ab61aaf6c7e21166f4e6f8e411918bb27} 
+bool bustub\+::\+Page\+::\+Is\+Dirty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+true if the page in memory has been modified from the page on disk, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classbustub_1_1Page_abaaeefa7de3ecb2b31d9ba4c25ecbc41}\index{bustub::Page@{bustub::Page}!RLatch@{RLatch}}
+\index{RLatch@{RLatch}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{RLatch()}{RLatch()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_abaaeefa7de3ecb2b31d9ba4c25ecbc41} 
+void bustub\+::\+Page\+::\+RLatch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Acquire the page read latch. \Hypertarget{classbustub_1_1Page_a79046b095db19e7930a8cb57ba80e5c0}\index{bustub::Page@{bustub::Page}!RUnlatch@{RUnlatch}}
+\index{RUnlatch@{RUnlatch}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{RUnlatch()}{RUnlatch()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a79046b095db19e7930a8cb57ba80e5c0} 
+void bustub\+::\+Page\+::\+RUnlatch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Release the page read latch. \Hypertarget{classbustub_1_1Page_a46a145f2040f20e4a962fa64d5544398}\index{bustub::Page@{bustub::Page}!SetLSN@{SetLSN}}
+\index{SetLSN@{SetLSN}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{SetLSN()}{SetLSN()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a46a145f2040f20e4a962fa64d5544398} 
+void bustub\+::\+Page\+::\+Set\+LSN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\+\_\+t}}}]{lsn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the page LSN. \Hypertarget{classbustub_1_1Page_a6d38fd55842571c7718d10c17b646a2c}\index{bustub::Page@{bustub::Page}!WLatch@{WLatch}}
+\index{WLatch@{WLatch}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{WLatch()}{WLatch()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a6d38fd55842571c7718d10c17b646a2c} 
+void bustub\+::\+Page\+::\+WLatch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Acquire the page write latch. \Hypertarget{classbustub_1_1Page_ac5abcb7ce7a768e6e95de71f2594b576}\index{bustub::Page@{bustub::Page}!WUnlatch@{WUnlatch}}
+\index{WUnlatch@{WUnlatch}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{WUnlatch()}{WUnlatch()}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_ac5abcb7ce7a768e6e95de71f2594b576} 
+void bustub\+::\+Page\+::\+WUnlatch (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Release the page write latch. 
+
+\label{doc-related-members}
+\Hypertarget{classbustub_1_1Page_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classbustub_1_1Page_aee8ccb3891e4b9b839c87c20f0180734}\index{bustub::Page@{bustub::Page}!BufferPoolManagerInstance@{BufferPoolManagerInstance}}
+\index{BufferPoolManagerInstance@{BufferPoolManagerInstance}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{BufferPoolManagerInstance}{BufferPoolManagerInstance}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_aee8ccb3891e4b9b839c87c20f0180734} 
+friend class \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance}{Buffer\+Pool\+Manager\+Instance}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classbustub_1_1Page_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classbustub_1_1Page_a8ee2b0802e375db5bc0ea1d575265ec4}\index{bustub::Page@{bustub::Page}!OFFSET\_LSN@{OFFSET\_LSN}}
+\index{OFFSET\_LSN@{OFFSET\_LSN}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{OFFSET\_LSN}{OFFSET\_LSN}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_a8ee2b0802e375db5bc0ea1d575265ec4} 
+size\+\_\+t bustub\+::\+Page\+::\+OFFSET\+\_\+\+LSN = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+\Hypertarget{classbustub_1_1Page_ae118444d525b99a9b5ebe856cf5280ab}\index{bustub::Page@{bustub::Page}!OFFSET\_PAGE\_START@{OFFSET\_PAGE\_START}}
+\index{OFFSET\_PAGE\_START@{OFFSET\_PAGE\_START}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{OFFSET\_PAGE\_START}{OFFSET\_PAGE\_START}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_ae118444d525b99a9b5ebe856cf5280ab} 
+size\+\_\+t bustub\+::\+Page\+::\+OFFSET\+\_\+\+PAGE\+\_\+\+START = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+\Hypertarget{classbustub_1_1Page_ac29193a4bf340cd201154d0885c189ff}\index{bustub::Page@{bustub::Page}!SIZE\_PAGE\_HEADER@{SIZE\_PAGE\_HEADER}}
+\index{SIZE\_PAGE\_HEADER@{SIZE\_PAGE\_HEADER}!bustub::Page@{bustub::Page}}
+\doxysubsubsection{\texorpdfstring{SIZE\_PAGE\_HEADER}{SIZE\_PAGE\_HEADER}}
+{\footnotesize\ttfamily \label{classbustub_1_1Page_ac29193a4bf340cd201154d0885c189ff} 
+size\+\_\+t bustub\+::\+Page\+::\+SIZE\+\_\+\+PAGE\+\_\+\+HEADER = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/storage/page/\mbox{\hyperlink{page_8h}{page.\+h}}\end{DoxyCompactItemize}

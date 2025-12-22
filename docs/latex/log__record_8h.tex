@@ -1,0 +1,34 @@
+\doxysection{src/include/recovery/log\+\_\+record.h File Reference}
+\hypertarget{log__record_8h}{}\label{log__record_8h}\index{src/include/recovery/log\_record.h@{src/include/recovery/log\_record.h}}
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}common/config.\+h"{}}\newline
+{\ttfamily \#include "{}storage/table/tuple.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbustub_1_1LogRecord}{bustub\+::\+Log\+Record}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacebustub}{bustub}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cc}{bustub\+::\+Log\+Record\+Type}} \{ \newline
+\mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccaccc0377a8afbf50e7094f5c23a8af223}{bustub\+::\+INVALID}} = 0
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca61ee777e7f71dc466c3b2c685d8d313b}{bustub\+::\+INSERT}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccab8de8a905dc66fe3ce79f69048f89925}{bustub\+::\+MARKDELETE}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca2bdab37eb029de6ebdc954c5e083d1ac}{bustub\+::\+APPLYDELETE}}
+, \newline
+\mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9ccaea1b585bcae9cf50acd809ac025eefc0}{bustub\+::\+ROLLBACKDELETE}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca15a8022d0ed9cd9c2a2e756822703eb4}{bustub\+::\+UPDATE}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca19aad9f2fe3ce0023298ab83f7e75775}{bustub\+::\+BEGIN}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca1d0ba376e273b9d622641124d8c59264}{bustub\+::\+COMMIT}}
+, \newline
+\mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca8d12a2ca7e5a64036d7251a3eda51a38}{bustub\+::\+ABORT}}
+, \mbox{\hyperlink{namespacebustub_a43eda6cb555f74433d860efc5e45b9cca7f017bac5893c98adb824a61b1f1e6b0}{bustub\+::\+NEWPAGE}}
+ \}
+\end{DoxyCompactItemize}

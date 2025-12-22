@@ -1,0 +1,78 @@
+\doxysection{schema.\+h}
+\hypertarget{schema_8h_source}{}\label{schema_8h_source}\index{src/include/catalog/schema.h@{src/include/catalog/schema.h}}
+\mbox{\hyperlink{schema_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ schema.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/catalog/schema.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{column_8h}{catalog/column.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{type_8h}{type/type.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Schema_a19f218ba430d407d31665c2f2e60e621}{Schema}}\ \{}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1Schema_a19f218ba430d407d31665c2f2e60e621}{Schema}}(\textcolor{keyword}{const}\ std::vector<Column>\ \&columns);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classbustub_1_1Schema_a19f218ba430d407d31665c2f2e60e621}{Schema}}\ *\mbox{\hyperlink{classbustub_1_1Schema_af014bdf5982424500a043f18de0f169f}{CopySchema}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Schema_a19f218ba430d407d31665c2f2e60e621}{Schema}}\ *from,\ \textcolor{keyword}{const}\ std::vector<uint32\_t>\ \&attrs)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<Column>\ cols;}
+\DoxyCodeLine{00034\ \ \ \ \ cols.reserve(attrs.size());}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ i\ :\ attrs)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ cols.emplace\_back(from-\/>columns\_[i]);}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1Schema_a19f218ba430d407d31665c2f2e60e621}{Schema}}\{cols\};}
+\DoxyCodeLine{00039\ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{const}\ std::vector<Column>\ \&\mbox{\hyperlink{classbustub_1_1Schema_a822a6d9d74d56a9a3806cf3c3cd44b2f}{GetColumns}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ columns\_;\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Column}{Column}}\ \&\mbox{\hyperlink{classbustub_1_1Schema_a0e9f2a4edce5c898e090bbbd1e9325ae}{GetColumn}}(\textcolor{keyword}{const}\ uint32\_t\ col\_idx)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ columns\_[col\_idx];\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Schema_a6b46145372c04e422ae95584550eadda}{GetColIdx}}(\textcolor{keyword}{const}\ std::string\ \&col\_name)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ columns\_.size();\ ++i)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (columns\_[i].GetName()\ ==\ col\_name)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{macros_8h_ab1282cb3b18636534805bfc9448e889f}{UNREACHABLE}}(\textcolor{stringliteral}{"{}Column\ does\ not\ exist"{}});}
+\DoxyCodeLine{00064\ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{const}\ std::vector<uint32\_t>\ \&\mbox{\hyperlink{classbustub_1_1Schema_a0d8d4f5e299b3314421e4cbd8487c4e1}{GetUnlinedColumns}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ uninlined\_columns\_;\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Schema_a204fc2589a38b56c36fb9fe81828a480}{GetColumnCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(columns\_.size());\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Schema_ac614976a6df1e629cca7cd322b6442c8}{GetUnlinedColumnCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(uninlined\_columns\_.size());\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Schema_ad52955d5e4647dba71916e8551fa88a5}{GetLength}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ length\_;\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Schema_a2f49a77dc6f61a77b19d01d449b87a0f}{IsInlined}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tuple\_is\_inlined\_;\ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1Schema_a1e39738cd19d37840fc0eff31312040a}{ToString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ uint32\_t\ length\_;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \ \ std::vector<Column>\ columns\_;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{bool}\ tuple\_is\_inlined\_;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ std::vector<uint32\_t>\ uninlined\_columns\_;}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

@@ -1,0 +1,106 @@
+\doxysection{column.\+h}
+\hypertarget{column_8h_source}{}\label{column_8h_source}\index{src/include/catalog/column.h@{src/include/catalog/column.h}}
+\mbox{\hyperlink{column_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ column.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/catalog/column.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exception_8h}{common/exception.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{macros_8h}{common/macros.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{type_8h}{type/type.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Column_a990c4e29beb200fb76925dc7624184fe}{Column}}\ \{}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Column_ab1b299e6f6af7a63eafdaf19e7facb93}{Schema}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classbustub_1_1Column_a990c4e29beb200fb76925dc7624184fe}{Column}}(std::string\ column\_name,\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *expr\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ :\ column\_name\_(\mbox{\hyperlink{namespacestd}{std}}::move(column\_name)),\ column\_type\_(type),\ fixed\_length\_(TypeSize(type)),\ expr\_\{expr\}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(type\ !=\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}},\ \textcolor{stringliteral}{"{}Wrong\ constructor\ for\ VARCHAR\ type."{}});}
+\DoxyCodeLine{00039\ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{classbustub_1_1Column_afd0b930046be672b2f74785c24416a75}{Column}}(std::string\ column\_name,\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type,\ uint32\_t\ length,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *expr\ =\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ :\ column\_name\_(\mbox{\hyperlink{namespacestd}{std}}::move(column\_name)),\ column\_type\_(type),\ fixed\_length\_(TypeSize(type)),\ expr\_\{expr\}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{macros_8h_a76a969385a538dabceb09997d3c06c31}{BUSTUB\_ASSERT}}(type\ ==\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}},\ \textcolor{stringliteral}{"{}Wrong\ constructor\ for\ non-\/VARCHAR\ type."{}});}
+\DoxyCodeLine{00051\ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1Column_af8a04fe17d9db9da619c3f470c9b5bcf}{GetName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ column\_name\_;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Column_a8ea508626e01e39fc7beaa900f6a3381}{GetLength}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classbustub_1_1Column_a2e9d1d9635068849966fa50cfeee368d}{IsInlined}}())\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fixed\_length\_;}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ variable\_length\_;}
+\DoxyCodeLine{00062\ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Column_aa79a3330ee9b656b8e34442562ca684d}{GetFixedLength}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ fixed\_length\_;\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Column_a11d3ab47d8704e645e74f1c9360e4138}{GetVariableLength}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ variable\_length\_;\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ uint32\_t\ \mbox{\hyperlink{classbustub_1_1Column_a5dca6c5698de03d97c63c8e1dc390d75}{GetOffset}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ column\_offset\_;\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ \mbox{\hyperlink{classbustub_1_1Column_a93099506af1730031575da170a9f5e97}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ column\_type\_;\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1Column_a2e9d1d9635068849966fa50cfeee368d}{IsInlined}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ column\_type\_\ !=\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}};\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ std::string\ \mbox{\hyperlink{classbustub_1_1Column_a4b0c43fbb4578f604140a808621d0ffc}{ToString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractExpression}{AbstractExpression}}\ *\mbox{\hyperlink{classbustub_1_1Column_adbde7a6902a2460a0656e5f33eee0b26}{GetExpr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ expr\_;\ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{static}\ uint8\_t\ TypeSize(\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ type)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8aa96a8e6a886d25662917a25fa4a88b2d}{TypeId::BOOLEAN}}:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a42a53d491422a000fddacf033a3d8592}{TypeId::TINYINT}}:}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8af1d5de83e0968b9f5b97390946216ae6}{TypeId::SMALLINT}}:}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a407acaee13a2c2418e2d452e46a567d0}{TypeId::INTEGER}}:}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 4;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1eaf918fca184578656e768fa5e1be06}{TypeId::BIGINT}}:}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{TypeId::DECIMAL}}:}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a1892383b328bad38a6671464424d1e58}{TypeId::TIMESTAMP}}:}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 8;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a661248b1a09344f415babe0a39122386}{TypeId::VARCHAR}}:}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO(Amadou):\ Confirm\ this.}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 12;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{macros_8h_ab1282cb3b18636534805bfc9448e889f}{UNREACHABLE}}(\textcolor{stringliteral}{"{}Cannot\ get\ size\ of\ invalid\ type"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00115\ \ \ std::string\ column\_name\_;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00118\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ column\_type\_;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ uint32\_t\ fixed\_length\_;}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00124\ \ \ uint32\_t\ variable\_length\_\{0\};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00127\ \ \ uint32\_t\ column\_offset\_\{0\};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keyword}{const}\ AbstractExpression\ *expr\_;}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

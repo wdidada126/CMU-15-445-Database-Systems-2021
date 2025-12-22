@@ -1,0 +1,102 @@
+\doxysection{buffer\+\_\+pool\+\_\+manager.\+h}
+\hypertarget{buffer__pool__manager_8h_source}{}\label{buffer__pool__manager_8h_source}\index{src/include/buffer/buffer\_pool\_manager.h@{src/include/buffer/buffer\_pool\_manager.h}}
+\mbox{\hyperlink{buffer__pool__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ buffer\_pool\_manager.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/buffer/buffer\_pool\_manager.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <mutex>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lru__replacer_8h}{buffer/lru\_replacer.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{disk__manager_8h}{storage/disk/disk\_manager.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{page_8h}{storage/page/page.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{BufferPoolManager}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{CallbackType}}\ \{\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{BEFORE}},\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{AFTER}}\ \};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ =\ void\ (*)(\textcolor{keyword}{enum}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{CallbackType}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac26cd50cfd0eb69a652df3d73bdb0608}{BufferPoolManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a8405b897fdf538beddb60985db1947ac}{\string~BufferPoolManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManager_a3b883dc4d00d27a5421bac105996154f}{FetchPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ page\_id);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{auto}\ *result\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a2181435cee96f9e6319c28be39f13bbe}{FetchPgImp}}(page\_id);}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ page\_id);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ad1bdff550cf569917063b109ff2aeb9b}{UnpinPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{bool}\ is\_dirty,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ page\_id);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa8871523e4ae89bad7b56fae79515344}{UnpinPgImp}}(page\_id,\ is\_dirty);}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ page\_id);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00054\ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a37a0d00c93e1369a26c23a98e5d09d56}{FlushPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ page\_id);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac8156b2e4371685daad5765896dab8b6}{FlushPgImp}}(page\_id);}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ page\_id);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00062\ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManager_adf164ffbae650b82fb95a2e7dac55564}{NewPage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *page\_id,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{auto}\ *result\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ae0691d5eada4a4ab3c4207ce3c96d09f}{NewPgImp}}(page\_id);}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ *page\_id);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a1373eb1950d8d528c6d0e859aeb5041c}{DeletePage}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ page\_id);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a1c30494c0e3b29e1e6aad70cc6e54a0b}{DeletePgImp}}(page\_id);}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ page\_id);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00078\ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a959d52c606087936901d12233a25531e}{FlushAllPages}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback\ =\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4a3525317285c6126ce3b62a8df8c00b07}{CallbackType::BEFORE}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa92aa48f53f033bfd7d0db433f2d25af}{FlushAllPgsImp}}();}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4ac130fda0cb93540bf1574912e78964fb}{CallbackType::AFTER}},\ INVALID\_PAGE\_ID);}
+\DoxyCodeLine{00085\ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa803b9c1fe285cad7c688c7e5807200c}{GetPoolSize}}()\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa63c3dc99b0a61c1a4043652c0348e22}{GradingCallback}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager_aabdc1a8cd11d26c66e688adb5157a15b}{bufferpool\_callback\_fn}}\ callback,\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a06dae7dffb7ed91759659f5ce0e05ff4}{CallbackType}}\ callback\_type,\ \mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (callback\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ callback(callback\_type,\ page\_id);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManager_a2181435cee96f9e6319c28be39f13bbe}{FetchPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ =\ 0;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa8871523e4ae89bad7b56fae79515344}{UnpinPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id,\ \textcolor{keywordtype}{bool}\ is\_dirty)\ =\ 0;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_ac8156b2e4371685daad5765896dab8b6}{FlushPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ =\ 0;}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classbustub_1_1Page}{Page}}\ *\mbox{\hyperlink{classbustub_1_1BufferPoolManager_ae0691d5eada4a4ab3c4207ce3c96d09f}{NewPgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ *page\_id)\ =\ 0;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00138\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_a1c30494c0e3b29e1e6aad70cc6e54a0b}{DeletePgImp}}(\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ page\_id)\ =\ 0;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00143\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager_aa92aa48f53f033bfd7d0db433f2d25af}{FlushAllPgsImp}}()\ =\ 0;}
+\DoxyCodeLine{00144\ \};}
+\DoxyCodeLine{00145\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

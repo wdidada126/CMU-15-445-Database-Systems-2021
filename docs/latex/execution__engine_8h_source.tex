@@ -1,0 +1,80 @@
+\doxysection{execution\+\_\+engine.\+h}
+\hypertarget{execution__engine_8h_source}{}\label{execution__engine_8h_source}\index{src/include/execution/execution\_engine.h@{src/include/execution/execution\_engine.h}}
+\mbox{\hyperlink{execution__engine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ execution\_engine.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/execution/execution\_engine.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2021,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager_8h}{buffer/buffer\_pool\_manager.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{catalog_8h}{catalog/catalog.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transaction__manager_8h}{concurrency/transaction\_manager.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__context_8h}{execution/executor\_context.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{executor__factory_8h}{execution/executor\_factory.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{abstract__plan_8h}{execution/plans/abstract\_plan.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab}{ExecutionEngine}}\ \{}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab}{ExecutionEngine}}(\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm,\ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *txn\_mgr,\ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *catalog)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ :\ bpm\_\{bpm\},\ txn\_mgr\_\{txn\_mgr\},\ catalog\_\{catalog\}\ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classbustub_1_1ExecutionEngine_a16fa8f9b9220a0ff60245b41e4ba1f07}{DISALLOW\_COPY\_AND\_MOVE}}(\mbox{\hyperlink{classbustub_1_1ExecutionEngine_aeb72ee9b98d3c1ee36ef5122218e4eab}{ExecutionEngine}});}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classbustub_1_1ExecutionEngine_a60aeb4acd0f4e2838c5b51df283ab0fa}{Execute}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1AbstractPlanNode}{AbstractPlanNode}}\ *plan,\ std::vector<Tuple>\ *result\_set,\ \mbox{\hyperlink{classbustub_1_1Transaction}{Transaction}}\ *txn,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1ExecutorContext}{ExecutorContext}}\ *exec\_ctx)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Construct\ and\ executor\ for\ the\ plan}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{auto}\ executor\ =\ \mbox{\hyperlink{classbustub_1_1ExecutorFactory_a4ab139c90106b4a59f549f98d6247c8d}{ExecutorFactory::CreateExecutor}}(exec\_ctx,\ plan);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Prepare\ the\ root\ executor}}
+\DoxyCodeLine{00056\ \ \ \ \ executor-\/>Init();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccf}{PlanType}}\ plan\_type\ =\ plan-\/>\mbox{\hyperlink{classbustub_1_1AbstractPlanNode_a68b80a5e248dfb5dfe0858a4afd8bc93}{GetType}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ query\ plan}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ tuple;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1RID}{RID}}\ rid;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (executor-\/>Next(\&tuple,\ \&rid))\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\_set\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ plan\_type\ !=\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfa06933067aafd48425d67bcb01bba5cb6}{PlanType::Update}}\ \&\&\ plan\_type\ !=\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfaa458be0f08b7e4ff3c0f633c100176c0}{PlanType::Insert}}\ \&\&}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ plan\_type\ !=\ \mbox{\hyperlink{namespacebustub_ad7d821859993f0ecb02cde3b7a9f2ccfaf2a6c498fb90ee345d997f888fce3b18}{PlanType::Delete}})\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ result\_set-\/>emplace\_back(tuple);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classbustub_1_1TransactionAbortException}{TransactionAbortException}}\ \&e)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ txn\_mgr\_-\/>Abort(txn);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00072\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{classbustub_1_1Exception}{Exception}}\ \&e)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ txn\_mgr\_-\/>Abort(txn);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (txn-\/>\mbox{\hyperlink{classbustub_1_1Transaction_a3a63bf5fd5c24a33121fc0a5c434792e}{GetState}}()\ ==\ \mbox{\hyperlink{namespacebustub_ae58cece0a05d5cfc7ec83fc4a9161e20a4e6c860e5da10e31c5fd9cb76ddc2025}{TransactionState::ABORTED}})\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ txn\_mgr\_-\/>Abort(txn);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00083\ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *bpm\_;}
+\DoxyCodeLine{00089\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *txn\_mgr\_;}
+\DoxyCodeLine{00091\ \ \ [[maybe\_unused]]\ \mbox{\hyperlink{classbustub_1_1Catalog}{Catalog}}\ *catalog\_;}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

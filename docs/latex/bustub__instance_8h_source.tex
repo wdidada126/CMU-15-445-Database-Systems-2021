@@ -1,0 +1,71 @@
+\doxysection{bustub\+\_\+instance.\+h}
+\hypertarget{bustub__instance_8h_source}{}\label{bustub__instance_8h_source}\index{src/include/common/bustub\_instance.h@{src/include/common/bustub\_instance.h}}
+\mbox{\hyperlink{bustub__instance_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ bustub\_instance.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/bustub\_instance.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buffer__pool__manager__instance_8h}{buffer/buffer\_pool\_manager\_instance.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{config_8h}{common/config.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lock__manager_8h}{concurrency/lock\_manager.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{checkpoint__manager_8h}{recovery/checkpoint\_manager.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log__manager_8h}{recovery/log\_manager.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{disk__manager_8h}{storage/disk/disk\_manager.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1BustubInstance_a8dc399b2bbd3a52e1bdb418367966281}{BustubInstance}}\ \{}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a8dc399b2bbd3a52e1bdb418367966281}{BustubInstance}}(\textcolor{keyword}{const}\ std::string\ \&db\_file\_name)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{namespacebustub_ac3aec770af444ee5fec39d7b6362fe57}{enable\_logging}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ storage\ related}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_aeb178200f36dbfeadd41e352f945cf21}{disk\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}(db\_file\_name);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ log\ related}}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}(\mbox{\hyperlink{classbustub_1_1BustubInstance_aeb178200f36dbfeadd41e352f945cf21}{disk\_manager\_}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_a04ecc3e570ad813ac214c0f11cdfe2c6}{buffer\_pool\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1BufferPoolManagerInstance}{BufferPoolManagerInstance}}(BUFFER\_POOL\_SIZE,\ \mbox{\hyperlink{classbustub_1_1BustubInstance_aeb178200f36dbfeadd41e352f945cf21}{disk\_manager\_}},\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ txn\ related}}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_ad1f06f01ddfc49778dbe7540c6443e3b}{lock\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_a5278cea149433d4c2f8cd2ff471b4882}{transaction\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}(\mbox{\hyperlink{classbustub_1_1BustubInstance_ad1f06f01ddfc49778dbe7540c6443e3b}{lock\_manager\_}},\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ checkpoints}}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_aed7fb1f7e435cfd18e3773c001708109}{checkpoint\_manager\_}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classbustub_1_1CheckpointManager}{CheckpointManager}}(\mbox{\hyperlink{classbustub_1_1BustubInstance_a5278cea149433d4c2f8cd2ff471b4882}{transaction\_manager\_}},\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}},\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a04ecc3e570ad813ac214c0f11cdfe2c6}{buffer\_pool\_manager\_}});}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_a0f967bc86f3577a22e57c7e97e317d26}{\string~BustubInstance}}()\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespacebustub_ac3aec770af444ee5fec39d7b6362fe57}{enable\_logging}})\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}}-\/>StopFlushThread();}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_aed7fb1f7e435cfd18e3773c001708109}{checkpoint\_manager\_}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a04ecc3e570ad813ac214c0f11cdfe2c6}{buffer\_pool\_manager\_}};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_ad1f06f01ddfc49778dbe7540c6443e3b}{lock\_manager\_}};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_a5278cea149433d4c2f8cd2ff471b4882}{transaction\_manager\_}};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classbustub_1_1BustubInstance_aeb178200f36dbfeadd41e352f945cf21}{disk\_manager\_}};}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{classbustub_1_1DiskManager}{DiskManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_aeb178200f36dbfeadd41e352f945cf21}{disk\_manager\_}};}
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{BufferPoolManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_a04ecc3e570ad813ac214c0f11cdfe2c6}{buffer\_pool\_manager\_}};}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{classbustub_1_1LockManager}{LockManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_ad1f06f01ddfc49778dbe7540c6443e3b}{lock\_manager\_}};}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{classbustub_1_1TransactionManager}{TransactionManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_a5278cea149433d4c2f8cd2ff471b4882}{transaction\_manager\_}};}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{classbustub_1_1LogManager}{LogManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_a69f4fddf6a21a6a07a8d0a9ac19f85bc}{log\_manager\_}};}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{classbustub_1_1CheckpointManager}{CheckpointManager}}\ *\mbox{\hyperlink{classbustub_1_1BustubInstance_aed7fb1f7e435cfd18e3773c001708109}{checkpoint\_manager\_}};}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

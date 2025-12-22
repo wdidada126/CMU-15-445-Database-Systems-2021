@@ -1,0 +1,60 @@
+\doxysection{bustub\+::Checkpoint\+Manager Class Reference}
+\hypertarget{classbustub_1_1CheckpointManager}{}\label{classbustub_1_1CheckpointManager}\index{bustub::CheckpointManager@{bustub::CheckpointManager}}
+
+
+{\ttfamily \#include $<$checkpoint\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbustub_1_1CheckpointManager_a302d42345a3dfece7174dd6752ef15ac}{Checkpoint\+Manager}} (\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}transaction\+\_\+manager, \mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*}log\+\_\+manager, \mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}buffer\+\_\+pool\+\_\+manager)
+\item 
+\mbox{\hyperlink{classbustub_1_1CheckpointManager_a5d0605de6506163c31c8873a71a8ffcd}{\texorpdfstring{$\sim$}{\string~}\+Checkpoint\+Manager}} ()=default
+\item 
+void \mbox{\hyperlink{classbustub_1_1CheckpointManager_a63ce45dee27bf8c2ee6b72a7babe2be2}{Begin\+Checkpoint}} ()
+\item 
+void \mbox{\hyperlink{classbustub_1_1CheckpointManager_a23ebc478f843339e204229637566181d}{End\+Checkpoint}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classbustub_1_1CheckpointManager}{Checkpoint\+Manager} creates consistent checkpoints by blocking all other transactions temporarily. 
+
+\label{doc-constructors}
+\Hypertarget{classbustub_1_1CheckpointManager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classbustub_1_1CheckpointManager_a302d42345a3dfece7174dd6752ef15ac}\index{bustub::CheckpointManager@{bustub::CheckpointManager}!CheckpointManager@{CheckpointManager}}
+\index{CheckpointManager@{CheckpointManager}!bustub::CheckpointManager@{bustub::CheckpointManager}}
+\doxysubsubsection{\texorpdfstring{CheckpointManager()}{CheckpointManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1CheckpointManager_a302d42345a3dfece7174dd6752ef15ac} 
+bustub\+::\+Checkpoint\+Manager\+::\+Checkpoint\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbustub_1_1TransactionManager}{Transaction\+Manager}} \texorpdfstring{$\ast$}{*}}]{transaction\+\_\+manager}{, }\item[{\mbox{\hyperlink{classbustub_1_1LogManager}{Log\+Manager}} \texorpdfstring{$\ast$}{*}}]{log\+\_\+manager}{, }\item[{\mbox{\hyperlink{classbustub_1_1BufferPoolManager}{Buffer\+Pool\+Manager}} \texorpdfstring{$\ast$}{*}}]{buffer\+\_\+pool\+\_\+manager}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classbustub_1_1CheckpointManager_a5d0605de6506163c31c8873a71a8ffcd}\index{bustub::CheckpointManager@{bustub::CheckpointManager}!````~CheckpointManager@{\texorpdfstring{$\sim$}{\string~}CheckpointManager}}
+\index{````~CheckpointManager@{\texorpdfstring{$\sim$}{\string~}CheckpointManager}!bustub::CheckpointManager@{bustub::CheckpointManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CheckpointManager()}{\string~CheckpointManager()}}
+{\footnotesize\ttfamily \label{classbustub_1_1CheckpointManager_a5d0605de6506163c31c8873a71a8ffcd} 
+bustub\+::\+Checkpoint\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Checkpoint\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classbustub_1_1CheckpointManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbustub_1_1CheckpointManager_a63ce45dee27bf8c2ee6b72a7babe2be2}\index{bustub::CheckpointManager@{bustub::CheckpointManager}!BeginCheckpoint@{BeginCheckpoint}}
+\index{BeginCheckpoint@{BeginCheckpoint}!bustub::CheckpointManager@{bustub::CheckpointManager}}
+\doxysubsubsection{\texorpdfstring{BeginCheckpoint()}{BeginCheckpoint()}}
+{\footnotesize\ttfamily \label{classbustub_1_1CheckpointManager_a63ce45dee27bf8c2ee6b72a7babe2be2} 
+void bustub\+::\+Checkpoint\+Manager\+::\+Begin\+Checkpoint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classbustub_1_1CheckpointManager_a23ebc478f843339e204229637566181d}\index{bustub::CheckpointManager@{bustub::CheckpointManager}!EndCheckpoint@{EndCheckpoint}}
+\index{EndCheckpoint@{EndCheckpoint}!bustub::CheckpointManager@{bustub::CheckpointManager}}
+\doxysubsubsection{\texorpdfstring{EndCheckpoint()}{EndCheckpoint()}}
+{\footnotesize\ttfamily \label{classbustub_1_1CheckpointManager_a23ebc478f843339e204229637566181d} 
+void bustub\+::\+Checkpoint\+Manager\+::\+End\+Checkpoint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/include/recovery/\mbox{\hyperlink{checkpoint__manager_8h}{checkpoint\+\_\+manager.\+h}}\item 
+src/recovery/\mbox{\hyperlink{checkpoint__manager_8cpp}{checkpoint\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

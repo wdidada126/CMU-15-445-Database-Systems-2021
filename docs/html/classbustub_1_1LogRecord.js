@@ -1,0 +1,25 @@
+var classbustub_1_1LogRecord =
+[
+    [ "LogRecord", "classbustub_1_1LogRecord.html#ac42f06f821c1e9ebb80a647e3d4a0d28", null ],
+    [ "LogRecord", "classbustub_1_1LogRecord.html#ad8571e9de7b2180e5b6a499e1734e14f", null ],
+    [ "LogRecord", "classbustub_1_1LogRecord.html#a0928587b6dae9e6336e6ebd4534416a6", null ],
+    [ "LogRecord", "classbustub_1_1LogRecord.html#ae0a6385db4601054c2a9f688cc49010c", null ],
+    [ "LogRecord", "classbustub_1_1LogRecord.html#a48c7b48c6c51d38516e205aa38b8b5a9", null ],
+    [ "~LogRecord", "classbustub_1_1LogRecord.html#a1a92d2d915cab58ec52ed7fbbd82803d", null ],
+    [ "GetDeleteRID", "classbustub_1_1LogRecord.html#aa545a146813013a97d4d716b7a82d871", null ],
+    [ "GetDeleteTuple", "classbustub_1_1LogRecord.html#af4859c36f81ddcc15e27846b8d462f88", null ],
+    [ "GetInsertRID", "classbustub_1_1LogRecord.html#addcf36b9e6fcae6d9644f3e52ced4a92", null ],
+    [ "GetInsertTuple", "classbustub_1_1LogRecord.html#a43efeaa583f094719bab73edf4138b43", null ],
+    [ "GetLogRecordType", "classbustub_1_1LogRecord.html#a46bdb96b4c526c824af94710105c2a07", null ],
+    [ "GetLSN", "classbustub_1_1LogRecord.html#a9b340f91ea758fabd6b0cd6861a0d231", null ],
+    [ "GetNewPageRecord", "classbustub_1_1LogRecord.html#a21350012b32ba066e5bc2390651b49d0", null ],
+    [ "GetOriginalTuple", "classbustub_1_1LogRecord.html#a7dd10146fab3b47d79776bf3391ae94d", null ],
+    [ "GetPrevLSN", "classbustub_1_1LogRecord.html#a1132f382e81a8cc35bfc5b82fe0c3021", null ],
+    [ "GetSize", "classbustub_1_1LogRecord.html#a38b76788d331ccf95920c373f71651f0", null ],
+    [ "GetTxnId", "classbustub_1_1LogRecord.html#a6958da2b944265e15b72000654507468", null ],
+    [ "GetUpdateRID", "classbustub_1_1LogRecord.html#af507b82d93743e1c0e35c9bbbb25dc5b", null ],
+    [ "GetUpdateTuple", "classbustub_1_1LogRecord.html#a4e272914d1b1ff1df05fa5ee4aea4c25", null ],
+    [ "ToString", "classbustub_1_1LogRecord.html#a35e0aaef68344367709f61caf2fb3b99", null ],
+    [ "LogManager", "classbustub_1_1LogRecord.html#a42122844816425e371e961638cdaf796", null ],
+    [ "LogRecovery", "classbustub_1_1LogRecord.html#a0a38999bad446d23993955f77e0acce0", null ]
+];

@@ -1,0 +1,102 @@
+\doxysection{generic\+\_\+key.\+h}
+\hypertarget{generic__key_8h_source}{}\label{generic__key_8h_source}\index{src/include/storage/index/generic\_key.h@{src/include/storage/index/generic\_key.h}}
+\mbox{\hyperlink{generic__key_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ generic\_key.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/storage/index/generic\_key.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tuple_8h}{storage/table/tuple.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{value_8h}{type/value.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{size\_t}\ KeySize>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1GenericKey}{GenericKey}}\ \{}
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1GenericKey_a1673f86b5bce161d3dd556c09e7cd572}{SetFromKey}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1Tuple}{Tuple}}\ \&tuple)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ intialize\ to\ 0}}
+\DoxyCodeLine{00034\ \ \ \ \ memset(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}},\ 0,\ KeySize);}
+\DoxyCodeLine{00035\ \ \ \ \ memcpy(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}},\ tuple.\mbox{\hyperlink{classbustub_1_1Tuple_a4c768fbf03fd27f9a1a6747458f632b3}{GetData}}(),\ tuple.\mbox{\hyperlink{classbustub_1_1Tuple_a4e9758243717bf4ebe1e74e1fb4f8a21}{GetLength}}());}
+\DoxyCodeLine{00036\ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ NOTE:\ for\ test\ purpose\ only}}
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classbustub_1_1GenericKey_a3cdd6f68405050a6059ad62232d3ecee}{SetFromInteger}}(int64\_t\ key)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ memset(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}},\ 0,\ KeySize);}
+\DoxyCodeLine{00041\ \ \ \ \ memcpy(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}},\ \&key,\ \textcolor{keyword}{sizeof}(int64\_t));}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ \mbox{\hyperlink{classbustub_1_1GenericKey_a36a1d6fae4a2e798567cc0366f7a8833}{ToValue}}(\mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *schema,\ uint32\_t\ column\_idx)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *data\_ptr;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&col\ =\ schema-\/>\mbox{\hyperlink{classbustub_1_1Schema_a0e9f2a4edce5c898e090bbbd1e9325ae}{GetColumn}}(column\_idx);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8}{TypeId}}\ column\_type\ =\ col.GetType();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ is\_inlined\ =\ col.IsInlined();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_inlined)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ data\_ptr\ =\ (\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}}\ +\ col.GetOffset());}
+\DoxyCodeLine{00051\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ int32\_t\ offset\ =\ *\textcolor{keyword}{reinterpret\_cast<}int32\_t\ *\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}}\ +\ col.GetOffset()));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ data\_ptr\ =\ (\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}}\ +\ offset);}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classbustub_1_1Value_a8e4c4c8a2fb2d46681e6d9072a2109cc}{Value::DeserializeFrom}}(data\_ptr,\ column\_type);}
+\DoxyCodeLine{00056\ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ NOTE:\ for\ test\ purpose\ only}}
+\DoxyCodeLine{00059\ \ \ \textcolor{comment}{//\ interpret\ the\ first\ 8\ bytes\ as\ int64\_t\ from\ data\ vector}}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{inline}\ int64\_t\ \mbox{\hyperlink{classbustub_1_1GenericKey_a3ab17b2ad1571f0b132627fd63f41d9b}{ToString}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{reinterpret\_cast<}int64\_t\ *\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}}));\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//\ NOTE:\ for\ test\ purpose\ only}}
+\DoxyCodeLine{00063\ \ \ \textcolor{comment}{//\ interpret\ the\ first\ 8\ bytes\ as\ int64\_t\ from\ data\ vector}}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classbustub_1_1GenericKey_ab12341606f7e6649bc57674eb519627a}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1GenericKey}{GenericKey}}\ \&key)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ os\ <<\ key.\mbox{\hyperlink{classbustub_1_1GenericKey_a3ab17b2ad1571f0b132627fd63f41d9b}{ToString}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//\ actual\ location\ of\ data,\ extends\ past\ the\ end.}}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classbustub_1_1GenericKey_a0c55198d7686c3b411a549455f9a8b6d}{data\_}}[KeySize];}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{size\_t}\ KeySize>}
+\DoxyCodeLine{00077\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1GenericComparator_a71139a4b6ba21a3f988c06d3bdfa082d}{GenericComparator}}\ \{}
+\DoxyCodeLine{00078\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classbustub_1_1GenericComparator_a654982e159815d032dcd8588d754db81}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1GenericKey}{GenericKey<KeySize>}}\ \&lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1GenericKey}{GenericKey<KeySize>}}\ \&rhs)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ uint32\_t\ column\_count\ =\ key\_schema\_-\/>GetColumnCount();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ column\_count;\ i++)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ lhs\_value\ =\ (lhs.\mbox{\hyperlink{classbustub_1_1GenericKey_a36a1d6fae4a2e798567cc0366f7a8833}{ToValue}}(key\_schema\_,\ i));}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \mbox{\hyperlink{classbustub_1_1Value}{Value}}\ rhs\_value\ =\ (rhs.\mbox{\hyperlink{classbustub_1_1GenericKey_a36a1d6fae4a2e798567cc0366f7a8833}{ToValue}}(key\_schema\_,\ i));}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs\_value.\mbox{\hyperlink{classbustub_1_1Value_a419373bb0c7f74d73f9dae84c140cce9}{CompareLessThan}}(rhs\_value)\ ==\ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560a4485704eca2114c51657b73f650d9771}{CmpBool::CmpTrue}})\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs\_value.\mbox{\hyperlink{classbustub_1_1Value_a897ad434d946a74bfcf282c055532d91}{CompareGreaterThan}}(rhs\_value)\ ==\ \mbox{\hyperlink{namespacebustub_a0b4071db2dd630bdbf7a86b4f251f560a4485704eca2114c51657b73f650d9771}{CmpBool::CmpTrue}})\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ equals}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00095\ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \mbox{\hyperlink{classbustub_1_1GenericComparator_a71139a4b6ba21a3f988c06d3bdfa082d}{GenericComparator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classbustub_1_1GenericComparator_a71139a4b6ba21a3f988c06d3bdfa082d}{GenericComparator}}\ \&other)\ :\ key\_schema\_\{other.key\_schema\_\}\ \{\}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{comment}{//\ constructor}}
+\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1GenericComparator_a3485563eb7d5f8ff3aef4e18cef7a989}{GenericComparator}}(\mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *key\_schema)\ :\ key\_schema\_(key\_schema)\ \{\}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{classbustub_1_1Schema}{Schema}}\ *key\_schema\_;}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

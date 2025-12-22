@@ -1,0 +1,100 @@
+\doxysection{exception.\+h}
+\hypertarget{exception_8h_source}{}\label{exception_8h_source}\index{src/include/common/exception.h@{src/include/common/exception.h}}
+\mbox{\hyperlink{exception_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ exception.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/exception.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{type_8h}{type/type.h}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ TODO(WAN):\ the\ comment\ I\ added\ below\ is\ a\ lie,\ but\ you\ shouldn't\ need\ to\ poke\ around\ here.\ Don't\ worry\ about\ it.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ \ Most\ of\ the\ exception\ types\ are\ type\ subsystem\ madness.\ I\ think\ we\ can\ get\ rid\ of\ it\ at\ some\ point.}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}\ \{}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}}\ =\ 0,}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{OUT\_OF\_RANGE}}\ =\ 1,}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda4f95b2b3043e8094e82b1df5e337ab4c}{CONVERSION}}\ =\ 2,}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27}{UNKNOWN\_TYPE}}\ =\ 3,}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8ab2b72097010116f1391d0defef5e8944}{DECIMAL}}\ =\ 4,}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda33d60725121c9a1e353da43ef92a4c8d}{MISMATCH\_TYPE}}\ =\ 5,}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda89a05339f968a0ed7c666568913388ca}{DIVIDE\_BY\_ZERO}}\ =\ 6,}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafddaa8bb5c14878aebbc01bfa548b2359bcf}{INCOMPATIBLE\_TYPE}}\ =\ 8,}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafddac56ddb8056b120c9d5fee05981f219c6}{OUT\_OF\_MEMORY}}\ =\ 9,}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda3e860a081575fc82cc7b6ed2ca602947}{NOT\_IMPLEMENTED}}\ =\ 11,}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1Exception_aa3e8253c50533fdc12fa93520c5e2eb1}{Exception}}\ :\ \textcolor{keyword}{public}\ std::runtime\_error\ \{}
+\DoxyCodeLine{00053\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1Exception_aa3e8253c50533fdc12fa93520c5e2eb1}{Exception}}(\textcolor{keyword}{const}\ std::string\ \&message)\ :\ \mbox{\hyperlink{namespacestd}{std}}::runtime\_error(message),\ type\_(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}::\mbox{\hyperlink{namespacebustub_a49735e6748963f5515394bbb228f1fc8a3e1271c17ff094d1820c69fbcc4c19eb}{INVALID}})\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ std::string\ exception\_message\ =\ \textcolor{stringliteral}{"{}Message\ ::\ "{}}\ +\ message\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00060\ \ \ \ \ std::cerr\ <<\ exception\_message;}
+\DoxyCodeLine{00061\ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \mbox{\hyperlink{classbustub_1_1Exception_abc0b77bc738eb61bfc2b5c44634c1dc2}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}\ exception\_type,\ \textcolor{keyword}{const}\ std::string\ \&message)}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ :\ \mbox{\hyperlink{namespacestd}{std}}::runtime\_error(message),\ type\_(exception\_type)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ std::string\ exception\_message\ =}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)nException\ Type\ ::\ "{}}\ +\ \mbox{\hyperlink{classbustub_1_1Exception_ac0f975e5d79a6e9ec45ba9dec5441bc7}{ExceptionTypeToString}}(type\_)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)nMessage\ ::\ "{}}\ +\ message\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00072\ \ \ \ \ std::cerr\ <<\ exception\_message;}
+\DoxyCodeLine{00073\ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}\ \mbox{\hyperlink{classbustub_1_1Exception_a126c8043fa78e011757c2d85521d0e34}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ type\_;\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classbustub_1_1Exception_ac0f975e5d79a6e9ec45ba9dec5441bc7}{ExceptionTypeToString}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}\ type)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafddaccc0377a8afbf50e7094f5c23a8af223}{ExceptionType::INVALID}}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Invalid"{}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda6feaf66704b269610cff9431d5519cad}{ExceptionType::OUT\_OF\_RANGE}}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Out\ of\ Range"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda4f95b2b3043e8094e82b1df5e337ab4c}{ExceptionType::CONVERSION}}:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Conversion"{}};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda7280a7d8974164a48d863dee5e341f27}{ExceptionType::UNKNOWN\_TYPE}}:}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown\ Type"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda13d992d671957e9a2b3e936ca0cf14a4}{ExceptionType::DECIMAL}}:}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Decimal"{}};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda33d60725121c9a1e353da43ef92a4c8d}{ExceptionType::MISMATCH\_TYPE}}:}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Mismatch\ Type"{}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda89a05339f968a0ed7c666568913388ca}{ExceptionType::DIVIDE\_BY\_ZERO}}:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Divide\ by\ Zero"{}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafddaa8bb5c14878aebbc01bfa548b2359bcf}{ExceptionType::INCOMPATIBLE\_TYPE}}:}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Incompatible\ type"{}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafddac56ddb8056b120c9d5fee05981f219c6}{ExceptionType::OUT\_OF\_MEMORY}}:}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Out\ of\ Memory"{}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda3e860a081575fc82cc7b6ed2ca602947}{ExceptionType::NOT\_IMPLEMENTED}}:}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Not\ implemented"{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00107\ \ \ \mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}\ type\_;}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classbustub_1_1NotImplementedException_aa860b3e37677fa96ee139d5fc33747d7}{NotImplementedException}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classbustub_1_1Exception_aa3e8253c50533fdc12fa93520c5e2eb1}{Exception}}\ \{}
+\DoxyCodeLine{00111\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00112\ \ \ \mbox{\hyperlink{classbustub_1_1NotImplementedException_aa860b3e37677fa96ee139d5fc33747d7}{NotImplementedException}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classbustub_1_1NotImplementedException_a7f4a1bdee225ad1656f7dab3c6db0d55}{NotImplementedException}}(\textcolor{keyword}{const}\ std::string\ \&msg)\ :\ \mbox{\hyperlink{classbustub_1_1Exception_aa3e8253c50533fdc12fa93520c5e2eb1}{Exception}}(\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdd}{ExceptionType}}::\mbox{\hyperlink{namespacebustub_adf0139878332d20b97b4aeadbc3aafdda3e860a081575fc82cc7b6ed2ca602947}{NOT\_IMPLEMENTED}},\ msg)\ \{\}}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}

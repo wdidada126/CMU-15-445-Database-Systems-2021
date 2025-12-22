@@ -1,0 +1,49 @@
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{src/include/common/config.h@{src/include/common/config.h}}
+\mbox{\hyperlink{config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BusTub}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ config.h}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Identification:\ src/include/common/config.h}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Copyright\ (c)\ 2015-\/2019,\ Carnegie\ Mellon\ University\ Database\ Group}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <chrono>}\ \ \textcolor{comment}{//\ NOLINT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacebustub}{bustub}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ std::chrono::milliseconds\ \mbox{\hyperlink{namespacebustub_a3e991b8b17817406c60408a91065c04d}{cycle\_detection\_interval}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{extern}\ std::atomic<bool>\ \mbox{\hyperlink{namespacebustub_ac3aec770af444ee5fec39d7b6362fe57}{enable\_logging}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{extern}\ std::chrono::duration<int64\_t>\ \mbox{\hyperlink{namespacebustub_af3a04e89f498bec1b21073c7f2760221}{log\_timeout}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ INVALID\_PAGE\_ID\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ invalid\ page\ id}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ INVALID\_TXN\_ID\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ invalid\ transaction\ id}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ INVALID\_LSN\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ invalid\ log\ sequence\ number}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ HEADER\_PAGE\_ID\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ header\ page\ id}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ PAGE\_SIZE\ =\ 4096;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ size\ of\ a\ data\ page\ in\ byte}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ BUFFER\_POOL\_SIZE\ =\ 10;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ size\ of\ buffer\ pool}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ LOG\_BUFFER\_SIZE\ =\ ((BUFFER\_POOL\_SIZE\ +\ 1)\ *\ PAGE\_SIZE);\ \ \textcolor{comment}{//\ size\ of\ a\ log\ buffer\ in\ byte}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ BUCKET\_SIZE\ =\ 50;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ size\ of\ extendible\ hash\ bucket}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_ace90203993c773ca0b86249d34990a5a}{frame\_id\_t}}\ =\ int32\_t;\ \ \ \ \textcolor{comment}{//\ frame\ id\ type}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a79f71d2511546f20388cf56e9effe97e}{page\_id\_t}}\ =\ int32\_t;\ \ \ \ \ \textcolor{comment}{//\ page\ id\ type}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a818b44f51f261df0e7eac9b7736bd8be}{txn\_id\_t}}\ =\ int32\_t;\ \ \ \ \ \ \textcolor{comment}{//\ transaction\ id\ type}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a6514f4a1272d060b77641c745f8a824b}{lsn\_t}}\ =\ int32\_t;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ log\ sequence\ number\ type}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a69b4501fad54733192b6726e498d1b8b}{slot\_offset\_t}}\ =\ size\_t;\ \ \textcolor{comment}{//\ slot\ offset\ type}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacebustub_a4118bf42308427dc7b9bb0576e77dfd8}{oid\_t}}\ =\ uint16\_t;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \}\ \ \textcolor{comment}{//\ namespace\ bustub}}
+
+\end{DoxyCode}
