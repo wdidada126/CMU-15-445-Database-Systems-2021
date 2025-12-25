@@ -2,7 +2,9 @@
 https://unpurerationalist.github.io/2024/05/13/%E4%BB%8E-BusTub-%E7%9C%8B-Architecture-of-a-Database-System/
 可以看到 BusTub 的代码组织非常清晰，每个目录的含义基本上一目了然：
 
+file:///Users/ibqo/Develop/git/github/cpp/CMU-15-445-Database-Systems-2021/docs/html/index.html
 file:///D:/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/docs/html/index.html
+
 binder：将PostgreSQL语法树转换为BusTub内部数据结构；
 buffer：缓冲区管理；
 catalog：元数据管理；
