@@ -1,3 +1,18 @@
 # my
+https://unpurerationalist.github.io/2024/05/13/%E4%BB%8E-BusTub-%E7%9C%8B-Architecture-of-a-Database-System/
+可以看到 BusTub 的代码组织非常清晰，每个目录的含义基本上一目了然：
 
 file:///D:/develops/git/github/cpp/CMU-15-445-Database-Systems-2021/docs/html/index.html
+binder：将PostgreSQL语法树转换为BusTub内部数据结构；
+buffer：缓冲区管理；
+catalog：元数据管理；
+common：一些工具函数，以及组装 BusTub 数据库实例；
+concurrency：并发控制模块；
+container：容器，主要是面向内存或磁盘的哈希表；
+execution：执行引擎，实现各种算子；
+include：头文件；
+optimizer：查询优化器模块；
+planner：把 binder 模块生成的数据结构转换为 BusTub 内部执行计划；
+recovery：恢复系统，主要用于实现 undo redo log；
+storage：存储模块，主要实现数据库页面、表、索引等数据结构；
+type：实现 BusTub 支持的数据类型，如 int 、char 等，以及相关的加减法、比较等运算。
